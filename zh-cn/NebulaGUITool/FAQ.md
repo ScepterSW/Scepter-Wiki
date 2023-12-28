@@ -1,4 +1,4 @@
-# FAQ
+# 4 FAQ
 
 **Q1**：为什么可以搜索到网口类设备但却打不开相机？
 
@@ -14,20 +14,8 @@
 
 **Q2**:  通过 GUI 保存的 IR 图和深度图为什么打不开？点云图如何查看？
 
-**A2**: NebulaGUI 保存的 IR 和 Depth 图像是 16bit 图片数据，可以使用 ImageJ 打开查看；GUI 保存的点云图是.txt 格式，可使用 CloudCompare 进行查看，相关说明请参考链接：<https://cdn.yun.sooce.cn/4/62267/pdf/16339227552770a0bd9e3dcaf8a6b.pdf>
+**A2**: NebulaGUI 保存的 IR 和 Depth 图像是 16bit 图片数据，可以使用 ImageJ 打开查看；GUI 保存的点云图是.txt 格式，可使用 CloudCompare 进行查看。
 
 **Q3**:  如何改善相机对黑色物体的检测
 
 **A3**:  可以尝试下述方法：1.将产品帧率降低（例如 5 帧），增加曝光时间（例如 4000）；2.将 Confidence 滤波阈值更改为 2 或 5
-
-**联系方式：**
-
-邮箱：<info@vzense.com>
-
-FAQ：<https://zh.vzense.com/faq>
-
-Gitee：<https://gitee.com/Vzense/NebulaGUITool/issues>
-
-GitHub：<https://github.com/Vzense/NebulaGUITool/issues>
-
-技术支持平台：<https://support.qq.com/products/377143>

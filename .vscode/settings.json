@@ -1,0 +1,26 @@
+{
+   // vscode默认启用了根据文件类型自动设置tabsize的选项
+  "editor.detectIndentation": false,
+  // 重新设定tabsize
+  "editor.tabSize": 3, //缩进值为3，可自行修改
+  // #值设置为true时，每次保存的时候自动格式化；值设置为false时，代码格式化请按shift+alt+F（快捷键，可自己更改）
+  "editor.formatOnSave": true,
+  // #每次保存的时候将代码按eslint格式进行修复
+  "eslint.format.enable": true,
+  // 添加 vue 支持
+  //autoFix默认开启，只需输入字符串数组即可
+  "eslint.validate": [
+     "javascript",
+     "javascriptreact",
+     "typescript",
+     "typescriptreact",
+     "vue",
+     "html"
+  ],
+  //  #让函数(名)和后面的括号之间加个空格
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "editor.suggestSelection": "first",
+  "editor.codeActionsOnSave": {
+   "source.fixAll.eslint": "explicit"
+} // 两个选择器中是否换行
+}

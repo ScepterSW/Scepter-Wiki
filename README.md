@@ -1,10 +1,7 @@
-# Vzense Technical Documentation
+# Vzense 技术文档
 
-Vzense team has been engaged in research on 3D perception, computer vision, image processing, gesture and face recognition since 2016.
-Currently, Vzense Technology has grown to be one of the leading companies on 3D Time-of-Flight technology and is certified with ISO 9001: 2015, ISO45001: 2018 and ISO14001: 2015.
+![Vzense技术文档](zh-cn/ProductIntroduction/pic/README01.png)
 
-![Vzense Technical Documentation](en/pic/README01.png)
-
-Documentation provides information on ToF Camera Specification, QuickStart Guide, GUI Tool User Guide, SDK User Guide, Application notes and other information.
+本文档主要提供产品规格书、快速使用指南、Windows/Ubuntu 平台图形界面工具使用指南、SDK 开发者指南、应用笔记等信息。
 
 <style>img{margin-left:20%;width:60%;}</style>

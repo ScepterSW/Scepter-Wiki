@@ -1,58 +1,50 @@
-- Product Brief Introduction
+- 产品介绍
 
-  - [Product Brief Introduction](en/ProductIntroduction/Principle.md)
-  - [ToF FOV](en/ProductIntroduction/ToF%20FOV.md)
-  - [NebulaSDK](en/ProductIntroduction/NebulaSDK.md)
-  - [Assembly Materials](en/ProductIntroduction/Assembly%20Materials.md)
-  - [Accessory](en/ProductIntroduction/Accessory.md)
+  - [DS86 & DS87](zh-cn/ProductIntroduction/DS86%20&%20DS87.md)
+  - [DS77](zh-cn/ProductIntroduction/DS77.md)
+  - [DS77C](zh-cn/ProductIntroduction/DS77C.md)
 
-- Quickstart
+- [快速开始](zh-cn/Quickstart.md)
 
-  - [DS86 & DS87](en/Quickstart/DS86%20&%20DS87.md)
-  - [DS77](en/Quickstart/DS77.md)
-  - [DS77C](en/Quickstart/DS77C.md)
+  - [DS86 & DS87](zh-cn/Quickstart/DS86%20&%20DS87.md)
+  - [DS77](zh-cn/Quickstart/DS77.md)
+  - [DS77C](zh-cn/Quickstart/DS77C.md)
 
 - NebulaGUITool
 
-  - [Overview](en/NebulaGUITool/Overview.md)
-  - [SupportedDevices](en/NebulaGUITool/SupportedDevices.md)
-  - [DeviceConnection](en/NebulaGUITool/DeviceConnection.md)
-  - [FunctionIntroduction](en/NebulaGUITool/FunctionIntroduction.md)
-  - [FAQ](en/NebulaGUITool/FAQ.md)
-
-- [NebulaSDK](en/NebulaSDK/NebulaSDK.md)
-
-  - [Overview](en/NebulaSDK/Overview.md)
-  - [NebulaSDK Instruction](en/NebulaSDK/NebulaSDK.md)
-  - [NebulaSDK API Introduction](en/NebulaSDK/NebulaSDK.md)
-  - [FAQ](en/NebulaSDK/NebulaSDK.md)
+  - [概述](zh-cn/NebulaGUITool/Overview.md)
+  - [支持设备](zh-cn/NebulaGUITool/SupportedDevices.md)
+  - [设备连接](zh-cn/NebulaGUITool/DeviceConnection.md)
+  - [功能介绍](zh-cn/NebulaGUITool/FunctionIntroduction.md)
+  - [FAQ](zh-cn/NebulaGUITool/FAQ.md)
 
 - NebulaSDK
 
-  - [Overview](en/NebulaSDK/Overview.md)
-  - Installation
-    - [Linux Installation](en/NebulaSDK/Installation/InstallationLinux.md)
-    - [Windows Installation](en/NebulaSDK/Installation/InstallationWindows.md)
-  - Nebula SDK Instruction
-    - [AArch64](<en/NebulaSDK/NebulaSDK Instruction/AArch64.md>)
-    - [CSharp](<en/NebulaSDK/NebulaSDK Instruction/CSharp.md>)
-    - [Python](<en/NebulaSDK/NebulaSDK Instruction/Python.md>)
-    - [ROS](<en/NebulaSDK/NebulaSDK Instruction/ROS.md>)
-    - [ROS MultiCameras](<en/NebulaSDK/NebulaSDK Instruction/ROS_MultiCameras.md>)
-    - [ROS2](<en/NebulaSDK/NebulaSDK Instruction/ROS2.md>)
-    - [ROS2 MultiCameras](<en/NebulaSDK/NebulaSDK Instruction/ROS2_MultiCameras.md>)
-    - [Ubuntu16.04](<en/NebulaSDK/NebulaSDK Instruction/Ubuntu16.04.md>)
-    - [Ubuntu18.04](<en/NebulaSDK/NebulaSDK Instruction/Ubuntu18.04.md>)
-    - [Windows](<en/NebulaSDK/NebulaSDK Instruction/Windows.md>)
-  - [NebulaSDK API Introduction](<en/NebulaSDK/NebulaSDK API Introduction.md>)
-  - [FAQ](en/NebulaSDK/FAQ.md)
+  - [概述](zh-cn/NebulaSDK/Overview.md)
+  - 设备连接
+    - [Linux 设备连接](zh-cn/NebulaSDK/Installation/InstallationLinux.md)
+    - [Windows 设备连接](zh-cn/NebulaSDK/Installation/InstallationWindows.md)
+  - Nebula SDK 使用说明
+    - [AArch64](<zh-cn/NebulaSDK/NebulaSDK Instruction/AArch64.md>)
+    - [CSharp](<zh-cn/NebulaSDK/NebulaSDK Instruction/CSharp.md>)
+    - [Python](<zh-cn/NebulaSDK/NebulaSDK Instruction/Python.md>)
+    - [ROS](<zh-cn/NebulaSDK/NebulaSDK Instruction/ROS.md>)
+    - [ROS 多相机连接](<zh-cn/NebulaSDK/NebulaSDK Instruction/ROS_MultiCameras.md>)
+    - [ROS2](<zh-cn/NebulaSDK/NebulaSDK Instruction/ROS2.md>)
+    - [ROS2 多相机连接](<zh-cn/NebulaSDK/NebulaSDK Instruction/ROS2_MultiCameras.md>)
+    - [Ubuntu16.04](<zh-cn/NebulaSDK/NebulaSDK Instruction/Ubuntu16.04.md>)
+    - [Ubuntu18.04](<zh-cn/NebulaSDK/NebulaSDK Instruction/Ubuntu18.04.md>)
+    - [Windows](<zh-cn/NebulaSDK/NebulaSDK Instruction/Windows.md>)
+  - [SDK 接口介绍](<zh-cn/NebulaSDK/NebulaSDK API Introduction.md>)
+  - [FAQ](zh-cn/NebulaSDK/FAQ.md)
 
-- ApplicationNote
+- 应用笔记
 
-  - [Point Cloud Format Detail](<en/ApplicationNote/Point Cloud Format Detail.md>)
-  - [Depth Quality Test](<en/ApplicationNote/Depth Quality Test.md>)
-  - [AGV scene Testing Data](<en/ApplicationNote/AGV scene Testing Data.md>)
-  - [HDR Mode](<en/ApplicationNote/HDR Mode.md>)
-  - [Multi-Cameras Coexist](<en/ApplicationNote/Multi-Cameras Coexist.md>)
+  - [点云格式说明](<zh-cn/ApplicationNote/Point Cloud Format Detail.md>)
+  - DS86 & DS87
+  - DS77 & DS77C
+  - [深度质量测试](<zh-cn/ApplicationNote/Depth Quality Test.md>)
+  - [AGV 场景测试数据](<zh-cn/ApplicationNote/AGV scene Testing Data.md>)
 
-- [About Us](en/AboutUs.md)
+  - [HDR 模式](<zh-cn/ApplicationNote/HDR Mode.md>)
+  - [多机共存](<zh-cn/ApplicationNote/Multi-Cameras Coexist.md>)
