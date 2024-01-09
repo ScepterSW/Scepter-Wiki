@@ -1,6 +1,6 @@
-# 2.1 AArch64
+# 2.3. ArmLinux
 
-## 2.1.1 SDK 内容
+## 2.3.1. SDK 内容
 
 Nebula SDK 开发包提供的 Sample 用于演示 SDK 的 API 接口使用，位于 SDK 目录的 Samples 文件夹下。包含如下内容：
 
@@ -8,11 +8,11 @@ Nebula SDK 开发包提供的 Sample 用于演示 SDK 的 API 接口使用，位
 
 - OpenCV：配合第三方库 OpenCV 的 Sample
 
-## 2.1.2 项目配置
+## 2.3.2. 项目配置
 
 使用 Nebula SDK 开发新的项目，需要在 CMakeList 中将 SDK 中的 Include 目录加入到包含路径，将 Lib/x64 目录加入到链接搜索路径，并链接 libNebula_api.so。具体内容可参考 Samples 中的例程配置。
 
-## 2.1.3 基础例程
+## 2.3.3. 基础例程
 
 基础例程介绍 SDK 的单个特性 API 接口的使用。为了使用户可以快速的熟悉使用，例程根据产品进行分类，如 DS86 & DS87、DS77、DS77C 等。例程包含打开图像数据流、图像获取、软/硬触发、点云转换与保存等 API 接口的使用。
 
@@ -52,7 +52,7 @@ Nebula SDK 开发包提供的 Sample 用于演示 SDK 的 API 接口使用，位
 
    ![Execution](pic/Linux/Execution.png)
 
-## 2.1.4 OpenCV 例程
+## 2.3.4. OpenCV 例程
 
 OpenCV 例程用于展示如何搭配第三方库使用 Nebula SDK。例程使用 OpenCV 的图像映射功能展示彩色深度图像、IR 与 Color 图像。
 
@@ -79,6 +79,6 @@ OpenCV 例程用于展示如何搭配第三方库使用 Nebula SDK。例程使�
 
    ![ExecutionOpencv](pic/Linux/ExecutionOpencv.png)
 
-## 2.1.5 说明
+## 2.3.5. 说明
 
 - 当使用多个网卡时，需要设置不同的 IP 网段。

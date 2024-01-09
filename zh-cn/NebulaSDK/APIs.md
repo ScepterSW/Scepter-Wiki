@@ -1,6 +1,6 @@
-# 6 API 介绍<!-- {docsify-ignore-all} -->
+# 6. API 介绍<!-- {docsify-ignore-all} -->
 
-## 6.1 VZ_Initialize
+## 6.1. VZ_Initialize
 
 **函数原型：**
 
@@ -21,7 +21,7 @@ VzReturnStatus VZ_Initialize()
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.2 VZ_Shutdown
+## 6.2. VZ_Shutdown
 
 **函数原型：**
 
@@ -42,7 +42,7 @@ VzReturnStatus VZ_Shutdown()
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.3 VZ_GetSDKVersion
+## 6.3. VZ_GetSDKVersion
 
 **函数原型：**
 
@@ -62,7 +62,7 @@ const char* VZ_GetSDKVersion()
 
 - SDK 版本号
 
-## 6.4 VZ_GetDeviceCount
+## 6.4. VZ_GetDeviceCount
 
 **函数原型：**
 
@@ -83,7 +83,7 @@ uint32_t\* pDeviceCount：返回已连接的设备数目
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.5 VZ_GetDeviceInfo
+## 6.5. VZ_GetDeviceInfo
 
 **函数原型：**
 
@@ -106,7 +106,7 @@ VzDeviceInfo\* pDevicesInfo：返回设备信息
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.6 GetDeviceInfoList
+## 6.6. GetDeviceInfoList
 
 **函数原型：**
 
@@ -129,7 +129,7 @@ VzDeviceInfo* pDevicesInfo：返回设备信息列表，其应该指向大小为
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.7 VZ_OpenDeviceByUri
+## 6.7. VZ_OpenDeviceByUri
 
 **函数原型：**
 
@@ -152,7 +152,7 @@ VzDeviceHandle\* pDevice： 打开设备成功后，返回的设备句柄
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.8 VZ_OpenDeviceByAlias
+## 6.8. VZ_OpenDeviceByAlias
 
 **函数原型：**
 
@@ -175,7 +175,7 @@ VzDeviceHandle\* pDevice： 打开设备成功后，返回的设备句柄
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.9 VZ_OpenDeviceByIP
+## 6.9. VZ_OpenDeviceByIP
 
 **函数原型：**
 
@@ -198,7 +198,7 @@ VzDeviceHandle\* pDevice： 打开设备成功后，返回的设备句柄
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.10 VZ_CloseDevice
+## 6.10. VZ_CloseDevice
 
 **函数原型：**
 
@@ -219,7 +219,7 @@ VzDeviceHandle\* pDevice： 要关闭设备的句柄
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.11 VZ_StartStream
+## 6.11. VZ_StartStream
 
 **函数原型：**
 
@@ -240,7 +240,7 @@ VzDeviceHandle device： 要关闭数据流的设备的句柄
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.12 VZ_StopStream
+## 6.12. VZ_StopStream
 
 **函数原型：**
 
@@ -261,7 +261,7 @@ VzDeviceHandle device： 要关闭数据流的设备的句柄
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.13 VZ_GetFrameReady
+## 6.13. VZ_GetFrameReady
 
 **函数原型：**
 
@@ -286,7 +286,7 @@ VzFrameReady\* pFrameReady：返回图像的就绪状态
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.14 VZ_GetFrame
+## 6.14. VZ_GetFrame
 
 **函数原型：**
 
@@ -311,7 +311,7 @@ VzFrame\* pVzFrame：返回的图像数据
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.15 VZ_SetWorkMode
+## 6.15. VZ_SetWorkMode
 
 **函数原型：**
 
@@ -334,7 +334,7 @@ VzWorkMode mode：要设置的工作模式
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.16 VZ_GetWorkMode
+## 6.16. VZ_GetWorkMode
 
 **函数原型：**
 
@@ -357,7 +357,7 @@ VzWorkMode\* pMode：获取到的设备的工作模式
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.17 VZ_SetSoftwareSlaveTrigger
+## 6.17. VZ_SetSoftwareSlaveTrigger
 
 **函数原型：**
 
@@ -378,7 +378,7 @@ VzDeviceHandle device： 设备句柄
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.18 VZ_GetSensorIntrinsicParameters
+## 6.18. VZ_GetSensorIntrinsicParameters
 
 **函数原型：**
 
@@ -403,7 +403,7 @@ VzSensorIntrinsicParameters\* pSensorIntrinsicParameters：返回传感器镜头
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.19 VZ_GetSensorExtrinsicParameters
+## 6.19. VZ_GetSensorExtrinsicParameters
 
 **函数原型：**
 
@@ -426,7 +426,7 @@ VzSensorExtrinsicParameters\* pSensorExtrinsicParameters：返回设备的外参
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.20 VZ_GetFirmwareVersion
+## 6.20. VZ_GetFirmwareVersion
 
 **函数原型：**
 
@@ -451,7 +451,7 @@ int length：pFirmwareVersion 指向的缓存的字节长度
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.21 VZ_GetDeviceMACAddress
+## 6.21. VZ_GetDeviceMACAddress
 
 **函数原型：**
 
@@ -474,7 +474,7 @@ char\* pMACAddress：返回设备的 MAC 地址，其默认是一个字节长度
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.22 VZ_SetIRGMMGain
+## 6.22. VZ_SetIRGMMGain
 
 **函数原型：**
 
@@ -497,7 +497,7 @@ uint8_t gmmgain：要设置给设备的 IR 增益值
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.23 VZ_GetIRGMMGain
+## 6.23. VZ_GetIRGMMGain
 
 **函数原型：**
 
@@ -520,7 +520,7 @@ uint8_t\* pGmmgain：返回设备的 IR 增益值
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.24 VZ_SetColorPixelFormat
+## 6.24. VZ_SetColorPixelFormat
 
 **函数原型：**
 
@@ -543,7 +543,7 @@ VzPixelFormat pixelFormat：要设置的彩色图像的像素格式
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.25 VZ_SetColorResolution
+## 6.25. VZ_SetColorResolution
 
 **函数原型：**
 
@@ -568,7 +568,7 @@ int h：图像的高
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.26 VZ_GetColorResolution
+## 6.26. VZ_GetColorResolution
 
 **函数原型：**
 
@@ -593,7 +593,7 @@ int\* pH：返回彩色图像的图像高
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.27 VZ_SetFrameRate
+## 6.27. VZ_SetFrameRate
 
 **函数原型：**
 
@@ -616,7 +616,7 @@ int value：要设置的目标帧率
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.28 VZ_GetFrameRate
+## 6.28. VZ_GetFrameRate
 
 **函数原型：**
 
@@ -639,7 +639,7 @@ int\* pValue：返回设备的图像帧率
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.29 VZ_SetExposureControlMode
+## 6.29. VZ_SetExposureControlMode
 
 **函数原型：**
 
@@ -664,7 +664,7 @@ VzExposureControlMode controlMode：要设置的曝光模式
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.30 VZ_GetExposureControlMode
+## 6.30. VZ_GetExposureControlMode
 
 **函数原型：**
 
@@ -689,7 +689,7 @@ VzExposureControlMode controlMode：返回传感器的曝光模式
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.31 VZ_SetExposureTime
+## 6.31. VZ_SetExposureTime
 
 **函数原型：**
 
@@ -718,7 +718,7 @@ VzExposureTimeParams exposureTime：要设置的曝光时间参数
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.32 VZ_GetExposureTime
+## 6.32. VZ_GetExposureTime
 
 **函数原型：**
 
@@ -747,7 +747,7 @@ VzExposureTimeParams\* pExposureTime：返回获取的曝光时间参数
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.33 VZ_SetTimeFilterEnabled
+## 6.33. VZ_SetTimeFilterEnabled
 
 **函数原型：**
 
@@ -770,7 +770,7 @@ bool bEnabled：true 表示滤波打开，false 表示滤波关闭
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.34 VZ_GetTimeFilterEnabled
+## 6.34. VZ_GetTimeFilterEnabled
 
 **函数原型：**
 
@@ -793,7 +793,7 @@ bool \*pEnabled：返回滤波开关状态
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.35 VZ_SetConfidenceFilterParams
+## 6.35. VZ_SetConfidenceFilterParams
 
 **函数原型：**
 
@@ -816,7 +816,7 @@ bool \*pEnabled：返回滤波开关状态
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.36 VZ_GetConfidenceFilterParams
+## 6.36. VZ_GetConfidenceFilterParams
 
 **函数原型：**
 
@@ -839,7 +839,7 @@ bool \*pEnabled：返回滤波开关状态
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.37 VZ_SetFlyingPixelFilterParam
+## 6.37. VZ_SetFlyingPixelFilterParam
 
 **函数原型：**
 
@@ -862,7 +862,7 @@ const VzFlyingPixelFilterParams params：滤波参数
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.38 VZ_GetFlyingPixelFilterParams
+## 6.38. VZ_GetFlyingPixelFilterParams
 
 **函数原型：**
 
@@ -885,7 +885,7 @@ VzFlyingPixelFilterParams\* params：滤波参数
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.39 VZ_SetFillHoleFilterParam
+## 6.39. VZ_SetFillHoleFilterParam
 
 **函数原型：**
 
@@ -908,7 +908,7 @@ const VzFillHoleFilterParams params：滤波参数
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.40 VZ_GetFillHoleFilterParams
+## 6.40. VZ_GetFillHoleFilterParams
 
 **函数原型：**
 
@@ -931,7 +931,7 @@ VzFillHoleFilterParams\* params：获取的滤波参数
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.41 VZ_SetSpatialFilterParams
+## 6.41. VZ_SetSpatialFilterParams
 
 **函数原型：**
 
@@ -954,7 +954,7 @@ const VzSpatialFilterParams params：滤波参数
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.42 VZ_GetSpatialFilterParams
+## 6.42. VZ_GetSpatialFilterParams
 
 **函数原型：**
 
@@ -977,7 +977,7 @@ VzSpatialFilterParams\* params：获取的滤波参数
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.43 VZ_SetTransformColorImgToDepthSensorEnabled
+## 6.43. VZ_SetTransformColorImgToDepthSensorEnabled
 
 **函数原型：**
 
@@ -1000,7 +1000,7 @@ bool bEnabled：true 打开对齐，false 关闭对齐
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.44 VZ_GetTransformColorImgToDepthSensorEnabled
+## 6.44. VZ_GetTransformColorImgToDepthSensorEnabled
 
 **函数原型：**
 
@@ -1023,7 +1023,7 @@ bool \*bEnabled：返回开关状态
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.45 VZ_SetTransformDepthImgToColorSensorEnabled
+## 6.45. VZ_SetTransformDepthImgToColorSensorEnabled
 
 **函数原型：**
 
@@ -1046,7 +1046,7 @@ bool bEnabled：true 打开对齐，false 关闭对齐
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.46 VZ_GetTransformDepthImgToColorSensorEnabled
+## 6.46. VZ_GetTransformDepthImgToColorSensorEnabled
 
 **函数原型：**
 
@@ -1069,7 +1069,7 @@ bool \*bEnabled：返回开关状态
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.47 VZ_TransformedDepthPointToColorPoint
+## 6.47. VZ_TransformedDepthPointToColorPoint
 
 **函数原型：**
 
@@ -1096,7 +1096,7 @@ VzVector2u16\* pPointInColor：获得的与深度图像的坐标点对应的彩�
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.48 VZ_ConvertDepthToPointCloud
+## 6.48. VZ_ConvertDepthToPointCloud
 
 **函数原型：**
 
@@ -1125,7 +1125,7 @@ VzSensorIntrinsicParameters\* pSensorParam：传感器内参
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.49 VZ_ConvertDepthFrameToPointCloudVector
+## 6.49. VZ_ConvertDepthFrameToPointCloudVector
 
 **函数原型：**
 
@@ -1150,7 +1150,7 @@ VzVector3f\* pWorldVector：转换后点云的坐标点的集合
 - VzRetOK：调用成功
 - 其他值：调用失败
 
-## 6.50 VZ_SetHotPlugStatusCallback
+## 6.50. VZ_SetHotPlugStatusCallback
 
 **函数原型：**
 

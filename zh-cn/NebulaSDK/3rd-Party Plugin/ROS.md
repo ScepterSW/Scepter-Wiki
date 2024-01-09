@@ -1,8 +1,8 @@
-# 4.1 ROS
+# 4.1. ROS
 
 该 ROS 软件包可用于 NebulaSDK 的深度、IR 和 RGB 数据的采集和处理。
 
-## 4.1.1 环境要求
+## 4.1.1. 环境要求
 
 **1. 为您的操作系统安装推荐的 ROS 发行版(http://wiki.ros.org/Distributions)**
 
@@ -19,7 +19,13 @@
 | Ubuntu16.04 | Kinetic Kame    |
 | AArch64     | Melodic         |
 
-## 4.1.2 安装 ROS 软件包
+## 4.1.2. 安装 ROS 软件包
+
+在 NebulaSDK 中，VzenseROS 可以用于连接单个设备，而 VzenseROS_MultiCameras 则适用于连接多个设备。
+
+<!-- tabs:start -->
+
+#### **ROS**
 
 **1. 安装 NebulaSDK**
 
@@ -48,21 +54,9 @@ catkin_init_workspace
 
   </div>
 
-<!-- tabs:start -->
-
-#### **ROS**
-
 ```console
 cd VzenseROS
 ```
-
-#### **ROS_MultiCameras**
-
-```console
-cd VzenseROS_MultiCameras
-```
-
-<!-- tabs:end -->
 
 <div class="center">
 
@@ -76,31 +70,13 @@ cd VzenseROS_MultiCameras
 python install.py Ubuntu18.04
 ```
 
-<!-- tabs:start -->
-
-#### **ROS**
-
 <div class="center">
 
 ![step3](pic/ROS/step3.png)
 
 </div>
 
-#### **ROS_MultiCameras**
-
-<div class="center">
-
-![step3](pic/ROS_MultiCameras/step3.png)
-
-</div>
-
-<!-- tabs:end -->
-
 **4. 构建 VzenseROS 包**
-
-<!-- tabs:start -->
-
-#### **ROS**
 
 ```console
 cd ../../
@@ -119,7 +95,64 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES="VzenseROS"
 
 </div>
 
+**5. 环境设置**
+
+```console
+source devel/setup.bash
+```
+
 #### **ROS_MultiCameras**
+
+**1. 安装 NebulaSDK**
+
+```console
+git clone https://gitee.com/Vzense/NebulaSDK
+```
+
+  <div class="center">
+
+![step0](pic/ROS/step0.png)
+
+  </div>
+
+**2. 将 SDK 更新为 ROS 包**
+
+```console
+cd ROS/src
+catkin_init_workspace
+```
+
+在运行**catkin_init_workspace**命令之后，其会在**ROS/src**文件夹下生成**CmakeLists.txt**
+
+  <div class="center">
+
+![step1](pic/ROS/step1.png)
+
+  </div>
+
+```console
+cd VzenseROS_MultiCameras
+```
+
+<div class="center">
+
+![step2](pic/ROS/step2.png)
+
+</div>
+
+**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**NebulaSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
+
+```console
+python install.py Ubuntu18.04
+```
+
+<div class="center">
+
+![step3](pic/ROS_MultiCameras/step3.png)
+
+</div>
+
+**4. 构建 VzenseROS 包**
 
 ```console
 cd ../../
@@ -132,15 +165,15 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES="VzenseROS_MultiCameras"
 
 </div>
 
-<!-- tabs:end -->
-
-**5.环境设置**
+**5. 环境设置**
 
 ```console
 source devel/setup.bash
 ```
 
-## 4.1.3 使用方式
+<!-- tabs:end -->
+
+## 4.1.3. 使用方式
 
 <!-- tabs:start -->
 
@@ -342,7 +375,7 @@ roslaunch VzenseROS_MultiCameras vzense_pointCloudxyzrgb.launch
 
 <!-- tabs:end -->
 
-## 4.1.4 发布的话题
+## 4.1.4. 发布的话题
 
 <!-- tabs:start -->
 
@@ -372,7 +405,7 @@ Vzense_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 
 <!-- tabs:end -->
 
-## 4.1.5 编程指南
+## 4.1.5. 编程指南
 
 如果开发者需要设置相机参数或算法开关，请参考以下流程。
 以调用**VZ_SetSpatialFilterEnabled**为例：
@@ -393,7 +426,7 @@ Vzense_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 
 </div>
 
-## 4.1.6 说明
+## 4.1.6. 说明
 
 - 当使用多个网卡时，需要设置不同的 IP 网段。
 

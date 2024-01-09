@@ -1,12 +1,12 @@
-# 3 功能介绍
+# 3. 功能介绍
 
-## 3.1 设备列表
+## 3.1. 设备列表
 
 设备列表用于设备的搜索与连接。本软件出于展示目的，仅支持同一时刻打开一台相机，SDK 支持多台同时工作。
 
 ![设备列表](pic/DeviceList.png)
 
-### 3.1.1 设备连接<!-- {docsify-ignore} -->
+### 3.1.1. 设备连接
 
 ![设备连接](pic/ConnectDevice.png)
 
@@ -16,13 +16,13 @@
 
 3. 点击 Open 打开设备，或者双击设备 SN 打开设备
 
-### 3.1.2 设备断开<!-- {docsify-ignore} -->
+### 3.1.2. 设备断开
 
 ![设备断开](pic/DisconnectDevice.png)
 
 - 点击 Close 关闭设备。
 
-## 3.2 显示区
+## 3.2. 显示区
 
 ![显示区](pic/DisplayArea.png)
 
@@ -32,15 +32,15 @@
 
 注意：鼠标右键单击可自行选择白点位置，同时显示对应点的深度值。
 
-## 3.3 操作区
+## 3.3. 操作区
 
 ![操作区](pic/OperationArea.png)
 
 操作区用于控制设备的工作模式与参数，设置图像处理算法，查看设备信息等功能。
 
-### 3.3.1 设备控制
+### 3.3.1. 设备控制
 
-#### 3.3.1.1 工作模式
+#### 3.3.1.1. 工作模式
 
 ![工作模式](pic/WorkMode.png)
 
@@ -54,7 +54,7 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 开启软触发模式后，点击“Trigger”按钮可触发设备出图。
 
-#### 3.3.1.2 伪彩色图映射
+#### 3.3.1.2. 伪彩色图映射
 
 ![伪彩色图映射](pic/ColorMap.png)
 
@@ -66,7 +66,7 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 ![映射效果](pic/ColorMapEffect.png)
 
-#### 3.3.1.3 IR 图像增益
+#### 3.3.1.3. IR 图像增益
 
 ![IR 图像增益](pic/IRGmmGain.png)
 
@@ -77,15 +77,15 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 | ![IRGmmGain64](pic/IRGmmGain64.png) | ![IRGmmGain255](pic/IRGmmGain255.png) |
 |           IRGmmGain 值 64           |           IRGmmGain 值 255            |
 
-#### 3.3.1.4 RGB 图像分辨率设置
+#### 3.3.1.4. RGB 图像分辨率设置
 
 ![RGB 图像分辨率](pic/RGBResolution.png)
 
 RGB 图像分辨率可根据实际列表显示进行切换，如上图示例的分辨率有三种：1600\*1200，800\*600，640\*480。
 
-### 3.3.2 曝光时间设置
+### 3.3.2. 曝光时间设置
 
-#### 3.3.2.1 ToF 曝光时间
+#### 3.3.2.1. ToF 曝光时间
 
 ![ToF 曝光时间](pic/ToFExposureTime.png)
 
@@ -110,7 +110,7 @@ HDR Mode： HDR (高动态范围)功能通过设置多个不同曝光时间的
 | :-------------------------------- | :-------------------------------------- | :-------------------- |
 | 曝光时间 58us                     | 曝光时间 1000us                         | HDR 曝光时间 1000us   |
 
-#### 3.3.2.2 RGB 曝光时间
+#### 3.3.2.2. RGB 曝光时间
 
 ![RGB 曝光时间](pic/RGBExposureTime.png)
 
@@ -134,9 +134,9 @@ ExposureTime(us)：设置手动曝光的曝光时间
 
 RGB 传感器的默认曝光模式为自动曝光。
 
-### 3.3.3 图像处理
+### 3.3.3. 图像处理
 
-#### 3.3.3.1 图像显示
+#### 3.3.3.1. 图像显示
 
 ![图像显示](pic/ImageDisplay.png)
 
@@ -144,7 +144,7 @@ RGB 传感器的默认曝光模式为自动曝光。
 
 软件默认打开 Depth 图像、IR 图像和 RGB 图像（如有）。
 
-#### 3.3.3.2 点云图
+#### 3.3.3.2. 点云图
 
 勾选 Point Cloud 可以设定是否显示点云，点云默认使用深度伪彩显示。
 
@@ -164,7 +164,7 @@ Point Cloud + RGB：设定点云填充 RGB 映射。
 
 ![点云](pic/PointCloud.png)
 
-#### 3.3.3.3 RGBD 对齐
+#### 3.3.3.3. RGBD 对齐
 
 1. DepthImgToColorSensor
 
@@ -188,7 +188,7 @@ Point Cloud + RGB：设定点云填充 RGB 映射。
 | ![DepthImage](pic/DepthImage.png) | ![ColorImgToDepthSensorImage](pic/ColorImgToDepthSensorImage.png) |
 |          原始 Depth 图像          |                         对齐后的 RGB 图像                         |
 
-### 3.3.4 保存图像
+### 3.3.4. 保存图像
 
 **SaveImg：**
 
@@ -219,9 +219,9 @@ PointCloud 数据以 txt 格式保存，每行数据表示一个点的三维坐�
 
 NebulaGUITool 保存的深度图是 16bit 单通道 png 格式图像，每个 pixel 由 2 个字节表示。Windows 默认的图像显示工具只能显示 8bit 单通道的图像，所以看上去是黑色的。可以使用 Image J 来显示并查看像素距离值。
 
-### 3.3.5 滤波处理
+### 3.3.5. 滤波处理
 
-#### 3.3.5.1 图像滤波
+#### 3.3.5.1. 图像滤波
 
 ![Filter button](<pic/Filter button.png>)
 
@@ -279,7 +279,7 @@ Confidence Filter：置信度滤波，消除信号质量较差点，默认开启
 | ![Confidence Filter value 15](<pic/Confidence Filter value 15.png>) | ![Confidence Filter value 50](<pic/Confidence Filter value 50.png>) |
 |                      Confidence Filter 值为 15                      |                      Confidence Filter 值为 50                      |
 
-### 3.3.6 设备信息
+### 3.3.6. 设备信息
 
 ![设备信息](<pic/Device information.png>)
 
@@ -293,11 +293,11 @@ MAC：设备 MAC 地址。
 
 Model：设备类型。
 
-### 3.3.7 IP 设置与固件升级
+### 3.3.7. IP 设置与固件升级
 
 ![IP 设置](<pic/IP address setting.png>)：设备 IP 设置与固件升级页面。
 
-#### 3.3.7.1 **IP 地址更改**
+#### 3.3.7.1. **IP 地址更改**
 
 点击![IP 设置](<pic/IP address setting.png>)，弹出如下页面。
 
@@ -327,7 +327,7 @@ Step3:  点击 OK 保存。
 
 Step4: 设备自动重启后生效。
 
-#### 3.3.7.2 升级固件
+#### 3.3.7.2. 升级固件
 
 ![Upgrade](pic/Upgrade.png)
 
@@ -343,7 +343,7 @@ Step4: 设备自动重启后生效。
 
 4.  提示设备重启，点击确定后软件自动关闭。
 
-#### 3.3.7.3 信号参数配置（仅限 DS86/DS87）
+#### 3.3.7.3. 信号参数配置（仅限 DS86/DS87）
 
 信号参数配置在 Device Setting 页面，如下图所示：
 
@@ -377,7 +377,7 @@ Step4: 设备自动重启后生效。
 
 取值范围：\[0,65535]
 
-### 3.3.8 导出、导入参数
+### 3.3.8. 导出、导入参数
 
 ![DeviceParams](pic/DeviceParams.png)
 
@@ -387,7 +387,7 @@ Import：导入参数到 NebulaGUITool 中
 
 导出的参数可以通过调用 API 函数在自编写的程序中直接使用。
 
-## 3.4 查看已保存图像/点云
+## 3.4. 查看已保存图像/点云
 
 1. 进入 NebulaGUITool 根目录下的 SaveImage 文件夹，选择想要查看的图像。
 2. NebulaGUITool 保存的 Depth 和 IR 图像是 16bit 图片数据，可以使用 ImageJ 打开查看，鼠标指上去可以读出对应坐标下的深度值/IR 信号值。

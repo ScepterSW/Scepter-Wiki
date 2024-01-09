@@ -1,8 +1,8 @@
-# 5 数据结构
+# 5. 数据结构
 
-## 5.1 Enum 数据类型
+## 5.1. Enum 数据类型
 
-### 5.1.1 VzFrameType
+### 5.1.1. VzFrameType
 
 **功能：**
 
@@ -19,7 +19,7 @@ _PS:不同型号产品对应的枚举值个数可能不同，请以具体型号�
 - VzTransformDepthImgToColorSensorFrame：表示映射到彩色传感器空间的深度图像类型
 - VzConfidenceFrame：表示激光强度图像
 
-### 5.1.2 VzPixelFormat
+### 5.1.2. VzPixelFormat
 
 **功能：**
 
@@ -34,7 +34,7 @@ _PS:不同型号产品对应的枚举值个数可能不同，请以具体型号�
 - VzPixelFormatRGB888：表示每个像素数据为 24 位的 RGB 值
 - VzPixelFormatBGR888：表示每个像素数据为 24 位的 BGR 值
 
-### 5.1.3 VzSensorType
+### 5.1.3. VzSensorType
 
 **功能：**
 
@@ -47,7 +47,7 @@ _PS:不同型号产品对应的枚举值个数可能不同，请以具体型号�
 - VzToFSensor：表示深度数据传感器
 - VzColorSensor：表示彩色图像传感器
 
-### 5.1.4 VzReturnStatus
+### 5.1.4. VzReturnStatus
 
 **功能：**
 
@@ -87,7 +87,7 @@ _PS:不同型号产品对应的枚举值个数可能不同，请以 Include 中�
 - VzRetNotStopStream：表示未打开数据流
 - VzRetOthers：表示其他错误
 
-### 5.1.5 VzConnectStatus
+### 5.1.5. VzConnectStatus
 
 **功能：**
 
@@ -104,7 +104,7 @@ _PS:不同型号产品对应的枚举值个数可能不同，请以 Include 中�
 - VzUpgradeUnconnected：表示设备处于升级待连接状态
 - VzUpgradeConnected：表示设备处于升级状态且已连接
 
-### 5.1.6 VzDeviceType
+### 5.1.6. VzDeviceType
 
 **功能：**
 
@@ -119,7 +119,7 @@ _PS:不同型号产品对应的枚举值个数可能不同，请以 Include 中�
 - VzDS77CLite：表示 DS77CLite 相机，使用 RJ45 接口，同时提供 ToF+RGB 数据。
 - VzDS77CPro：表示 DS77CPro 相机，使用航空插头，同时提供 ToF+RGB 数据。
 
-### 5.1.7 VzWorkMode
+### 5.1.7. VzWorkMode
 
 **功能：**
 
@@ -131,7 +131,7 @@ _PS:不同型号产品对应的枚举值个数可能不同，请以 Include 中�
 - VzHardwareTriggerMode：表示设备处于被动工作状态。此时使用 API 打开相机后，设备在硬件触发的时候，才会上传图像数据。
 - VzSoftwareTriggerMode：表示设备处于被动工作状态。此时使用 API 打开相机后，设备在软件触发的时候，才会上传图像数据。
 
-### 5.1.8 VzExposureControlMode
+### 5.1.8. VzExposureControlMode
 
 **功能：**
 
@@ -142,9 +142,9 @@ _PS:不同型号产品对应的枚举值个数可能不同，请以 Include 中�
 - VzExposureControlMode_Auto：表示传感器使用自动曝光模式
 - VzExposureControlMode_Manual：表示传感器使用手动曝光模式
 
-## 5.2 Struct 数据类型
+## 5.2. Struct 数据类型
 
-### 5.2.1 VzRGB888Pixel
+### 5.2.1. VzRGB888Pixel
 
 **功能：**
 
@@ -158,7 +158,7 @@ _PS:不同型号产品可能不支持 RGB，如 DS77，请以 Include 中具体�
 - uint8_t g：表示绿色通道
 - uint8_t b：表示蓝色通道
 
-### 5.2.2 VzBGR888Pixel
+### 5.2.2. VzBGR888Pixel
 
 **功能：**
 
@@ -172,7 +172,7 @@ _PS:不同型号产品可能不支持 RGB，如 DS77，请以 Include 中具体�
 - uint8_t g：表示绿色通道
 - uint8_t r：表示红色通道
 
-### 5.2.3 VzVector3f
+### 5.2.3. VzVector3f
 
 **功能：**
 
@@ -184,7 +184,7 @@ _PS:不同型号产品可能不支持 RGB，如 DS77，请以 Include 中具体�
 - float y：表示 Y 轴方向的坐标值
 - float z：表示 Z 轴方向的坐标值
 
-### 5.2.4 VzVector2u16
+### 5.2.4. VzVector2u16
 
 **功能：**
 
@@ -195,7 +195,7 @@ _PS:不同型号产品可能不支持 RGB，如 DS77，请以 Include 中具体�
 - float x：表示 X 轴方向的坐标值
 - float y：表示 Y 轴方向的坐标值
 
-### 5.2.5 VzDepthVector3
+### 5.2.5. VzDepthVector3
 
 **功能：**
 
@@ -207,7 +207,7 @@ _PS:不同型号产品可能不支持 RGB，如 DS77，请以 Include 中具体�
 - int depthY：表示图像坐标系下，Y 轴方向的坐标值
 - VzDepthPixel depthZ：表示像素坐标（depthX，depthY）处的深度值，单位为毫米
 
-### 5.2.6 VzSensorIntrinsicParameters
+### 5.2.6. VzSensorIntrinsicParameters
 
 **功能：**
 
@@ -230,7 +230,7 @@ SDK 中已经实现深度图像到点云的转换及图像反畸变的功能，�
 - double k5：Radial distortion coefficient, 5nd-order
 - double k6：Radial distortion coefficient, 6rd-order
 
-### 5.2.7 VzSensorExtrinsicParameters
+### 5.2.7. VzSensorExtrinsicParameters
 
 **功能：**
 
@@ -243,7 +243,7 @@ SDK 中已经实现深度图像到点云的转换及图像反畸变的功能，�
 - double rotation[9]：3×3 的旋转矩阵
 - double translation[3]：3×1 平移矩阵
 
-### 5.2.8 VzFrame
+### 5.2.8. VzFrame
 
 **功能：**
 
@@ -262,7 +262,7 @@ SDK 中已经实现深度图像到点云的转换及图像反畸变的功能，�
 - uint16_t height：表示图像高度
 - uint64_t deviceTimestamp：表示图像时间戳
 
-### 5.2.9 VzFrameReady
+### 5.2.9. VzFrameReady
 
 **功能：**
 
@@ -278,7 +278,7 @@ SDK 中已经实现深度图像到点云的转换及图像反畸变的功能，�
 - uint32_t confidence : 1：表示激光强度图像数据是否就绪
 - uint32_t reserved : 26：：预留位
 
-### 5.2.10 VzDeviceInfo
+### 5.2.10. VzDeviceInfo
 
 **功能：**
 
@@ -294,7 +294,7 @@ SDK 中已经实现深度图像到点云的转换及图像反畸变的功能，�
 - char ip[17]：表示设备的 IP 地址
 - VzConnectStatus status：表示设备连接状态
 
-### 5.2.11 VzConfidenceFilterParams
+### 5.2.11. VzConfidenceFilterParams
 
 **功能：**
 
@@ -305,7 +305,7 @@ SDK 中已经实现深度图像到点云的转换及图像反畸变的功能，�
 - bool enable：表示滤波是否打开，true 代表打开，false 代表关闭
 - int threshold：表示滤波阈值
 
-### 5.2.12 VzFlyingPixelFilterParams
+### 5.2.12. VzFlyingPixelFilterParams
 
 **功能：**
 
@@ -316,7 +316,7 @@ SDK 中已经实现深度图像到点云的转换及图像反畸变的功能，�
 - bool enable：表示滤波是否打开，true 代表打开，false 代表关闭
 - int threshold：表示滤波阈值
 
-### 5.2.13 VzSpatialFilterParams
+### 5.2.13. VzSpatialFilterParams
 
 **功能：**
 
@@ -329,7 +329,7 @@ SDK 中已经实现深度图像到点云的转换及图像反畸变的功能，�
 - int threshold：表示滤波阈值
 - int doCount：表示滤波执行几遍
 
-### 5.2.14 VzFillHoleFilterParams
+### 5.2.14. VzFillHoleFilterParams
 
 **功能：**
 
@@ -342,7 +342,7 @@ SDK 中已经实现深度图像到点云的转换及图像反畸变的功能，�
 - int threshold：表示滤波阈值
 - int doCount：表示滤波执行几遍
 
-### 5.2.15 VzExposureTimeParams
+### 5.2.15. VzExposureTimeParams
 
 **功能：**
 

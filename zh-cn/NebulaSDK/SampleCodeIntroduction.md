@@ -1,8 +1,8 @@
-# 7 例程介绍
+# 7. 例程介绍
 
 本篇将为您介绍如何使用 SDK 的单个 API 接口。为了帮助用户快速掌握，我们将根据产品类型进行分类，例如 DS86 & DS87、DS77、DS77C 等。这些例程涵盖了打开图像数据流、图像获取、软/硬触发、点云转换与保存等 API 接口的使用。接下来，我们将详细介绍每个例程的功能。
 
-## 7.1 DevHotPlugCallbackC
+## 7.1. DevHotPlugCallbackC
 
 **例程功能**
 
@@ -30,7 +30,7 @@ VZ_OpenDevice 0
 VZ_StartStream 0
 ```
 
-## 7.2 DevHotPlugCallbackCpp
+## 7.2. DevHotPlugCallbackCpp
 
 **例程功能**
 
@@ -58,7 +58,7 @@ VZ_OpenDevice 0
 VZ_StartStream 0
 ```
 
-## 7.3 DeviceConnectByAlias
+## 7.3. DeviceConnectByAlias
 
 **例程功能**
 
@@ -76,7 +76,7 @@ ip:192.168.1.101
 connectStatus:2
 ```
 
-## 7.4 DeviceConnectByIP
+## 7.4. DeviceConnectByIP
 
 **例程功能**
 
@@ -94,7 +94,7 @@ ip:192.168.1.101
 connectStatus:2
 ```
 
-## 7.5 DeviceHWTriggerMode
+## 7.5. DeviceHWTriggerMode
 
 **例程功能**
 
@@ -113,7 +113,7 @@ connectStatus:2
 Hardware trigger test begins
 ```
 
-## 7.6 DeviceSWTriggerMode
+## 7.6. DeviceSWTriggerMode
 
 **例程功能**
 
@@ -132,7 +132,7 @@ connectStatus:2
 Software trigger test begins
 ```
 
-## 7.7 DeviceInfoGet
+## 7.7. DeviceInfoGet
 
 **例程功能**
 
@@ -151,7 +151,7 @@ connectStatus:2
 FirmwareVersionNum:***
 ```
 
-## 7.8 DeviceParamSetGet
+## 7.8. DeviceParamSetGet
 
 **例程功能**
 
@@ -188,7 +188,7 @@ default gmmgain: 100
 set gmmgain: 100 succeeded
 ```
 
-## 7.9 DeviceSearchAndConnect
+## 7.9. DeviceSearchAndConnect
 
 **例程功能**
 
@@ -206,7 +206,7 @@ connectStatus:2
 open device successful,status :0
 ```
 
-## 7.10 DeviceSetFrameRate
+## 7.10. DeviceSetFrameRate
 
 **例程功能**
 
@@ -223,7 +223,7 @@ set frame rate :5 is OK.
 Start testing the average frame rate for 30 seconds, Please wait patiently
 ```
 
-## 7.11 DeviceSetParamsByJson
+## 7.11. DeviceSetParamsByJson
 
 **例程功能**
 
@@ -244,7 +244,7 @@ Please input Json file path:
 VZ_SetParamsByJson ret:0
 ```
 
-## 7.12 DeviceStartStopStreaming
+## 7.12. DeviceStartStopStreaming
 
 **例程功能**
 
@@ -262,7 +262,7 @@ ip:192.168.1.101
 connectStatus:2
 ```
 
-## 7.13 FrameCaptureAndSave
+## 7.13. FrameCaptureAndSave
 
 **例程功能**
 
@@ -281,7 +281,7 @@ connectStatus:2
 get Frame successful,status:0  Save...
 ```
 
-## 7.14 MultiConnection
+## 7.14. MultiConnection
 
 **例程功能**
 
@@ -309,7 +309,7 @@ connectStatus:2
 *** frameIndex :19
 ```
 
-## 7.15 MultiConnectionInMultiThread
+## 7.15. MultiConnectionInMultiThread
 
 **例程功能**
 
@@ -339,7 +339,7 @@ connectStatus:2
 *** frameIndex :12
 ```
 
-## 7.16 PointCloudCaptureAndSave
+## 7.16. PointCloudCaptureAndSave
 
 **例程功能**
 
@@ -358,7 +358,7 @@ connectStatus:2
 Save point cloud successful in PointCloud.txt
 ```
 
-## 7.17 PointCloudCaptureAndSaveDepthImgToColorSensor
+## 7.17. PointCloudCaptureAndSaveDepthImgToColorSensor
 
 **例程功能**
 
@@ -382,7 +382,7 @@ get Frame successful,status:0  frameTpye:5  frameIndex:12
 Save point cloud successful in PointCloud.txt
 ```
 
-## 7.18 PointCloudVectorAndSave
+## 7.18. PointCloudVectorAndSave
 
 **例程功能**
 
@@ -402,7 +402,7 @@ open device successful,status :0
 Save point cloud successful in PointCloud.txt
 ```
 
-## 7.19 PointCloudVectorAndSaveDepthImgToColorSensor
+## 7.19. PointCloudVectorAndSaveDepthImgToColorSensor
 
 **例程功能**
 
@@ -426,7 +426,7 @@ get Frame successful,status:0  frameTpye:5  frameIndex:12
 Save point cloud successful in PointCloud.txt
 ```
 
-## 7.20 RGBExposureTimeSetGet
+## 7.20. RGBExposureTimeSetGet
 
 **例程功能**
 
@@ -461,7 +461,7 @@ SetExposureTimeAutoMax:10000
 GetExposureTimeAutoMax:10000
 ```
 
-## 7.21 RGBResolutionChange
+## 7.21. RGBResolutionChange
 
 **例程功能**
 
@@ -502,7 +502,7 @@ get Frame successful,status:0  resolution: 1600x1200
 get Frame successful,status:0  resolution: 1600x1200
 ```
 
-## 7.22 ToFExposureTimeSetGet
+## 7.22. ToFExposureTimeSetGet
 
 **例程功能**
 
@@ -527,7 +527,7 @@ Get default frame rate: 30
 Recommended scope: 58 - 6600
 ```
 
-## 7.23 ToFFiltersSetGet
+## 7.23. ToFFiltersSetGet
 
 **例程功能**
 
@@ -567,7 +567,7 @@ The default SpatialFilter switch is false
 Set SpatialFilter switch to true is Ok.
 ```
 
-## 7.24 TransformColorImgToDepthSensorFrame
+## 7.24. TransformColorImgToDepthSensorFrame
 
 **例程功能**
 
@@ -594,7 +594,7 @@ get Frame successful,status:0  frameTpye:4  frameIndex:15
 
 ```
 
-## 7.25 TransformDepthImgToColorSensorFrame
+## 7.25. TransformDepthImgToColorSensorFrame
 
 **例程功能**
 

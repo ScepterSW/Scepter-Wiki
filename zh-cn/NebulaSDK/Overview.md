@@ -1,4 +1,4 @@
-# 1 简介
+# 1. 简介
 
 Nebula SDK 是基于 Vzense 产品提供的软件开发包，该开发包目前适用于 Windows、Linux、ARM Linux 操作系统，为应用开发者提供一系列友好的 API 和简单的应用示例程序。目前 NebulaSDK 支持的产品有 DS86 & DS87，DS77，DS77C 系列产品。
 
@@ -6,9 +6,7 @@ Nebula SDK 是基于 Vzense 产品提供的软件开发包，该开发包目前�
 
 **Nebula SDK 下载链接：**
 
-国内：<https://gitee.com/Vzense/NebulaSDK>
-
-海外：<https://github.com/Vzense/NebulaSDK>
+<https://gitee.com/Vzense/NebulaSDK>
 
 **支持平台：**
 

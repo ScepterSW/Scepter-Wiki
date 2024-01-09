@@ -1,8 +1,8 @@
-# 4.2 ROS2
+# 4.2. ROS2
 
 该 ROS2 软件包可用于 NebulaSDK 的深度、IR 和 RGB 数据的采集和处理。
 
-## 4.2.1 环境要求
+## 4.2.1. 环境要求
 
 **1. 为您的操作系统安装推荐的 ROS2 发行版(<http://wiki.ros.org/Distributions>)**
 
@@ -17,7 +17,13 @@
 | Ubuntu20.04 | Foxy Fitzroy    |
 | Ubuntu18.04 | Eloquent Elusor |
 
-## 4.2.2 安装 ROS 软件包
+## 4.2.2. 安装 ROS 软件包
+
+在 NebulaSDK 中，VzenseROS 可以用于连接单个设备，而 VzenseROS_MultiCameras 则适用于连接多个设备。
+
+<!-- tabs:start -->
+
+#### **ROS**
 
 **1. 安装 NebulaSDK**
 
@@ -33,21 +39,9 @@ git clone https://gitee.com/Vzense/NebulaSDK
 
 **2. 将 SDK 更新为 ROS 包**
 
-<!-- tabs:start -->
-
-#### **ROS**
-
 ```console
 cd ROS2/src/VzenseROS
 ```
-
-#### **ROS_MultiCameras**
-
-```console
-cd ROS2/src/VzenseROS_MultiCameras
-```
-
-<!-- tabs:end -->
 
 <div class="center">
 
@@ -61,25 +55,11 @@ cd ROS2/src/VzenseROS_MultiCameras
 python install.py Ubuntu18.04
 ```
 
-<!-- tabs:start -->
-
-#### **ROS**
-
 <div class="center">
 
 ![step3](pic/ROS2/step3.png)
 
 </div>
-
-#### **ROS_MultiCameras**
-
-<div class="center">
-
-![step3](pic/ROS2_MultiCameras/step3.png)
-
-</div>
-
-<!-- tabs:end -->
 
 **4. 构建 VzenseROS2 包**
 
@@ -88,10 +68,6 @@ python install.py Ubuntu18.04
 ```console
 sudo apt install python3-colcon-common-extensions
 ```
-
-<!-- tabs:start -->
-
-#### **ROS2**
 
 ```console
 cd ../../
@@ -104,7 +80,57 @@ colcon build --packages-select VzenseROS
 
 </div>
 
-#### **ROS2_MultiCameras**
+**5.环境设置**
+
+```console
+source install/setup.bash
+```
+
+#### **ROS_MultiCameras**
+
+**1. 安装 NebulaSDK**
+
+```console
+git clone https://gitee.com/Vzense/NebulaSDK
+```
+
+  <div class="center">
+
+![step0](pic/ROS2/step0.png)
+
+  </div>
+
+**2. 将 SDK 更新为 ROS 包**
+
+```console
+cd ROS2/src/VzenseROS_MultiCameras
+```
+
+<div class="center">
+
+![step2](pic/ROS2/step2.png)
+
+</div>
+
+**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**NebulaSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
+
+```console
+python install.py Ubuntu18.04
+```
+
+<div class="center">
+
+![step3](pic/ROS2_MultiCameras/step3.png)
+
+</div>
+
+**4. 构建 VzenseROS2 包**
+
+如果没有安装 colcon，请先运行 cmd：
+
+```console
+sudo apt install python3-colcon-common-extensions
+```
 
 ```console
 cd ../../
@@ -117,19 +143,19 @@ colcon build --packages-select VzenseROS_MultiCameras
 
 </div>
 
-<!-- tabs:end -->
-
 **5.环境设置**
 
 ```console
 source install/setup.bash
 ```
 
-## 4.2.3 使用方式
+<!-- tabs:end -->
+
+## 4.2.3. 使用方式
 
 <!-- tabs:start -->
 
-#### **ROS2**
+#### **ROS**
 
 **1. 启动相机节点**
 
@@ -175,7 +201,7 @@ ros2 run rviz2 rviz2
 
 </div>
 
-#### **ROS2_MultiCameras**
+#### **ROS_MultiCameras**
 
 **1. 启动相机节点**
 
@@ -233,7 +259,7 @@ ros2 run rviz2 rviz2
 
 <!-- tabs:end -->
 
-## 4.2.4 发布的话题
+## 4.2.4. 发布的话题
 
 <!-- tabs:start -->
 
@@ -279,7 +305,7 @@ Vzense_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定�
 
 <!-- tabs:end -->
 
-## 4.2.5 编程指南
+## 4.2.5. 编程指南
 
 如果开发者需要设置相机参数或算法开关，请参考以下流程。
 以调用**VZ_SetSpatialFilterEnabled**为例：
@@ -300,7 +326,7 @@ Vzense_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定�
 
 </div>
 
-## 4.2.6 说明
+## 4.2.6. 说明
 
 - 当使用多个网卡时，需要设置不同的 IP 网段。
 
