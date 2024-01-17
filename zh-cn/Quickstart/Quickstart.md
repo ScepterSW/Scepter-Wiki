@@ -6,7 +6,7 @@
 
 1. 通过电源线或多功能线给相机提供 12~24V 电源（典型值：12V 3A），
 
-   **DS87/DS77 Pro/DS77C Pro** 支持 PoE+供电模式，推荐使用以下 PoE+供电器：
+   **VENO87/VENO77 Pro/VENO77C Pro** 支持 PoE+供电模式，推荐使用以下 PoE+供电器：
 
    | 供应商  | 型号        |
    | :------ | :---------- |
@@ -30,19 +30,19 @@
 
    1、PC 端使用的网卡、路由器、交换机都要满足**千兆**要求。
 
-   2、在首次运行 NebulaGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。
+   2、在首次运行 ScepterGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。
 
    ![防火墙配置](pic/WindowsFirewallSetting.png)
 
-4. 用户可通过下述链接下载 **NebulaGUITool**：
+4. 用户可通过下述链接下载 **ScepterGUITool**：
 
-   <https://gitee.com/Vzense/NebulaGUITool>
+   <https://gitee.com/gmiorg/ScepterGUITool>
 
-   NebulaGUITool 包含 NebulaGUITool 可执行文件，用户手册文档及相关动态链接库。
+   ScepterGUITool 包含 ScepterGUITool 可执行文件，用户手册文档及相关动态链接库。
 
    ![目录结构](pic/WindowsContents.png)
 
-5. 双击 NebulaGUITool 可执行文件，运行 NebulaGUITool，按照以下步骤连接设备：
+5. 双击 ScepterGUITool 可执行文件，运行 ScepterGUITool，按照以下步骤连接设备：
 
    ① 搜索设备
 
@@ -52,13 +52,13 @@
 
    ![设备连接](pic/ConnectDevice.png)
 
-6. 按照 NebulaGUITool 使用指南，开始探索相机。
+6. 按照 ScepterGUITool 使用指南，开始探索相机。
 
 #### **Ubuntu**
 
 1. 通过电源线或多功能线给相机提供 12~24V 电源（典型值：12V 3A），
 
-   **DS87/DS77 Pro/DS77C Pro** 支持 PoE+供电模式，推荐使用以下 PoE+供电器：
+   **VENO87/VENO77 Pro/VENO77C Pro** 支持 PoE+供电模式，推荐使用以下 PoE+供电器：
 
    | 供应商  | 型号        |
    | :------ | :---------- |
@@ -80,17 +80,17 @@
 
    PC 端使用的网卡、路由器、交换机都要满足**千兆**要求。
 
-4. 用户可通过下述链接下载 **NebulaGUITool**，
+4. 用户可通过下述链接下载 **ScepterGUITool**，
 
-   NebulaGUITool 支持 Ubuntu18.04(x86/x64) 及以上操作系统：
+   ScepterGUITool 支持 Ubuntu18.04(x86/x64) 及以上操作系统：
 
-   <https://gitee.com/Vzense/NebulaGUITool>
+   <https://gitee.com/gmiorg/ScepterGUITool>
 
-   NebulaGUITool 包含 NebulaGUITool 可执行文件，用户手册文档及相关动态链接库。
+   ScepterGUITool 包含 ScepterGUITool 可执行文件，用户手册文档及相关动态链接库。
 
    ![目录结构](pic/LinuxContents.png)
 
-5. 双击 NebulaGUITool 可执行文件，运行 NebulaGUITool，按照以下步骤连接设备：
+5. 双击 ScepterGUITool 可执行文件，运行 ScepterGUITool，按照以下步骤连接设备：
 
    ① 搜索设备
 
@@ -100,6 +100,6 @@
 
    ![设备连接](pic/ConnectDevice.png)
 
-6. 按照 NebulaGUITool 使用指南，开始探索相机。
+6. 按照 ScepterGUITool 使用指南，开始探索相机。
 
 <!-- tabs:end -->
