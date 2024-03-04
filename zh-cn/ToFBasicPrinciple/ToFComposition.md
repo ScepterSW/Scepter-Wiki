@@ -2,7 +2,11 @@
 
 ToF 相机是指以光学系统为接受路径的面阵非扫描式 3D 成像深度信息捕捉技术，主要由照射单元，光学透镜，成像传感器，控制单元，计算单元等器件组成。
 
+<div class="center">
+
 ![ToF 相机的组成](pic/CalculationUnit.gif)
+
+</div>
 
 ## 3.1. 照射单元
 
@@ -23,3 +27,13 @@ ToF 相机是指以光学系统为接受路径的面阵非扫描式 3D 成像深
 ## 3.5. 计算单元
 
 计算单元可以记录精确的深度图。深度图通常是灰度图，其中的每个值代表光反射表面和相机之间的距离。为了得到更好的效果，通常会进行数据校准。
+
+<style>
+.center
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

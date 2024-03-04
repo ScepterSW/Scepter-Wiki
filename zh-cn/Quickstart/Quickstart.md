@@ -24,15 +24,23 @@
 
    IP 地址设为同一网段（如 192.168.1.100）。
 
+   <div class="center">
+
    ![固定地址](pic/WindowsStaticAddress.png)
 
-   **注意：**
+   </div>
 
-   1、PC 端使用的网卡、路由器、交换机都要满足**千兆**要求。
+**注意：**
 
-   2、在首次运行 ScepterGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。
+1、PC 端使用的网卡、路由器、交换机都要满足**千兆**要求。
 
-   ![防火墙配置](pic/WindowsFirewallSetting.png)
+2、在首次运行 ScepterGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。
+
+<div class="center">
+
+![防火墙配置](pic/WindowsFirewallSetting.png)
+
+</div>
 
 4. 用户可通过下述链接下载 **ScepterGUITool**：
 
@@ -72,9 +80,23 @@
 
 3. 设置 Linux 端的**本地连接**，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。
 
+   <div class="center">
+
    ![LinuxEditConnections](pic/LinuxEditConnections.png)
+
+   </div>
+
+   <div class="center">
+
    ![LinuxEdit](pic/LinuxEdit.png)
+
+   </div>
+
+   <div class="center">
+
    ![固定地址](pic/LinuxStaticAddress.png)
+
+   </div>
 
    **注意：**
 
@@ -103,3 +125,13 @@
 6. 按照 ScepterGUITool 使用指南，开始探索相机。
 
 <!-- tabs:end -->
+
+<style>
+.center
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
