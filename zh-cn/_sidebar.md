@@ -12,13 +12,9 @@
 
 - 产品介绍
 
-  - [1. NYX650](zh-cn/ProductIntroduction/NYX650.md)
+  - [1. NYX650/660](zh-cn/ProductIntroduction/NYX650,660.md)
 
-  - [2. VENO86 & VENO87](zh-cn/ProductIntroduction/VENO86%20&%20VENO87.md)
-
-  <!-- - [3. VENO77](zh-cn/ProductIntroduction/VENO77.md) -->
-
-  <!-- - [4. VENO77C](zh-cn/ProductIntroduction/VENO77C.md) -->
+  - [2. VENO86/87](zh-cn/ProductIntroduction/VENO86,87.md)
 
 - [快速开始](zh-cn/Quickstart/Quickstart.md)
 
@@ -36,7 +32,7 @@
 
   - [1. 简介](zh-cn/ScepterSDK/Overview.md)
 
-  - 2\. BaseSDK (C++)
+  - 2\. BaseSDK (C/C++)
 
     - [2.1. Windows](zh-cn/ScepterSDK/BaseSDK/Windows.md)
 
@@ -66,18 +62,20 @@
 
 - 应用笔记
 
-  - 1\. VENO86 & VENO87
+  - 1\. NYX650/660
 
-    - [1.1. HDR 模式](<zh-cn/ApplicationNote/VENO86&87/HDR Mode.md>)
+    - [1.1. 深度质量测试](<zh-cn/ApplicationNote/NYX650&660/Depth Quality Test.md>)
 
-    - [1.2. 多机共存](<zh-cn/ApplicationNote/VENO86&87/Multi-Cameras Coexist.md>)
+    - [1.2. AGV 场景测试数据](<zh-cn/ApplicationNote/NYX650&660/AGV scene Testing Data.md>)
 
-  <!-- - 2\. VENO77 & VENO77C
+    - [1.3. 多机共存](<zh-cn/ApplicationNote/NYX650&660/Multi-Cameras Coexist.md>)
 
-    - [2.1. HDR 模式](<zh-cn/ApplicationNote/VENO77/HDR Mode.md>)
+  - 2\. VENO86/87
 
-    - [2.2. 多机共存](<zh-cn/ApplicationNote/VENO77/Multi-Cameras Coexist.md>)
+    - [2.1. 深度质量测试](<zh-cn/ApplicationNote/VENO86&87/Depth Quality Test.md>)
 
-    - [2.3. 深度质量测试](<zh-cn/ApplicationNote/VENO77/Depth Quality Test.md>)
+    - [2.2. AGV 场景测试数据](<zh-cn/ApplicationNote/VENO86&87/AGV scene Testing Data.md>)
 
-    - [2.4. AGV 场景测试数据](<zh-cn/ApplicationNote/VENO77/AGV scene Testing Data.md>) -->
+    - [2.3. HDR 模式](<zh-cn/ApplicationNote/VENO86&87/HDR Mode.md>)
+
+    - [2.4. 多机共存](<zh-cn/ApplicationNote/VENO86&87/Multi-Cameras Coexist.md>)

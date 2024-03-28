@@ -38,7 +38,7 @@ git clone https://gitee.com/gmiorg/ScepterSDK
 
 ## 3.2.3. 基础例程
 
-基础例程介绍 SDK 的单个特性 API 接口的使用。为了使用户可以快速的熟悉使用，例程根据产品进行分类，如 NYX650、VENO86 & VENO87、VENO77 & VENO77C 等。例程包含打开图像数据流、图像获取、软/硬触发、点云转换与保存等 API 接口的使用。
+基础例程介绍 SDK 的单个特性 API 接口的使用。为了使用户可以快速的熟悉使用，例程根据产品进行分类，如 NYX650 & NYX660，VENO86 & VENO87 等。例程包含打开图像数据流、图像获取、软/硬触发、点云转换与保存等 API 接口的使用。
 
 1. 从 Gitee/GitHub 下载 Scepter SDK
 

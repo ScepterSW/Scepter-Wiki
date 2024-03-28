@@ -1,12 +1,14 @@
 # 1. 简介
 
-Scepter SDK 是基于 3D ToF 相机提供的软件开发包，该开发包目前适用于 Windows、Linux、ARM Linux 操作系统，为应用开发者提供一系列友好的 API 和简单的应用示例程序。目前 ScepterSDK 支持的产品有 NYX650，VENO86 & VENO87，VENO77 & VENO77C 系列产品。
+ScepterSDK 是基于 3D ToF 相机提供的软件开发包，该开发包目前适用于 Windows、Linux、ARM Linux 操作系统，为应用开发者提供一系列友好的 API 和简单的应用示例程序。目前 ScepterSDK 支持的产品有 NYX650/660，VENO86/87 系列产品。
 
 用户基于该开发包，可获取高精度的深度数据信息、灰度图像信息和彩色图像信息，方便用户开发刷脸支付、手势识别、投影触控、人脸识别、疲劳检测、三维重建、导航避障等 3D 应用。
 
-**Scepter SDK 下载链接：**
+**ScepterSDK 下载链接：**
 
-<https://gitee.com/gmiorg/ScepterSDK>
+<https://github.com/ScepterSW/ScepterSDK>
+
+镜像加速地址：<https://gitee.com/ScepterSW/ScepterSDK>
 
 **支持平台：**
 

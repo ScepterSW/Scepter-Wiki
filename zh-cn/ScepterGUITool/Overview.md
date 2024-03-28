@@ -6,14 +6,10 @@ ScepterGUITool 是基于 Scepter SDK 开发的图形界面工具，提供 Depth 
 
 **ScepterGUITool** 下载链接：
 
-<https://gitee.com/gmiorg/ScepterGUITool>
+<https://github.com/ScepterSW/ScepterGUITool>
 
 目前 ScepterGUITool 支持的产品有：
 
-- NYX650
+- NYX650/660
 
-- VENO86 & VENO87
-
-- VENO77 Lite/Pro
-
-- VENO77C Lite/Pro
+- VENO86/87
