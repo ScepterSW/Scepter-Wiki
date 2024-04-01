@@ -18,7 +18,7 @@
 
 - [快速开始](zh-cn/Quickstart/Quickstart.md)
 
-- ScepterGUITool
+- Scepter图形化工具介绍
 
   - [1. 概述](zh-cn/ScepterGUITool/Overview.md)
 
@@ -28,17 +28,21 @@
 
   - [4. FAQ](zh-cn/ScepterGUITool/FAQ.md)
 
-- ScepterSDK
+- Scepter软件开发包介绍
 
   - [1. 简介](zh-cn/ScepterSDK/Overview.md)
 
   - 2\. BaseSDK (C/C++)
 
-    - [2.1. Windows](zh-cn/ScepterSDK/BaseSDK/Windows.md)
+    - [2.1. 基础介绍](zh-cn/ScepterSDK/BaseSDK/BasicIntroduction.md)
+ 
+    - [2.2. 项目配置](zh-cn/ScepterSDK/BaseSDK/ProjectConfiguration.md)
 
-    - [2.2. Ubuntu (x86/x64)](zh-cn/ScepterSDK/BaseSDK/Ubuntu.md)
+    - [2.3. 基础例程](zh-cn/ScepterSDK/BaseSDK/BasicSample.md)
 
-    - [2.3. ArmLinux](zh-cn/ScepterSDK/BaseSDK/ArmLinux.md)
+    - [2.4. OpenCV例程](zh-cn/ScepterSDK/BaseSDK/OpenCVSample.md)
+
+    - [2.5. API参考](zh-cn/ScepterSDK/BaseSDK/API.md)
 
   - 3\. MultilanguageSDK
 
@@ -51,12 +55,6 @@
     - [4.1. ROS](<zh-cn/ScepterSDK/3rd-Party Plugin/ROS.md>)
 
     - [4.2. ROS2](<zh-cn/ScepterSDK/3rd-Party Plugin/ROS2.md>)
-
-  - [5. 数据结构](zh-cn/ScepterSDK/DataStructure.md)
-
-  - [6. APIs](zh-cn/ScepterSDK/APIs.md)
-
-  - [7. 例程介绍](zh-cn/ScepterSDK/SampleCodeIntroduction.md)
 
   - [8. FAQ](zh-cn/ScepterSDK/FAQ.md)
 

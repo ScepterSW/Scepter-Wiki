@@ -300,7 +300,7 @@ pre[data-lang] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: var(--code-theme-comment);
+  color: #7ec699;
 }
 .token.punctuation {
   color: var(--code-theme-punctuation);
@@ -1408,6 +1408,7 @@ body:not([data-platform^="Mac"]) .sidebar::-webkit-scrollbar-thumb {
   margin: var(--sidebar-nav-margin);
   padding: var(--sidebar-nav-padding);
   background: var(--sidebar-nav-background);
+  font-size: 1rem;
 }
 .sidebar-nav ul,
 .sidebar nav ul {
