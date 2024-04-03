@@ -5,6 +5,7 @@
 **A1**: 1.确认相机的连接和供电没有问题，相机的蓝色指示灯闪烁
 
 2.查看相机 IP（默认 192.168.1.101）是否能 ping 通：
+
 <!-- tabs:start -->
 
 #### **Windows**
@@ -13,15 +14,15 @@
 
 ![打开cmd](<pic/cmd open.png>)
 
-②输入'ping 192.168.1.101'回车等待，即可查看相机是否ping通(相机默认ip地址为192.168.1.101)；
+② 输入'ping 192.168.1.101'回车等待，即可查看相机是否 ping 通(相机默认 ip 地址为 192.168.1.101)；
 
 ![ping通相机](<pic/ping ip.png>)
 
-③若无法 ping 通，打开cmd，输入'ipconfig'查看主机端的 IP 是否和相机默认 IP 处于同一网段；
+③ 若无法 ping 通，打开 cmd，输入'ipconfig'查看主机端的 IP 是否和相机默认 IP 处于同一网段；
 
 ![ipconfig](pic/ipconfig.png)
 
-④若可以 ping 通，查看防火墙是否关闭，或允许工具使用公用网络和专用网络
+④ 若可以 ping 通，查看防火墙是否关闭，或允许工具使用公用网络和专用网络
 
 ![设置防火墙](<pic/windows defender.png>)
 
@@ -29,15 +30,15 @@
 
 #### **Ubuntu**
 
-①打开Ubuntu终端，输入'ping -c 5 192.168.1.101'回车等待，即可查看相机是否ping通(相机默认ip地址为192.168.1.101)；
+① 打开 Ubuntu 终端，输入'ping -c 5 192.168.1.101'回车等待，即可查看相机是否 ping 通(相机默认 ip 地址为 192.168.1.101)；
 
 ![ping通相机](<pic/Ubuntu ping ip.png>)
 
-②若无法 ping 通，打开设置，再打开有线网络连接设置，查看主机端的 IP 是否和相机默认 IP 处于同一网段；
+② 若无法 ping 通，打开设置，再打开有线网络连接设置，查看主机端的 IP 是否和相机默认 IP 处于同一网段；
 
 ![Alt text](<pic/Ubuntu set ip.png>)
 
-③若无法 ping 通，打开终端，输入'ifconfig'查看主机端的 IP 是否和相机默认 IP 处于同一网段；
+③ 若无法 ping 通，打开终端，输入'ifconfig'查看主机端的 IP 是否和相机默认 IP 处于同一网段；
 
 ![Alt text](<pic/Ubuntu ifconfig.png>)
 
