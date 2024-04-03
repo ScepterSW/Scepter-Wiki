@@ -175,12 +175,20 @@ Point Cloud + RGB：设定点云填充 RGB 映射。
 
 设定 Depth 图像对齐到 RGB 域的功能。启用后将输出并显示 Depth 像素点对齐到 RGB 像素空间的图像，即与 RGB 像素逐一对应的 Depth 图像。
 
+#### 原理：
+
+Tof镜头和RGB摄像头二者有安装距离，所以从实际采集的图像上看存在视差。
+
+为了把深度和RGB图像对齐，消除视差，得到一个真正的RGB-D图像，即物体表面的颜色和它的深度在二维图像上像素级精确对应，需要做一个转换：
+
+首先把红外相机坐标系下的深度先换为空间点云，再通过刚性变换转换到RGB摄像头的坐标系，并最终投影到RGB图像的二维图像坐标系，形成一张在RGB相机坐标系下的深度图。
+
 |                                                                   |                               |
 | :---------------------------------------------------------------: | :---------------------------: |
 | ![DepthImgToColorSensorImage](pic/DepthImgToColorSensorImage.png) | ![RGBImage](pic/RGBImage.png) |
 |                        对齐后的 Depth 图像                        |         原始 RGB 图像         |
 
-2. ColorImgToDepthSensor
+1. ColorImgToDepthSensor
 
 ![ColorImgToDepthSensor](pic/ColorImgToDepthSensor.png)
 
@@ -305,7 +313,9 @@ Model：设备类型。
 
 点击![IP 设置](<pic/IP address setting.png>)，弹出如下页面。
 
-![Device Setting Interface](<pic/Device Setting Interface.png>)
+*![Device Setting Interface](<pic/Device Setting Interface.png>)*
+
+![Alt text](<pic/set camera ip.png>)
 
 Obtain an IP address automatically(DHCP): 设置设备的 IP 地址为 DHCP 模式，由局域网内的路由器分配 IP 地址，使用该模式，主机端也需要设置为 DHCP 模式.
 
@@ -313,7 +323,9 @@ Use the following IP address：设置设备的 IP 地址为固定地址。使用
 
 1．设置动态 IP：
 
-![Set DHCP](<pic/Set DHCP.png>)
+*![Set DHCP](<pic/Set DHCP.png>)*
+
+![Alt text](<pic/set camera DHCP.png>)
 
 Step1:  选择“Obtain an IP address automatically（DHCP）”。
 
@@ -333,11 +345,14 @@ Step4: 设备自动重启后生效。
 
 #### 3.3.7.2. 升级固件
 
-![Upgrade](pic/Upgrade.png)
+*![Upgrade](pic/Upgrade.png)*
+
+![Alt text](<pic/Upgrade Firmware1.png>)
 
 设备固件升级操作方法：
 
 1.  点击![Path](pic/Path.png)，选择 ScepterGUITool 文件夹内的固件镜像，如图：
+(请添加图片)
 
 **注意：暂不支持中文路径**
 
@@ -347,11 +362,13 @@ Step4: 设备自动重启后生效。
 
 4.  提示设备重启，点击确定后软件自动关闭。
 
-#### 3.3.7.3. 信号参数配置（仅限 VENO86/VENO87）
+#### 3.3.7.3. 信号参数配置（参考相机功能）
 
 信号参数配置在 Device Setting 页面，如下图所示：
 
-![Signal Parameters Settings](<pic/Signal Parameters Settings.png>)
+*![Signal Parameters Settings](<pic/Signal Parameters Settings.png>)*
+
+![Alt text](<pic/ISPF HW Trigger.png>)
 
 硬触发相关的输入信号参数配置：
 

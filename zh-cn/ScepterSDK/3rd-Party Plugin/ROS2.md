@@ -308,7 +308,7 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定
 ## 4.2.5. 编程指南
 
 如果开发者需要设置相机参数或算法开关，请参考以下流程。
-以调用**VZ_SetSpatialFilterEnabled**为例：
+以调用**scSetSpatialFilterEnabled**为例：
 
 - 从**dependencies/Include/ScepterScepter_api.h**查找 api
 
@@ -325,10 +325,6 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定
 ![step14](pic/ROS2/step14.png)
 
 </div>
-
-## 4.2.6. 说明
-
-- 当使用多个网卡时，需要设置不同的 IP 网段。
 
 <style>
 .center

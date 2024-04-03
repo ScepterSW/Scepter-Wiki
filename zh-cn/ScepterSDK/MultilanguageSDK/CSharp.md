@@ -55,8 +55,3 @@ git clone https://gitee.com/gmiorg/ScepterSDK
 3. 编译完成，调试运行。结果如下图：
 
    ![CsharpDeviceConnectByAliasResult](pic/CsharpDeviceConnectByAliasResult.png)
-
-## 3.2.4 说明
-
-- ScepterSDK_CSharp.dll 是 ScepterSDK 的 CSharp 动态库
-- 当使用多个网卡时，需要设置不同的 IP 网段。
