@@ -365,9 +365,9 @@ Step4: 设备自动重启后生效。
 
 信号参数配置在 Device Setting 页面，如下图所示：
 
-_![Signal Parameters Settings](<pic/Signal Parameters Settings.png>)_
+<!-- ![Signal Parameters Settings](<pic/Signal Parameters Settings.png>) -->
 
-![Alt text](<pic/ISPF HW Trigger.png>)
+![Signal Parameters Settings](<pic/ISPF HW Trigger.png>)
 
 硬触发相关的输入信号参数配置：
 
