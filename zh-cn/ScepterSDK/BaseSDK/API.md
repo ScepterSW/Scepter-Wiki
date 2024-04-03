@@ -849,12 +849,12 @@ ScDeviceHandle device： 设备句柄
 - SC_OK：调用成功
 - [其他值](#_2514-scstatus)：调用失败
 
-### 2.5.3.17. scSetSoftwareSlaveTrigger
+### 2.5.3.17. scSoftwareTriggerOnce
 
 **函数原型：**
 
 ```cpp
-ScStatus scSetSoftwareSlaveTrigger(ScDeviceHandle device)
+ScStatus scSoftwareTriggerOnce(ScDeviceHandle device)
 ```
 
 **函数功能：**

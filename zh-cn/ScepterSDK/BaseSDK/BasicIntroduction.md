@@ -1,6 +1,6 @@
 # 2.1. 基础介绍
 
-BaseSDK包含Arm-Linux(AArch64),Ubuntu16.04，Ubuntu18.04，Windows开发包部分，目录结构如下：
+BaseSDK 包含 Arm-Linux(AArch64)，Ubuntu16.04，Ubuntu18.04，Windows 开发包部分，目录结构如下：
 
 <!-- tabs:start -->
 
