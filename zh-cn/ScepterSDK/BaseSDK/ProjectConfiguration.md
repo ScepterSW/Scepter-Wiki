@@ -21,7 +21,7 @@ LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 ![项目配置](pic/Linux/ArmLinuxProjectConfiguration.png)
 
 #### **Ubuntu16.04/18.04**
- 
+
 使用 Scepter SDK 开发新的项目，需要在 CMakeList 中将 SDK 中的 Include 目录加入到包含路径:
 
 ```consle
@@ -35,7 +35,6 @@ LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 ```
 
 具体内容可参考 Samples 中的例程配置。
-
 
 ![项目配置](pic/Linux/ProjectConfiguration.png)
 

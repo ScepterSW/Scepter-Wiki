@@ -1539,11 +1539,11 @@ body:not([data-platform^="Mac"]) .sidebar::-webkit-scrollbar-thumb {
 .sidebar-nav li > a[href^="/"]:not([href*="?id="]) ~ ul a,
 .sidebar-nav li > a[href^="#/"]:not([href*="?id="]),
 .sidebar-nav li > a[href^="#/"]:not([href*="?id="]) ~ ul a {
-  padding: var(--sidebar-nav-pagelink-padding, var(--sidebar-nav-link-padding));
+  /* padding: var(--sidebar-nav-pagelink-padding, var(--sidebar-nav-link-padding)); */
 }
 .sidebar-nav li > a[href^="/"]:not([href*="?id="]):only-child,
 .sidebar-nav li > a[href^="#/"]:not([href*="?id="]):only-child {
-  background: var(--sidebar-nav-pagelink-background);
+  /* background: var(--sidebar-nav-pagelink-background); */
 }
 .sidebar-nav li > a[href^="/"]:not([href*="?id="]):not(:only-child),
 .sidebar-nav li > a[href^="#/"]:not([href*="?id="]):not(:only-child) {

@@ -20,25 +20,25 @@ ScepterSDK 提供的多平台和开发语言的开发包，包含如下内容：
 
 - BaseSDK (C/C++)
 
-   - Arm-Linux(AArch64)：目录包含 64 位 Arm-Linux 开发包，使用标准编译器 aarch64-linux-gnu(v7.5.0)。
+  - Arm-Linux(AArch64)：目录包含 64 位 Arm-Linux 开发包，使用标准编译器 aarch64-linux-gnu(v7.5.0)。
 
-   - Ubuntu16.04：目录包含个人计算机平台(x86_64) Ubuntu16.04 开发包, 使用标准编译器 x86_64-linux-gnu(v5.4.0)。
+  - Ubuntu16.04：目录包含个人计算机平台(x86_64) Ubuntu16.04 开发包, 使用标准编译器 x86_64-linux-gnu(v5.4.0)。
 
-   - Ubuntu18.04：目录包含个人计算机平台(x86_64) Ubuntu18.04 开发包, 使用标准编译器 x86_64-linux-gnu(v7.5.0)。Ubuntu18.04 SDK 包与 Ubuntu20.04、Ubuntu22.04 兼容。
+  - Ubuntu18.04：目录包含个人计算机平台(x86_64) Ubuntu18.04 开发包, 使用标准编译器 x86_64-linux-gnu(v7.5.0)。Ubuntu18.04 SDK 包与 Ubuntu20.04、Ubuntu22.04 兼容。
 
-   - Windows：目录包含个人计算机平台(x86_64) Windows PC 开发包, 使用标准编译器 VS2017。
+  - Windows：目录包含个人计算机平台(x86_64) Windows PC 开发包, 使用标准编译器 VS2017。
 
 - MultilanguageSDK
 
-   - CSharp：目录包含 C#语言开发包。
+  - CSharp：目录包含 C#语言开发包。
 
-   - Python：目录包含 Python 开发包。
+  - Python：目录包含 Python 开发包。
 
 - 3rd-Party Plugin
 
-   - ROS：目录包含 ROS 软件包。
+  - ROS：目录包含 ROS 软件包。
 
-   - ROS2：目录包含 ROS2 软件包。
+  - ROS2：目录包含 ROS2 软件包。
 
 - LICENSE：软件许可证条例文件。
 

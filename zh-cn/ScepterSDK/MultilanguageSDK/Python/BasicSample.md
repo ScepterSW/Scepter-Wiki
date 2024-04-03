@@ -1,4 +1,4 @@
-# 2.3. 基础例程
+# 3.1.3. 基础例程
 
 基础例程介绍 SDK 的单个特性 API 接口的使用。为了使用户可以快速的熟悉使用，例程根据产品进行分类。
 
@@ -37,68 +37,17 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
 
 下面，我们以单个产品的单独例程为例，演示其编译运行的过程：
 
-<!-- tabs:start -->
-
-#### **Arm-Linux(AArch64)**
-
 1. 根据实际产品选择对应的 sample，以 NYX650 产品编译 DeviceConnectByAlias 为例
 
-   ```consle
-   cd ScepterSDK/AArch64/Samples/Base/NYX650
-   mkdir build
-   cd build/
-   cmake ../
-   make
-   ```
+   ![PythonDeviceConnectByAlias](pic/PythonDeviceConnectByAlias.png)
 
-   ![Compilation](pic/Linux/Compilation1.png)
-   ![Compilation](pic/Linux/Compilation2.png)
-
-2. 编译完成，输出路径为 PrecompiledSamples，进入目录后运行。
+2. 编译完成，调试运行。
 
    ```consle
-   cd ScepterSDK/AArch64/PrecompiledSamples/NYX650_Samples/
-   ./DeviceConnectByAlias
+   cd ScepterSDK\Python\Samples\NYX650\DeviceConnectByAlias
+   python DeviceConnectByAlias.py
    ```
 
-   ![Execution](pic/Linux/Execution.png)
+   结果如下图：
 
-#### **Ubuntu16.04/18.04**
-
-1. 根据实际产品选择对应的 sample，以 NYX650 产品编译 DeviceConnectByAlias 为例
-
-   ```consle
-   cd ScepterSDK/Ubuntu/Samples/Base/NYX650
-   mkdir build
-   cd build/
-   cmake ../
-   make
-   ```
-
-   ![Compilation](pic/Linux/Compilation1.png)
-   ![Compilation](pic/Linux/Compilation2.png)
-
-2. 编译完成，输出路径为 PrecompiledSamples，进入目录后运行。
-
-   ```consle
-   cd ScepterSDK/Ubuntu/PrecompiledSamples/NYX650_Samples/
-   ./DeviceConnectByAlias
-   ```
-
-   ![Execution](pic/Linux/Execution.png)
-
-#### **Windows**
-
-1. 根据实际产品选择对应的 sample，以 NYX650 产品编译 DeviceConnectByAlias 为例:
-
-   ① 鼠标右键选择需要启动的项目，选择右键选项栏中的“设为启动项目”选项。
-
-   ② 点击菜单栏的“调试”按钮，选择下拉栏中的“开始调试”或使用快捷键“F5”编译运行项目。
-
-   ![Compilation](pic/Windows/Compilation.png)
-
-2. 编译完成，调试运行。结果如下图：
-
-   ![Execution](pic/Windows/Execution.png)
-
-<!-- tabs:end -->
+   ![PythonDeviceConnectByAliasResult](pic/PythonDeviceConnectByAliasResult.png)
