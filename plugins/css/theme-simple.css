@@ -1441,6 +1441,29 @@ body:not([data-platform^="Mac"]) .sidebar::-webkit-scrollbar-thumb {
   text-overflow: ellipsis;
   transition: var(--sidebar-nav-link-transition);
 }
+
+.sidebar-nav ul > li > p > a,
+.sidebar-nav ul > li > a[title*="快速开始"] {
+  display: block;
+  overflow: hidden;
+  margin: var(--sidebar-nav-link-margin);
+  padding: 0;
+  border-width: var(--sidebar-nav-link-border-width, 0);
+  border-style: var(--sidebar-nav-link-border-style);
+  border-color: var(--sidebar-nav-link-border-color);
+  border-radius: var(--sidebar-nav-link-border-radius);
+  background: var(--sidebar-nav-link-background);
+  color: var(--sidebar-nav-link-color);
+  font-weight: var(--sidebar-nav-link-font-weight);
+  white-space: nowrap;
+  -webkit-text-decoration: var(--sidebar-nav-link-text-decoration);
+  text-decoration: var(--sidebar-nav-link-text-decoration);
+  -webkit-text-decoration-color: var(--sidebar-nav-link-text-decoration-color);
+  text-decoration-color: var(--sidebar-nav-link-text-decoration-color);
+  text-overflow: ellipsis;
+  transition: var(--sidebar-nav-link-transition);
+}
+
 .sidebar-nav a img,
 .sidebar nav a img {
   margin-top: -0.25em;
@@ -1555,7 +1578,8 @@ body:not([data-platform^="Mac"]) .sidebar::-webkit-scrollbar-thumb {
 
 .sidebar-nav li.active > a,
 .sidebar-nav li p.active > a,
-.sidebar-nav li.collapse > a {
+/* .sidebar-nav li.collapse > a, */
+.sidebar-nav li.file.active a {
   border-width: var(
     --sidebar-nav-link-border-width--active,
     var(--sidebar-nav-link-border-width)
@@ -1588,15 +1612,16 @@ body:not([data-platform^="Mac"]) .sidebar::-webkit-scrollbar-thumb {
   -webkit-text-decoration-color: var(--sidebar-nav-link-text-decoration-color);
   text-decoration-color: var(--sidebar-nav-link-text-decoration-color);
 }
-.sidebar-nav ul li.folder.active > p {
+.sidebar-nav ul li.open.folder.level-1 > p {
   border-width: var(
     --sidebar-nav-link-border-width--active,
     var(--sidebar-nav-link-border-width)
   );
-  border-style: var(
+  margin: var(--sidebar-nav-link-margin);
+  /* border-style: var(
     --sidebar-nav-link-border-style--active,
     var(--sidebar-nav-link-border-style)
-  );
+  ); */
   border-color: var(
     --sidebar-nav-link-border-color--active,
     var(--sidebar-nav-link-border-color)
@@ -1605,7 +1630,7 @@ body:not([data-platform^="Mac"]) .sidebar::-webkit-scrollbar-thumb {
     --sidebar-nav-link-background--active,
     var(--sidebar-nav-link-background)
   );
-  color: var(--sidebar-nav-link-color--active, var(--sidebar-nav-link-color));
+  /* color: var(--sidebar-nav-link-color--active, var(--sidebar-nav-link-color)); */
   font-weight: var(
     --sidebar-nav-link-font-weight--active,
     var(--sidebar-nav-link-font-weight)
@@ -1620,6 +1645,11 @@ body:not([data-platform^="Mac"]) .sidebar::-webkit-scrollbar-thumb {
   );
   -webkit-text-decoration-color: var(--sidebar-nav-link-text-decoration-color);
   text-decoration-color: var(--sidebar-nav-link-text-decoration-color);
+}
+
+.sidebar-nav > p {
+  font-size: 1.2rem;
+  color: #0f0;
 }
 
 .sidebar-nav li.active > a[href^="/"]:not([href*="?id="]):not(:only-child),

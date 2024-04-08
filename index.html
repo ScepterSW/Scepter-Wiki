@@ -13,9 +13,9 @@
 
    <link rel="shortcut icon" href="favicon.ico" />
    <!-- 箭头样式 -->
-   <link rel="stylesheet" href="plugins/css/sidebar.min.css" />
+   <!-- <link rel="stylesheet" href="plugins/css/sidebar.min.css" /> -->
    <!-- 文件夹样式 -->
-   <!-- <link rel="stylesheet" href="plugins/css/sidebar-folder.min.css" /> -->
+   <link rel="stylesheet" href="plugins/css/sidebar-folder.min.css" />
 
 
    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css"> -->
@@ -36,15 +36,15 @@
          // 开启侧边栏
          loadSidebar: true,
          subMaxLevel: 2,
-         // sidebarDisplayLevel: 1, // set sidebar display level
+         sidebarDisplayLevel: 1, // set sidebar display level
          loadNavbar: true,
          search: {
             maxAge: 1, // 过期时间，单位毫秒，默认一天
             placeholder: 'Type to search',
             noData: 'No Results!',
             // 搜索标题的最大层级, 1 - 6
-            depth: 4,
-            hideOtherSidebarContent: false, // 是否隐藏其他侧边栏内容
+            depth: 6,
+            hideOtherSidebarContent: true, // 是否隐藏其他侧边栏内容
          },
          auto2top: true,
          plugins: [
@@ -97,10 +97,10 @@
    <!-- zoom image -->
    <script src="plugins/js/npm/docsify/lib/plugins/zoom-image.min.js"></script>
    <scriptss type="text/javascript" src="plugins/js/mermaid.min.js">
-      </script>
+   </script>
 
-      <!-- docsify-sidebar-collapse    -->
-      <script src="plugins/js/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+   <!-- docsify-sidebar-collapse    -->
+   <script src="plugins/js/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
 </body>
 
 </html>

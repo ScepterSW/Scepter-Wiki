@@ -1,42 +1,42 @@
 # 3. 功能介绍
 
-## 3.1. 设备列表
+## 3.1. 设备管理区
 
-设备列表用于设备的搜索与连接。本软件出于展示目的，支持同一时刻打开一台相机，多个软件可以支持打开多台相机，SDK 支持多台同时工作。
+设备列表用于设备的搜索与连接。本软件出于展示目的，支持同一时刻打开一台相机；多个软件可以支持打开多台相机，SDK 也支持多台同时工作。
 
 ![设备列表](pic/DeviceList.png)
 
-### 3.1.1. 设备连接
+### 3.1.1. 设备打开
 
 ![设备连接](pic/ConnectDevice.png)
 
-1. 搜索设备
+1. 连接好设备后，等待设备蓝灯闪烁，开始搜索设备；
 
-2. 选中设备的 SN
+2. 搜索完成后设备管理区会出现设备的 SN，选中设备的 SN；
 
-3. 点击 Open 打开设备，或者双击设备 SN 打开设备
+3. 点击 Open 打开设备，或者双击设备 SN 打开设备。
 
-### 3.1.2. 设备断开
+### 3.1.2. 设备关闭
 
 ![设备断开](pic/DisconnectDevice.png)
 
 - 点击 Close 关闭设备。
 
-## 3.2. 显示区
+## 3.2. 图像显示区
 
 ![显示区](pic/DisplayArea.png)
 
-显示区用于显示图像，从左到右依次为深度图视窗、IR 图视窗、彩色图视窗、点云图视窗（默认关闭）。
+图像显示区用于显示图像，从左到右依次为深度图视窗、IR 图视窗、彩色图视窗、点云图视窗（默认关闭）。
 
 深度图视窗中显示数值为白点处**实时像素点**的深度值，单位为 mm，如上图该点深度值为 2038mm 。
 
 注意：鼠标右键单击可自行选择白点位置，同时显示对应点的深度值。
 
-## 3.3. 操作区
+## 3.3. 参数操作区
 
 ![操作区](pic/OperationArea.png)
 
-操作区用于控制设备的工作模式与参数，设置图像处理算法，查看设备信息等功能。
+参数操作区用于控制设备的工作模式与参数，设置图像处理算法，查看设备信息等功能。
 
 ### 3.3.1. 设备控制
 
@@ -312,9 +312,10 @@ Model：设备类型。
 
 点击![IP 设置](<pic/IP address setting.png>)，弹出如下页面。
 
-<!-- ![Device Setting Interface](<pic/Device Setting Interface.png>) -->
+<!--
+*![Device Setting Interface](<pic/Device Setting Interface.png>)* -->
 
-![Device Setting Interface](<pic/set camera ip.png>)
+![Alt text](<pic/set camera ip.png>)
 
 Obtain an IP address automatically(DHCP): 设置设备的 IP 地址为 DHCP 模式，由局域网内的路由器分配 IP 地址，使用该模式，主机端也需要设置为 DHCP 模式.
 
@@ -322,9 +323,9 @@ Use the following IP address：设置设备的 IP 地址为固定地址。使用
 
 1．设置动态 IP：
 
-<!-- ![Set DHCP](<pic/Set DHCP.png>) -->
+<!-- *![Set DHCP](<pic/Set DHCP.png>)* -->
 
-![Set DHCP](<pic/set camera DHCP.png>)
+![Alt text](<pic/set camera DHCP.png>)
 
 Step1:  选择“Obtain an IP address automatically（DHCP）”。
 
@@ -344,9 +345,9 @@ Step4: 设备自动重启后生效。
 
 #### 3.3.7.2. 升级固件
 
-<!-- ![Upgrade](pic/Upgrade.png) -->
+<!-- *![Upgrade](pic/Upgrade.png)* -->
 
-![Upgrade](<pic/Upgrade Firmware1.png>)
+![Alt text](<pic/Upgrade Firmware1.png>)
 
 设备固件升级操作方法：
 
@@ -365,9 +366,9 @@ Step4: 设备自动重启后生效。
 
 信号参数配置在 Device Setting 页面，如下图所示：
 
-<!-- ![Signal Parameters Settings](<pic/Signal Parameters Settings.png>) -->
+<!-- *![Signal Parameters Settings](<pic/Signal Parameters Settings.png>)* -->
 
-![Signal Parameters Settings](<pic/ISPF HW Trigger.png>)
+![Alt text](<pic/ISPF HW Trigger.png>)
 
 硬触发相关的输入信号参数配置：
 
@@ -410,7 +411,6 @@ Import：导入参数到 ScepterGUITool 中
 ## 3.4. 查看已保存图像/点云
 
 1. 进入 ScepterGUITool 根目录下的 SaveImage 文件夹，选择想要查看的图像。
-
 2. ScepterGUITool 保存的 Depth 和 IR 图像是 16bit 图片数据，可以使用 ImageJ 打开查看，鼠标指上去可以读出对应坐标下的深度值/IR 信号值。
 
    **ImageJ 下载地址：**<https://fiji.sc/>

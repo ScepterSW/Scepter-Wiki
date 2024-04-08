@@ -18,10 +18,10 @@
   transition: transform 0.1s;
 }
 .sidebar-nav ul:not(.app-sub-sidebar) > li.open::before {
-  transform: rotate(45deg);
   border-right: 2px solid #0f0;
   border-bottom: 2px solid #0f0;
 }
+
 .sidebar-nav ul:not(.app-sub-sidebar) > li.collapse::before {
   transform: rotate(-45deg);
 }

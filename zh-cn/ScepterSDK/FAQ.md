@@ -1,18 +1,18 @@
-# 8. FAQ<!-- {docsify-ignore-all} -->
+# 5. FAQ<!-- {docsify-ignore-all} -->
 
-## 8.1. SDK 日志存放位置
+## 5.1. SDK 日志存放位置
 
 Windows 上默认日志路径：C:\Users\\\<user name>\AppData\Local\Scepter\Log
 
 Linux 上默认日志路径： /home/\<user name>/.config/Scepter/Log
 
-## 8.2. SDK 输出的点云格式
+## 5.2. SDK 输出的点云格式
 
 SDK 输出的点云格式为从当前帧的第一个 pixel 至最后一个 pixel 的 X,Y,Z 值，以 float 型输出，单位是 mm，说明如下：
 
 ![SDK output pointcloud](<pic/SDK output pointcloud.png>)
 
-## 8.3. 无法打开相机的排查步骤
+## 5.3. 无法打开相机的排查步骤
 
 搜索不到相机通常有以下几种情况：
 
