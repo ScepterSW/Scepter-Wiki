@@ -4,24 +4,26 @@
   cursor: pointer;
   color: #fff;
 }
-.sidebar-nav > ul {
-  margin-left: 20px;
-}
+
 .sidebar-nav ul:not(.app-sub-sidebar) > li {
   position: relative;
   margin: 0;
   cursor: pointer;
   margin-left: 4px;
 }
-.sidebar-nav ul:not(.app-sub-sidebar) > li.folder::before {
+/* .sidebar-nav ul:not(.app-sub-sidebar) > li.folder::before {
   content: "";
   display: block;
   position: absolute;
-  top: 8px;
-  left: -15px;
+  top: 7.6px;
+  left: -1px;
   height: 10px;
   width: 10px;
-}
+} */
+
+/* .sidebar-nav ul:not(.app-sub-sidebar) > li.folder > p {
+  padding: 0 0 0 20px;
+} */
 
 .sidebar-nav ul:not(.app-sub-sidebar) > li.file::before {
   content: "";
@@ -33,11 +35,74 @@
   width: 10px;
 }
 
-.sidebar-nav ul:not(.app-sub-sidebar) > li.folder::before,
-.sidebar-nav ul:not(.app-sub-sidebar) > li.file::before,
-.sidebar-nav ul:not(.app-sub-sidebar) > li.collapse::before {
-  background: center/contain no-repeat url(../collapse.png);
+.sidebar-nav ul:not(.app-sub-sidebar) > li.folder::before {
+  background: left center no-repeat url(../collapse.png);
+  background-size: 10px 10px;
 }
-.sidebar-nav ul:not(.app-sub-sidebar) > li.open::before {
-  background: center/contain no-repeat url(../open.png);
+
+.sidebar-nav
+  li.open.file.active
+  > a[href^="#/"]:not([href*="?id="]):not(:only-child) {
+  background: left center no-repeat url(../open.png);
+  background-size: 10px 10px;
+}
+
+.sidebar-nav
+  li.file.collapse.active
+  > a[href^="#/"]:not([href*="?id="]):not(:only-child),
+.sidebar-nav li > a[href^="#/"]:not([href*="?id="]):not(:only-child) {
+  background: left center no-repeat url(../collapse.png);
+  background-size: 10px 10px;
+}
+
+.sidebar-nav li.file > a,
+.sidebar-nav li.folder > p > a {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  padding: var(--sidebar-nav-pagelink-padding, var(--sidebar-nav-link-padding));
+}
+
+.sidebar-nav li.file > a[title="3. ToF 相机的组成"],
+.sidebar-nav li.file > a[title="4. ToF 相机的实现原理"],
+.sidebar-nav li.file > a[title="1. NYX650/660"],
+.sidebar-nav li.file > a[title="2. VENO86/87"],
+.sidebar-nav li.file > a[title="2. 设备连接"],
+.sidebar-nav li.file > a[title="3. 功能介绍"],
+.sidebar-nav li.file > a[title="2.5. API 参考"],
+.sidebar-nav li.file > a[title="3.1.5. API 参考"],
+.sidebar-nav li.file > a[title="3.2.4. API 参考"],
+.sidebar-nav li.folder a[title="2. BaseSDK (C/C++)"],
+.sidebar-nav li.folder a[title="3. MultilanguageSDK"],
+.sidebar-nav li.folder a[title="4. 3rd-Party Plugin"],
+.sidebar-nav li.folder a[title="3.1. Python"],
+.sidebar-nav li.folder a[title="3.2. C#"],
+.sidebar-nav li.folder a[title="4.1. ROS"],
+.sidebar-nav li.folder a[title="4.2. ROS2"],
+.sidebar-nav li.folder a[title="1. NYX650/660"],
+.sidebar-nav li.folder a[title="1.1. 深度质量测试"],
+.sidebar-nav li.folder a[title="1.2. AGV 场景测试数据"],
+.sidebar-nav li.folder a[title="1.3. 多机共存"],
+.sidebar-nav li.folder a[title="2. VENO86/87"],
+.sidebar-nav li.folder a[title="2.1. 深度质量测试"],
+.sidebar-nav li.folder a[title="2.2. AGV 场景测试数据"],
+.sidebar-nav li.folder a[title="2.3. HDR 模式"],
+.sidebar-nav li.folder a[title="2.4. 多机共存"] {
+  background: left center no-repeat url(../collapse.png);
+  background-size: 10px 10px;
+}
+
+.sidebar-nav li.folder.open.active > p.active a[title="2. BaseSDK (C/C++)"],
+.sidebar-nav li.folder.open.active > p.active a[title="3.1. Python"],
+.sidebar-nav li.folder.open.active > p.active a[title="3.2. C#"],
+.sidebar-nav li.folder.open.active > p.active a[title="4.1. ROS"],
+.sidebar-nav li.folder.open.active > p.active a[title="4.2. ROS2"],
+.sidebar-nav li.folder.open.active > p.active a[title="2.1. 深度质量测试"],
+.sidebar-nav li.folder.open.active > p.active a[title="1.1. 深度质量测试"],
+.sidebar-nav li.folder.open.active > p.active a[title="1.2. AGV 场景测试数据"],
+.sidebar-nav li.folder.open.active > p.active a[title="1.3. 多机共存"],
+.sidebar-nav li.folder.open.active > p.active a[title="2.2. AGV 场景测试数据"],
+.sidebar-nav li.folder.open.active > p.active a[title="2.3. HDR 模式"],
+.sidebar-nav li.folder.open.active > p.active a[title="2.4. 多机共存"] {
+  background: left center no-repeat url(../open.png);
+  background-size: 10px 10px;
 }
