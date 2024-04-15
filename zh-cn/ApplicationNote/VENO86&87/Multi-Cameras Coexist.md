@@ -38,11 +38,13 @@ VENO86/87 相机的典型帧率为 15fps，即每秒可产生 15 帧的深度图
 
 可以通过调用 API 函数完成对相机的触发，具体可以查看 Gitee 或 GitHub 上对应平台 Samples 文件夹下的例程 DeviceSWTriggerMode。
 
-SDK 链接：
+ScepterSDK 下载链接：
 
-国内：<https://gitee.com/ScepterSW>​
+https://github.com/ScepterSW/ScepterSDK
 
-海外：<https://github.com/ScepterSW>​
+或
+
+https://gitee.com/ScepterSW/ScepterSDK
 
 ## 2.4.4. 多机共存方式与用法
 
@@ -66,7 +68,7 @@ SDK 链接：
 
 将 A,B,C 相机全部设置为 slave 模式。等待触发信号的触发。
 
-VzReturnStatus VZ_SetWorkMode(VzDeviceHandle device, VzWorkMode mode)
+ScStatus scSetWorkMode(ScDeviceHandle device, ScWorkMode mode)
 
 由于相机不同模式下，曝光时间不同，建议相邻相机的触发信号间隔大于等于一个工作周期。例如，以 15fps 为例，A 相机触发信号发出后，B 相机的触发信号要延时 66.7ms 以上。
 

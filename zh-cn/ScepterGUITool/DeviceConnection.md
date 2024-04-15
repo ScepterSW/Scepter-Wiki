@@ -23,7 +23,11 @@
 
 ![设备连接](pic/DeviceConnection.png)
 
-_硬件模组安装示意图_
+<div class="center">
+
+硬件模组安装示意图
+
+</div>
 
 1、通过以太网线/航插网线将相机连接至主机；
 
@@ -37,6 +41,19 @@ _硬件模组安装示意图_
 
 直连：一端连接设备，另一端连接 PC 主机的网线接口。设备默认 IP 为 **192.168.1.101**，在 PC 端将“本地连接”的，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。
 
+<div class="center">
+
+![直连](pic/DirectConnection-NoSwitchboard.png)
+
+</div>
+
+多个相机连接：需要注意，因为相机默认 IP 地址都为 192.168.1.101 连接同一个 PC 主机是会出现 IP 冲突，所以要更改相机的默认 IP 地址（如相机 1 的 IP 地址：192.168.1.101，相机 2 的 IP 地址：192.168.1.102），可参考[3.4.7. IP 设置与固件升级](/zh-cn/ScepterGUITool/FunctionIntroduction#_347-ip-设置与固件升级)更改相机 IP。
+
+<div class="center">
+
+![多机连接](pic/Multi-CarmeraConnection.png)
+
+</div>
 <!-- tabs:start -->
 
 #### **Windows**
@@ -69,19 +86,19 @@ _硬件模组安装示意图_
 
 <div class="center">
 
-![LinuxEditConnections](pic/LinuxEditConnections.png)
+![LinuxEditConnections](pic/LinuxEditConnections1.png)
 
 </div>
 
 <div class="center">
 
-![LinuxEdit](pic/LinuxEdit.png)
+![LinuxEdit](pic/LinuxEdit2.png)
 
 </div>
 
 <div class="center">
 
-![固定地址](pic/LinuxStaticAddress.png)
+![固定地址](pic/LinuxStaticAddress3.png)
 
 </div>
 
@@ -105,41 +122,13 @@ DHCP 连接方式，需要将相机连接在开启 DHCP 功能的路由器上，
 
 <div class="center">
 
-![DHCP](pic/LinuxDHCP.png)
+![DHCP](pic/LinuxDHCP1.png)
 
 </div>
 
 <!-- tabs:end -->
 
 > 注意：PC 端使用的网卡、路由器、交换机都要满足**千兆**要求。
-
-## 2.3. 目录结构
-
-ScepterGUITool 包含 ScepterGUITool 可执行文件，用户手册文档及相关动态链接库。
-
-<!-- tabs:start -->
-
-#### **Windows**
-
-![目录结构](pic/WindowsContents.png)
-
-> 在首次运行 ScepterGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。
->
-> <div class="center">
->
-> ![防火墙配置](pic/FirewallSetting.png)
->
-> </div>
-
-![界面图片](pic/GUITool.png)
-
-#### **Linux**
-
-![目录结构](pic/LinuxContents.png)
-
-![界面图片](pic/GUITool.png)
-
-<!-- tabs:end -->
 
 <style>
 .center

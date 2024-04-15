@@ -923,7 +923,7 @@ ScStatus scGetSDKVersion(char* pSDKVersion, int32_t length)
 
 **返回值：**
 
-- SDK 版本号
+SDK 版本号
 
 #### 2.5.3.4. scGetDeviceCount
 
@@ -939,9 +939,9 @@ ScStatus scGetDeviceCount(uint32_t* pDeviceCount, uint16_t waitTime)
 
 **函数参数：**
 
-uint32_t\* pDeviceCount：指向 32 位整数变量的指针，在该变量中返回设备数量
+<span style="color: #4ec9b0; font-weight: bold">uint32_t</span>\* pDeviceCount：指向 32 位整数变量的指针，在该变量中返回设备数量
 
-uint16_t waitTime：单位为毫秒，数值范围为（0，65535）。
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> waitTime：单位为毫秒，数值范围为（0，65535）。
 当设备计数不为 0 时，API 立即返回。
 当设备计数为 0 时，除非设备计数不为 0，否则 API 最多等待等待时间（ms）。
 
@@ -965,9 +965,9 @@ ScStatus scGetDeviceInfo(uint32_t deviceIndex, ScDeviceInfo*pDevicesInfo)
 
 **函数参数：**
 
-uint32_t deviceIndex：设备索引号
+<span style="color: #4ec9b0; font-weight: bold">uint32_t</span> deviceIndex：设备索引号
 
-[ScDeviceInfo](#_25210-scdeviceinfo)\* pDevicesInfo：返回设备信息
+[**ScDeviceInfo**](#_25210-scdeviceinfo)\* pDevicesInfo：返回设备信息
 
 **返回值：**
 
@@ -989,9 +989,9 @@ ScStatus scGetDeviceInfoList(uint32_t deviceCount, ScDeviceInfo* pDevicesInfoLis
 
 **函数参数：**
 
-uint32_t deviceCount：需要获取信息列表的设备个数
+<span style="color: #4ec9b0; font-weight: bold">uint32_t</span> deviceCount：需要获取信息列表的设备个数
 
-[ScDeviceInfo](#_25210-scdeviceinfo)* pDevicesInfo：返回设备信息列表，其应该指向大小为 sizeof(ScDeviceInfo)*deviceCount 大小的缓存
+[**ScDeviceInfo**](#_25210-scdeviceinfo)* pDevicesInfo：返回设备信息列表，其应该指向大小为 sizeof(ScDeviceInfo)*deviceCount 大小的缓存
 
 **返回值：**
 
@@ -1013,9 +1013,9 @@ ScStatus scOpenDeviceByUri(const char* pURI, ScDeviceHandle* pDevice)
 
 **函数参数：**
 
-const char\* pURI：设备标识符
+<span style="color: #4ec9b0; font-weight: bold">const</span> char\* pURI：设备标识符
 
-ScDeviceHandle\* pDevice： 打开设备成功后，返回的设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span>\* pDevice： 打开设备成功后，返回的设备句柄
 
 **返回值：**
 
@@ -1037,9 +1037,9 @@ ScStatus scOpenDeviceByAlias(const char* pAlias, ScDeviceHandle* pDevice)
 
 **函数参数：**
 
-const char\* pAlias：设备别名
+<span style="color: #4ec9b0; font-weight: bold">const</span> char\* pAlias：设备别名
 
-ScDeviceHandle\* pDevice： 打开设备成功后，返回的设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span>\* pDevice： 打开设备成功后，返回的设备句柄
 
 **返回值：**
 
@@ -1061,9 +1061,9 @@ ScStatus scOpenDeviceByIP(const char* pIP, ScDeviceHandle* pDevice)
 
 **函数参数：**
 
-const char\* pIP：设备的 IP 地址
+<span style="color: #4ec9b0; font-weight: bold">const</span> char\* pIP：设备的 IP 地址
 
-ScDeviceHandle\* pDevice： 打开设备成功后，返回的设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span>\* pDevice： 打开设备成功后，返回的设备句柄
 
 **返回值：**
 
@@ -1085,7 +1085,7 @@ ScStatus scCloseDevice(ScDeviceHandle* pDevice)
 
 **函数参数：**
 
-ScDeviceHandle\* pDevice： 要关闭设备的句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span>\* pDevice： 要关闭设备的句柄
 
 **返回值：**
 
@@ -1107,7 +1107,7 @@ ScStatus scStartStream(ScDeviceHandle device)
 
 **函数参数：**
 
-ScDeviceHandle device： 要关闭数据流的设备的句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 要关闭数据流的设备的句柄
 
 **返回值：**
 
@@ -1129,7 +1129,7 @@ ScStatus scStopStream(ScDeviceHandle device)
 
 **函数参数：**
 
-ScDeviceHandle device： 要关闭数据流的设备的句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 要关闭数据流的设备的句柄
 
 **返回值：**
 
@@ -1151,11 +1151,11 @@ ScStatus scGetFrameReady(ScDeviceHandle device, uint16_t waitTime, ScFrameReady*
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-uint16_t waitTime：允许等待图像就绪的超时时间(ms)。此值与图像的帧率有关，建议值设置为 2\*1000/fps。例如当前的帧率为 20，则建议设置 waitTime 为 2 \* 1000 / 20 = 100。如果设置 waitTime 为 40，则调用函数时可能返回 ScRetGetFrameReadyTimeOut。
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> waitTime：允许等待图像就绪的超时时间(ms)。此值与图像的帧率有关，建议值设置为 2\*1000/fps。例如当前的帧率为 20，则建议设置 waitTime 为 2 \* 1000 / 20 = 100。如果设置 waitTime 为 40，则调用函数时可能返回 ScRetGetFrameReadyTimeOut。
 
-[ScFrameReady](#_2529-scframeready)\* pFrameReady：返回图像的就绪状态
+[**ScFrameReady**](#_2529-scframeready)\* pFrameReady：返回图像的就绪状态
 
 **返回值：**
 
@@ -1177,11 +1177,11 @@ ScStatus scGetFrame(ScDeviceHandle device, ScFrameType frameType, ScFrame* pScFr
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScFrameType](#_2511-scframetype) frameType：待获取图像的类型
+[**ScFrameType**](#_2511-scframetype) frameType：待获取图像的类型
 
-[ScFrame](#_2528-scframe)\* pScFrame：返回的图像数据
+[**ScFrame**](#_2528-scframe)\* pScFrame：返回的图像数据
 
 **返回值：**
 
@@ -1203,9 +1203,9 @@ ScStatus scSetWorkMode(ScDeviceHandle device, ScWorkMode mode)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScWorkMode](#_2516-scworkmode) mode：要设置的工作模式
+[**ScWorkMode**](#_2516-scworkmode) mode：要设置的工作模式
 
 **返回值：**
 
@@ -1227,9 +1227,9 @@ ScStatus scGetWorkMode(ScDeviceHandle device, ScWorkMode* pMode)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScWorkMode](#_2516-scworkmode)\* pMode：获取到的设备的工作模式
+[**ScWorkMode**](#_2516-scworkmode)\* pMode：获取到的设备的工作模式
 
 **返回值：**
 
@@ -1251,7 +1251,7 @@ ScStatus scSoftwareTriggerOnce(ScDeviceHandle device)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
 **返回值：**
 
@@ -1273,11 +1273,11 @@ ScStatus scGetSensorIntrinsicParameters(ScDeviceHandle device, ScSensorType sens
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScSensorType](#_2513-scsensortype) sensorType：传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：传感器类型
 
-[ScSensorIntrinsicParameters](#_2526-scsensorintrinsicparameters)\* pSensorIntrinsicParameters：返回传感器镜头的内参
+[**ScSensorIntrinsicParameters**](#_2526-scsensorintrinsicparameters)\* pSensorIntrinsicParameters：返回传感器镜头的内参
 
 **返回值：**
 
@@ -1299,9 +1299,9 @@ ScStatus scGetSensorExtrinsicParameters(ScDeviceHandle device, ScSensorExtrinsic
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScSensorExtrinsicParameters](#_2527-scsensorextrinsicparameters)\* pSensorExtrinsicParameters：返回设备的外参
+[**ScSensorExtrinsicParameters**](#_2527-scsensorextrinsicparameters)\* pSensorExtrinsicParameters：返回设备的外参
 
 **返回值：**
 
@@ -1323,11 +1323,11 @@ ScStatus scGetFirmwareVersion(ScDeviceHandle device, char* pFirmwareVersion, int
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-char\* pFirmwareVersion：返回设备的固件版本
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pFirmwareVersion：返回设备的固件版本
 
-int length：pFirmwareVersion 指向的缓存的字节长度
+<span style="color: #4ec9b0; font-weight: bold">int</span> length：pFirmwareVersion 指向的缓存的字节长度
 
 **返回值：**
 
@@ -1349,9 +1349,9 @@ ScStatus scGetDeviceMACAddress(ScDeviceHandle device, char* pMACAddress)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-char\* pMACAddress：返回设备的 MAC 地址，其默认是一个字节长度为 18，以‘\0’结尾的字符串
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pMACAddress：返回设备的 MAC 地址，其默认是一个字节长度为 18，以‘\0’结尾的字符串
 
 **返回值：**
 
@@ -1373,9 +1373,9 @@ ScStatus scSetIRGMMGain(ScDeviceHandle device, uint8_t gmmgain)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-uint8_t gmmgain：要设置给设备的 IR 增益值
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> gmmgain：要设置给设备的 IR 增益值
 
 **返回值：**
 
@@ -1397,9 +1397,9 @@ ScStatus scGetIRGMMGain(ScDeviceHandle device, uint8_t* pGmmgain)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-uint8_t\* pGmmgain：返回设备的 IR 增益值
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span>\* pGmmgain：返回设备的 IR 增益值
 
 **返回值：**
 
@@ -1421,9 +1421,9 @@ ScStatus scSetIRGMMCorrection(ScDeviceHandle device, const ScIRGMMCorrectionPara
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-const [ScIRGMMCorrectionParams](#_25214-scirgmmcorrectionparams) params：IR GMM 校正的值
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScIRGMMCorrectionParams**](#_25214-scirgmmcorrectionparams) params：IR GMM 校正的值
 
 **返回值：**
 
@@ -1445,9 +1445,9 @@ ScStatus scGetIRGMMCorrection(ScDeviceHandle device, const ScIRGMMCorrectionPara
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-const [ScIRGMMCorrectionParams](#_25214-scirgmmcorrectionparams) params：IR GMM 校正的值
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScIRGMMCorrectionParams**](#_25214-scirgmmcorrectionparams) params：IR GMM 校正的值
 
 **返回值：**
 
@@ -1469,9 +1469,9 @@ ScStatus scSetColorPixelFormat(ScDeviceHandle device,ScPixelFormat pixelFormat)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScPixelFormat](#_2512-scpixelformat) pixelFormat：要设置的彩色图像的像素格式
+[**ScPixelFormat**](#_2512-scpixelformat) pixelFormat：要设置的彩色图像的像素格式
 
 **返回值：**
 
@@ -1493,9 +1493,9 @@ ScStatus scSetColorGain(ScDeviceHandle device, float params)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-float params：NYX650 的颜色增益值在[0，100]范围内。不同的产品具有不同的范围，请参考产品说明书
+<span style="color: #4ec9b0; font-weight: bold">float</span> params：NYX650 的颜色增益值在[0，100]范围内。不同的产品具有不同的范围，请参考产品说明书
 
 **返回值：**
 
@@ -1517,9 +1517,9 @@ ScStatus scGetColorGain(ScDeviceHandle device, float params)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-float params：颜色增益值
+<span style="color: #4ec9b0; font-weight: bold">float</span> params：颜色增益值
 
 **返回值：**
 
@@ -1541,11 +1541,11 @@ ScStatus scSetColorResolution(ScDeviceHandle device, int w, int h)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-int w：图像的宽
+<span style="color: #4ec9b0; font-weight: bold">int</span> w：图像的宽
 
-int h：图像的高
+<span style="color: #4ec9b0; font-weight: bold">int</span> h：图像的高
 
 **返回值：**
 
@@ -1567,11 +1567,11 @@ ScStatus scGetColorResolution(ScDeviceHandle device, int* pW, int* pH)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-int\* pW：返回彩色图像的图像宽
+<span style="color: #4ec9b0; font-weight: bold">int</span>\* pW：返回彩色图像的图像宽
 
-int\* pH：返回彩色图像的图像高
+<span style="color: #4ec9b0; font-weight: bold">int</span>\* pH：返回彩色图像的图像高
 
 **返回值：**
 
@@ -1593,11 +1593,11 @@ ScStatus scGetSupportedResolutionList(ScDeviceHandle device, ScSensorType type, 
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScSensorType](#_2513-scsensortype) type：传感器类型
+[**ScSensorType**](#_2513-scsensortype) type：传感器类型
 
-[ScResolutionList](#_2525-scresolutionlist)\* pList：支持的图像分辨率列表
+[**ScResolutionList**](#_2525-scresolutionlist)\* pList：支持的图像分辨率列表
 
 **返回值：**
 
@@ -1619,9 +1619,9 @@ ScStatus scSetFrameRate(ScDeviceHandle device, int value)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-int value：要设置的目标帧率
+<span style="color: #4ec9b0; font-weight: bold">int</span> value：要设置的目标帧率
 
 **返回值：**
 
@@ -1643,9 +1643,9 @@ ScStatus scGetFrameRate(ScDeviceHandle device, int* pValue)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-int\* pValue：返回设备的图像帧率
+<span style="color: #4ec9b0; font-weight: bold">int</span>\* pValue：返回设备的图像帧率
 
 **返回值：**
 
@@ -1667,11 +1667,11 @@ ScStatus scSetExposureControlMode(ScDeviceHandle device, ScSensorType sensorType
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScSensorType](#_2513-scsensortype) sensorType：要设置曝光模式的传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：要设置曝光模式的传感器类型
 
-[ScExposureControlMode](#_2517-scexposurecontrolmode) controlMode：要设置的曝光模式
+[**ScExposureControlMode**](#_2517-scexposurecontrolmode) controlMode：要设置的曝光模式
 
 **返回值：**
 
@@ -1693,11 +1693,11 @@ ScStatus scGetExposureControlMode(ScDeviceHandle device, ScSensorType sensorType
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScSensorType](#_2513-scsensortype) sensorType：要获取曝光模式的传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：要获取曝光模式的传感器类型
 
-[ScExposureControlMode](#_2517-scexposurecontrolmode) controlMode：返回传感器的曝光模式
+[**ScExposureControlMode**](#_2517-scexposurecontrolmode) controlMode：返回传感器的曝光模式
 
 **返回值：**
 
@@ -1723,11 +1723,11 @@ ScStatus scSetExposureTime(ScDeviceHandle device, ScSensorType sensorType, ScExp
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScSensorType](#_2513-scsensortype) sensorType：要获取曝光时间的传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：要获取曝光时间的传感器类型
 
-[ScExposureTimeParams](#25215-scexposuretimeparams) exposureTime：要设置的曝光时间参数
+[**ScExposureTimeParams**](#_25215-scexposuretimeparams) exposureTime：要设置的曝光时间参数
 
 **返回值：**
 
@@ -1749,11 +1749,11 @@ ScStatus scGetExposureTime(ScDeviceHandle device, ScSensorType sensorType, ScExp
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScSensorType](#_2513-scsensortype) sensorType：要获取曝光时间的传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：要获取曝光时间的传感器类型
 
-[ScExposureTimeParams](#25215-scexposuretimeparams)\* pExposureTime：返回获取的曝光时间参数
+[**ScExposureTimeParams**](#_25215-scexposuretimeparams)\* pExposureTime：返回获取的曝光时间参数
 
 **返回值：**
 
@@ -1775,11 +1775,11 @@ ScStatus scGetMaxExposureTime(ScDeviceHandle device, ScSensorType sensorType, in
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScSensorType](#_2513-scsensortype) sensorType：要获取曝光时间的传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：要获取曝光时间的传感器类型
 
-int32_t\* pMaxExposureTime：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同。
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pMaxExposureTime：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同。
 
 **返回值：**
 
@@ -1801,9 +1801,9 @@ ScStatus scSetTimeFilterParams(ScDeviceHandle device, ScTimeFilterParams params)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScTimeFilterParams](#_25211-sctimefilterparams) params：指向存储返回值的变量的指针
+[**ScTimeFilterParams**](#_25211-sctimefilterparams) params：指向存储返回值的变量的指针
 
 **返回值：**
 
@@ -1825,9 +1825,9 @@ ScStatus scGetTimeFilterParams(ScDeviceHandle device, ScTimeFilterParams* pParam
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScTimeFilterParams](#_25211-sctimefilterparams) params：指向存储返回值的变量的指针
+[**ScTimeFilterParams**](#_25211-sctimefilterparams) params：指向存储返回值的变量的指针
 
 **返回值：**
 
@@ -1849,9 +1849,9 @@ ScStatus scSetConfidenceFilterParams(ScDeviceHandle device,ScConfidenceFilterPar
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScConfidenceFilterParams](#_25212-scconfidencefilterparams) params：指向存储返回值的变量的指针
+[**ScConfidenceFilterParams**](#_25212-scconfidencefilterparams) params：指向存储返回值的变量的指针
 
 **返回值：**
 
@@ -1873,9 +1873,9 @@ ScStatus scGetConfidenceFilterParams(ScDeviceHandle device, ScConfidenceFilterPa
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScConfidenceFilterParams](#_25212-scconfidencefilterparams) params：指向存储返回值的变量的指针
+[**ScConfidenceFilterParams**](#_25212-scconfidencefilterparams) params：指向存储返回值的变量的指针
 
 **返回值：**
 
@@ -1897,9 +1897,9 @@ ScStatus scSetFlyingPixelFilterParams(ScDeviceHandle device, const ScFlyingPixel
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-const [ScFlyingPixelFilterParams](#_25213-scflyingpixelfilterparams) params：滤波参数
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScFlyingPixelFilterParams**](#_25213-scflyingpixelfilterparams) params：滤波参数
 
 **返回值：**
 
@@ -1921,9 +1921,9 @@ ScStatus scGetFlyingPixelFilterParams(ScDeviceHandle device, ScFlyingPixelFilter
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScFlyingPixelFilterParams](#_25213-scflyingpixelfilterparams)\* params：滤波参数
+[**ScFlyingPixelFilterParams**](#_25213-scflyingpixelfilterparams)\* params：滤波参数
 
 **返回值：**
 
@@ -1945,9 +1945,9 @@ ScStatus scSetFillHoleFilterEnabled(ScDeviceHandle device, bool bEnabled);
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-bool bEnabled：true 开启，false 关闭
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 开启，false 关闭
 
 **返回值：**
 
@@ -1969,9 +1969,9 @@ ScStatus scGetFillHoleFilterEnabled(ScDeviceHandle device, bool* pEnabled);
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-bool\* pEnabled：true 开启，false 关闭
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* pEnabled：true 开启，false 关闭
 
 **返回值：**
 
@@ -1993,9 +1993,9 @@ ScStatus scSetSpatialFilterEnabled(ScDeviceHandle device, bool bEnabled)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-bool bEnabled：true 开启，false 关闭
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 开启，false 关闭
 
 **返回值：**
 
@@ -2017,9 +2017,9 @@ ScStatus scGetSpatialFilterEnabled(ScDeviceHandle device, bool* pEnabled)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-bool\* pEnabled：true 开启，false 关闭
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* pEnabled：true 开启，false 关闭
 
 **返回值：**
 
@@ -2041,9 +2041,9 @@ ScStatus scSetTransformColorImgToDepthSensorEnabled(ScDeviceHandle device, bool 
 
 **函数参数：**
 
-ScDeviceHandle device：设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：设备句柄
 
-bool bEnabled：true 打开对齐，false 关闭对齐
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 打开对齐，false 关闭对齐
 
 **返回值：**
 
@@ -2065,9 +2065,9 @@ ScStatus scGetTransformColorImgToDepthSensorEnabled(ScDeviceHandle device, bool 
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-bool \*bEnabled：返回开关状态
+<span style="color: #4ec9b0; font-weight: bold">bool</span> \*bEnabled：返回开关状态
 
 **返回值：**
 
@@ -2089,9 +2089,9 @@ ScStatus scSetTransformDepthImgToColorSensorEnabled(ScDeviceHandle device, bool 
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-bool bEnabled：true 打开对齐，false 关闭对齐
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 打开对齐，false 关闭对齐
 
 **返回值：**
 
@@ -2113,9 +2113,9 @@ ScStatus scGetTransformDepthImgToColorSensorEnabled(ScDeviceHandle device, bool 
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-bool \*bEnabled：返回开关状态
+<span style="color: #4ec9b0; font-weight: bold">bool</span> \*bEnabled：返回开关状态
 
 **返回值：**
 
@@ -2137,13 +2137,13 @@ ScStatus scTransformedDepthPointToColorPoint(const ScDeviceHandle device, const 
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-const [ScDepthVector3](#_2523-scdepthvector3) depthPoint：深度图像的坐标点
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScDepthVector3**](#_2523-scdepthvector3) depthPoint：深度图像的坐标点
 
-const [ScVector2u16](#_2522-scvector2u16) colorSize：彩色图像尺寸
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScVector2u16**](#_2522-scvector2u16) colorSize：彩色图像尺寸
 
-[ScVector2u16](#_2522-scvector2u16)\* pPointInColor：获得的与深度图像的坐标点对应的彩色图像坐标点
+[**ScVector2u16**](#_2522-scvector2u16)\* pPointInColor：获得的与深度图像的坐标点对应的彩色图像坐标点
 
 **返回值：**
 
@@ -2165,15 +2165,15 @@ ScStatus scConvertDepthToPointCloud(ScDeviceHandle device, ScDepthVector3* pDept
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScDepthVector3](#_2523-scdepthvector3)\* pDepthVector：深度图像的坐标点的集合
+[**ScDepthVector3**](#_2523-scdepthvector3)\* pDepthVector：深度图像的坐标点的集合
 
-[ScVector3f](#_2521-scvector3f)\* pWorldVector：转换后点云的坐标点的集合
+[**ScVector3f**](#_2521-scvector3f)\* pWorldVector：转换后点云的坐标点的集合
 
-int32_t pointCount：坐标点的数目
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> pointCount：坐标点的数目
 
-[ScSensorIntrinsicParameters](#_2526-scsensorintrinsicparameters)\* pSensorParam：传感器内参
+[**ScSensorIntrinsicParameters**](#_2526-scsensorintrinsicparameters)\* pSensorParam：传感器内参
 
 **返回值：**
 
@@ -2195,11 +2195,11 @@ ScStatus scConvertDepthFrameToPointCloudVector(ScDeviceHandle device, const ScFr
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-const [ScFrame](#_2528-scframe)\* pDepthFrame：深度图像
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScFrame**](#_2528-scframe)\* pDepthFrame：深度图像
 
-[ScVector3f](#_2521-scvector3f)\* pWorldVector：转换后点云的坐标点的集合
+[**ScVector3f**](#_2521-scvector3f)\* pWorldVector：转换后点云的坐标点的集合
 
 **返回值：**
 
@@ -2223,7 +2223,7 @@ ScStatus scSetHotPlugStatusCallback(PtrHotPlugStatusCallback pCallback, const vo
 
 PtrHotPlugStatusCallback pCallback： 回调函数
 
-const void\* pUserData：用户数据，可以为空
+<span style="color: #4ec9b0; font-weight: bold">const</span> <span style="color: #4ec9b0; font-weight: bold">void</span>\* pUserData：用户数据，可以为空
 
 **返回值：**
 
@@ -2245,7 +2245,7 @@ ScStatus scRebootDevie(ScDeviceHandle device);
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
 **返回值：**
 
@@ -2267,13 +2267,13 @@ ScStatus scSetProperty(ScDeviceHandle device, const char* propertyKey, const voi
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-const char\* propertyKey：需要在设备上设置的属性类型
+<span style="color: #4ec9b0; font-weight: bold">const</span> <span style="color: #4ec9b0; font-weight: bold">char</span>\* propertyKey：需要在设备上设置的属性类型
 
-const void\* pData：指向包含属性值的缓冲区的指针
+<span style="color: #4ec9b0; font-weight: bold">const</span> <span style="color: #4ec9b0; font-weight: bold">void</span>\* pData：指向包含属性值的缓冲区的指针
 
-uint32_t dataSize：pData 中包含的属性值的大小（以字节为单位）
+<span style="color: #4ec9b0; font-weight: bold">uint32_t</span> dataSize：pData 中包含的属性值的大小（以字节为单位）
 
 **返回值：**
 
@@ -2295,13 +2295,13 @@ ScStatus scGetProperty(ScDeviceHandle device, const char* propertyKey, void* pDa
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-const char\* propertyKey：在设备上获取的属性类型
+<span style="color: #4ec9b0; font-weight: bold">const</span> <span style="color: #4ec9b0; font-weight: bold">char</span>\* propertyKey：在设备上获取的属性类型
 
-const void\* pData：指向包含属性值的缓冲区的指针
+<span style="color: #4ec9b0; font-weight: bold">const</span> <span style="color: #4ec9b0; font-weight: bold">void</span>\* pData：指向包含属性值的缓冲区的指针
 
-uint32_t dataSize：pData 中包含的属性值的大小（以字节为单位）
+<span style="color: #4ec9b0; font-weight: bold">uint32_t</span> dataSize：pData 中包含的属性值的大小（以字节为单位）
 
 **返回值：**
 
@@ -2323,9 +2323,9 @@ ScStatus scSetHDRModeEnabled(ScDeviceHandle device, bool bEnabled)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-bool bEnabled：true 开启，false 关闭
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 开启，false 关闭
 
 **返回值：**
 
@@ -2347,9 +2347,9 @@ ScStatus scGetHDRModeEnabled(ScDeviceHandle device, bool* bEnabled)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-bool\* bEnabled：true 开启，false 关闭
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* bEnabled：true 开启，false 关闭
 
 **返回值：**
 
@@ -2371,9 +2371,9 @@ ScStatus scSetInputSignalParamsForHWTrigger(ScDeviceHandle device, ScInputSignal
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScInputSignalParamsForHWTrigger](#_25216-scinputsignalparamsforhwtrigger) params：硬触发的输入信号参数
+[**ScInputSignalParamsForHWTrigger**](#_25216-scinputsignalparamsforhwtrigger) params：硬触发的输入信号参数
 
 **返回值：**
 
@@ -2395,9 +2395,9 @@ ScStatus scGetInputSignalParamsForHWTrigger(ScDeviceHandle device, ScInputSignal
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScInputSignalParamsForHWTrigger](#_25216-scinputsignalparamsforhwtrigger)\* params：硬触发的输入信号参数
+[**ScInputSignalParamsForHWTrigger**](#_25216-scinputsignalparamsforhwtrigger)\* params：硬触发的输入信号参数
 
 **返回值：**
 
@@ -2419,9 +2419,9 @@ ScStatus scSetOutputSignalParams(ScDeviceHandle device, ScOutputSignalParams par
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScOutputSignalParams](#_25217-scoutputsignalparams) params：输出信号参数
+[**ScOutputSignalParam**s](#_25217-scoutputsignalparams) params：输出信号参数
 
 **返回值：**
 
@@ -2443,9 +2443,9 @@ ScStatus scGetOutputSignalParams(ScDeviceHandle device, ScOutputSignalParams* pP
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[ScOutputSignalParams](#_25217-scoutputsignalparams)\* params：输出信号参数
+[**ScOutputSignalParams**](#_25217-scoutputsignalparams)\* params：输出信号参数
 
 **返回值：**
 
@@ -2467,9 +2467,9 @@ ScStatus scSetParamsByJson(ScDeviceHandle device, char* pfilePath)
 
 **函数参数：**
 
-ScDeviceHandle device： 设备句柄
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-char\* pfilePath：配置文件路径
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pfilePath：配置文件路径
 
 **返回值：**
 

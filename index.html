@@ -101,6 +101,75 @@
 
    <!-- docsify-sidebar-collapse    -->
    <script src="plugins/js/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+   
+   <script>
+      // 定义关键词数组
+var keywords = [
+  "ScFrameType",
+  "ScPixelFormat",
+  "ScSensorType",
+  "ScStatus",
+  "ScConnectStatus",
+  "ScWorkMode",
+  "ScExposureControlMode",
+  "ScVector3f",
+  "ScVector2u16",
+  "ScDepthVector3",
+  "ScResolution",
+  "ScResolutionList",
+  "ScSensorIntrinsicParameters",
+  "ScSensorExtrinsicParameters",
+  "ScFrame",
+  "ScFrameReady",
+  "ScDeviceInfo",
+  "ScTimeFilterParams",
+  "ScConfidenceFilterParams",
+  "ScFlyingPixelFilterParams",
+  "ScIRGMMCorrectionParams",
+  "ScExposureTimeParams",
+  "ScInputSignalParamsForHWTrigger",
+  "ScOutputSignalParams",
+  "ScDeviceHandle",
+];
+
+// 获取所有文本节点
+var textNodes = document.evaluate(
+  "//text()",
+  document,
+  null,
+  XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,
+  null
+);
+
+for (var i = 0; i < textNodes.snapshotLength; i++) {
+  var node = textNodes.snapshotItem(i);
+  for (var j = 0; j < keywords.length; j++) {
+    if (node.nodeValue.indexOf(keywords[j]) !== -1) {
+      // 如果文本节点包含关键词，将所有的关键词都替换为带有'highlight'类的HTML元素
+      var keywordIndex = node.nodeValue.indexOf(keywords[j]);
+      while (keywordIndex !== -1) {
+        var newNode = document.createElement("span");
+        newNode.className = "highlight";
+        newNode.textContent = keywords[j];
+        var beforeText = document.createTextNode(
+          node.nodeValue.substring(0, keywordIndex)
+        );
+        var afterText = document.createTextNode(
+          node.nodeValue.substring(keywordIndex + keywords[j].length)
+        );
+        node.parentNode.insertBefore(beforeText, node);
+        node.parentNode.insertBefore(newNode, node);
+        node.parentNode.insertBefore(afterText, node);
+        node.parentNode.removeChild(node);
+        node = afterText;
+        keywordIndex = node.nodeValue.indexOf(keywords[j]);
+      }
+    }
+  }
+}
+
+   </script>
+
 </body>
 
 </html>

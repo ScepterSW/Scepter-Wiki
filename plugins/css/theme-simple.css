@@ -379,7 +379,7 @@ pre[data-lang] {
 }
 .markdown-section a {
   border-bottom: var(--link-border-bottom);
-  color: #1a73e8;
+  color: #4ec9b0;
   -webkit-text-decoration: var(--link-text-decoration);
   text-decoration: var(--link-text-decoration);
   -webkit-text-decoration-color: var(--link-text-decoration-color);
