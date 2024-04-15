@@ -36,11 +36,11 @@
 
 ② 若无法 ping 通，打开设置，再打开有线网络连接设置，查看主机端的 IP 是否和相机默认 IP 处于同一网段；
 
-![Alt text](<pic/Ubuntu set ip.png>)
+![Ubuntu set ip](<pic/Ubuntu set ip.png>)
 
 ③ 若无法 ping 通，打开终端，输入'ifconfig'查看主机端的 IP 是否和相机默认 IP 处于同一网段；
 
-![Alt text](<pic/Ubuntu ifconfig.png>)
+![Ubuntu ifconfig](<pic/Ubuntu ifconfig.png>)
 
 如以上措施均不能解决问题，请用 ifconfig 指令查看 PC 端网络状态，将除与相机同一网段之外的网络禁用再次搜索设备。
 
@@ -48,8 +48,8 @@
 
 **Q2:  通过 GUI 保存的 IR 图和深度图为什么打不开？点云图如何查看？**
 
-**A2**: ScepterGUI 保存的 IR 和 Depth 图像是 16bit 图片数据，可以使用 ImageJ 打开查看；GUI 保存的点云图是.txt 格式，可使用 CloudCompare 进行查看。
+**A2**: ScepterGUITool 保存的 IR 和 Depth 图像是 16bit 图片数据，可以使用 ImageJ 打开查看；GUITool 保存的点云图是.txt 格式，可使用 CloudCompare 进行查看。
 
 **Q3:  如何改善相机对黑色物体的检测**
 
-**A3**:  可以尝试下述方法：1.将产品帧率降低（例如 5 帧），增加曝光时间（例如 4000）；2.将 Confidence 滤波阈值更改为 2 或 5
+**A3**:  可以尝试下述方法：1.将产品帧率降低（例如 5 帧），调整曝光时间到当前帧率下的最大值；2.将 Confidence 滤波阈值更改为 2 或 5

@@ -178,8 +178,7 @@ small {
   font-size: var(--small-font-size);
 }
 strong {
-  font-weight: var(--strong-font-weight);
-  color: #45b035;
+  /* font-weight: var(--strong-font-weight); */
 }
 sub,
 sup {
@@ -269,7 +268,7 @@ body:not([data-platform^="Mac"]) * ::-webkit-scrollbar-track {
 }
 code[class*="lang-"],
 pre[data-lang] {
-  color: var(--code-theme-text);
+  color: #fff;
 }
 pre[data-lang]::-moz-selection,
 pre[data-lang] ::-moz-selection,
@@ -300,10 +299,10 @@ pre[data-lang] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #7ec699;
+  color: #57a64a;
 }
 .token.punctuation {
-  color: var(--code-theme-punctuation);
+  color: #57a64a;
 }
 .token.property,
 .token.tag,
@@ -312,7 +311,7 @@ pre[data-lang] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: var(--code-theme-tag);
+  color: #b4cda8;
 }
 .token.selector,
 .token.attr-name,
@@ -327,12 +326,12 @@ pre[data-lang] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: var(--code-theme-operator);
+  color: #fff;
 }
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: var(--code-theme-keyword);
+  color: #4ec9b0;
 }
 .token.function {
   color: var(--code-theme-function);
@@ -380,12 +379,11 @@ pre[data-lang] {
 }
 .markdown-section a {
   border-bottom: var(--link-border-bottom);
-  color: var(--link-color);
+  color: #1a73e8;
   -webkit-text-decoration: var(--link-text-decoration);
   text-decoration: var(--link-text-decoration);
   -webkit-text-decoration-color: var(--link-text-decoration-color);
   text-decoration-color: var(--link-text-decoration-color);
-  font-weight: bold;
 }
 
 .markdown-section h1 a.anchor span {
@@ -556,6 +554,7 @@ pre[data-lang] {
   font-size: var(--heading-h3-font-size);
   font-weight: var(--heading-h3-font-weight, var(--heading-font-weight));
   color: var(--heading-h3-color, var(--heading-color));
+  margin-block-start: 0.5em;
 }
 .markdown-section h4 {
   margin: var(--heading-h4-margin, var(--heading-margin));
@@ -567,6 +566,7 @@ pre[data-lang] {
   font-size: var(--heading-h4-font-size);
   font-weight: var(--heading-h4-font-weight, var(--heading-font-weight));
   color: var(--heading-h4-color, var(--heading-color));
+  margin-block-start: 1em;
 }
 .markdown-section h5 {
   margin: var(--heading-h5-margin, var(--heading-margin));
@@ -615,11 +615,13 @@ pre[data-lang] {
   margin-left: -0.15em;
 }
 .markdown-section table {
-  display: block;
+  /* display: block; */
   overflow: auto;
   margin: 1rem 0;
   border-spacing: 0;
   border-collapse: collapse;
+  border: 1px solid #e3e3e3;
+  width: 100%;
 }
 .markdown-section th,
 .markdown-section td {
@@ -632,10 +634,10 @@ pre[data-lang] {
   border-color: var(--table-head-border-color);
   border-style: solid;
   border-width: var(--table-head-border-width, 0);
-  background: var(--table-head-background);
+  background: #fff;
 }
 .markdown-section th {
-  font-weight: var(--table-head-font-weight);
+  /* font-weight: var(--table-head-font-weight); */
   color: var(--strong-color);
 }
 .markdown-section td {
@@ -647,6 +649,7 @@ pre[data-lang] {
   border-color: var(--table-body-border-color);
   border-style: solid;
   border-width: var(--table-body-border-width, 0);
+  background-color: #fff;
 }
 .markdown-section tbody tr:nth-child(odd) {
   background: var(--table-row-odd-background);
@@ -1443,6 +1446,10 @@ body:not([data-platform^="Mac"]) .sidebar::-webkit-scrollbar-thumb {
   transition: var(--sidebar-nav-link-transition);
 }
 
+.sidebar-nav a[title*="快速开始"] {
+  color: #0f0;
+}
+
 .sidebar-nav ul > li > p > a,
 .sidebar-nav ul > li > a[title*="快速开始"] {
   display: block;
@@ -1575,6 +1582,11 @@ body:not([data-platform^="Mac"]) .sidebar::-webkit-scrollbar-thumb {
     --sidebar-nav-pagelink-background--loaded,
     var(--sidebar-nav-pagelink-background)
   );
+}
+
+.sidebar-nav a[title="1.设备连接"],
+.sidebar-nav a[title="2.打开设备"] {
+  padding-left: 20px;
 }
 
 .sidebar-nav li.active > a,

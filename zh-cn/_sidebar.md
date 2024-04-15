@@ -18,7 +18,9 @@
 
 快速开始
 
-- [快速开始](zh-cn/Quickstart/Quickstart.md)
+- [1.设备连接](zh-cn/Quickstart/Quickstart#_1-设备连接)
+
+- [2.打开设备](zh-cn/Quickstart/Quickstart#_2-打开设备)
 
 Scepter 图形化工具介绍
 
@@ -34,43 +36,15 @@ Scepter 软件开发包介绍
 
 - [1. 简介](zh-cn/ScepterSDK/Overview.md)
 
-* [2. BaseSDK (C/C++)](zh-cn/ScepterSDK/BaseSDK/BasicIntroduction)
+* [2. BaseSDK (C/C++)](zh-cn/ScepterSDK/BaseSDK.md)
 
-  - [2.1. 基础介绍](zh-cn/ScepterSDK/BaseSDK/BasicIntroduction.md)
+- [3. MultilanguageSDK](zh-cn/ScepterSDK/MultilanguageSDK/Overview.md)
 
-  * [2.2. 项目配置](zh-cn/ScepterSDK/BaseSDK/ProjectConfiguration.md)
+  - [3.1. Python](zh-cn/ScepterSDK/MultilanguageSDK/Python.md)
 
-  - [2.3. 基础例程](zh-cn/ScepterSDK/BaseSDK/BasicSample.md)
+  * [3.2. C#](zh-cn/ScepterSDK/MultilanguageSDK/CSharp.md)
 
-  * [2.4. OpenCV 例程](zh-cn/ScepterSDK/BaseSDK/OpenCVSample.md)
-
-  - [2.5. API 参考](zh-cn/ScepterSDK/BaseSDK/API.md)
-
-- [3. MultilanguageSDK](<javascript:void(0);>)
-
-  - [3.1. Python](zh-cn/ScepterSDK/MultilanguageSDK/Python/BasicIntroduction)
-
-    - [3.1.1. 基础介绍](zh-cn/ScepterSDK/MultilanguageSDK/Python/BasicIntroduction.md)
-
-    * [3.1.2. 项目配置](zh-cn/ScepterSDK/MultilanguageSDK/Python/ProjectConfiguration.md)
-
-    - [3.1.3. 基础例程](zh-cn/ScepterSDK/MultilanguageSDK/Python/BasicSample.md)
-
-    * [3.1.4. OpenCV 例程](zh-cn/ScepterSDK/MultilanguageSDK/Python/OpenCVSample.md)
-
-    - [3.1.5. API 参考](zh-cn/ScepterSDK/MultilanguageSDK/Python/API.md)
-
-  * [3.2. C#](zh-cn/ScepterSDK/MultilanguageSDK/CSharp/BasicIntroduction)
-
-    - [3.2.1 基础介绍](zh-cn/ScepterSDK/MultilanguageSDK/CSharp/BasicIntroduction.md)
-
-    * [3.2.2. 项目配置](zh-cn/ScepterSDK/MultilanguageSDK/CSharp/ProjectConfiguration.md)
-
-    - [3.2.3. 基础例程](zh-cn/ScepterSDK/MultilanguageSDK/CSharp/BasicSample.md)
-
-    * [3.2.4. API 参考](zh-cn/ScepterSDK/MultilanguageSDK/CSharp/API.md)
-
-* [4. 3rd-Party Plugin](<javascript:void(0);>)
+* [4. 3rd-Party Plugin](zh-cn/ScepterSDK/3rd-Party%20Plugin/Overview.md)
 
   - [4.1. ROS](zh-cn/ScepterSDK/3rd-Party%20Plugin/ROS.md)
 

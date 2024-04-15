@@ -18,7 +18,9 @@
 
 快速开始
 
-- [快速开始](zh-cn/Quickstart/Quickstart.md)
+- [1.设备连接](zh-cn/Quickstart/Quickstart#_1-设备连接)
+
+- [2.打开设备](zh-cn/Quickstart/Quickstart#_2-打开设备)
 
 Scepter 图形化工具介绍
 

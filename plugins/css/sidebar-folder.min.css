@@ -11,6 +11,11 @@
   cursor: pointer;
   margin-left: 4px;
 }
+
+em {
+  color: red;
+}
+
 /* .sidebar-nav ul:not(.app-sub-sidebar) > li.folder::before {
   content: "";
   display: block;
@@ -62,16 +67,12 @@
   padding: var(--sidebar-nav-pagelink-padding, var(--sidebar-nav-link-padding));
 }
 
-.sidebar-nav li.file > a[title="3. ToF 相机的组成"],
 .sidebar-nav li.file > a[title="4. ToF 相机的实现原理"],
 .sidebar-nav li.file > a[title="1. NYX650/660"],
 .sidebar-nav li.file > a[title="2. VENO86/87"],
 .sidebar-nav li.file > a[title="2. 设备连接"],
 .sidebar-nav li.file > a[title="3. 功能介绍"],
-.sidebar-nav li.file > a[title="2.5. API 参考"],
-.sidebar-nav li.file > a[title="3.1.5. API 参考"],
-.sidebar-nav li.file > a[title="3.2.4. API 参考"],
-.sidebar-nav li.folder a[title="2. BaseSDK (C/C++)"],
+.sidebar-nav li.file > a[title="2. BaseSDK (C/C++)"],
 .sidebar-nav li.folder a[title="3. MultilanguageSDK"],
 .sidebar-nav li.folder a[title="4. 3rd-Party Plugin"],
 .sidebar-nav li.folder a[title="3.1. Python"],
@@ -91,7 +92,6 @@
   background-size: 10px 10px;
 }
 
-.sidebar-nav li.folder.open.active > p.active a[title="2. BaseSDK (C/C++)"],
 .sidebar-nav li.folder.open.active > p.active a[title="3.1. Python"],
 .sidebar-nav li.folder.open.active > p.active a[title="3.2. C#"],
 .sidebar-nav li.folder.open.active > p.active a[title="4.1. ROS"],
@@ -101,7 +101,6 @@
 .sidebar-nav li.folder.open.active > p.active a[title="1.2. AGV 场景测试数据"],
 .sidebar-nav li.folder.open.active > p.active a[title="1.3. 多机共存"],
 .sidebar-nav li.folder.open.active > p.active a[title="2.2. AGV 场景测试数据"],
-.sidebar-nav li.folder.open.active > p.active a[title="2.3. HDR 模式"],
 .sidebar-nav li.folder.open.active > p.active a[title="2.4. 多机共存"] {
   background: left center no-repeat url(../open.png);
   background-size: 10px 10px;
