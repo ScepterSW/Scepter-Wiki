@@ -42,7 +42,7 @@ Scepter 软件开发包介绍
 
   - [3.1. Python](zh-cn/ScepterSDK/MultilanguageSDK/Python.md)
 
-  * [3.2. C#](zh-cn/ScepterSDK/MultilanguageSDK/CSharp.md)
+  * [3.2. CSharp](zh-cn/ScepterSDK/MultilanguageSDK/CSharp.md)
 
 * [4. 3rd-Party Plugin](zh-cn/ScepterSDK/3rd-Party%20Plugin/Overview.md)
 

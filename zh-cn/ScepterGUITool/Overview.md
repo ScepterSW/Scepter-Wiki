@@ -20,15 +20,17 @@ ScepterGUITool 下载链接：
 
 <https://gitee.com/ScepterSW/ScepterGUITool>
 
-下面介绍两种下载方式：
+您可以通过以下两种下载方式下载 ScepterSDK 开发包：
+
+方式一通过 git clone 下载到本地；
+
+方式二通过下载压缩包到本地。
 
 <!-- tabs:start -->
 
 #### **方式一**
 
-也可以通过 git clone 到本地，方法如下：
-
-Step1：打开下载链接，点击 Code，复制链接；
+① 打开下载链接，点击 Code，复制链接；
 
 ```
 git clone https://github.com/ScepterSW/ScepterGUITool
@@ -36,7 +38,7 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 ![git clone http](<pic/git clone http.png>)
 
-Step2：打开终端，输入复制代码回车，等待下载完成。
+② 打开终端，输入复制代码回车，等待下载完成。
 
 ![get clone GUITool.png](<pic/get clone GUITool.png>)
 

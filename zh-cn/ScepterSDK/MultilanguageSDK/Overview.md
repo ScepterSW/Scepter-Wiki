@@ -2,8 +2,6 @@
 
 ## 3.1. Python
 
-![PythonContents](pic/PythonContents.png)
-
 - [3.1.1. 基础介绍](zh-cn/ScepterSDK/MultilanguageSDK/Python?id=_311-基础介绍)
 
 - [3.1.2. 项目配置](zh-cn/ScepterSDK/MultilanguageSDK/Python?id=_312-项目配置)
@@ -15,8 +13,6 @@
 - [3.1.5. API 参考](zh-cn/ScepterSDK/MultilanguageSDK/Python?id=_315-API%20参考)
 
 ## 3.2. CSharp
-
-![CSharpContents](pic/CSharpContents.png)
 
 - [3.2.1. 基础介绍](zh-cn/ScepterSDK/MultilanguageSDK/CSharp?id=_321-基础介绍)
 

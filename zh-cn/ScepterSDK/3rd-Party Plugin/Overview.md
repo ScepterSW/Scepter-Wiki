@@ -2,8 +2,6 @@
 
 ## 4.1. ROS
 
-![contents](pic/ROS/step2.png)
-
 - [4.1.1. 环境要求](zh-cn/ScepterSDK/3rd-Party%20Plugin/ROS?id=_411-环境要求)
 
 - [4.1.2. 安装 ROS 软件包](zh-cn/ScepterSDK/3rd-Party%20Plugin/ROS?id=_412-安装-ros-软件包)
@@ -15,8 +13,6 @@
 - [4.1.5. 编程指南](zh-cn/ScepterSDK/3rd-Party%20Plugin/ROS?id=_415-编程指南)
 
 ## 4.2. ROS2
-
-![contents](pic/ROS2/step2.png)
 
 - [4.2.1. 环境要求](zh-cn/ScepterSDK/3rd-Party%20Plugin/ROS2?id=_421-环境要求)
 
