@@ -108,6 +108,12 @@
 
 DHCP 连接方式，需要将相机连接在开启 DHCP 功能的路由器上，使用在相同局域网中的 PC 进行连接。设置相机 DHCP 的方法，请参考 ScepterGUITool 的文档。推荐将 PC 的“本地连接”设置为自动获取 IP 地址。
 
+<div class="center">
+
+![DHCP 连接方式](pic/DHCP-CarmeraConnection.png)
+
+</div>
+
 <!-- tabs:start -->
 
 #### **Windows**
