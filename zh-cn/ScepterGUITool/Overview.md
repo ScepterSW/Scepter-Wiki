@@ -40,7 +40,7 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 ② 打开终端，输入复制代码回车，等待下载完成。
 
-![get clone GUITool.png](<pic/get clone GUITool.png>)
+![git clone GUITool.png](<pic/git clone GUITool.png>)
 
 #### **方式二**
 

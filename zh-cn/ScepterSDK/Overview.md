@@ -50,7 +50,13 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
 ScepterSDK 提供的多平台和开发语言的开发包，包含如下内容：
 
-**BaseSDK (C/C++)：**
+**3rd-PartyPlugin：**
+
+- ROS：目录包含 ROS 软件包。
+
+- ROS2：目录包含 ROS2 软件包。
+
+**BaseSDK：**
 
 - Windows：目录包含个人计算机平台(x86_64) Windows PC 开发包, 使用标准编译器 VS2017。
 
@@ -66,12 +72,6 @@ ScepterSDK 提供的多平台和开发语言的开发包，包含如下内容：
 
 - CSharp：目录包含 C#语言开发包。
 
-**3rd-Party Plugin：**
+**LICENSE：**软件许可证条例文件。
 
-- ROS：目录包含 ROS 软件包。
-
-- ROS2：目录包含 ROS2 软件包。
-
-LICENSE：软件许可证条例文件。
-
-README：ScepterSDK 简介与相关链接。
+**README.md：**ScepterSDK 简介与相关链接。

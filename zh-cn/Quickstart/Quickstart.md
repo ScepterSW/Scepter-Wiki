@@ -156,19 +156,27 @@ ScepterGUITool 包含 ScepterGUITool 可执行文件及相关动态链接库。
 
 双击 ScepterGUITool 可执行文件，运行 ScepterGUITool，按照以下步骤连接设备：
 
-① 搜索设备
+① 搜索设备。
 
-② 选中设备的 SN
+![ScanDevice](pic/ScanDevice.png)
 
-③ 点击 Open 打开设备，或者双击设备 SN 打开设备
+② 选中需要打开的设备。
 
-![设备连接](pic/DeviceList.png)
+![SelectDevice](pic/SelectDevice.png)
 
-③ 打开成功后，图像在右侧正常显现。
+③ 点击 Connect 连接设备。
+
+![ConnectDevice](pic/ConnectDevice.png)
+
+④ 设备连接成功后，点击 Stream 右侧的开关，启动相机的视频流。
+
+![DeviceStreamOn](pic/DeviceStreamOn.png)
+
+⑤ 启动成功后，图像在右侧正常显现。
 
 ![图像显现](pic/DisplayArea.png)
 
-④ 此时设备处于以太网广播连接建立的状态，侧面用于显示相机的状态的 LED 指示灯会呈**蓝色**并且常亮。
+⑥ 此时设备处于以太网广播连接建立的状态，侧面用于显示相机的状态的 LED 指示灯会呈**蓝色**并且常亮。
 
 ![BlueLed2](pic/BlueLed2.png)
 

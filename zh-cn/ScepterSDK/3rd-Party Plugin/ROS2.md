@@ -6,9 +6,9 @@
 
 **1. 为您的操作系统安装推荐的 ROS2 发行版(<http://wiki.ros.org/Distributions>)**
 
-- ROS2 安装页面:<http://docs.ros.org/en/rolling/Installation.html>
+- ROS2 安装页面：<http://docs.ros.org/en/rolling/Installation.html>
 
-- 您可以使用第三方插件*FishROS*，实现快速安装 ROS:<https://github.com/fishros/install>
+- 您可以使用第三方插件 FishROS，实现快速安装 ROS：<https://github.com/fishros/install>
 
 **2. 已验证的版本**
 
@@ -28,7 +28,7 @@
 **1. 安装 ScepterSDK**
 
 ```console
-git clone https://gitee.com/gmiorg/ScepterSDK
+git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
   <div class="center">
@@ -55,11 +55,11 @@ cd ROS2/src/ScepterROS
 python install.py Ubuntu18.04
 ```
 
-<!-- <div class="center">
+<div class="center">
 
 ![step3](pic/ROS2/step3.png)
 
-</div> -->
+</div>
 
 **4. 构建 ScepterROS2 包**
 
@@ -91,7 +91,7 @@ source install/setup.bash
 **1. 安装 ScepterSDK**
 
 ```console
-git clone https://gitee.com/gmiorg/ScepterSDK
+git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
   <div class="center">
@@ -118,11 +118,11 @@ cd ROS2/src/ScepterROS_MultiCameras
 python install.py Ubuntu18.04
 ```
 
-<!-- <div class="center">
+<div class="center">
 
 ![step3](pic/ROS2_MultiCameras/step3.png)
 
-</div> -->
+</div>
 
 **4. 构建 ScepterROS2 包**
 
@@ -160,7 +160,7 @@ source install/setup.bash
 **1. 启动相机节点**
 
 ```console
-ros2 run ScepterROS Scepter_camera
+ros2 run ScepterROS scepter_camera
 ```
 
 <div class="center">
@@ -206,13 +206,13 @@ ros2 run rviz2 rviz2
 **1. 启动相机节点**
 
 ```console
-ros2 run ScepterROS_MultiCameras Scepter_multicameras <nodename> <ip>
+ros2 run ScepterROS_MultiCameras scepter_multicameras <nodename> <ip>
 ```
 
 例如：
 
 ```console
-ros2 run ScepterROS_MultiCameras Scepter_multicameras cam1 192.168.1.102
+ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
 ```
 
 <div class="center">
@@ -310,7 +310,7 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定
 如果开发者需要设置相机参数或算法开关，请参考以下流程。
 以调用**scSetSpatialFilterEnabled**为例：
 
-- 从**dependencies/Include/ScepterScepter_api.h**查找 api
+- 从 **/src/ScepterROS/dependencies/include/Scepter_api.h** 查找 api
 
 <div class="center">
 
@@ -318,7 +318,7 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定
 
 </div>
 
-- 将代码添加到 **/src/Scepter_manager.cpp**
+- 将代码添加到 **/src/ScepterROS/src/scepter_manager.cpp**
 
 <div class="center">
 
