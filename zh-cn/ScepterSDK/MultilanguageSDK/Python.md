@@ -648,7 +648,7 @@ def scGetSDKVersion(self):
 
 **返回值：**
 
-SDK 版本号
+**version.value**：SDK 版本号
 
 ### 3.1.5.3.4. scGetDeviceCount
 
@@ -677,6 +677,8 @@ scanTime：单位为毫秒，数值范围为（0，65535）。
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+**count.value**：设备数量
+
 ### 3.1.5.3.5. GetDeviceInfoList
 
 **函数原型：**
@@ -701,6 +703,8 @@ cam_count：需要获取信息列表的设备个数
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[**device_infolist**](#_315213-scdeviceinfo)：返回设备信息列表，其应该指向大小为 sizeof(ScDeviceInfo)\*deviceCount 大小的缓存
 
 ### 3.1.5.3.6. scOpenDeviceBySN
 
@@ -845,6 +849,8 @@ waitTime：允许等待图像就绪的超时时间(ms)，取值范围为(0，655
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+[**frameready**](#_315212-scframeready)：返回图像的就绪状态
+
 ### 3.1.5.3.12. scGetFrame
 
 **函数原型：**
@@ -870,6 +876,8 @@ self.device_handle：设备句柄
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[**Scframe**](#_315211-scframe)：返回的图像数据
 
 ### 3.1.5.3.13. scSetWorkMode
 
@@ -917,6 +925,8 @@ self.device_handle：设备句柄
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[**mode**](#_31516-scworkmode)：获取到的设备的工作模式
 
 ### 3.1.5.3.15. scSoftwareTriggerOnce
 
@@ -986,6 +996,8 @@ self.device_handle：设备句柄
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+[**CameraParameters**](#_31528-scsensorintrinsicparameters)：返回传感器镜头的内参
+
 ### 3.1.5.3.18. scGetSensorExtrinsicParameters
 
 **函数原型：**
@@ -1009,6 +1021,8 @@ self.device_handle：设备句柄
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[**CameraExtrinsicParameters**](#_31529-scsensorextrinsicparameters)：返回设备的外参
 
 ### 3.1.5.3.19. scGetFirmwareVersion
 
@@ -1035,6 +1049,8 @@ fw：返回设备的固件版本
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+**fw.value**：返回设备的固件版本
+
 ### 3.1.5.3.20. scGetDeviceMACAddress
 
 **函数原型：**
@@ -1059,6 +1075,8 @@ mac：返回设备的 MAC 地址，其默认是一个字节长度为 18，以‘
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+**mac.value**：返回设备的 MAC 地址，其默认是一个字节长度为 18，以‘\0’结尾的字符串
 
 ### 3.1.5.3.21. scSetIRGMMGain
 
@@ -1107,6 +1125,8 @@ byref(gmmgain)：返回设备的 IR 增益值
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+**gmmgain.value**：返回设备的 IR 增益值
+
 ### 3.1.5.3.23. scSetIRGMMCorrection
 
 **函数原型：**
@@ -1154,6 +1174,8 @@ self.device_handle：设备句柄
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+[**params**](#_315217-scirgmmcorrectionparams)：IR Gamma 校正的值
+
 ### 3.1.5.3.25. scSetColorPixelFormat
 
 **函数原型：**
@@ -1176,51 +1198,6 @@ self.device_handle：设备句柄
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-<!-- ### 3.1.5.3.27. scSetColorGain
-
-**函数原型：**
-
-```python
-def scSetColorResolution(self, w = c_int32(1600), h = c_int32(1200)):
-   return self.sc_cam_lib.scSetColorResolution(self.device_handle, w, h)
-```
-
-**函数功能：**
-
-在手动曝光模式中，设置彩色传感器曝光模式的颜色增益
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">float</span> params：NYX650 的颜色增益值在[0，100]范围内。不同的产品具有不同的范围，请参考产品说明书
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.1.5.3.28. scGetColorGain
-
-**函数原型：**
-
-```python
-ScReturnStatus scGetColorGain(ScDeviceHandle device, float params)
-```
-
-**函数功能：**
-
-获取彩色传感器曝光模式的颜色增益
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">float</span> params：颜色增益值
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 -->
 
 ### 3.1.5.3.26. scSetColorResolution
 
@@ -1274,29 +1251,9 @@ byref(h)：返回彩色图像的图像高
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-<!-- ### 3.1.5.3.31. scGetSupportedResolutionList
+**w**：返回彩色图像的图像宽
 
-**函数原型：**
-
-```python
-ScReturnStatus scGetSupportedResolutionList(ScDeviceHandle device, ScSensorType type, ScResolutionList* pList)
-```
-
-**函数功能：**
-
-获取传感器支持的图像分辨率列表
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-[**ScSensorType**](#_31512-scsensortype) type：传感器类型
-
-[**ScResolutionList**](#_31525-scresolutionlist)\* pList：支持的图像分辨率列表
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 -->
+**h**：返回彩色图像的图像高
 
 ### 3.1.5.3.28. scSetFrameRate
 
@@ -1345,6 +1302,8 @@ byref(value)：返回设备的图像帧率
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+**value.value**：返回设备的图像帧率
+
 ### 3.1.5.3.30. scSetExposureControlMode
 
 **函数原型：**
@@ -1369,30 +1328,6 @@ self.device_handle：设备句柄
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-<!-- ### 3.1.5.3.32. scGetExposureControlMode
-
-**函数原型：**
-
-```python
-ScReturnStatus scGetExposureControlMode(ScDeviceHandle device, ScSensorType sensorType, ScExposureControlMode* pControlMode)
-```
-
-**函数功能：**
-
-获取传感器的曝光模式
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-[**ScSensorType**](#_31512-scsensortype) sensorType：要获取曝光模式的传感器类型
-
-[**ScExposureControlMode**](#_31517-scexposurecontrolmode) controlMode：返回传感器的曝光模式
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 -->
 
 ### 3.1.5.3.31. scSetExposureTime
 
@@ -1449,29 +1384,7 @@ byref(params)：返回获取的曝光时间参数
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-<!-- ### 3.1.5.3.38. scGetMaxExposureTime
-
-**函数原型：**
-
-```python
-ScReturnStatus scGetMaxExposureTime(ScDeviceHandle device, ScSensorType sensorType, int32_t* pMaxExposureTime);
-```
-
-**函数功能：**
-
-获取传感器的最大曝光时间
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-[**ScSensorType**](#_31512-scsensortype) sensorType：要获取曝光时间的传感器类型
-
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pMaxExposureTime：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同。
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 -->
+**params**：返回获取的曝光时间参数
 
 ### 3.1.5.3.33. scSetTimeFilterParams
 
@@ -1566,6 +1479,8 @@ self.device_handle：设备句柄
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+[**params**](#_315214-scconfidencefilterparams)：指向存储返回值的变量的指针
+
 ### 3.1.5.3.37. scSetFlyingPixelFilterParams
 
 **函数原型：**
@@ -1612,6 +1527,8 @@ self.device_handle：设备句柄
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[**params**](#_315215-scflyingpixelfilterparams)：滤波参数
 
 ### 3.1.5.3.39. scSetFillHoleFilterEnabled
 
@@ -1660,6 +1577,8 @@ byref(enable)：true 开启，false 关闭
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+**enable.value**：true 开启，false 关闭
+
 ### 3.1.5.3.41. scSetSpatialFilterEnabled
 
 **函数原型：**
@@ -1706,6 +1625,8 @@ byref(enable)：true 开启，false 关闭
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+**enable.value**：true 开启，false 关闭
 
 ### 3.1.5.3.43. scSetTransformColorImgToDepthSensorEnabled
 
@@ -1754,6 +1675,8 @@ byref(enabled)：返回开关状态
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+**enabled**：返回开关状态
+
 ### 3.1.5.3.45. scSetTransformDepthImgToColorSensorEnabled
 
 **函数原型：**
@@ -1801,63 +1724,7 @@ byref(enabled)：返回开关状态
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-<!-- ### 3.1.5.3.48. scTransformedDepthPointToColorPoint
-
-**函数原型：**
-
-```python
-def scConvertDepthFrameToPointCloudVector(self, depthFrame = ScFrame()):
-   len = depthFrame.width*depthFrame.height
-   tmp =ScVector3f*len
-   pointlist = tmp()
-   return self.sc_cam_lib.scConvertDepthFrameToPointCloudVector(self.device_handle, byref(depthFrame) ,pointlist),pointlist
-```
-
-**函数功能：**
-
-对齐深度图像上的点到彩色图像空间，可以在彩色图像上获得与传入的深度图像坐标点相对应的点的坐标
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScDepthVector3**](#_31523-scdepthvector3) depthPoint：深度图像的坐标点
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScVector2u16**](#_31522-scvector2u16) colorSize：彩色图像尺寸
-
-[**ScVector2u16**](#_31522-scvector2u16)\* pPointInColor：获得的与深度图像的坐标点对应的彩色图像坐标点
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.1.5.3.54. scConvertDepthToPointCloud
-
-**函数原型：**
-
-```python
-ScReturnStatus scConvertDepthToPointCloud(ScDeviceHandle device, ScDepthVector3* pDepthVector, ScVector3f* pWorldVector, int32_t pointCount, ScSensorIntrinsicParameters* pSensorParam)
-```
-
-**函数功能：**
-
-把传入的深度图像坐标点集合转换为世界坐标系点集合。世界坐标原点在深度传感器镜头中心，Z 轴垂直与设备前盖板，其正方向从设备指向远方；X 轴从深度镜头指向激光器，其正方向从设备指向远方；Y 轴垂直与设备指向地面，其正方向从设备指向远方。
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-[**ScDepthVector3**](#_31523-scdepthvector3)\* pDepthVector：深度图像的坐标点的集合
-
-[**ScVector3f**](#_31521-scvector3f)\* pWorldVector：转换后点云的坐标点的集合
-
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span> pointCount：坐标点的数目
-
-[**ScSensorIntrinsicParameters**](#_31526-scsensorintrinsicparameters)\* pSensorParam：传感器内参
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 -->
+**enabled**：返回开关状态
 
 ### 3.1.5.3.47. scConvertDepthFrameToPointCloudVector
 
@@ -1886,6 +1753,8 @@ self.device_handle：设备句柄
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[**pointlist**](#_31523-scvector3f)：转换后点云的坐标点的集合
 
 ### 3.1.5.3.48. scSetHotPlugStatusCallback
 
@@ -1930,11 +1799,13 @@ self.device_handle：设备句柄
 
 [sensorType.value](#_31512-scsensortype)：要获取曝光时间的传感器类型
 
-byref(tmp)：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同。
+byref(tmp)：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+**tmp**：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同
 
 ### 3.1.5.3.50. scSetParamsByJson
 
@@ -1977,7 +1848,7 @@ def scSetColorGain(self, params = c_float(1.0)):
 
 self.device_handle：设备句柄
 
-params：NYX650 的颜色增益值在[0，100]范围内。不同的产品具有不同的范围，请参考产品说明书
+params：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
 
 **返回值：**
 
@@ -2002,11 +1873,13 @@ def scGetColorGain(self):
 
 self.device_handle：设备句柄
 
-params：NYX650 的颜色增益值在[0，100]范围内。不同的产品具有不同的范围，请参考产品说明书
+params：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+**params**：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
 
 ### 3.1.5.3.53. scSetAutoExposureTime
 
@@ -2054,5 +1927,7 @@ byref(params)：返回获取的曝光时间参数
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+**params**：返回获取的曝光时间参数
 
 <!-- tabs:end -->
