@@ -36,11 +36,11 @@
 
 </div>
 
-<div class="center">
+<!-- <div class="center">
 
 ![固定地址](pic/WindowsStaticAddress.png)
 
-</div>
+</div> -->
 
 #### **Ubuntu**
 
@@ -69,7 +69,7 @@
 设置 ARM-Linux 端的**本地连接**，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。可选用 numtui 进行设置。
 
 ```consle
-sudo numtui
+sudo nmtui
 ```
 
    <div class="center">

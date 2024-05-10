@@ -36,7 +36,7 @@
 
 ② 若无法 ping 通，打开设置，再打开有线网络连接设置，查看主机端的 IP 是否和相机默认 IP 处于同一网段；
 
-![Ubuntu set ip](<pic/Ubuntu set ip.png>)
+![Ubuntu set ip](pic/LinuxStaticAddress3.png)
 
 ③ 若无法 ping 通，打开终端，输入'ifconfig'查看主机端的 IP 是否和相机默认 IP 处于同一网段；
 

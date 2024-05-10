@@ -76,12 +76,6 @@
 
 </div>
 
-<div class="center">
-
-![固定地址](pic/WindowsStaticAddress.png)
-
-</div>
-
 #### **Ubuntu**
 
 <div class="center">
