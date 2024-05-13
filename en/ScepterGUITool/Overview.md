@@ -1,56 +1,56 @@
-# 1. 概述
+# 1. Overview
 
-![ScepterGUITool](pic/ScepterGUITool.png)
+![ScepterGUITool](../../zh-cn/ScepterGUITool/pic/ScepterGUITool.png)
 
-ScepterGUITool 是基于 Scepter SDK 开发的图形界面工具，提供 Depth 图像彩色映射显示、3D 点云显示、滤波参数调节、设备参数设置以及 RGB & Depth 对齐等功能，并且可以通过设置页面对设备进行 IP 地址设置与固件升级操作。
+ScepterGUITool is a graphical interface tool based on Scepter SDK, which provides functions such as depth image color mapping display, 3D point cloud display, filter parameter adjustment, device parameter setting and RGB & depth alignment. You can also set the IP address and upgrade the firmware of the device through the setting page.
 
-> 如果您需要同时操作多台设备，您需要为每台设备打开一个单独的 ScepterGUITool 实例。
+> If you need to operate multiple devices at the same time, you need to open a separate ScepterGUITool instance for each device.
 >
 > <div class="center">
 >
-> ![Two GUI Open](<pic/Two GUI Open.png>)
+> ![Two GUI Open](<../../zh-cn/ScepterGUITool/pic/Two GUI Open.png>)
 >
 > </div>
 
-ScepterGUITool 下载链接：
+ScepterGUITool download link:
 
 <https://github.com/ScepterSW/ScepterGUITool>
 
-或
+or
 
 <https://gitee.com/ScepterSW/ScepterGUITool>
 
-您可以通过以下两种下载方式下载 ScepterSDK 开发包：
+You can download the Scepter development package through the following download methods:
 
-方式一通过 git clone 下载到本地；
+Method 1: Downloads to local through git clone;
 
-方式二通过下载压缩包到本地。
+Method 2: Download the compressed package locally.
 
 <!-- tabs:start -->
 
-#### **方式一**
+#### **Method 1**
 
-① 打开下载链接，点击 Code，复制链接；
+① Open the download link, click Code, and copy the link;
 
 ```
 git clone https://github.com/ScepterSW/ScepterGUITool
 ```
 
-![git clone http](<pic/git clone http.png>)
+![git clone http](<../../zh-cn/ScepterGUITool/pic/git clone http.png>)
 
-② 打开终端，输入复制代码回车，等待下载完成。
+② Open the terminal, enter the copied code and press Enter, and wait for the download to complete.
 
-![git clone GUITool.png](<pic/git clone GUITool.png>)
+![git clone GUITool.png](<../../zh-cn/ScepterGUITool/pic/git clone GUITool.png>)
 
-#### **方式二**
+#### **Method 2**
 
-打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterGUIToo 工具压缩包下载到本地。
+Open the download link, click Code, and then click Download ZIP to download the ScepterGUITool compressed package locally.
 
-![GitHub GUITooL](<pic/GitHub GUITooL.png>)
+![GitHub GUITooL](<../../zh-cn/ScepterGUITool/pic/GitHub GUITooL.png>)
 
 <!-- tabs:end -->
 
-目前 ScepterGUITool 支持的产品有：
+The products currently supported by Scepter GUITool are:
 
 - NYX650/660
 

@@ -1,55 +1,55 @@
 # 4. FAQ
 
-**Q1：为什么可以搜索到网口类设备但却打不开相机？**
+**Q1：Why can I search for network devices but can't turn on the camera?**
 
-**A1**: 1.确认相机的连接和供电没有问题，相机的蓝色指示灯闪烁
+**A1**: 1.Confirm that there is no problem with the connection and power supply of the camera, and the blue indicator light of the camera flashes.
 
-2.查看相机 IP（默认 192.168.1.101）是否能 ping 通：
+2.Check if the camera IP (192.168.1.101 by default) can be pinged:
 
 <!-- tabs:start -->
 
 #### **Windows**
 
-①Win+R 打开运行命令，输入'cmd'点击确定，打开命令行程序；
+① Win + R opens the running command, enters the 'cmd' and clicks OK to open the command line program;
 
-![打开cmd](<pic/cmd open.png>)
+![cmd open](<pic/cmd open.png>)
 
-② 输入'ping 192.168.1.101'回车等待，即可查看相机是否 ping 通(相机默认 ip 地址为 192.168.1.101)；
+② Enter'ping 192.168.1.101 'and press Enter to check whether the camera is pinged (the default IP address of the camera is 192.168.1.101);
 
-![ping通相机](<pic/ping ip.png>)
+![ping ip](<pic/ping ip.png>)
 
-③ 若无法 ping 通，打开 cmd，输入'ipconfig'查看主机端的 IP 是否和相机默认 IP 处于同一网段；
+③ If the ping fails, open cmd and input the 'ipconfig' to check whether the IP of the host is in the same network segment as the default IP of the camera;
 
 ![ipconfig](pic/ipconfig.png)
 
-④ 若可以 ping 通，查看防火墙是否关闭，或允许工具使用公用网络和专用网络
+④ If you can ping, see if the firewall is down or allow the tool to use the public and private network
 
-![设置防火墙](<pic/windows defender.png>)
+![windows defender](<pic/windows defender.png>)
 
-如以上措施均不能解决问题，请用 ipconfig 指令查看 PC 端网络状态，将除与相机同一网段之外的网络禁用再次搜索设备。
+If none of the above measures can solve the problem, please use the ipconfig command to check the network status on the PC side, and disable the network other than the same network segment as the camera to search for the device again.
 
 #### **Ubuntu**
 
-① 打开 Ubuntu 终端，输入'ping -c 5 192.168.1.101'回车等待，即可查看相机是否 ping 通(相机默认 ip 地址为 192.168.1.101)；
+① Open the Ubuntu terminal, enter'ping -C 5 192.168.1.101 'and press Enter to check whether the camera is pinged (the default IP address of the camera is 192.168.1.101);
 
-![ping通相机](<pic/Ubuntu ping ip.png>)
+![Ubuntu ping ip](<../../zh-cn/ScepterGUITool/pic/Ubuntu ping ip.png>)
 
-② 若无法 ping 通，打开设置，再打开有线网络连接设置，查看主机端的 IP 是否和相机默认 IP 处于同一网段；
+② If the ping fails, open the settings, and then open the wired network connection settings to check whether the IP of the host is in the same network segment as the default IP of the camera;
 
 ![Ubuntu set ip](pic/LinuxStaticAddress3.png)
 
-③ 若无法 ping 通，打开终端，输入'ifconfig'查看主机端的 IP 是否和相机默认 IP 处于同一网段；
+③ If the ping fails, open the terminal and input the 'ifconfig' to check whether the IP of the host and the default IP of the camera are in the same network segment;
 
 ![Ubuntu ifconfig](<pic/Ubuntu ifconfig.png>)
 
-如以上措施均不能解决问题，请用 ifconfig 指令查看 PC 端网络状态，将除与相机同一网段之外的网络禁用再次搜索设备。
+If none of the above measures can solve the problem, please use the ifconfig command to check the network status on the PC side, and disable the network other than the same network segment as the camera to search for the device again.
 
 <!-- tabs:end -->
 
-**Q2:  通过 GUI 保存的 IR 图和深度图为什么打不开？点云图如何查看？**
+**Q2:  Why can't I open the IR map and depth map saved through the GUI? How to view the point cloud?**
 
-**A2**: ScepterGUITool 保存的 IR 和 Depth 图像是 16bit 图片数据，可以使用 ImageJ 打开查看；GUITool 保存的点云图是.txt 格式，可使用 CloudCompare 进行查看。
+**A2**: The IR and Depth images saved by ScepterGUITool are 16-bit image data, which can be opened and viewed by ImageJ; the point cloud data saved by GUITool are in.txt format, which can be viewed by CloudCompare.
 
-**Q3:  如何改善相机对黑色物体的检测**
+**Q3: How to improve the camera's detection of black objects**
 
-**A3**:  可以尝试下述方法：1.将产品帧率降低（例如 5 帧），调整曝光时间到当前帧率下的最大值；2.将 Confidence 滤波阈值更改为 2 或 5
+**A3**:  Try the following methods: 1. Reduce the frame rate of the product (for example, 5 frames), and adjust the exposure time to the maximum value at the current frame rate; 2. Change the Confidence filter threshold to 2 or 5

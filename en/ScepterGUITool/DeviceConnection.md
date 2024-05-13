@@ -1,57 +1,57 @@
-# 2. 设备连接
+# 2. Device Connection
 
-## 2.1. 推荐系统配置
+## 2.1. Recommend system requirements
 
 <!-- tabs:start -->
 
 #### **Windows**
 
-| **配置项** |                 **推荐配置**                  |
-| :--------: | :-------------------------------------------: |
-|  操作系统  | Win7 32/64 位</br>Win10 64 位</br>Win11 64 位 |
-|    内存    |                    4g 以上                    |
+| **Item** |                  **Requirements**                   |
+| :------: | :-------------------------------------------------: |
+|    OS    | Win7 32/64 bits</br>Win10 64 bits</br>Win11 64 bits |
+|   RAM    |                     At least 4g                     |
 
 #### **Ubuntu**
 
-| **配置项** |                           **推荐配置**                           |
-| :--------: | :--------------------------------------------------------------: |
-|  操作系统  | Ubuntu 18.04 64 位</br>Ubuntu 20.04 64 位</br>Ubuntu 22.04 64 位 |
+| **Item** |                            **Requirements**                            |
+| :------: | :--------------------------------------------------------------------: |
+|    OS    | Ubuntu 18.04 64 bits</br>Ubuntu 20.04 64 bits</br>Ubuntu 22.04 64 bits |
 
 <!-- tabs:end -->
 
-## 2.2. 设备连接
+## 2.2. Device Connection
 
-![设备连接](pic/DeviceConnection.png)
+![Device Connection](../../zh-cn/ScepterGUITool/pic/DeviceConnection.png)
 
 <div class="center">
 
-硬件模组安装示意图
+Hardware module installation diagram
 
 </div>
 
-1、通过以太网线/航插网线将相机连接至主机；
+1. Connect the camera to the host through the Ethernet cable/aviation plug cable;
 
-2、将电源线连接至相机，等待相机指示灯闪烁，完成设备连接。
+2. Connect the power cord to the camera and wait for the camera indicator to flash to complete the device connection.
 
-> 网线连接分为固定 IP 地址直连与 DHCP 连接两种方式，设备默认使用固定 IP 地址方式连接，如需更改 IP 地址、子网掩码、DHCP，可以使用 ScepterGUITool 进行更改。
+> Network cable connection is divided into static IP address direct connection and DHCP connection. The device is connected by static IP address by default. If you need to change the IP address, subnet mask and DHCP, you can use ScepterGUITool to change them.
 
-### 2.2.1. 固定地址
+### 2.2.1. Static Address
 
-固定地址连接可以设备与电脑直连，也可以配置在同一网段的交换机中使用。
+Using static address connection method, device can be directly connected to computer, or with switch on the same network segment.
 
-直连：一端连接设备，另一端连接 PC 主机的网线接口。设备默认 IP 为 **192.168.1.101**，在 PC 端将“本地连接”的，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。
+Direct connection: one end of the cable is connected to the camera, and the other end is plugged into RJ45 port of the PC. The default IP address of device is **192.168.1.101**, so the address of the PC can be set to 192.168.1.100. In Win10 system, the below picture can be referenced to set the PC network up.
 
 <div class="center">
 
-![直连](pic/DirectConnection-NoSwitchboard.png)
+![DirectConnection-NoSwitchboard](../../zh-cn/ScepterGUITool/pic/DirectConnection-NoSwitchboard.png)
 
 </div>
 
-多个相机连接：需要注意，因为相机默认 IP 地址都为 192.168.1.101 连接同一个 PC 主机是会出现 IP 冲突，所以要更改相机的默认 IP 地址（如相机 1 的 IP 地址：192.168.1.101，相机 2 的 IP 地址：192.168.1.102），可参考[3.4.7. IP 设置与固件升级](/zh-cn/ScepterGUITool/FunctionIntroduction#_347-ip-设置与固件升级)更改相机 IP。
+Connection of multiple cameras: It should be noted that the default IP address of the camera is 192.168.1.101, and IP conflict will occur when the camera is connected to the same PC host. Therefore, the default IP address of the camera should be changed (for example, the IP address of camera 1 is 192.168.1.101, IP address of camera 2: 192.168.1.102), you can change the camera IP by referring to [3.5.IP Settings and Firmware Upgrade](/en/ScepterGUITool/FunctionIntroduction#_347-ip-SettingsandFirmwareUpgrade).
 
 <div class="center">
 
-![多机连接](pic/Multi-CarmeraConnection.png)
+![Multi-CarmeraConnection](../../zh-cn/ScepterGUITool/pic/Multi-CarmeraConnection.png)
 
 </div>
 <!-- tabs:start -->
@@ -72,7 +72,7 @@
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress3.png)
+![WindowsStaticAddress](/pic/WindowsStaticAddress3.png)
 
 </div>
 
@@ -80,19 +80,19 @@
 
 <div class="center">
 
-![LinuxEditConnections](pic/LinuxEditConnections1.png)
+![LinuxEditConnections](/pic/LinuxEditConnections1.png)
 
 </div>
 
 <div class="center">
 
-![LinuxEdit](pic/LinuxEdit2.png)
+![LinuxEdit](/pic/LinuxEdit2.png)
 
 </div>
 
 <div class="center">
 
-![固定地址](pic/LinuxStaticAddress3.png)
+![LinuxStaticAddress3](/pic/LinuxStaticAddress3.png)
 
 </div>
 
@@ -100,11 +100,11 @@
 
 ### 2.2.2. DHCP
 
-DHCP 连接方式，需要将相机连接在开启 DHCP 功能的路由器上，使用在相同局域网中的 PC 进行连接。设置相机 DHCP 的方法，请参考 ScepterGUITool 的文档。推荐将 PC 的“本地连接”设置为自动获取 IP 地址。
+Using DHCP connection mode, the camera need be connected to a router which DHCP is enabled, then connect a PC on the same LAN. Set the local Connection of the PC to obtain the IP address automatically.
 
 <div class="center">
 
-![DHCP 连接方式](pic/DHCP-CarmeraConnection.png)
+![DHCP-CarmeraConnection](pic/DHCP-CarmeraConnection.png)
 
 </div>
 
@@ -128,7 +128,7 @@ DHCP 连接方式，需要将相机连接在开启 DHCP 功能的路由器上，
 
 <!-- tabs:end -->
 
-> 注意：PC 端使用的网卡、路由器、交换机都要满足**千兆**要求。
+> The network cards, routers, and switches used on the host side must meet the Gigabit requirements.
 
 <style>
 .center
