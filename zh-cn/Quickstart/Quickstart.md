@@ -66,7 +66,7 @@
 
 #### **AArch64**
 
-设置 ARM-Linux 端的**本地连接**，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。可选用 numtui 进行设置。
+设置 ARM-Linux 端的本地连接，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。可选用 numtui 进行设置。
 
 ```consle
 sudo nmtui
@@ -126,7 +126,7 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 #### **方式二**
 
-打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterGUIToo 工具压缩包下载到本地。
+打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterGUITool 工具压缩包下载到本地。
 
 ![GitHub GUITooL](<pic/GitHub GUITooL.png>)
 

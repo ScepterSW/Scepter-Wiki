@@ -1581,14 +1581,16 @@ body:not([data-platform^="Mac"]) .sidebar::-webkit-scrollbar-thumb {
 }
 .sidebar-nav li > a[href^="/"]:not([href*="?id="]):not(:only-child),
 .sidebar-nav li > a[href^="#/"]:not([href*="?id="]):not(:only-child) {
-  background: var(
+  /* background: var(
     --sidebar-nav-pagelink-background--loaded,
     var(--sidebar-nav-pagelink-background)
-  );
+  ); */
 }
 
 .sidebar-nav a[title="1.设备连接"],
-.sidebar-nav a[title="2.打开设备"] {
+.sidebar-nav a[title="2.打开设备"],
+.sidebar-nav a[title="1.Hardware Connection"],
+.sidebar-nav a[title="2.Device Open"] {
   padding-left: 20px;
 }
 
