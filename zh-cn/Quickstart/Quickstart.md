@@ -128,7 +128,7 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterGUITool 工具压缩包下载到本地。
 
-![GitHub GUITooL](<pic/GitHub GUITooL.png>)
+![GitHub GUITooL](<pic/GitHub GUITool.png>)
 
 <!-- tabs:end -->
 

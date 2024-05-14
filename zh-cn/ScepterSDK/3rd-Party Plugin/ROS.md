@@ -23,10 +23,6 @@
 
 在 ScepterSDK 中，ScepterROS 可以用于连接单个设备，而 ScepterROS_MultiCameras 则适用于连接多个设备。
 
-<!-- tabs:start -->
-
-#### **ROS**
-
 **1. 安装 ScepterSDK**
 
 ```console
@@ -39,7 +35,7 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
   </div>
 
-**2. 将 SDK 更新为 ROS 包**
+**2. 创建工作空间**
 
 ```console
 cd 3rd-PartyPlugin/ROS/src
@@ -54,9 +50,21 @@ catkin_init_workspace
 
   </div>
 
+<!-- tabs:start -->
+
+#### **ROS**
+
 ```console
 cd ScepterROS
 ```
+
+#### **ROS_MultiCameras**
+
+```console
+cd ScepterROS_MultiCameras
+```
+
+<!-- tabs:end -->
 
 <div class="center">
 
@@ -70,13 +78,31 @@ cd ScepterROS
 python install.py Ubuntu18.04
 ```
 
+<!-- tabs:start -->
+
+#### **ROS**
+
 <div class="center">
 
 ![step3](pic/ROS/step3.png)
 
 </div>
 
+#### **ROS_MultiCameras**
+
+<div class="center">
+
+![step3](pic/ROS_MultiCameras/step3.png)
+
+</div>
+
+<!-- tabs:end -->
+
 **4. 构建 ScepterROS 包**
+
+<!-- tabs:start -->
+
+#### **ROS**
 
 ```console
 cd ../../
@@ -89,64 +115,7 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS"
 
 </div>
 
-**5. 环境设置**
-
-```console
-source devel/setup.bash
-```
-
 #### **ROS_MultiCameras**
-
-**1. 安装 ScepterSDK**
-
-```console
-git clone https://github.com/ScepterSW/ScepterSDK
-```
-
-  <div class="center">
-
-![step0](pic/ROS/step0.png)
-
-  </div>
-
-**2. 将 SDK 更新为 ROS 包**
-
-```console
-cd 3rd-PartyPlugin/ROS/src
-catkin_init_workspace
-```
-
-在运行**catkin_init_workspace**命令之后，其会在**ROS/src**文件夹下生成**CmakeLists.txt**
-
-  <div class="center">
-
-![step1](pic/ROS/step1.png)
-
-  </div>
-
-```console
-cd ScepterROS_MultiCameras
-```
-
-<div class="center">
-
-![step2](pic/ROS/step2.png)
-
-</div>
-
-**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
-
-```console
-python install.py Ubuntu18.04
-```
-
-<div class="center">
-
-![step3](pic/ROS_MultiCameras/step3.png)
-
-</div>
-
-**4. 构建 ScepterROS 包**
 
 ```console
 cd ../../
@@ -159,13 +128,13 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS_MultiCameras"
 
 </div>
 
+<!-- tabs:end -->
+
 **5. 环境设置**
 
 ```console
 source devel/setup.bash
 ```
-
-<!-- tabs:end -->
 
 ## 4.1.3. 使用方式
 

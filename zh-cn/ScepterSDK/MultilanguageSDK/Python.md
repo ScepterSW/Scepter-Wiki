@@ -632,8 +632,6 @@ scanTime：单位为毫秒，数值范围为（0，65535）。
 
 **返回值：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
 **count.value**：设备数量
 
 ### 3.1.5.3.3. GetDeviceInfoList

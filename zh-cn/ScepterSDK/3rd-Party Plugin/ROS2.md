@@ -21,10 +21,6 @@
 
 在 ScepterSDK 中，ScepterROS 可以用于连接单个设备，而 ScepterROS_MultiCameras 则适用于连接多个设备。
 
-<!-- tabs:start -->
-
-#### **ROS**
-
 **1. 安装 ScepterSDK**
 
 ```console
@@ -37,7 +33,7 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
   </div>
 
-**2. 将 SDK 更新为 ROS 包**
+**2. 创建工作空间并打开软件包**
 
 ```console
 cd ROS2/src/ScepterROS
@@ -67,9 +63,14 @@ python install.py Ubuntu18.04
 
 ```console
 sudo apt install python3-colcon-common-extensions
+
 ```
 
-```console
+<!-- tabs:start -->
+
+#### **ROS**
+
+```
 cd ../../
 colcon build --packages-select ScepterROS
 ```
@@ -80,57 +81,7 @@ colcon build --packages-select ScepterROS
 
 </div>
 
-**5.环境设置**
-
-```console
-source install/setup.bash
-```
-
 #### **ROS_MultiCameras**
-
-**1. 安装 ScepterSDK**
-
-```console
-git clone https://github.com/ScepterSW/ScepterSDK
-```
-
-  <div class="center">
-
-![step0](pic/ROS2/step0.png)
-
-  </div>
-
-**2. 将 SDK 更新为 ROS 包**
-
-```console
-cd ROS2/src/ScepterROS_MultiCameras
-```
-
-<div class="center">
-
-![step2](pic/ROS2/step2.png)
-
-</div>
-
-**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
-
-```console
-python install.py Ubuntu18.04
-```
-
-<div class="center">
-
-![step3](pic/ROS2_MultiCameras/step3.png)
-
-</div>
-
-**4. 构建 ScepterROS2 包**
-
-如果没有安装 colcon，请先运行 cmd：
-
-```console
-sudo apt install python3-colcon-common-extensions
-```
 
 ```console
 cd ../../
@@ -143,13 +94,13 @@ colcon build --packages-select ScepterROS_MultiCameras
 
 </div>
 
+<!-- tabs:end -->
+
 **5.环境设置**
 
 ```console
 source install/setup.bash
 ```
-
-<!-- tabs:end -->
 
 ## 4.2.3. 使用方式
 
