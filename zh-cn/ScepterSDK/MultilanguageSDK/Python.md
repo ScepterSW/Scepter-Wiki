@@ -1369,8 +1369,9 @@ self.device_handle：设备句柄
 **函数原型：**
 
 ```python
-def scSetTimeFilterParams(self, params = ScTimeFilterParams()):
-   return self.sc_cam_lib.scSetTimeFilterParams(self.device_handle, params)
+def scGetTimeFilterParams(self):
+   params = ScTimeFilterParams()
+   return self.sc_cam_lib.scGetTimeFilterParams(self.device_handle, byref(params)),params
 ```
 
 **函数功能：**

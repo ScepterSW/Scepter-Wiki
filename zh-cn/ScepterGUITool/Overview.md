@@ -56,6 +56,8 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 - VENO86/87
 
+- DS86/87
+
 - DS77 Lite/DS77 Pro
 
 - DS77C Lite/DS77C Pro
