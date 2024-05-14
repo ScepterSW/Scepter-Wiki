@@ -56,6 +56,10 @@ The products currently supported by Scepter GUITool are:
 
 - VENO86/87
 
+- DS77 Lite/DS77 Pro
+
+- DS77C Lite/DS77C Pro
+
 <style>
 .center
 {

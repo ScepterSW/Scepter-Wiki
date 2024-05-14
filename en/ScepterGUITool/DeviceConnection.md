@@ -6,16 +6,17 @@
 
 #### **Windows**
 
-| **Item** |                  **Requirements**                   |
-| :------: | :-------------------------------------------------: |
-|    OS    | Win7 32/64 bits</br>Win10 64 bits</br>Win11 64 bits |
-|   RAM    |                     At least 4g                     |
+| **Item** |            **Requirements**             |
+| :------: | :-------------------------------------: |
+|    OS    | Windows10 64 bits</br>Windows11 64 bits |
+|   RAM    |               At least 4g               |
 
 #### **Ubuntu**
 
 | **Item** |                            **Requirements**                            |
 | :------: | :--------------------------------------------------------------------: |
 |    OS    | Ubuntu 18.04 64 bits</br>Ubuntu 20.04 64 bits</br>Ubuntu 22.04 64 bits |
+|   RAM    |                              At least 4g                               |
 
 <!-- tabs:end -->
 
@@ -128,7 +129,7 @@ Using DHCP connection mode, the camera need be connected to a router which DHCP 
 
 <!-- tabs:end -->
 
-> The network cards, routers, and switches used on the host side must meet the Gigabit requirements.
+> The network cards, routers, and switches used on the host side must meet the **Gigabit** requirements.
 
 <style>
 .center

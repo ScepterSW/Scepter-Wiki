@@ -34,11 +34,7 @@ If none of the above measures can solve the problem, please use the ipconfig com
 
 ![Ubuntu ping ip](<../../zh-cn/ScepterGUITool/pic/Ubuntu ping ip.png>)
 
-② If the ping fails, open the settings, and then open the wired network connection settings to check whether the IP of the host is in the same network segment as the default IP of the camera;
-
-![Ubuntu set ip](pic/LinuxStaticAddress3.png)
-
-③ If the ping fails, open the terminal and input the 'ifconfig' to check whether the IP of the host and the default IP of the camera are in the same network segment;
+② If the ping fails, open the terminal and input the 'ifconfig' to check whether the IP of the host and the default IP of the camera are in the same network segment;
 
 ![Ubuntu ifconfig](<pic/Ubuntu ifconfig.png>)
 

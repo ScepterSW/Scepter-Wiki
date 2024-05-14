@@ -122,7 +122,7 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 Open the download link, click Code, and then click Download ZIP to download the ScepterGUITool compressed package locally.
 
-![GitHub GUITooL](<../../zh-cn/Quickstart/pic/GitHub GUITool.png>)
+![GitHubGUITool](<../../zh-cn/Quickstart/pic/GitHub GUITool.png>)
 
 <!-- tabs:end -->
 
