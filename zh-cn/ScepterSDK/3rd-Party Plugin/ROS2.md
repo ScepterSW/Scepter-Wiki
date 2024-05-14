@@ -33,7 +33,7 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
   </div>
 
-**2. 创建工作空间并打开软件包**
+**2. 打开软件包**
 
 ```console
 cd ROS2/src/ScepterROS
