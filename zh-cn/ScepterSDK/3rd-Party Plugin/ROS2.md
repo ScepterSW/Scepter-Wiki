@@ -1,6 +1,6 @@
 # 4.2. ROS2
 
-该 ROS2 软件包可用于 ScepterSDK 的深度、IR 和 RGB 数据的采集和处理。
+该 ROS2 软件包可用于 ScepterSDK 的深度、IR 和 Color 数据的采集和处理。
 
 ## 4.2.1. 环境要求
 

@@ -1,31 +1,29 @@
 # 4.2. ROS2
 
-该 ROS2 软件包可用于 ScepterSDK 的深度、IR 和 RGB 数据的采集和处理。
+This ROS2 package facilitates depth IR and color data acquisition and processing for ScepterSDK.
 
-## 4.2.1. 环境要求
+## 4.2.1. Environmental requirements
 
-**1. 为您的操作系统安装推荐的 ROS2 发行版(<http://wiki.ros.org/Distributions>)**
+**1. Install the recommended ROS distribution(<http://wiki.ros.org/Distributions>) for your operating system**
 
-- ROS2 安装页面：<http://docs.ros.org/en/rolling/Installation.html>
+- ROS2 Install page：<http://docs.ros.org/en/rolling/Installation.html>
 
-- 您可以使用第三方插件 FishROS，实现快速安装 ROS：<https://github.com/fishros/install>
+- You can use a third-party plug-in, FishROS, to quickly install ROS：<https://github.com/fishros/install>
 
-**2. 已验证的版本**
+**2. Version verified**
 
-| 系统        | 详情            |
+| system      | details         |
 | ----------- | --------------- |
 | Ubuntu20.04 | Foxy Fitzroy    |
 | Ubuntu18.04 | Eloquent Elusor |
 
-## 4.2.2. 安装 ROS 软件包
+## 4.2.2. Install the ROS package
 
-在 ScepterSDK 中，ScepterROS 可以用于连接单个设备，而 ScepterROS_MultiCameras 则适用于连接多个设备。
+<!-- 在 ScepterSDK 中，ScepterROS 可以用于连接单个设备，而 ScepterROS_MultiCameras 则适用于连接多个设备。 -->
 
-<!-- tabs:start -->
+In the ScepterSDK, ScepterROS can be used to connect to a single device, while ScepterROS_MultiCameras is suitable for connecting to multiple devices.
 
-#### **ROS**
-
-**1. 安装 ScepterSDK**
+**1. Install the Scepter ROS2 package**
 
 ```console
 git clone https://github.com/ScepterSW/ScepterSDK
@@ -33,11 +31,11 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
   <div class="center">
 
-![step0](pic/ROS2/step0.png)
+![step0](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step0.png)
 
   </div>
 
-**2. 将 SDK 更新为 ROS 包**
+**2. Update SDK to ROS2 package**
 
 ```console
 cd ROS2/src/ScepterROS
@@ -45,11 +43,13 @@ cd ROS2/src/ScepterROS
 
 <div class="center">
 
-![step2](pic/ROS2/step2.png)
+![step2](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step2.png)
 
 </div>
 
-**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
+<!-- **3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例： -->
+
+**3. install.py**: **install.py**: copy **ScepterSDK** (match with your operating system) to **dependencies**, with the cmd "**python install.py (your operating system)**", take **Ubuntu18.04** as an example：
 
 ```console
 python install.py Ubuntu18.04
@@ -57,17 +57,22 @@ python install.py Ubuntu18.04
 
 <div class="center">
 
-![step3](pic/ROS2/step3.png)
+![step3](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step3.png)
 
 </div>
 
-**4. 构建 ScepterROS2 包**
+**4. Build the ScepterROS2 package**
 
-如果没有安装 colcon，请先运行 cmd：
+If not installed colcon, run the cmd first:
 
 ```console
 sudo apt install python3-colcon-common-extensions
+
 ```
+
+<!-- tabs:start -->
+
+#### **ROS2**
 
 ```console
 cd ../../
@@ -76,61 +81,11 @@ colcon build --packages-select ScepterROS
 
 <div class="center">
 
-![step4](pic/ROS2/step4.png)
+![step4](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step4.png)
 
 </div>
-
-**5.环境设置**
-
-```console
-source install/setup.bash
-```
 
 #### **ROS_MultiCameras**
-
-**1. 安装 ScepterSDK**
-
-```console
-git clone https://github.com/ScepterSW/ScepterSDK
-```
-
-  <div class="center">
-
-![step0](pic/ROS2/step0.png)
-
-  </div>
-
-**2. 将 SDK 更新为 ROS 包**
-
-```console
-cd ROS2/src/ScepterROS_MultiCameras
-```
-
-<div class="center">
-
-![step2](pic/ROS2/step2.png)
-
-</div>
-
-**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
-
-```console
-python install.py Ubuntu18.04
-```
-
-<div class="center">
-
-![step3](pic/ROS2_MultiCameras/step3.png)
-
-</div>
-
-**4. 构建 ScepterROS2 包**
-
-如果没有安装 colcon，请先运行 cmd：
-
-```console
-sudo apt install python3-colcon-common-extensions
-```
 
 ```console
 cd ../../
@@ -139,25 +94,25 @@ colcon build --packages-select ScepterROS_MultiCameras
 
 <div class="center">
 
-![step6](pic/ROS2_MultiCameras/step4.png)
+![step6](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2_MultiCameras/step4.png)
 
 </div>
 
-**5.环境设置**
+<!-- tabs:end -->
+
+**5.Environment setup**
 
 ```console
 source install/setup.bash
 ```
 
-<!-- tabs:end -->
-
-## 4.2.3. 使用方式
+## 4.2.3. Usage
 
 <!-- tabs:start -->
 
-#### **ROS**
+#### **ROS2**
 
-**1. 启动相机节点**
+**1. Starting camera node**
 
 ```console
 ros2 run ScepterROS scepter_camera
@@ -165,11 +120,11 @@ ros2 run ScepterROS scepter_camera
 
 <div class="center">
 
-![step6](pic/ROS2/step6.png)
+![step6](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step6.png)
 
 </div>
 
-**2. 启动 Rviz 界面**
+**2. With Rviz show frame**
 
 ```console
 ros2 run rviz2 rviz2
@@ -177,39 +132,39 @@ ros2 run rviz2 rviz2
 
 <div class="center">
 
-![step7](pic/ROS2/step7.png)
+![step7](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step7.png)
 
 </div>
 
 <div class="center">
 
-![step8](pic/ROS2/step8.png)
+![step8](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step8.png)
 
 </div>
 
-**3. 使用 Rviz 显示点云**
+**3. With Rviz show PointCloud**
 
 <div class="center">
 
-![step10](pic/ROS2/step10.png)
+![step10](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step10.png)
 
 </div>
 
 <div class="center">
 
-![step11](pic/ROS2/step11.png)
+![step11](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step11.png)
 
 </div>
 
 #### **ROS_MultiCameras**
 
-**1. 启动相机节点**
+**1. Starting camera node**
 
 ```console
 ros2 run ScepterROS_MultiCameras scepter_multicameras <nodename> <ip>
 ```
 
-例如：
+such as:
 
 ```console
 ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
@@ -217,13 +172,13 @@ ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
 
 <div class="center">
 
-![step6](pic/ROS2_MultiCameras/step6.png)
+![step6](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2_MultiCameras/step6.png)
 
 </div>
 
-**2. 启动 Rviz 界面**
+**2. With Rviz show frame**
 
-一次只能显示一个话题
+Only one topic can be displayed at a time
 
 ```console
 ros2 run rviz2 rviz2
@@ -231,41 +186,41 @@ ros2 run rviz2 rviz2
 
 <div class="center">
 
-![step7](pic/ROS2_MultiCameras/step7.png)
+![step7](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2_MultiCameras/step7.png)
 
 </div>
 
 <div class="center">
 
-![step8](pic/ROS2_MultiCameras/step8.png)
+![step8](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2_MultiCameras/step8.png)
 
 </div>
 
-**3. 使用 Rviz 显示点云**
+**3. With Rviz show PointCloud**
 
-一次只能显示一个话题
+Only one topic can be displayed at a time
 
 <div class="center">
 
-![step10](pic/ROS2_MultiCameras/step10.png)
+![step10](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2_MultiCameras/step10.png)
 
 </div>
 
 <div class="center">
 
-![step11](pic/ROS2_MultiCameras/step11.png)
+![step11](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2_MultiCameras/step11.png)
 
 </div>
 
 <!-- tabs:end -->
 
-## 4.2.4. 发布的话题
+## 4.2.4. Published Topics
 
 <!-- tabs:start -->
 
-#### **ROS**
+#### **ROS2**
 
-Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定义的以下话题
+The scepter_manager publishes messages defined by the [sensor_msgs](http://wiki.ROS2.org/sensor_msgs) package on the following topics
 
 - /Scepter/color/camera_info
 - /Scepter/color/image_raw
@@ -280,9 +235,9 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定
 - /Scepter/transformedDepth/camera_info
 - /Scepter/transformedDepth/image_raw
 
-#### **ROS_MultiCameras**
+#### **ROS2_MultiCameras**
 
-Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定义的以下话题
+The scepter_manager publishes messages defined by the [sensor_msgs](http://wiki.ROS2.org/sensor_msgs) package on the following topics
 
 - /**nodename**/color/camera_info
 - /**nodename**/color/image_raw
@@ -299,30 +254,31 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定
 
 <div class="center">
 
-![topic](pic/ROS2_MultiCameras/topic.png)
+![topic](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2_MultiCameras/topic.png)
 
 </div>
 
 <!-- tabs:end -->
 
-## 4.2.5. 编程指南
+## 4.2.5. Programming guide
 
-如果开发者需要设置相机参数或算法开关，请参考以下流程。
-以调用**scSetSpatialFilterEnabled**为例：
+If developers need to set camera parameters or algorithm switches, please refer to the following process.
 
-- 从 **/src/ScepterROS/dependencies/include/Scepter_api.h** 查找 api
+Take calling **scSetSpatialFilterEnabled** as an example:
+
+- Find the api From **/src/ScepterROS/dependencies/include/Scepter_api.h**
 
 <div class="center">
 
-![step13](pic/ROS2/step13.png)
+![step13](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step13.png)
 
 </div>
 
-- 将代码添加到 **/src/ScepterROS/src/scepter_manager.cpp**
+- Add the code into **/src/ScepterROS/src/scepter_manager.cpp**
 
 <div class="center">
 
-![step14](pic/ROS2/step14.png)
+![step14](../../../zh-cn/ScepterSDK/3rd-Party%20Plugin/pic/ROS2/step14.png)
 
 </div>
 

@@ -24,16 +24,37 @@
 
 **低置信度阈值**：黑色物体的反射率较低，会导致信噪比过低而无法测量物体距离，为改善此情况，拍摄黑色物体时通常将 ConfidenceFilter 降低为 2 或 5。
 
-|                                                                                     |
-| :---------------------------------------------------------------------------------: |
-|                              ![Target](pic/Target.png)                              |
-|                                   图 1：目标物体                                    |
-|                 ![Camera Positioning](<pic/Camera Positioning.png>)                 |
-|                                   图 2：相机位置                                    |
-| ![Setting for Shooting Black Objects](<pic/Setting for Shooting Black Objects.png>) |
-|                               图 3：拍摄黑色物体设置                                |
-|                    ![Default Setting](<pic/Default Setting.png>)                    |
-|                                   图 4：默认设置                                    |
+**目标物体**：
+
+<div class="center">
+
+![Target](pic/Target.png)
+
+</div>
+
+**相机位置**：
+
+<div class="center">
+
+![Camera Positioning](<pic/Camera Positioning.png>)
+
+</div>
+
+**拍摄黑色物体设置**：
+
+<div class="center">
+
+![Setting for Shooting Black Objects](<pic/Setting for Shooting Black Objects.png>)
+
+</div>
+
+**默认设置**：
+
+<div class="center">
+
+![Default Setting](<pic/Default Setting.png>)
+
+</div>
 
 ## 2.2.3. 测试数据
 
@@ -116,3 +137,13 @@ VENO_1m away Black cylinder：<https://skfb.ly/oCFtt>​
 VENO_2m away Black cylinder：<https://skfb.ly/oCFtx>​
 
 VENO_3m away Black cylinder：<https://skfb.ly/oCFtA>
+
+<style>
+.center
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

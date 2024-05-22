@@ -1,55 +1,76 @@
-# 2.2. 场景测试数据
+# 2.2. AGV scene Testing Data
 
-## 2.2.1. 介绍
+## 2.2.1. Introduction
 
-3D ToF 技术应用于各类 AGV/AMR 及低速无人驾驶领域。多传感器融合不仅可以为无人驾驶提供全方位避障解决方案，提升系统安全系数，还可以更好地感知环境，识别目标物体，并自动规划行车路线。3D ToF 相机具有性价比高，实时性好，对系统算力要求低，且适合运动中的场景捕捉等特点。
+3D ToF technology is used in various AGV/AMR and low-speed unmanned driving fields. Multi-sensor fusion can not only provide a comprehensive obstacle avoidance solution for unmanned driving, improve the safety factor of the system, but also better perceive the environment, identify target objects, and automatically plan driving routes. The 3D ToF camera has the characteristics of high cost performance, good real-time performance, low requirements on system computing power, and is suitable for scene capture in motion.
 
-应用于无人叉车托盘自动识别，3D ToF 相机可以通过采集托盘图像，结合相应图像处理算法，对叉车货物托盘进行识别，并得到其位置与姿态坐标，智能调整进叉方向，从而实现无人化智能托盘搬运，解决无人叉车对接托盘位置偏移角度较大的问题。
+Applied to the automatic identification of unmanned forklift pallets, the 3D ToF camera can collect pallet images and combine corresponding image processing algorithms to identify forklift cargo pallets, obtain its position and attitude coordinates, and intelligently adjust the direction of fork entry, so as to realize unmanned Intelligent pallet handling, to solve the problem of large offset angle of unmanned forklift docking pallet position.
 
-应用于 AGV 避障，3D ToF 相机基于其面阵探测的原理，为移动机器人及低速无人驾驶车提供近距离（<6m）大角度的避障方案。
+Applied to AGV obstacle avoidance, 3D ToF camera is based on the principle of its area array detection, providing a short-distance (<6m) large-angle obstacle avoidance solution for mobile robots and low-speed unmanned vehicles.
 
-## 2.2.2. 测试条件
+## 2.2.2. Test Condition
 
-**目标物体**：黑色托盘、蓝色托盘、木质托盘、购物车、覆膜盒子、黑色圆柱体（参考图 1）。
+**Target**: Black pallet, blue pallet, wooden pallet, shopping cart, box covered with film, black cylinder (refer to figure 1)
 
-**相机位置**：相机用高度 215mm 的支架固定，放置在地面上（参考图 2）。
+**Camera positioning**: The camera is fixed with a 215mm high bracket and placed on the ground (refer to figure 2)
 
-**相机设置**：拍摄黑色物体设置 4ms 的曝光时间，低置信度阈值（参考图 3），相机预热 20 分钟。
+**Camera setting**: Shoot black objects set exposure time to 4ms, low confidence threshold (refer to figure 3), camera warmed up for 20 minutes.
 
-拍摄其他物体采用默认设置（参考图 4），相机预热 20 分钟。
+Shoot other objects use default setting (refer to Figure 4), camera warmed up for 20 minutes.
 
-**成像环境**：22°C 室温，测试期间室内光线为 200Lux。
+**Imaging environment**: 22℃ room temperature, 200Lux room light on during testing.
 
-**拍摄黑色物体设置**：VENO 系列相机默认曝光时间为 1ms，在 ScepterGUITool 中可以通过调低 Frame rate 的方式，来增加曝光时间。设置 Frame rate 为 5 帧，可调整 Exposure Time 为 4ms。
+**Setting for shooting black objects**: The default exposure time of VENO series cameras is 1ms, and the exposure time can be increased by lowering the Frame rate in ScepterGUITool. Set the Frame rate to 5 frames, and adjust the Exposure Time to 4ms.
 
-**低置信度阈值**：黑色物体的反射率较低，会导致信噪比过低而无法测量物体距离，为改善此情况，拍摄黑色物体时通常将 ConfidenceFilter 降低为 2 或 5。
+**Low Confidence Threshold**: The reflectivity of black objects is low, which will cause the signal-to-noise ratio to be too low to measure the object distance. To improve this situation, the ConfidenceFilter is usually reduced to 2 or 5 when shooting black objects.
 
-|                                                                                     |
-| :---------------------------------------------------------------------------------: |
-|                              ![Target](pic/Target.png)                              |
-|                                   图 1：目标物体                                    |
-|                 ![Camera Positioning](<pic/Camera Positioning.png>)                 |
-|                                   图 2：相机位置                                    |
-| ![Setting for Shooting Black Objects](<pic/Setting for Shooting Black Objects.png>) |
-|                               图 3：拍摄黑色物体设置                                |
-|                    ![Default Setting](<pic/Default Setting.png>)                    |
-|                                   图 4：默认设置                                    |
+**Target**:
 
-## 2.2.3. 测试数据
+<div class="center">
 
-**保存的数据和图像**：Depth, IR, PointCloud, RGB
+![Target](../../../zh-cn/ApplicationNote/VENO86&87/pic/Target.png)
 
-**环境光**：室内光，约 200lux
+</div>
 
-**相机位置**：相机距离地面 215mm
+**Camera Positioning**:
 
-**距离**：1m，2m，3m
+<div class="center">
 
-### 2.2.3.1. 黑色托盘
+![Camera Positioning](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Camera Positioning.png>)
 
-![Black pallet](<pic/Black pallet.png>)
+</div>
 
-查看在线点云：
+**Setting for Shooting Black Objects**:
+
+<div class="center">
+
+![Setting for Shooting Black Objects](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Setting for Shooting Black Objects.png>)
+
+</div>
+
+**Default Setting**:
+
+<div class="center">
+
+![Default Setting](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Default Setting.png>)
+
+</div>
+
+## 2.2.3. Testing Data
+
+**Saved images and data**：Depth, IR, PointCloud, RGB
+
+**Ambient Light**: room light from ceiling, ~200Lux
+
+**Camera position**: 215mm from the ground
+
+**Distance**: 1m, 2m, 3m
+
+### 2.2.3.1. Black pallet
+
+![Black pallet](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Black pallet.png>)
+
+View point cloud online:
 
 VENO_1m away Black pallet：<https://skfb.ly/oCEZM>​
 
@@ -57,11 +78,11 @@ VENO_2m away Black pallet：<https://skfb.ly/oCEZQ>​
 
 VENO_3m away Black pallet：<https://skfb.ly/oCEZR>​
 
-### 2.2.3.2. 蓝色托盘
+### 2.2.3.2. Blue pallet
 
-![Blue pallet](<pic/Blue pallet.png>)
+![Blue pallet](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Blue pallet.png>)
 
-查看在线点云：
+View point cloud online:
 
 VENO_1m away Blue pallet：<https://skfb.ly/oCFny>​
 
@@ -69,11 +90,11 @@ VENO_2m away Blue pallet：<https://skfb.ly/oCFnA>​
 
 VENO_3m away Blue pallet：<https://skfb.ly/oCFnE>​
 
-### 2.2.3.3. 木质托盘
+### 2.2.3.3. Wooden pallet
 
-![Wooden pallet](<pic/Wooden pallet.png>)
+![Wooden pallet](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Wooden pallet.png>)
 
-查看在线点云：
+View point cloud online:
 
 VENO_1m away Wooden pallet：<https://skfb.ly/oCMTu>​
 
@@ -81,11 +102,11 @@ VENO_2m away Wooden pallet：<https://skfb.ly/oCMTC>​
 
 VENO_3m away Wooden pallet：<https://skfb.ly/oCMTL>​
 
-### 2.2.3.4. 购物车
+### 2.2.3.4. Shopping cart
 
-![Shopping cart](<pic/Shopping cart.png>)
+![Shopping cart](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Shopping cart.png>)
 
-查看在线点云：
+View point cloud online:
 
 VENO_1m away Shopping cart：<https://skfb.ly/oCFnQ>​
 
@@ -93,11 +114,11 @@ VENO_2m away Shopping cart：<https://skfb.ly/oCFor>​
 
 VENO_3m away Shopping cart：<https://skfb.ly/oCFon>​
 
-### 2.2.3.5. 覆膜盒子
+### 2.2.3.5. Box covered with film
 
-![Box covered with film](<pic/Box covered with film.png>)
+![Box covered with film](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Box covered with film.png>)
 
-查看在线点云：
+View point cloud online:
 
 VENO_1m away Box covered with film：<https://skfb.ly/oCFoW>​
 
@@ -105,14 +126,24 @@ VENO_2m away Box covered with film：<https://skfb.ly/oCFsP>​
 
 VENO_3m away Box covered with film：<https://skfb.ly/oCFt6>​
 
-### 2.2.3.6. 黑色圆柱体
+### 2.2.3.6. Black cylinder
 
-![Black cylinder](<pic/Black cylinder.png>)
+![Black cylinder](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Black cylinder.png>)
 
-查看在线点云：
+View point cloud online:
 
 VENO_1m away Black cylinder：<https://skfb.ly/oCFtt>​
 
 VENO_2m away Black cylinder：<https://skfb.ly/oCFtx>​
 
 VENO_3m away Black cylinder：<https://skfb.ly/oCFtA>
+
+<style>
+.center
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
