@@ -21,24 +21,24 @@
   height: 10px;
   width: 10px;
 }
-
+/* 用于folder类的标题，在左侧初始化显示图标 */
 .sidebar-nav ul:not(.app-sub-sidebar) > li.folder::before {
-  background: left center no-repeat url(../collapse.png);
+  background: left center no-repeat url(./pics/collapse.png);
   background-size: 10px 10px;
 }
 
 .sidebar-nav
   li.open.file.active
   > a[href^="#/"]:not([href*="?id="]):not(:only-child) {
-  background: left center no-repeat url(../open.png);
+  background: left center no-repeat url(./pics/open.png);
   background-size: 10px 10px;
 }
-*/
+
   .sidebar-nav
   li.file.collapse.active
   > a[href^="#/"]:not([href*="?id="]):not(:only-child),
 .sidebar-nav li > a[href^="#/"]:not([href*="?id="]):not(:only-child) {
-  background: left center no-repeat url(../collapse.png);
+  background: left center no-repeat url(./pics/collapse.png);
   background-size: 10px 10px;
 }
 
@@ -80,7 +80,7 @@
 .sidebar-nav li.folder a[title="2.3. HDR Mode"],
 .sidebar-nav li.folder a[title="2.4. 多机共存"],
 .sidebar-nav li.folder a[title="2.4. Multi-Cameras Coexist"] {
-  background: left center no-repeat url(../collapse.png);
+  background: left center no-repeat url(./pics/collapse.png);
   background-size: 10px 10px;
 }
 
@@ -112,6 +112,6 @@
   li.folder.open.active
   > p.active
   a[title="2.4. Multi-Cameras Coexist"] {
-  background: left center no-repeat url(../open.png);
+  background: left center no-repeat url(./pics/open.png);
   background-size: 10px 10px;
 }
