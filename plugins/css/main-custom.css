@@ -1,41 +1,23 @@
 :root {
+  /* 默认字体大小 */
   --base-font-size: 14px;
+  /* 侧边栏缩放按钮颜色和tab页标签颜色 */
   --theme-color: #00ff00;
 
-  /* Cover ============================================================================= */
-  --cover-color: #a0a0a0;
-  --cover-blockquote-color: #45b035;
-  --blockquote-color: #a0a0a0;
-  --cover-heading-color: #d7d7d7;
-  --cover-blockquote-font-size: var(--font-size-l);
-
-  --cover-button-background--hover: #45b035;
-  --cover-button-color--hover: #fff;
-  --cover-button-primary-background--hover: #45b035;
-  --cover-button-padding: 1em 4rem;
-  --cover-button-border-radius: 2em;
-
-  --cover-margin: 0 auto;
-  --cover-max-width: 40em;
-  --cover-text-align: center;
-  --cover-background-mask-opacity: 0.9;
-  --cover-background-mask-visibility: 1;
-  --cover-background-position: center center;
-  --cover-background-repeat: no-repeat;
-  --cover-background-size: cover;
-
   /* Sidebar ============================================================================= */
+  /* 设置侧边栏宽度 */
   --sidebar-width: 20rem;
 
   /* Content ============================================================================= */
+  /* 设置内容最大宽度值 */
   --content-max-width: 68em;
 
   /* Blockquote */
   --blockquote-background: #fee;
 
   /* Code */
+  /* 设置代码块样式 */
   --code-inline-background: #404040;
-
   --code-theme-background: #404040;
   --code-theme-tag: #7ec699;
   --code-theme-function: #0f0;
@@ -45,18 +27,11 @@
   --code-theme-keyword: #45b035;
   --code-font-size: 12px;
 
-  --heading-h1-color: #009688;
-  /* --heading-h2-color                  : #c82829; */
-  --heading-h3-color: #45b035;
+  /* 设置h1级标题属性 */
   --heading-font-weight: 600;
   --heading-h1-font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
     Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
   --heading-h1-font-size: 2em;
-
-  /* Links */
-  --link-color: #45b035;
-  --link-color--hover: purple;
-  --link-text-decoration: underline;
 
   /* Example ============================================================================= */
   /* Document */
@@ -81,6 +56,7 @@
   --docsify-example-panels-title-background: transparent;
 }
 
+/* 图片边缘形状和阴影 */
 img {
   border-radius: 0.5em;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 25px;
@@ -111,6 +87,7 @@ img {
   color: #fff;
 }
 
+/* 用于侧边栏隐藏按钮的样式修改 */
 .sidebar-toggle-button {
   width: 40px !important;
   height: 40px !important;
