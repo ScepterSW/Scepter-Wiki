@@ -1,6 +1,6 @@
 # 4.1. ROS
 
-该 ROS 软件包可用于 ScepterSDK 的深度、IR 和 RGB 数据的采集和处理。
+该 ROS 软件包可用于 ScepterSDK 的深度、IR 和 Color 数据的采集和处理。
 
 ## 4.1.1. 环境要求
 
@@ -187,8 +187,8 @@ rosrun rqt_reconfigure rqt_reconfigure
 
 > **说明:**
 >
-> - 修改 FrameRate 将影响 ToFExposureTime 和 RGBExposureTime 的最大值
-> - 当 ToFExposureTime 或 RGBExposureTime 设置高于最大值时，该值无效
+> - 修改 FrameRate 将影响 ToFExposureTime 和 ColorExposureTime 的最大值
+> - 当 ToFExposureTime 或 ColorExposureTime 设置高于最大值时，该值无效
 > - HDRMode 仅在 ToFManual 为 True 时生效
 > - ToFManual 设置为 false 时，HDRMode 为 True 时无效
 
@@ -304,8 +304,8 @@ rosrun rqt_reconfigure rqt_reconfigure
 
 > **说明:**
 >
-> - 修改 FrameRate 将影响 ToFExposureTime 和 RGBExposureTime 的最大值
-> - 当 ToFExposureTime 或 RGBExposureTime 设置高于最大值时，该值无效
+> - 修改 FrameRate 将影响 ToFExposureTime 和 ColorExposureTime 的最大值
+> - 当 ToFExposureTime 或 ColorExposureTime 设置高于最大值时，该值无效
 > - HDRMode 仅在 ToFManual 为 True 时生效
 > - ToFManual 设置为 false 时，HDRMode 为 True 时无效
 

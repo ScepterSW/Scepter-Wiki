@@ -1,26 +1,38 @@
 # 3.1. Python
 
-## 3.1.1. 基础介绍
+## 3.1.1. Basic introduction
 
-Python SDK 目录结构如下：
+<!-- Python SDK 目录结构如下： -->
 
-![PythonContents](pic/PythonContents.png)
+The Python SDK directory structure is as follows:
 
-- API：主要包含 SDK 的通用头文件：Scepter_api.py，Scepter_define.py，Scepter_enums.py，Scepter_types.py。
+![PythonContents](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonContents.png)
 
-- Samples：主要包含使用 ScepterSDK 开发的例程。
+<!-- - API：主要包含 SDK 的通用头文件：Scepter_api.py，Scepter_define.py，Scepter_enums.py，Scepter_types.py。 -->
 
-- README.md：SDK 的内容简介。
+- API：Includes the common header files of SDK: Scepter_api.py，Scepter_define.py，Scepter_enums.py，Scepter_types.py.
 
-## 3.1.2. 项目配置
+<!-- - Samples：主要包含使用 ScepterSDK 开发的例程。 -->
 
-在运行 ScepterSDK 之前，请确保您的 Python 版本为 3.7.x 或更高版本，并已安装 ctypes、numpy 模块。在大多数 Python 发行版中，ctypes 都是作为内置模块存在的，因此我们无需额外安装。
+- Samples:Primarily contains samples developed using the Scepter SDK.
+
+<!-- - README.md：SDK 的内容简介。 -->
+
+- README:Introduction to the SDK.
+
+## 3.1.2. Project Configuration
+
+<!-- 在运行 ScepterSDK 之前，请确保您的 Python 版本为 3.7.x 或更高版本，并已安装 ctypes、numpy 模块。在大多数 Python 发行版中，ctypes 都是作为内置模块存在的，因此我们There is no.需额外安装。 -->
+
+Before running the Scepter SDK, make sure that your Python version is 3.7.x or higher and that you have the ctypes, numpy modules installed. In most Python distributions, ctypes exists as a built-in module, so we don't need to install it.
 
 ```console
 pip install numpy
 ```
 
-使用 Scepter SDK 开发新的项目，需要使用英文路径。针对不同的操作系统，需要同时复制 SDK 中的 Python 文件夹和对应系统的文件夹。API 文件夹中的 Scepter_api.py 会自动读取相机的 libScepter_api.so 或 Scepter_api.dll 库文件。
+<!-- 使用 Scepter SDK 开发新的项目，需要使用英文路径。针对不同的操作系统，需要同时复制 SDK 中的 Python 文件夹和对应系统的文件夹。API 文件夹中的 Scepter_api.py 会自动读取相机的 libScepter_api.so 或 Scepter_api.dll 库文件。 -->
+
+To develop a new project using the Scepter SDK, you need to use the English path. For different operating systems, you need to copy the Python folder in the SDK and the folder of the corresponding system at the same time. The Scepter_api.py in the API folder automatically reads the camera's libScepter_api.so or the Scepter_api.dll library file.
 
 ```python
 if system_ == 'linux':
@@ -32,15 +44,15 @@ if system_ == 'linux':
       if system_info.find('18.04') != -1 or system_info.find('20.04') != -1:
          libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep + "../../../../BaseSDK/"))+"/Ubuntu18.04/Lib/libScepter_api.so"
          print(libpath)
-         self.vz_cam_lib = cdll.LoadLibrary(libpath)
+         self.sc_cam_lib = cdll.LoadLibrary(libpath)
       else:
          libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep + "../../../../BaseSDK/"))+"/Ubuntu16.04/Lib/libScepter_api.so"
          print(libpath)
-         self.vz_cam_lib = cdll.LoadLibrary(libpath)
+         self.sc_cam_lib = cdll.LoadLibrary(libpath)
       elif machine_ == 'aarch64':
          libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep + "../../../../BaseSDK/"))+"/AArch64/Lib/libScepter_api.so"
          print(libpath)
-         self.vz_cam_lib = cdll.LoadLibrary(libpath)
+         self.sc_cam_lib = cdll.LoadLibrary(libpath)
    else:
       print('do not supported OS', system_, machine_)
       exit()
@@ -49,11 +61,11 @@ elif platform.system() == 'Windows':
       if architecture_ == '64bit':
          libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep + "../../../../BaseSDK/"))+"/Windows/Bin/x64/Scepter_api.dll"
          print(libpath)
-         elf.vz_cam_lib = cdll.LoadLibrary(libpath)
+         elf.sc_cam_lib = cdll.LoadLibrary(libpath)
    else:
       libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep + "../../../../BaseSDK/"))+"/Windows/Bin/x86/Scepter_api.dll"
       print(libpath)
-      self.vz_cam_lib = cdll.LoadLibrary(libpath)
+      self.sc_cam_lib = cdll.LoadLibrary(libpath)
    else:
       print('do not supported OS', system_, machine_)
       exit()
@@ -63,530 +75,569 @@ else:
 
 ```
 
-## 3.1.3. 基础例程
+## 3.1.3. Base Samples
 
-基础例程介绍 SDK 的单个特性 API 接口的使用。为了使用户可以快速的熟悉使用，例程根据产品进行分类。
+<!-- 基础例程介绍 SDK 的单个特性 API 接口的使用。为了使用户可以快速的熟悉使用，例程根据产品进行分类。 -->
 
-例程包含打开图像数据流、图像获取、软/硬触发、点云转换与保存等 API 接口的使用。
+The base sample is used to demonstrate the single feature of basic APIs. In order to help developer familiar with SDK quickly, the examples are classified according to products.
 
-![PythonSamples](pic/PythonSamples.png)
+<!-- 例程包含打开图像数据流、图像获取、软/硬触发、点云转换与保存等 API 接口的使用。 -->
 
-接下来，我们将详细介绍每个例程的功能。
+Open device, image acquisition, software/hardware trigger, point cloud store are all included in the SDK example codes.
+
+![PythonSamples](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonSamples.png)
+
+<!-- 接下来，我们将详细介绍每个例程的Function。 -->
+
+Next, we will detail the Function for each sample.
 
 ```python
-ColorExposureTimeSetGet                         #设置获取设备彩色传感器曝光时间
-ColorResolutionChange                           #更改设备彩色传感器分辨率
-DevHotPlugCallback                              #设置设备热插拔回调
-DeviceConnectByIP                               #设置设备通过 IP 地址链接
-DeviceConnectBySN                               #设置设备通过设备 SN 连接
-DeviceHWTriggerMode                             #设置设备为硬触发模式
-DeviceInfoGet                                   #获取设备 SN、IP 地址、固件版本信息
-DeviceParamSetGet                               #获取设备内外参、畸变参数，设置、获取设备 GammaGain 值
-DeviceSearchAndConnect                          #搜索并连接设备
-DeviceSetParamsByJson                           #通过 Json 设置设备参数
-DeviceStartStopStreaming                        #开始与停止设备数据流
-DeviceSWTriggerMode                             #设置设备为软触发模式
-FrameCaptureAndSave                             #捕获与保存设备图像
-FrameViewer                                     #设备的OpenCV例程
-MultiConnection                                 #多设备连接
-IRGMMCorrectionSetGet                           #设置获取设备 ToF IR校正参数
-PointCloudCaptureAndSave                        #捕获与保存点云
-ToFExposureTimeSetGet                           #设置获取设备 ToF 曝光时间
-ToFFiltersSetGet                                #设置获取设备 ToF 滤波开关
-TransformColorImgToDepthSensorFrame             #将彩色图像对齐到设备的深度图像空间
-TransformDepthImgToColorSensorFrame             #将深度图像对齐到设备的彩色图像空间
+ColorExposureTimeSetGet                         #Set and get the exposure time of color sensor.
+ColorResolutionChange                           #Change device color sensor resolution.
+DevHotPlugCallbackC                             #Set the callback function for hotplug status by C.
+DevHotPlugCallbackCpp                           #Set the callback function for hotPlug status by C++.
+DeviceConnectByIP                               #Use the device IP address to connect the device.
+DeviceConnectBySN                               #Use the serial number to connect the device.
+DeviceHWTriggerMode                             #Set device to Hardware Trigger Mode.
+DeviceInfoGet                                   #Get Device SN, IP address and firmware version information.
+DeviceParamSetGet                               #Get intrinsic parameters and extrinsic parameters of the device, and set and get the GmmaGian value of the Device.
+DeviceSearchAndConnect                          #Search and connect the Device.
+DeviceSetFrameRate                              #Set Device Rrame Rate.
+DeviceSetParamsByJson                           #Set device parameters by Json.
+DeviceStartStopStreaming                        #Start and stop device streaming
+DeviceSWTriggerMode                             #Set device to Software Trigger Mode.
+FrameCaptureAndSave                             #Capture and save device frame.
+IRGMMCorrectionSetGet                           #Set and get the IRGMMCorrection parameters of device.
+MultiConnection                                 #Multiple device connection.
+MultiConnectionInMultiThread                    #Multiple device connections in multiple threads.
+PointCloudCaptureAndSave                        #Capture and save point cloud.
+PointCloudCaptureAndSaveDepthImgToColorSensor   #Capture the point cloud and save the depth image to the color sensor.
+PointCloudVectorAndSave                         #Capture and save point clouds in the ROI.
+PointCloudVectorAndSaveDepthImgToColorSensor    #Capture the point cloud in the ROI and save the depth image to the color sensor.
+ToFExposureTimeSetGet                           #Set and get ToF exposure time of the device.
+ToFFiltersSetGet                                #Set and get ToF Filters switch of the device.
+TransformColorImgToDepthSensorFrame             #Color image is transformed to depth sensor space where the resolution is the same as the depth frame's resolution.
+TransformDepthImgToColorSensorFrame             #Depth image is transformed to color sensor space where the resolution is the same as the color frame's resolution.
 ```
 
-下面，我们以单个产品的单独例程为例，演示其编译运行的过程：
+<!-- 下面，我们以单个产品的单独例程为例，演示其编译运行的过程： -->
 
-1. 根据实际产品选择对应的 sample，以 NYX650 产品编译 DeviceConnectBySN 为例
+Take a single routine of a single product as an example to demonstrate the process of compiling and running it:
 
-   ![PythonDeviceConnectBySN](pic/PythonDeviceConnectBySN.png)
+<!-- 1. 根据实际产品选择对应的 sample，以 NYX650 产品编译 DeviceConnectBySN 为例 -->
 
-2. 编译完成，调试运行。
+1. Select the corresponding sample according to the actual product. Take the NYX650 product to compile DeviceConnectBySN as an example:
+
+   ![PythonDeviceConnectBySN](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonDeviceConnectBySN.png)
+
+<!-- 2. 编译完成，调试运行。 -->
+
+2. After compilation is complete, debug and run.
 
    ```consle
    cd ScepterSDK\Python\Samples\NYX650\DeviceConnectBySN
    python DeviceConnectBySN.py
    ```
 
-   结果如下图：
+   <!-- 结果如下图： -->
 
-   ![PythonDeviceConnectBySNResult](pic/PythonDeviceConnectBySNResult.png)
+   The results are as follows:
 
-## 3.1.4. OpenCV 例程
+   ![PythonDeviceConnectBySNResult](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonDeviceConnectBySNResult.png)
 
-OpenCV 例程用于展示如何搭配第三方库使用 Scepter SDK。例程使用 OpenCV 的图像映射功能展示彩色深度图像、IR 与 Color 图像。
+## 3.1.4. OpenCV Samples
 
-1. 安装 opencv-python 模块。
+<!-- OpenCV 例程用于展示如何搭配第三方库使用 Scepter SDK。例程使用 OpenCV 的图像映射Function展示彩色深度图像、IR 与 Color 图像。 -->
+
+The OpenCV samples show how to use ScepterSDK with third-party libraries. The example uses the image mapping function of OpenCV to display color depth images, IR, and Color images.
+
+<!-- 1. 安装 opencv-python 模块。 -->
+
+1. Install the opencv-python module.
 
    ```console
    pip install opencv-python
    ```
 
-2. 根据实际产品选择对应的 sample，以 NYX650 为例
+<!-- 2. 根据实际产品选择对应的 sample，以 NYX650 为例 -->
 
-   ![PythonOpenCV](pic/PythonOpenCV.png)
+2. Select the corresponding sample according to the actual product, taking NYX650 as an example
 
-3. 运行 OpenCV 显示例程
+   ![PythonOpenCV](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonOpenCV.png)
+
+<!-- 3. 运行 OpenCV 显示例程 -->
+
+3. Run the OpenCV display sample
 
    ```consle
    cd ScepterSDK\Python\Samples\NYX650\FrameViewer
    python FrameViewer.py
    ```
 
-   ![PythonOpenCVResult](pic/PythonOpenCVResult.png)
+   ![PythonOpenCVResult](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonOpenCVResult.png)
 
-## 3.1.5. API 参考
+## 3.1.5. API Introduction
 
-> 不同型号产品对应的枚举值个数可能不同，请以实际枚举值为准。
+<!-- > 不同型号产品对应的Enumerator个数可能不同，请以实际Enumerator为准。 -->
+
+> The number of enumeration values corresponding to different models of products may be different. Please refer to the actual enumeration value.
 
 <!-- tabs:start -->
 
-#### **Enum 数据类型**
+#### **Enum Type**
 
 ### 3.1.5.1.1. ScFrameType
 
-**功能：**
+**Function：**
 
-图像类型。
+Image type.
 
-**枚举值：**
+**Enumerator：**
 
 ```python
 class ScFrameType(Enum):
-    SC_DEPTH_FRAME       = 0                                #表示深度图像类型，每像素16位，以毫米为单位
-    SC_IR_FRAME          = 1                                #表示灰度图像类型，每像素8位
-    SC_COLOR_FRAMEE      = 3                                #表示彩色图像类型，每像素24位，RGB/BGR格式
-    SC_TRANSFORM_COLOR_IMG_TO_DEPTH_SENSOR_FRAME = 4        #表示映射到深度传感器空间的彩色图像类型，其中分辨率与深度图像的分辨率相同
-                                                            #可以使用scSetTransformColorImgToDepthSensorEnabled()启用此帧类型
-    SC_TRANSFORM_DEPTH_IMG_TO_COLOR_SENSOR_FRAME = 5        #表示映射到彩色传感器空间的深度图像类型，其中分辨率与彩色图像的分辨率相同。
-                                                            #可以使用scSetTransformDepthImgToColorSensorEnabled()启用此帧类型
+    SC_DEPTH_FRAME                               = 0,   # Depth frame with 16 bits per pixel in millimeters.
+    SC_IR_FRAME                                  = 1,   # IR frame with 8 bits per pixel.
+    SC_COLOR_FRAME                               = 3,   # Color frame with 24 bits per pixel in RGB/BGR format.
+    SC_TRANSFORM_COLOR_IMG_TO_DEPTH_SENSOR_FRAME = 4,   # Color frame with 24 bits per pixel in RGB/BGR format, that is transformed to depth
+                                                        # sensor space where the resolution is the same as the depth frame's resolution.
+                                                        # This frame type can be enabled using ::scSetTransformColorImgToDepthSensorEnabled().
+    SC_TRANSFORM_DEPTH_IMG_TO_COLOR_SENSOR_FRAME = 5,   # Depth frame with 16 bits per pixel, in millimeters, that is transformed to color sensor
+                                                        # space where the resolution is same as the color frame's resolution.
+                                                        # This frame type can be enabled using ::scSetTransformDepthImgToColorSensorEnabled().
 ```
 
 ### 3.1.5.1.2. ScSensorType
 
-**功能：**
+**Function：**
 
 传感器类型。
 
-**枚举值：**
+**Enumerator：**
 
 ```python
 class ScSensorType(Enum):
-    SC_TOF_SENSOR = 0x01      #表示深度数据传感器
-    SC_COLOR_SENSOR = 0x02    #表示彩色图像传感器
+    SC_TOF_SENSOR   = 0x01,   # Indicates a depth sensor.
+    SC_COLOR_SENSOR = 0x02,   # Indicates a color sensor.
 ```
 
 ### 3.1.5.1.3. ScPixelFormat
 
-**功能：**
+**Function：**
 
-图像数据的像素类型。
+Pixel type of image data.
 
-**枚举值：**
+**Enumerator：**
 
 ```python
 class ScPixelFormat(Enum):
-    SC_PIXEL_FORMAT_DEPTH_MM16      = 0   #表示每个像素数据为 16 位的深度值，单位为毫米
-    SC_PIXEL_FORMAT_GRAY_8          = 2   #表示每个像素数据为 8 位的灰度值
-    SC_PIXEL_FORMAT_RGB_888_JPEG    = 3   #表示通过JPEG解压缩，彩色图像像素格式，每个像素数据为 24 位的 RGB 值
-    SC_PIXEL_FORMAT_BGR_888_JPEG    = 4   #表示通过JPEG解压缩，彩色图像像素格式，每个像素数据为 24 位的 BGR 值
-    SC_PIXEL_FORMAT_RGB_888         = 5   #表示无压缩，彩色图像像素格式，每个像素数据为 24 位的 RGB 值
-    SC_PIXEL_FORMAT_BGR_888         = 6   #表示无压缩，彩色图像像素格式，每个像素数据为 24 位的 BGR 值
-    SC_PIXEL_FORMAT_RGB_565         = 7   #表示无压缩，彩色图像像素格式，每个像素数据为 16 位的 RGB 值
-    SC_PIXEL_FORMAT_BGR_565         = 8   #表示无压缩，彩色图像像素格式，每个像素数据为 16 位的 BGR 值
+    SC_PIXEL_FORMAT_DEPTH_MM16   = 0,   # Depth image pixel format, 16 bits per pixel in mm.
+    SC_PIXEL_FORMAT_GRAY_8       = 2,   # Gray image pixel format, 8 bits per pixel.
+
+    # Color
+    SC_PIXEL_FORMAT_RGB_888_JPEG = 3,   # By jpeg decompress, color image pixel format, 24 bits per pixel RGB format.
+    SC_PIXEL_FORMAT_BGR_888_JPEG = 4,   # By jpeg decompress, color image pixel format, 24 bits per pixel BGR format.
+    SC_PIXEL_FORMAT_RGB_888      = 5,   # Without compress, color image pixel format, 24 bits per pixel RGB format.
+    SC_PIXEL_FORMAT_BGR_888      = 6,   # Without compress, color image pixel format, 24 bits per pixel BGR format.
+    SC_PIXEL_FORMAT_RGB_565      = 7,   # Without compress, color image pixel format, 16 bits per pixel RGB format.
+    SC_PIXEL_FORMAT_BGR_565      = 8,   # Without compress, color image pixel format, 16 bits per pixel BGR format.
 ```
 
 ### 3.1.5.1.4. ScReturnStatus
 
-**功能：**
+**Function：**
 
-接口函数的返回值。
+Returns of an interface function.
 
-**枚举值：**
+**Enumerator：**
 
 ```python
 class ScReturnStatus(Enum):
-    SC_OK                           =  0     #表示调用成功
-    SC_NO_DEVICE_CONNECTED          = -1     #表示当前无设备连接，或设备未正确连接。检查硬件连接或尝试拔下并重新插入电缆。
-    SC_INVALID_DEVICE_INDEX         = -2     #表示传入的设备序号无效
-    SC_DEVICE_POINTER_IS_NULL       = -3     #表示传入的设备指针为空
-    SC_INVALID_FRAME_TYPE           = -4     #表示传入的图像类型无效
-    SC_FRAME_POINTER_IS_NULL        = -5     #表示传入的图像指针为空
-    SC_NO_PROPERTY_VALUE_GET        = -6     #表示无法获取当前属性值
-    SC_NO_PROPERTY_VALUE_SET        = -7     #表示无法设置当前属性值
-    SC_PROPERTY_POINTER_IS_NULL     = -8     #表示传入的指向存储属性值的缓存指针为空
-    SC_PROPERTY_SIZE_NOT_ENOUGH     = -9     #表示传入的指向存储属性值的缓存空间不足
-    SC_INVALID_DEPTH_RANGE          = -10    #表示传入的 depth range 无效
-    SC_GET_FRAME_READY_TIME_OUT     = -11    #表示获取图像时超时
-    SC_INPUT_POINTER_IS_NULL        = -12    #表示传入的指针为空
-    SC_CAMERA_NOT_OPENED            = -13    #表示相机未打开
-    SC_INVALID_CAMERA_TYPE          = -14    #表示传入的相机类型无效
-    SC_INVALID_PARAMS               = -15    #表示传入的参数无效
-    SC_CURRENT_VERSION_NOT_SUPPORT  = -16    #表示当前版本不支持
-    SC_UPGRADE_IMG_ERROR            = -17    #表示升级相机固件失败
-    SC_UPGRADE_IMG_PATH_TOO_LONG    = -18    #表示传入的相机固件路径长度太长（大于260）
-    SC_UPGRADE_CALLBACK_NOT_SET     = -19    #表示未设置相机升级时的回调函数
-    SC_PRODUCT_NOT_SUPPORT          = -20    #表示当前设备不支持此操作
-    SC_NO_CONFIG_FOLDER             = -21    #表示未找到产品配置文件
-    SC_WEB_SERVER_START_ERROR       = -22    #表示Web服务器启动/重新启动错误（IP或端口）
-    SC_GET_OVER_STAY_FRAME          = -23    #表示从帧准备就绪到获取帧的时间超出1秒
-    SC_CREATE_LOG_DIR_ERROR         = -24    #表示创建日志目录错误
-    SC_CREATE_LOG_FILE_ERROR        = -25    #表示创建日志文件错误
-    SC_NO_ADAPTER_CONNECTED         = -100   #表示电源适配器未连接
-    SC_REINITIALIZED                = -101   #表示重复初始化
-    SC_NO_INITIALIZED               = -102   #表示未做初始化
-    SC_CAMERA_OPENED                = -103   #表示相机已经打开
-    SC_CMD_ERROR                    = -104   #表示命令下发失败
-    SC_CMD_SYNC_TIME_OUT            = -105   #表示命令发送成功，但是同步匹配失败
-    SC_IP_NOT_MATCH                 = -106   #表示相机 IP 与主机 IP 不在同一网段
-    SC_NOT_STOP_STREAM              = -107   #表示未调用SCStopStream关闭数据流
-    SC_NOT_START_STREAM             = -108   #表示未调用scStartStream获取数据流
-    SC_NOT_FIND_DRIVERS_FOLDER      = -109   #表示驱动程序目录不存在
-    SC_CAMERA_OPENING               = -110   #表示相机已通过另一个SC_OpenDeviceByXXX API打开
-    SC_CAMERA_OPENED_BY_ANOTHER_APP = -111   #表示相机已被其他应用程序打开
-    ScRetOthers                     = -255   #表示其他错误
+    SC_OK                           = 0,      # The function completed successfully.
+    SC_NO_DEVICE_CONNECTED          = -1,     # There is no. depth camera connected or the camera has not been connected correctly.
+                                              # Check the hardware connection or try unplugging and re-plugging the USB cable.
+    SC_INVALID_DEVICE_INDEX         = -2,     # The input device index is invalid.
+    SC_DEVICE_POINTER_IS_NULL       = -3,     # The device structure pointer is null.
+    SC_INVALID_FRAME_TYPE           = -4,     # The input frame type is invalid.
+    SC_FRAME_POINTER_IS_NULL        = -5,     # The output frame buffer is null.
+    SC_NO_PROPERTY_VALUE_GET        = -6,     # Cannot get the value for the specified property.
+    SC_NO_PROPERTY_VALUE_SET        = -7,     # Cannot set the value for the specified property.
+    SC_PROPERTY_POINTER_IS_NULL     = -8,     # The input property value buffer pointer is null.
+    SC_PROPERTY_SIZE_NOT_ENOUGH     = -9,     # The input property value buffer size is too small to store the specified property value.
+    SC_INVALID_DEPTH_RANGE          = -10,    # The input depth range mode is invalid.
+    SC_GET_FRAME_READY_TIME_OUT     = -11,    # Capture the next image frame time out.
+    SC_INPUT_POINTER_IS_NULL        = -12,    # An input pointer parameter is null.
+    SC_CAMERA_NOT_OPENED            = -13,    # The camera has not been opened.
+    SC_INVALID_CAMERA_TYPE          = -14,    # The specified type of camera is invalid.
+    SC_INVALID_PARAMS               = -15,    # One or more of the parameter values provided are invalid.
+    SC_CURRENT_VERSION_NOT_SUPPORT  = -16,    # This feature is not supported in the current version.
+    SC_UPGRADE_IMG_ERROR            = -17,    # There is an error in the upgrade file.
+    SC_UPGRADE_IMG_PATH_TOO_LONG    = -18,    # Upgrade file path length greater than 260.
+    SC_UPGRADE_CALLBACK_NOT_SET     = -19,    # scSetUpgradeStatusCallback is not called.
+    SC_PRODUCT_NOT_SUPPORT          = -20,    # The current product does not support this operation.
+    SC_NO_CONFIG_FOLDER             = -21,    # No product profile found.
+    SC_WEB_SERVER_START_ERROR       = -22,    # WebServer Start/Restart error(IP or PORT).
+    SC_GET_OVER_STAY_FRAME          = -23,    # The time from frame ready to get frame is out of 1s.
+    SC_CREATE_LOG_DIR_ERROR         = -24,    # Create log directory error.
+    SC_CREATE_LOG_FILE_ERROR        = -25,    # Create log file error.
+    SC_NO_ADAPTER_CONNECTED         = -100,   # There is no. adapter connected.
+    SC_REINITIALIZED                = -101,   # The SDK has been Initialized.
+    SC_NO_INITIALIZED               = -102,   # The SDK has not been Initialized.
+    SC_CAMERA_OPENED                = -103,   # The camera has been opened.
+    SC_CMD_ERROR                    = -104,   # Set/Get cmd control error.
+    SC_CMD_SYNC_TIME_OUT            = -105,   # Set cmd ok.but time out for the sync return.
+    SC_IP_NOT_MATCH                 = -106,   # IP is not in the same network segment.
+    SC_NOT_STOP_STREAM              = -107,   # Please invoke scStopStream first to close the data stream.
+    SC_NOT_START_STREAM             = -108,   # Please invoke scStartStream first to get the data stream.
+    SC_NOT_FIND_DRIVERS_FOLDER      = -109,   # Please check whether the Drivers directory exists.
+    SC_CAMERA_OPENING               = -110,   # The camera is openin,by another Sc_OpenDeviceByXXX API.
+    SC_CAMERA_OPENED_BY_ANOTHER_APP = -111,   # The camera has been opened by another APP.
+    SC_OTHERS                       = -255,   # An unknown error occurred.
 ```
 
 ### 3.1.5.1.5. ScConnectStatus
 
-**功能：**
+**Function：**
 
-设备连接状态。
+Device connection status.
 
-**枚举值：**
+**Enumerator：**
 
 ```python
 class ScConnectStatus(Enum):
-    SC_LIMBO       = 0     #表示未知设备状态，无法尝试打开
-    SC_CONNECTABLE = 1     #表示设备可连接状态，支持打开
-    SC_OPENED      = 2     #表示设备已连接，无法再次打开
+    SC_LIMBO       = 0,   # Unknown device status and cannot try to open.
+    SC_CONNECTABLE = 1,   # Device connectable state and support open.
+    SC_OPENED      = 2,   # The device is connected and cannot be opened again.
 ```
 
 ### 3.1.5.1.6. ScWorkMode
 
-**功能：**
+**Function：**
 
-设备工作状态。
+Device working condition.
 
-**枚举值：**
+**Enumerator：**
 
 ```python
 class ScWorkMode(Enum):
-    SC_ACTIVE_MODE           = 0x00    #表示设备处于主动工作状态。此时使用 API 打开相机后，设备会主动上传图像数据
-    SC_HARDWARE_TRIGGER_MODE = 0x01    #表示设备处于被动工作状态。此时使用 API 打开相机后，设备在硬件触发的时候，才会上传图像数据
-    SC_SOFTWARE_TRIGGER_MODE = 0x02    #表示设备处于被动工作状态。此时使用 API 打开相机后，设备在软件触发的时候，才会上传图像数据
+    SC_ACTIVE_MODE           = 0x00,   # Enter the active mode.
+    SC_HARDWARE_TRIGGER_MODE = 0x01,   # Enter the hardware salve mode, at this time need to connect
+                                       # the hardware trigger wire, provide hardware signal, to trigger the image.
+    SC_SOFTWARE_TRIGGER_MODE = 0x02,   # Enter the software salve mode, at this time need to invoke scSoftwareTriggerOnce, to trigger the image.
 ```
 
 ### 3.1.5.1.7. ScExposureControlMode
 
-**功能：**
+**Function：**
 
-传感器的曝光模式。
+Exposure mode of the sensor.
 
-**枚举值：**
+**Enumerator：**
 
 ```python
 class ScExposureControlMode(Enum):
-    SC_EXPOSURE_CONTROL_MODE_AUTO   = 0    #表示传感器使用自动曝光模式
-    SC_EXPOSURE_CONTROL_MODE_MANUAL = 1    #表示传感器使用手动曝光模式
+    SC_EXPOSURE_CONTROL_MODE_AUTO   = 0,   # Enter the auto exposure mode.
+    SC_EXPOSURE_CONTROL_MODE_MANUAL = 1,   # Enter the manual exposure mode.
 ```
 
-#### **Struct 数据类型**
+#### **Struct Type**
 
 ### 3.1.5.2.1. ScRGB888Pixel
 
-**功能：**
+**Function：**
 
-彩色图像像素类型 RGB888。
+Color image pixel type RGB888.
 
-**成员：**
+**Members：**
 
 ```python
 class ScRGB888Pixel(Structure):
     _pack_ = 1
-    _fields_ = [("r", c_uint8),     #表示红色通道
-                ("g", c_uint8),     #表示绿色通道
-                ("b", c_uint8)]     #表示蓝色通道
+    _fields_ = [("r", c_uint8),     #indicates the red channel.
+                ("g", c_uint8),     #indicates the green channel.
+                ("b", c_uint8)]     #indicates the blue channe.
 ```
 
 ### 3.1.5.2.2. ScBGR888Pixel
 
-彩色图像像素类型 BGR888。
+Color image pixel type BGR888.
 
-**成员：**
+**Members：**
 
 ```python
 class ScBGR888Pixel(Structure):
     _pack_ = 1
-    _fields_ = [("b", c_uint8),     #表示蓝色通道
-                ("g", c_uint8),     #表示绿色通道
-                ("r", c_uint8)]     #表示红色通道
+    _fields_ = [("b", c_uint8),     #indicates the blue channel.
+                ("g", c_uint8),     #indicates the green channel.
+                ("r", c_uint8)]     #indicates the red channe.
 ```
 
 ### 3.1.5.2.3. ScVector3f
 
-**功能：**
+**Function：**
 
-3 维点坐标，单位为毫米。
+Three dimensional point coordinates in millimeters.
 
-**成员：**
+**Members：**
 
 ```python
 class ScVector3f(Structure):
     _pack_ = 1
-    _fields_ = [("x", c_float),     #表示 X 轴方向的坐标值
-                ("y", c_float),     #表示 Y 轴方向的坐标值
-                ("z", c_float)]     #表示 Z 轴方向的坐标值
+    _fields_ = [("x", c_float),     #Represents the coordinate value along the X-axis.
+                ("y", c_float),     #Represents the coordinate value along the y axis.
+                ("z", c_float)]     #Represents the coordinate value along the z axis.
 ```
 
 ### 3.1.5.2.4. ScVector2u16
 
-**功能：**
+**Function：**
 
-2 维点坐标。
+Two dimensional point coordinates.
 
-**成员：**
+**Members：**
 
 ```python
 class ScVector2u16(Structure):
     _pack_ = 1
-    _fields_ = [("x", c_uint16),    #表示 X 轴方向的坐标值
-                ("y", c_uint16)]    #表示 Y 轴方向的坐标值
+    _fields_ = [("x", c_uint16),    #Represents the coordinate value along the X-axis.
+                ("y", c_uint16)]    #Represents the coordinate value along the y axis.
 ```
 
 ### 3.1.5.2.5. ScDepthVector3
 
-**功能：**
+**Function：**
 
 深度图像的像素点表示。
 
-**成员：**
+**Members：**
 
 ```python
 class ScDepthVector3(Structure):
     _pack_ = 1
-    _fields_ = [("depthX", c_int),     #表示图像坐标系下，X 轴方向的坐标值
-                ("depthY", c_int),     #表示图像坐标系下，Y 轴方向的坐标值
-                ("depthZ", c_uint16)]  #表示像素坐标（depthX，depthY）处的深度值，单位为毫米
+    _fields_ = [("depthX", c_int),     #Indicates the coordinate value along the X-axis in the image coordinate system.
+                ("depthY", c_int),     #Represents the coordinate value along the Y-axis in the image coordinate system.
+                ("depthZ", c_uint16)]  #Indicates the depth value at pixel coordinates (depthX, depthY), in millimeters.
 ```
 
 ### 3.1.5.2.6. ScResolution
 
-**功能：**
+**Function：**
 
-图像分辨率。
+Image resolution.
 
-**成员：**
+**Members：**
 
 ```python
 class ScResolution(Structure):
     _pack_ = 1
-    _fields_ = [("width", c_int),      #表示图像的宽度
-                ("height", c_int)]     #表示图像的高度
+    _fields_ = [("width", c_int),      #The width of the image.
+                ("height", c_int)]     #The height of the image.
 ```
 
 ### 3.1.5.2.7. ScResolutionList
 
-**功能：**
+**Function：**
 
-支持的图像分辨率。
+Supported Image Resolution.
 
-**成员：**
+**Members：**
 
 ```python
 class ScResolutionList(Structure):
     _pack_ = 1
-    _fields_ = [("count", c_int),                     #表示支持的图像分辨率的数量
-                ("resolution", ScResolution * 6)]     #表示支持的图像分辨率的信息
+    _fields_ = [("count", c_int),                     #The number of image resolutions.
+                ("resolution", ScResolution * 6)]     #The information of image resolution.
 ```
 
 ### 3.1.5.2.8. ScSensorIntrinsicParameters
 
-**功能：**
+**Function：**
 
-传感器的镜头内参和畸变参数。内参通常用于点云的计算，畸变参数用于图像反畸变算法使用。
+<!-- 传感器的镜头内参和畸变参数。内参通常用于点云的计算，畸变参数用于图像反畸变算法使用。
 
-SDK 中已经实现深度图像到点云的转换及图像反畸变的功能，请参考例程使用相关接口。
+SDK 中已经实现深度图像到点云的转换及图像反畸变的Function，请参考例程使用相关接口。 -->
 
-**成员：**
+Lens parameters and distortion parameters of the sensor. The internal parameter is usually used to calculate the point cloud and the distortion parameter is used in the image anti-distortion algorithm.
+
+SDK has realized the function of converting depth image to point cloud and image anti-distortion, please refer to the routine to use the relevant interface.
+
+**Members：**
 
 ```python
 class ScSensorIntrinsicParameters(Structure):
     _pack_ = 1
-    _fields_ = [("fx", c_double),      #x方向的焦距，单位为像素
-                ("fy", c_double),      #y方向的焦距，单位为像素
-                ("cx", c_double),      #主点的x坐标，图像的中心，单位为像素
-                ("cy", c_double),      #主点的y坐标，图像的中心，单位为像素
-                ("k1", c_double),      #径向畸变, 1st
-                ("k2", c_double),      #径向畸变, 2nd
-                ("p1", c_double),      #轴向畸变
-                ("p2", c_double),      #轴向畸变
-                ("k3", c_double),      #径向畸变, 3rd
-                ("k4", c_double),      #径向畸变, 4st
-                ("k5", c_double),      #径向畸变, 5nd
-                ("k6", c_double)]      #径向畸变, 6rd
+    _fields_ = [("fx", c_double),      #Focal length y (pixel).
+                ("fy", c_double),      #Focal length x (pixel).
+                ("cx", c_double),      #Principal point x (pixel).
+                ("cy", c_double),      #Principal point y (pixel).
+                ("k1", c_double),      #Radial distortion coefficient, 1st-order.
+                ("k2", c_double),      #Radial distortion coefficient, 2nd-order.
+                ("p1", c_double),      #Tangential distortion coefficient.
+                ("p2", c_double),      #Tangential distortion coefficient.
+                ("k3", c_double),      #Radial distortion coefficient, 3rd-order.
+                ("k4", c_double),      #Radial distortion coefficient, 4st-order.
+                ("k5", c_double),      #Radial distortion coefficient, 5nd-order.
+                ("k6", c_double)]      #Radial distortion coefficient, 6rd-order.
 ```
 
 ### 3.1.5.2.9. ScSensorExtrinsicParameters
 
-**功能：**
+**Function：**
 
-相机外参 R 与 T，用于 depth 与 rgb 图像的对齐，参考公式如下:
+The external parameters R and T of the camera are used to align depth with RGB images. The reference formula is as follows:
 
-![ScSensorExtrinsicParameters](pic/ScSensorExtrinsicParameters.png)
+![ScSensorExtrinsicParameters](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/ScSensorExtrinsicParameters.png)
 
-**成员：**
+**Members：**
 
 ```python
 class ScSensorExtrinsicParameters(Structure):
     _pack_ = 1
-    _fields_ = [("rotation", c_double * 9),        #3×3 的旋转矩阵
-                ("translation", c_double * 3)]     #3×1 平移矩阵
+    _fields_ = [("rotation", c_double * 9),        #A 3x3 rotation matrix.
+                ("translation", c_double * 3)]     #3×1 translation matrix.
 ```
 
 ### 3.1.5.2.10. ScTimeStamp
 
-**功能：**
+**Function：**
 
-表示图像时间戳。
+Represents the image timestamp.
 
-**成员：**
+**Members：**
 
 ```python
 class ScTimeStamp(Structure):
     _pack_ = 1
-    _fields_ = [("tm_sec", c_uint16),     #秒
-                ("tm_min", c_uint16),     #分钟
-                ("tm_hour", c_uint16),    #小时
-                ("tm_msec", c_uint16)]    #毫秒
+    _fields_ = [("tm_sec", c_uint16),     #Seconds.
+                ("tm_min", c_uint16),     #Minute.
+                ("tm_hour", c_uint16),    #Hour.
+                ("tm_msec", c_uint16)]    #Milliseconds.
 ```
 
 ### 3.1.5.2.11. ScFrame
 
-**功能：**
+**Function：**
 
-图像信息。
+Depth/IR/Color image information.
 
-**成员：**
+**Members：**
 
 ```python
 class ScFrame(Structure):
     _pack_ = 1
-    _fields_ = [("frameIndex", c_uint32),             #表示图像帧索引号
-                ("frameType", c_int32),               #表示图像数据类型
-                ("pixelFormat", c_int32),             #表示像素类型
-                ("pFrameData", POINTER(c_uint8)),     #表示指向图像数据缓存的指针
-                ("dataLen", c_uint32),                #表示图像数据的长度，单位为字节
-                ("exposureTime", c_float),            #表示曝光时间，单位为毫秒
-                ("depthRange", c_uint8),              #表示当前帧的深度范围，仅对深度图像有效
-                ("width", c_uint16),                  #表示图像宽度
-                ("height", c_uint16),                 #表示图像高度
-                ("hardwaretimestamp", c_uint64)]      #表示帧在设备上生成时的时间戳，不包括帧处理和传输时间
+    _fields_ = [("frameIndex", c_uint32),             #Indicates the index of the frame.
+                ("frameType", c_int32),               #Indicates the type of frame.
+                ("pixelFormat", c_int32),             #Indicates the pixel format used by a frame.
+                ("pFrameData", POINTER(c_uint8)),     #A buffer containing the frame’s image data.
+                ("dataLen", c_uint32),                #Indicates the length of pFrame, in bytes.
+                ("exposureTime", c_float),            #Indicates the exposure time, in milliseconds.
+                ("depthRange", c_uint8),              #Indicates the depth range mode of the current frame. Used only for depth frames.
+                ("width", c_uint16),                  #Indicates the width of the frame, in pixels.
+                ("height", c_uint16),                 #Indicates the height of the frame, in pixels.
+                ("hardwaretimestamp", c_uint64)]      #Indicates the timestamp when the frame be generated on the device. Frame processing and transfer time are not included.
 ```
 
 ### 3.1.5.2.12. ScFrameReady
 
-**功能：**
+**Function：**
 
-图像数据是否就绪（1 代表就绪，0 代表未就绪）。
+Whether the image data is ready (1 means ready, 0 means not ready).
 
-**枚举值：**
+**Enumerator：**
 
 ```python
 class ScFrameReady(Structure):
     _pack_ = 1
-    _fields_ = [("depth", c_uint, 1),                 #表示深度图像数据是否就绪
-                ("ir", c_uint, 1),                    #表示灰度图像数据是否就绪
-                ("color", c_uint, 1),                 #表示彩色图像数据是否就绪
-                ("transformedColor", c_uint, 1),      #表示对齐到深度传感器空间的彩色图像是否就绪
-                ("transformedDepth", c_uint, 1),      #表示对齐到彩色传感器空间的深度图像是否就绪
-                ("reserved", c_uint, 27)]             #预留位
+    _fields_ = [("depth", c_uint, 1),                 #Indicates whether the depth image data is ready.
+                ("ir", c_uint, 1),                    #Indicates whether grayscale image data is ready.
+                ("color", c_uint, 1),                 #Indicates whether color image data is ready.
+                ("transformedColor", c_uint, 1),      #Indicates whether the color image aligned to the depth sensor space is ready.
+                ("transformedDepth", c_uint, 1),      #Indicates whether the depth image is ready to align to the color sensor space.
+                ("reserved", c_uint, 27)]             #Reserved bit.
 ```
 
 ### 3.1.5.2.13. ScDeviceInfo
 
-**功能：**
+**Function：**
 
-设备信息。
+Device information.
 
-**成员：**
+**Members：**
 
 ```python
 class ScDeviceInfo(Structure):
     _pack_ = 1
-    _fields_ = [("productName", c_char * 64),      #表示设备的产品名称
-                ("serialNumber", c_char * 64),     #表示设备的序列号
-                ("ip", c_char * 17),               #表示设备的 IP 地址
-                ("status", c_int32)]               #表示设备连接状态
+    _fields_ = [("productName", c_char * 64),      #Indicates the Product type name.
+                ("serialNumber", c_char * 64),     #Indicates the SerialNumber of the device.
+                ("ip", c_char * 17),               #Indicates the IP address of the device.
+                ("status", c_int32)]               #Indicates the connection status of the device.
 ```
 
 ### 3.1.5.2.14. ScConfidenceFilterParams
 
-**功能：**
+**Function：**
 
-置信度滤波参数。
+Confidence filtering parameter.
 
-**成员：**
+**Members：**
 
 ```python
 class ScConfidenceFilterParams(Structure):
     _pack_ = 1
-    _fields_ = [("threshold", c_int32),      #表示滤波阈值，[1，100]，数值越大，过滤效果越明显，过滤掉的点数越多
-                ("enable", c_bool)]          #表示滤波是否打开，true 代表打开，false 代表关闭
+    _fields_ = [("threshold", c_int32),      #Range in [1, 100]. The larger the value is, the more obvious the filtering effect is and the more points are filtered out.
+                ("enable", c_bool)]          #Indicates whether filtering is enabled. True indicates that filtering is enabled. False indicates that filtering is disabled.
 ```
 
 ### 3.1.5.2.15. ScFlyingPixelFilterParams
 
-**功能：**
+**Function：**
 
-去飞点滤波参数。
+To fly point filter parameters.
 
-**成员：**
+**Members：**
 
 ```python
 class ScFlyingPixelFilterParams(Structure):
     _pack_ = 1
-    _fields_ = [("threshold", c_int32),      #表示滤波阈值，[0，16]，数值越大，过滤效果越明显，过滤掉的点数越多
-                ("enable", c_bool)]          #表示滤波是否打开，true 代表打开，false 代表关闭
+    _fields_ = [("threshold", c_int32),      #Range in [0, 16]. The larger the value is, the more obvious the filtering effect is and the more points are filtered out.
+                ("enable", c_bool)]          #Indicates whether filtering is enabled. True indicates that filtering is enabled. False indicates that filtering is disabled.
 ```
 
 ### 3.1.5.2.16. ScTimeFilterParams
 
-**功能：**
+**Function：**
 
-时间滤波参数。
+Time filter parameter.
 
-**成员：**
+**Members：**
 
 ```python
 class ScTimeFilterParams(Structure):
     _pack_ = 1
-    _fields_ = [("threshold", c_int32),      #表示滤波阈值，[1，6]，值越大，滤波效果越明显，点云抖动越小
-                ("enable", c_bool)]          #表示滤波是否打开，true 代表打开，false 代表关闭
+    _fields_ = [("threshold", c_int32),      #Range in [1, 6],The larger the value is, the more obvious the filtering effect is and The smaller the point cloud wobble.
+                ("enable", c_bool)]          #Indicates whether filtering is enabled. True indicates that filtering is enabled. False indicates that filtering is disabled.
 ```
 
 ### 3.1.5.2.17. ScIRGMMCorrectionParams
 
-**功能：**
+**Function：**
 
-IR gain 值校正参数。
+IR gain value correction parameter.
 
-**成员：**
+**Members：**
 
 ```python
 class ScIRGMMCorrectionParams(Structure):
     _pack_ = 1
-    _fields_ = [("threshold", c_int32),      #表示滤波阈值，[0，100]，数值越大，校正效果越明显
-                ("enable", c_bool)]          #表示滤波是否打开，true 代表打开，false 代表关闭
+    _fields_ = [("threshold", c_int32),      #Range in [1, 100]. The larger the value is, the more obvious the correction effect.
+                ("enable", c_bool)]          #Indicates whether filtering is enabled. True indicates that filtering is enabled. False indicates that filtering is disabled.
 ```
 
-#### **API 介绍**
+#### **API**
 
 ### 3.1.5.3.1. scGetSDKVersion
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetSDKVersion(self):
@@ -595,21 +646,21 @@ def scGetSDKVersion(self):
    return self.sc_cam_lib.scGetSDKVersion(version, 63),version.value
 ```
 
-**函数功能：**
+**Description：**
 
-获取 SDK 的版本号：x.x.x
+Obtain the SDK version: X.X.X.
 
-**函数参数：**
+**Parameters：**
 
-无
+There is no.
 
-**返回值：**
+**Returns：**
 
-**version.value**：SDK 版本号
+**version.value**：Returns The SDK version number.
 
 ### 3.1.5.3.2. scGetDeviceCount
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetDeviceCount(self, scanTime = c_uint32(33)):
@@ -618,27 +669,25 @@ def scGetDeviceCount(self, scanTime = c_uint32(33)):
    return count.value
 ```
 
-**函数功能：**
+**Description：**
 
-获取已连接的设备数目
+Get the number of connected devices.
 
-**函数参数：**
+**Parameters：**
 
-byref(count)：在该变量中返回设备数量
+byref(count)：Returns the number of devices in this variable.
 
-scanTime：单位为毫秒，数值范围为（0，65535）。
-当设备计数不为 0 时，API 立即返回。
-当设备计数为 0 时，除非设备计数不为 0，否则 API 最多等待等待时间（ms）。
+scanTime：The unit is millisecond, and the numeric range is (0, 65535).
+The API returns immediately when the device count is not 0.
+When the device count is 0, the API waits up to the wait time (ms) unless the device count is not 0.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-**count.value**：设备数量
+**count.value**：Count of devices.
 
 ### 3.1.5.3.3. GetDeviceInfoList
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetDeviceInfoList(self, cam_count = 1):
@@ -647,25 +696,25 @@ def scGetDeviceInfoList(self, cam_count = 1):
    return self.sc_cam_lib.scGetDeviceInfoList(cam_count, device_infolist),device_infolist
 ```
 
-**函数功能：**
+**Description：**
 
-获取 deviceCount 个数的设备信息列表
+Obtain the device list of the number of Devicecounts.
 
-**函数参数：**
+**Parameters：**
 
-cam_count：需要获取信息列表的设备个数
+cam_count：The number of camera devices.
 
-[device_infolist](#_315213-scdeviceinfo)：返回设备信息列表，其应该指向大小为 sizeof(ScDeviceInfo)\*deviceCount 大小的缓存
+[device_infolist](#_315213-scdeviceinfo)：Returns a list of device information that should point to a cache of size sizeof(ScDeviceInfo)\*deviceCount.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**device_infolist**](#_315213-scdeviceinfo)：返回设备信息列表，其应该指向大小为 sizeof(ScDeviceInfo)\*deviceCount 大小的缓存
+[**device_infolist**](#_315213-scdeviceinfo)：Returns a list of device information that should point to a cache of size sizeof(ScDeviceInfo)\*deviceCount.
 
 ### 3.1.5.3.4. scOpenDeviceBySN
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scOpenDeviceBySN(self,  SN=c_char_p()):
@@ -675,23 +724,23 @@ def scOpenDeviceBySN(self,  SN=c_char_p()):
       return ScReturnStatus.SC_INPUT_POINTER_IS_NULL
 ```
 
-**函数功能：**
+**Description：**
 
-使用设备标识符打开设备
+Opens the device using the device SerialNumber.
 
-**函数参数：**
+**Parameters：**
 
-SN：设备标识符
+SN：The SerialNumber of the device.
 
-byref(self.device_handle)： 打开设备成功后，返回的设备句柄
+byref(self.device_handle)： The handle of the device on which to open.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.5. scOpenDeviceByIP
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scOpenDeviceByIP(self,  ip=c_char_p()):
@@ -701,86 +750,86 @@ def scOpenDeviceByIP(self,  ip=c_char_p()):
       return ScReturnStatus.SC_INPUT_POINTER_IS_NULL, 0
 ```
 
-**函数功能：**
+**Description：**
 
-使用设备 IP 地址打开设备
+Use the device IP address to open the device.
 
-**函数参数：**
+**Parameters：**
 
-ip：设备的 IP 地址
+ip：The IP adress of the device.
 
-byref(self.device_handle)： 打开设备成功后，返回的设备句柄
+byref(self.device_handle)： The handle of the device on which to open.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.6. scCloseDevice
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scCloseDevice(self):
    return self.sc_cam_lib.scCloseDevice(byref(self.device_handle))
 ```
 
-**函数功能：**
+**Description：**
 
-关闭设备
+Closes the device.
 
-**函数参数：**
+**Parameters：**
 
-byref(self.device_handle)： 要关闭设备的句柄
+byref(self.device_handle)： The handle of the device to close.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.7. scStartStream
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scStartStream(self):
    return self.sc_cam_lib.scStartStream(self.device_handle)
 ```
 
-**函数功能：**
+**Description：**
 
-打开数据流
+Open data Stream.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：要打开数据流的设备的句柄
+self.device_handle：Handle to the device on which the data stream is to be closed.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.8. scStopStream
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scStopStream(self):
    return self.sc_cam_lib.scStopStream(self.device_handle)
 ```
 
-**函数功能：**
+**Description：**
 
-关闭数据流
+Close the data stream.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：要关闭数据流的设备的句柄
+self.device_handle：Handle to the device on which the data stream is to be closed.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.9. scGetFrameReady
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetFrameReady(self,waitTime = c_uint16(33)):
@@ -790,27 +839,27 @@ def scGetFrameReady(self,waitTime = c_uint16(33)):
    return self.sc_cam_lib.scGetFrameReady(self.device_handle, waitTime, byref(frameready)), frameready
 ```
 
-**函数功能：**
+**Description：**
 
-获取图像就绪状态。调用函数 scGetFrame 前必须调用此函数，否则无法获取图像。
+Gets the image ready state. This function must be called before calling scGetFrame, otherwise the image cannot be retrieved.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle： 设备句柄
+self.device_handle： The handle of the device.
 
-waitTime：允许等待图像就绪的超时时间(ms)，取值范围为(0，65535)。此值与图像的帧率有关，建议值设置为 2\*1000/fps。例如当前的帧率为 20，则建议设置 waitTime 为 2 \* 1000 / 20 = 100。如果设置 waitTime 为 40，则调用函数时可能返回 ScRetGetFrameReadyTimeOut。
+waitTime：The unit is millisecond, the value is in the range (0,65535).You can change the value according to the frame rate. For example,the frame rate is 30, so the theoretical waittime interval is 33ms,but if set the time value is 20ms, it means the maximum wait time is 20 ms when capturing next frame, so when call the scGetFrameReady,it may return SC_GET_FRAME_READY_TIME_OUT(-11).So the recommended value is 2 \* 1000/ FPS.
 
-[byref(frameready)](#_315212-scframeready)：返回图像的就绪状态
+[byref(frameready)](#_315212-scframeready)：Returns the ready state of the image.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**frameready**](#_315212-scframeready)：返回图像的就绪状态
+[**frameready**](#_315212-scframeready)：Returns the ready state of the image.
 
 ### 3.1.5.3.10. scGetFrame
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetFrame(self,  frametype = ScFrameType.SC_DEPTH_FRAME):
@@ -818,50 +867,50 @@ def scGetFrame(self,  frametype = ScFrameType.SC_DEPTH_FRAME):
    return self.sc_cam_lib.scGetFrame(self.device_handle, frametype.value, byref(Scframe)), Scframe
 ```
 
-**函数功能：**
+**Description：**
 
-获取指定图像类型的图像数据。调用此函数前必须调用 scGetFrameReady。
+Gets image data of the specified image type scGetFrameReady must be called before calling this function.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[frametype.value](#_31511-scframetype)：待获取图像的类型
+[frametype.value](#_31511-scframetype)：Specifies the type of the image to be obtained.
 
-[byref(Scframe)](#_315211-scframe)：返回的图像数据
+[byref(Scframe)](#_315211-scframe)：The returned image data.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**Scframe**](#_315211-scframe)：返回的图像数据
+[**Scframe**](#_315211-scframe)：The returned image data.
 
 ### 3.1.5.3.11. scSetWorkMode
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetWorkMode(self,  mode = ScWorkMode.SC_ACTIVE_MODE):
    return self.sc_cam_lib.scSetWorkMode(self.device_handle, mode.value)
 ```
 
-**函数功能：**
+**Description：**
 
-设置相机的工作模式
+Set the working mode of the camera.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[mode.value](#_31516-scworkmode)：要设置的工作模式，对于 ActiveMode ，将时间过滤器的默认值设置为 True ，对于 SlaveMode ，将时间过滤器的默认值设置为 False
+[mode.value](#_31516-scworkmode)：The work mode of camera. For ActiveMode, set the Time filter default true, for SlaveMode, set the Time filter default false.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.12. scGetWorkMode
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetWorkMode(self):
@@ -869,67 +918,68 @@ def scGetWorkMode(self):
    return self.sc_cam_lib.scGetWorkMode(self.device_handle, byref(mode)), mode
 ```
 
-**函数功能：**
+**Description：**
 
-获取相机的工作模式
+Get the working mode of the camera.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[byref(mode)](#_31516-scworkmode)：获取到的设备的工作模式
+[byref(mode)](#_31516-scworkmode)：Indicates the working mode of the obtained device.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**mode**](#_31516-scworkmode)：获取到的设备的工作模式
+[**mode**](#_31516-scworkmode)：Indicates the working mode of the obtained device.
 
 ### 3.1.5.3.13. scSoftwareTriggerOnce
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSoftwareTriggerOnce(self):
    return self.sc_cam_lib.scSoftwareTriggerOnce(self.device_handle)
 ```
 
-**函数功能：**
+**Description：**
 
-执行一次软件触发，仅当相机处于 SC_SOFTWARE_TRIGGER_MODE 时有效
+Performs a software trigger, valid only when the camera is in
+SC_SOFTWARE_TRIGGER_MODE.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.14. scRebootDevie
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scRebootDevie(self):
    return self.sc_cam_lib.scRebootDevie(self.device_handle)
 ```
 
-**函数功能：**
+**Description：**
 
-重启设备
+Reboot the device.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.15. scGetSensorIntrinsicParameters
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetSensorIntrinsicParameters(self, sensorType = ScSensorType.SC_TOF_SENSOR):
@@ -937,27 +987,27 @@ def scGetSensorIntrinsicParameters(self, sensorType = ScSensorType.SC_TOF_SENSOR
    return self.sc_cam_lib.scGetSensorIntrinsicParameters(self.device_handle, sensorType.value, byref(CameraParameters)), CameraParameters
 ```
 
-**函数功能：**
+**Description：**
 
-获取传感器镜头的内参
+Gets the internal intrinsic parameters from the sensor lens.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[sensorType.value](#_31512-scsensortype)：传感器类型
+[sensorType.value](#_31512-scsensortype)：Indicates the sensor type.
 
-[byref(CameraParameters)](#_31528-scsensorintrinsicparameters)：返回传感器镜头的内参
+[byref(CameraParameters)](#_31528-scsensorintrinsicparameters)：Returns the internal intrinsic parameters from the sensor lens.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**CameraParameters**](#_31528-scsensorintrinsicparameters)：返回传感器镜头的内参
+[**CameraParameters**](#_31528-scsensorintrinsicparameters)：Returns the internal intrinsic parameters from the sensor lens.
 
 ### 3.1.5.3.16. scGetSensorExtrinsicParameters
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetSensorExtrinsicParameters(self):
@@ -965,25 +1015,25 @@ def scGetSensorExtrinsicParameters(self):
    return self.sc_cam_lib.scGetSensorExtrinsicParameters(self.device_handle, byref(CameraExtrinsicParameters)), CameraExtrinsicParameters
 ```
 
-**函数功能：**
+**Description：**
 
-获取设备的外参
+Gets the internal extrinsic parameters from the sensor lens.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[byref(CameraExtrinsicParameters)](#_31529-scsensorextrinsicparameters)：返回设备的外参
+[byref(CameraExtrinsicParameters)](#_31529-scsensorextrinsicparameters)：Returns the internal extrinsic parameters from the sensor lens.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**CameraExtrinsicParameters**](#_31529-scsensorextrinsicparameters)：返回设备的外参
+[**CameraExtrinsicParameters**](#_31529-scsensorextrinsicparameters)：Returns the internal extrinsic parameters from the sensor lens.
 
 ### 3.1.5.3.17. scGetFirmwareVersion
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetFirmwareVersion(self):
@@ -992,25 +1042,25 @@ def scGetFirmwareVersion(self):
    return self.sc_cam_lib.scGetFirmwareVersion(self.device_handle, fw, 63),fw.value
 ```
 
-**函数功能：**
+**Description：**
 
-获取设备的固件版本
+Obtain the firmware version of the device.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-fw：返回设备的固件版本
+fw：: Indicates the firmware version of the device.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**fw.value**：返回设备的固件版本
+**fw.value**：Indicates the firmware version of the device.
 
 ### 3.1.5.3.18. scGetDeviceMACAddress
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetDeviceMACAddress(self):
@@ -1019,48 +1069,48 @@ def scGetDeviceMACAddress(self):
    return self.sc_cam_lib.scGetDeviceMACAddress(self.device_handle, mac), mac.value
 ```
 
-**函数功能：**
+**Description：**
 
-获取设备的 MAC 地址
+Obtain the MAC address of the device.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-mac：返回设备的 MAC 地址，其默认是一个字节长度为 18，以‘\0’结尾的字符串
+mac：Returns the device MAC address. the buffer default size is 18, and the last buffer set '\0'.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**mac.value**：返回设备的 MAC 地址，其默认是一个字节长度为 18，以‘\0’结尾的字符串
+**mac.value**：Returns the device MAC address. the buffer default size is 18, and the last buffer set '\0'.
 
 ### 3.1.5.3.19. scSetIRGMMGain
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetIRGMMGain(self, gmmgain = c_uint8(20)):
    return self.sc_cam_lib.scSetIRGMMGain(self.device_handle, gmmgain)
 ```
 
-**函数功能：**
+**Description：**
 
-设置 IR 图像的数字增益
+Sets the digital gain of the IR image.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-gmmgain：要设置给设备的 IR 增益值
+gmmgain：The value of IRGMM Gain.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.20. scGetIRGMMGain
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetIRGMMGain(self):
@@ -1068,48 +1118,48 @@ def scGetIRGMMGain(self):
    return self.sc_cam_lib.scGetIRGMMGain(self.device_handle, byref(gmmgain)), gmmgain.value
 ```
 
-**函数功能：**
+**Description：**
 
-获取 IR 图像的数字增益
+Obtaines the digital gain of the IR image.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-byref(gmmgain)：返回设备的 IR 增益值
+byref(gmmgain)：Returns the IR gain value of the device.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**gmmgain.value**：返回设备的 IR 增益值
+**gmmgain.value**：Returns the IR gain value of the device.
 
 ### 3.1.5.3.21. scSetIRGMMCorrection
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetIRGMMCorrection(self, params = ScIRGMMCorrectionParams()):
    return self.sc_cam_lib.scSetIRGMMCorrection(self.device_handle, params)
 ```
 
-**函数功能：**
+**Description：**
 
-设置设备上的 IR Gamma 校正的值
+Set the device IR GMM Correction on a device.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[params](#_315217-scirgmmcorrectionparams)：IR Gamma 校正的值
+[params](#_315217-scirgmmcorrectionparams)：The value of IR GMM Correction.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.22. scGetIRGMMCorrection
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetIRGMMCorrection(self):
@@ -1117,73 +1167,73 @@ def scGetIRGMMCorrection(self):
    return self.sc_cam_lib.scGetIRGMMCorrection(self.device_handle, byref(params)), params
 ```
 
-**函数功能：**
+**Description：**
 
-获取设备上的 IR Gamma 校正的值
+Obtaines the device IR GMM Correction on a device.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[byref(params)](#_315217-scirgmmcorrectionparams)：IR Gamma 校正的值
+[byref(params)](#_315217-scirgmmcorrectionparams)：The value of IR GMM Correction.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**params**](#_315217-scirgmmcorrectionparams)：IR Gamma 校正的值
+[**params**](#_315217-scirgmmcorrectionparams)：The value of IR GMM Correction.
 
 ### 3.1.5.3.23. scSetColorPixelFormat
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetColorPixelFormat(self,pixelFormat=ScPixelFormat.SC_PIXEL_FORMAT_BGR_888_JPEG):
    return self.sc_cam_lib.scSetColorPixelFormat(self.device_handle, pixelFormat)
 ```
 
-**函数功能：**
+**Description：**
 
-设置彩色图像的像素格式，目前仅支持 RGB 和 BGR 格式
+Set the color image pixel format on the device specified by device. Currently only RGB and BGR formats are supported.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[pixelFormat](#_31513-scpixelformat)：要设置的彩色图像的像素格式
+[pixelFormat](#_31513-scpixelformat)：The color pixel format to use.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.24. scSetColorResolution
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetColorResolution(self, w = c_int32(1600), h = c_int32(1200)):
    return self.sc_cam_lib.scSetColorResolution(self.device_handle, w, h)
 ```
 
-**函数功能：**
+**Description：**
 
-设置彩色图像的分辨率
+Set the color frame Resolution.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-w：图像的宽
+w：The width of color image.
 
-h：图像的高
+h：The height of color image.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.25. scGetColorResolution
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetColorResolution(self):
@@ -1192,52 +1242,52 @@ def scGetColorResolution(self):
    return self.sc_cam_lib.scGetColorResolution(self.device_handle, byref(w), byref(h)), w, h
 ```
 
-**函数功能：**
+**Description：**
 
-获取彩色图像的分辨率
+Obtaines the the color frame Resolution.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-byref(w)：返回彩色图像的图像宽
+byref(w)：Ruturns the width of color image.
 
-byref(h)：返回彩色图像的图像高
+byref(h)：Ruturns the height of color image.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**w**：返回彩色图像的图像宽
+**w**：Ruturns the width of color image.
 
-**h**：返回彩色图像的图像高
+**h**：Ruturns the height of color image.
 
 ### 3.1.5.3.26. scSetFrameRate
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetFrameRate(self, value = c_uint8(30)):
    return self.sc_cam_lib.scSetFrameRate(self.device_handle, value)
 ```
 
-**函数功能：**
+**Description：**
 
-设置设备的图像帧率，同时对深度和彩色图像生效。此接口是同步接口，耗时较长，大约需要 500ms
+Sets the device's image frame rate for both depth and color images. This interface is a synchronization interface, which takes about 500ms.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-value：要设置的目标帧率
+value：The rate value. Different products have different maximum values. Please refer to the product specification.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.27. scGetFrameRate
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetFrameRate(self):
@@ -1245,79 +1295,77 @@ def scGetFrameRate(self):
    return self.sc_cam_lib.scGetFrameRate(self.device_handle, byref(value)), value.value
 ```
 
-**函数功能：**
+**Description：**
 
-获取设备的图像帧率
+Gets the image frame rate of the device.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-byref(value)：返回设备的图像帧率
+byref(value)：Returns the frame rate of the device image.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**value.value**：返回设备的图像帧率
+**value.value**：Returns the frame rate of the device image.
 
 ### 3.1.5.3.28. scSetExposureControlMode
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetExposureControlMode(self, sensorType = ScSensorType.SC_TOF_SENSOR, mode = ScExposureControlMode.SC_EXPOSURE_CONTROL_MODE_MANUAL):
    return self.sc_cam_lib.scSetExposureControlMode(self.device_handle, sensorType.value, mode.value)
 ```
 
-**函数功能：**
+**Description：**
 
-设置传感器的曝光模式
+Set the exposure mode of sensor.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[sensorType.value](#_31512-scsensortype)：要设置曝光模式的传感器类型
+[sensorType.value](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
 
-[mode.value](#_31517-scexposurecontrolmode)：要设置的曝光模式
+[mode.value](#_31517-scexposurecontrolmode)：The exposure control mode.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.29. scSetExposureTime
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR, params = c_int32(0)):
    return self.sc_cam_lib.scSetExposureTime(self.device_handle, sensorType.value, params)
 ```
 
-**函数功能：**
+**Description：**
 
-设置传感器的曝光时间
+Set the exposure time of the sensor
+Depth sensor, only support manual exposure mode, set exposure time
+Color sensor, support in automatic exposure mode, set the maximum exposure time; The exposure time can be set in manual exposure mode.
 
-深度传感器，只支持在手动曝光模式下，设置曝光时间
+**Parameters：**
 
-彩色传感器，支持在自动曝光模式下，设置最大曝光时间；支持在手动曝光模式下，设置曝光时间
+self.device_handle：The handle of the device.
 
-**函数参数：**
+[sensorType.value](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
 
-self.device_handle：设备句柄
+params：The exposure time. The value must be within the maximum exposure time of sensor.
 
-[sensorType.value](#_31512-scsensortype)：要获取曝光时间的传感器类型
+**Returns：**
 
-params：要设置的曝光时间参数
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.30. scGetExposureTime
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR):
@@ -1325,96 +1373,96 @@ def scGetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR):
    return self.sc_cam_lib.scGetExposureTime(self.device_handle, sensorType.value, byref(params)), params
 ```
 
-**函数功能：**
+**Description：**
 
-获取传感器的曝光时间
+Get the exposure time of sensor.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[sensorType.value](#_31512-scsensortype)：要获取曝光时间的传感器类型
+[sensorType.value](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
 
-byref(params)：返回获取的曝光时间参数
+byref(params)：Returns the exposure time.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**params**：返回获取的曝光时间参数
+**params**：Returns the exposure time.
 
 ### 3.1.5.3.31. scSetTimeFilterParams
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetTimeFilterParams(self, params = ScTimeFilterParams()):
    return self.sc_cam_lib.scSetTimeFilterParams(self.device_handle, params)
 ```
 
-**函数功能：**
+**Description：**
 
-设置深度图像的时域滤波参数
+Set the parameters of the Time filter.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[params](#_315216-sctimefilterparams)：指向存储返回值的变量的指针
+[params](#_315216-sctimefilterparams)：Pointer to a variable in which to store the parameters.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.32. scGetTimeFilterParams
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetTimeFilterParams(self, params = ScTimeFilterParams()):
    return self.sc_cam_lib.scSetTimeFilterParams(self.device_handle, params)
 ```
 
-**函数功能：**
+**Description：**
 
-获取深度图像的时域滤波参数
+Get the parameters of the Time Filter feature.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[params](#_315216-sctimefilterparams)：指向存储返回值的变量的指针
+[params](#_315216-sctimefilterparams)：Pointer to a variable in which to store the returned value.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.33. scSetConfidenceFilterParams
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetConfidenceFilterParams(self, params = ScConfidenceFilterParams()):
    return self.sc_cam_lib.scSetConfidenceFilterParams(self.device_handle, params)
 ```
 
-**函数功能：**
+**Description：**
 
-设置深度图像的置信度滤波参数
+Set the parameters of the Confidence filter.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[params](#_315214-scconfidencefilterparams)：指向存储返回值的变量的指针
+[params](#_315214-scconfidencefilterparams)：Pointer to a variable in which to store the parameters.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.34. scGetConfidenceFilterParams
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetConfidenceFilterParams(self):
@@ -1422,48 +1470,48 @@ def scGetConfidenceFilterParams(self):
    return self.sc_cam_lib.scGetConfidenceFilterParams(self.device_handle, byref(params)),params
 ```
 
-**函数功能：**
+**Description：**
 
-获取深度图像的置信度滤波参数
+Get the parameters of the ConfidenceFilter feature.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[byref(params)](#_315214-scconfidencefilterparams)：指向存储返回值的变量的指针
+[byref(params)](#_315214-scconfidencefilterparams)：Pointer to a variable in which to store the returned value.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**params**](#_315214-scconfidencefilterparams)：指向存储返回值的变量的指针
+[**params**](#_315214-scconfidencefilterparams)：Pointer to a variable in which to store the returned value.
 
 ### 3.1.5.3.35. scSetFlyingPixelFilterParams
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetFlyingPixelFilterParams(self, params = ScFlyingPixelFilterParams()):
    return self.sc_cam_lib.scSetFlyingPixelFilterParams(self.device_handle, params)
 ```
 
-**函数功能：**
+**Description：**
 
-设置深度图像的去飞点滤波参数
+Set the parameters of the FlyingPixel filter.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[params](#_315215-scflyingpixelfilterparams)：滤波参数
+[params](#_315215-scflyingpixelfilterparams)：Filter parameters.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.36. scGetFlyingPixelFilterParams
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetFlyingPixelFilterParams(self):
@@ -1471,48 +1519,48 @@ def scGetFlyingPixelFilterParams(self):
    return self.sc_cam_lib.scGetFlyingPixelFilterParams(self.device_handle, byref(params)),params
 ```
 
-**函数功能：**
+**Description：**
 
-获取深度图像的去飞点滤波参数
+Get the parameters of the FlyingPixel filter.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[byref(params)](#_315215-scflyingpixelfilterparams)：滤波参数
+[byref(params)](#_315215-scflyingpixelfilterparams)：Filter parameters.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**params**](#_315215-scflyingpixelfilterparams)：滤波参数
+[**params**](#_315215-scflyingpixelfilterparams)：Filter parameters.
 
 ### 3.1.5.3.37. scSetFillHoleFilterEnabled
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetFillHoleFilterEnabled(self, enable = c_bool(True)):
    return self.sc_cam_lib.scSetFillHoleFilterEnabled(self.device_handle, enable)
 ```
 
-**函数功能：**
+**Description：**
 
-设置深度图像的补洞滤波开启关闭
+Enables or disables the FillHole filter.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-enable：true 开启，false 关闭
+enable：Set to true to enable the feature or false to disable the feature.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.38. scGetFillHoleFilterEnabled
 
-**函数原型：**
+**Prototype：**
 
 ```python
     def scGetFillHoleFilterEnabled(self):
@@ -1520,48 +1568,48 @@ enable：true 开启，false 关闭
         return self.sc_cam_lib.scGetFillHoleFilterEnabled(self.device_handle, byref(enable)),enable.value
 ```
 
-**函数功能：**
+**Description：**
 
-获取深度图像的补洞滤波开启关闭
+Obtaines the Boolean value of whether the FillHole Filter feature is enabled or disabled.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-byref(enable)：true 开启，false 关闭
+byref(enable)：True on, false off.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**enable.value**：true 开启，false 关闭
+**enable.value**：True on, false off.
 
 ### 3.1.5.3.39. scSetSpatialFilterEnabled
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetSpatialFilterEnabled(self, enable = c_bool(True)):
    return self.sc_cam_lib.scSetSpatialFilterEnabled(self.device_handle, enable)
 ```
 
-**函数功能：**
+**Description：**
 
-设置深度图像的空间滤波开启关闭
+Enables or disables the Spatial filter.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-enable：true 开启，false 关闭
+enable：Set to true to enable the feature or false to disable the feature.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.40. scGetSpatialFilterEnabled
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetSpatialFilterEnabled(self):
@@ -1569,48 +1617,48 @@ def scGetSpatialFilterEnabled(self):
    return self.sc_cam_lib.scGetSpatialFilterEnabled(self.device_handle, byref(enable)),enable.value
 ```
 
-**函数功能：**
+**Description：**
 
-设置深度图像的空间滤波开启关闭
+Obtaines the Boolean value of whether the Spatial Filter feature is enabled or disabled.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-byref(enable)：true 开启，false 关闭
+byref(enable)：True on, false off.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**enable.value**：true 开启，false 关闭
+**enable.value**：True on, false off.
 
 ### 3.1.5.3.41. scSetTransformColorImgToDepthSensorEnabled
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetTransformColorImgToDepthSensorEnabled(self, enabled = c_bool(True)):
    return self.sc_cam_lib.scSetTransformColorImgToDepthSensorEnabled(self.device_handle,  enabled)
 ```
 
-**函数功能：**
+**Description：**
 
-设置彩色图像对齐到深度相机空间的开关，只有带彩色传感器的设备才支持此操作。如果打开开关，则调用 scGetFrameReady 时，ScFrameReady.transformedColor 的值为 1，然后调用 scGetFrame 可以得到 ScTransformColorImgToDepthSensorFrame 类型的彩色图像，其大小与深度图像大小相同。
+Enables or disables transforms a color image into the geometry of the depth sensor. When enabled, scGetFrame() can be invoked passing ::ScTransformedColorFrame as the frame type for get a color image which each pixel matches the corresponding pixel coordinates of the depth sensor. The resolution of the transformed color frame is the same as that of the depth image.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-enabled：true 打开对齐，false 关闭对齐
+Set to true to enable the feature or false to disable the feature.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.42. scGetTransformColorImgToDepthSensorEnabled
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetTransformColorImgToDepthSensorEnabled(self):
@@ -1618,48 +1666,51 @@ def scGetTransformColorImgToDepthSensorEnabled(self):
    return self.sc_cam_lib.scGetTransformColorImgToDepthSensorEnabled(self.device_handle,  byref(enabled)),enabled
 ```
 
-**函数功能：**
+**Description：**
 
-获取彩色图像对齐到深度相机空间的开关状态
+Obtaines the Boolean value of whether the transformed of the color image to depth sensor space feature is enabled or disabled.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-byref(enabled)：返回开关状态
+byref(enabled)：Pointer to a variable in which to store the returned Boolean value.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**enabled**：返回开关状态
+**enabled**：Pointer to a variable in which to store the returned Boolean value.
 
 ### 3.1.5.3.43. scSetTransformDepthImgToColorSensorEnabled
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetTransformDepthImgToColorSensorEnabled(self, enabled = c_bool(True)):
    return self.sc_cam_lib.scSetTransformDepthImgToColorSensorEnabled(self.device_handle,  enabled)
 ```
 
-**函数功能：**
+**Description：**
 
-设置深度图像对齐到彩色相机空间的开关，只有带彩色传感器的设备才支持此操作。如果打开开关，则调用 scGetFrameReady 时，ScFrameReady.transformedDepth 的值为 1，然后调用 scGetFrame 可以得到 ScTransformDepthImgToColorSensorFrame 类型的深度图像，其大小与彩色图像大小相同。
+Enables or disables transforms the depth map into the geometry of the color sensor. When enabled, scGetFrame() can
+be invoked passing ::ScTransformedDepthFrame as the frame type for get a depth image which each pixel matches the
+corresponding pixel coordinates of the color sensor. The resolution of the transformed depth frame is the same as that
+of the color image.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-enabled：true 打开对齐，false 关闭对齐
+enabled：Set to true to enable the feature or false to disable the feature.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.44. scGetTransformDepthImgToColorSensorEnabled
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetTransformDepthImgToColorSensorEnabled(self):
@@ -1667,25 +1718,25 @@ def scGetTransformDepthImgToColorSensorEnabled(self):
    return self.sc_cam_lib.scGetTransformDepthImgToColorSensorEnabled(self.device_handle,  byref(enabled)),enabled
 ```
 
-**函数功能：**
+**Description：**
 
-获取深度图像对齐到彩色相机空间的开关状态
+Obtaines the Boolean value of whether the transformed of the depth image to color space feature is enabled or disabled.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-byref(enabled)：返回开关状态
+byref(enabled)：Pointer to a variable in which to store the returned Boolean value.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**enabled**：返回开关状态
+**enabled**：Pointer to a variable in which to store the returned Boolean value.
 
 ### 3.1.5.3.45. scConvertDepthFrameToPointCloudVector
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scConvertDepthFrameToPointCloudVector(self, depthFrame = ScFrame()):
@@ -1695,27 +1746,27 @@ def scConvertDepthFrameToPointCloudVector(self, depthFrame = ScFrame()):
    return self.sc_cam_lib.scConvertDepthFrameToPointCloudVector(self.device_handle, byref(depthFrame) ,pointlist),pointlist
 ```
 
-**函数功能：**
+**Description：**
 
-把传入的深度图像转换为世界坐标系点集合，转换后的世界坐标系点集合的大小为 ScFrame.width \* ScFrame.height，支持 ScDepthFrame 和 ScTransformDepthImgToColorSensorFrame 图像
+Converts the input Depth frame from depth coordinate space to world coordinate space on the device. Currently supported depth image types are SC_DEPTH_FRAME and SC_TRANSFORM_DEPTH_IMG_TO_COLOR_SENSOR_FRAME.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[byref(depthFrame)](#_315211-scframe)：深度图像
+[byref(depthFrame)](#_315211-scframe)：The depth frame.
 
-[pointlist](#_31523-scvector3f)：转换后点云的坐标点的集合
+[pointlist](#_31523-scvector3f)： Pointer to a buffer in which to output the converted x, y, and z values of the world coordinates,measured in millimeters. The length of pWorldVector must is (ScFrame.width \* ScFrame.height).
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**pointlist**](#_31523-scvector3f)：转换后点云的坐标点的集合
+[**pointlist**](#_31523-scvector3f)：Pointer to a buffer in which to output the converted x, y, and z values of the world coordinates,measured in millimeters. The length of pWorldVector must is (ScFrame.width \* ScFrame.height).
 
 ### 3.1.5.3.46. scSetHotPlugStatusCallback
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetHotPlugStatusCallback(self,callbackfunc= c_void_p):
@@ -1724,21 +1775,21 @@ def scSetHotPlugStatusCallback(self,callbackfunc= c_void_p):
    return self.sc_cam_lib.scSetHotPlugStatusCallback(callbackFunc_)
 ```
 
-**函数功能：**
+**Description：**
 
-设置设备热拔插状态回调函数
+Set hotplug status callback function.
 
-**函数参数：**
+**Parameters：**
 
-callbackFunc\_： 回调函数
+callbackFunc\_：Pointer to the callback function.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.47. scGetMaxExposureTime
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetMaxExposureTime(self, sensorType = ScSensorType.SC_COLOR_SENSOR):
@@ -1746,27 +1797,27 @@ def scGetMaxExposureTime(self, sensorType = ScSensorType.SC_COLOR_SENSOR):
    return self.sc_cam_lib.scGetMaxExposureTime(self.device_handle, sensorType.value, byref(tmp)), tmp
 ```
 
-**函数功能：**
+**Description：**
 
-获取传感器的最大曝光时间
+Get the maximum exposure time of sensor.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-[sensorType.value](#_31512-scsensortype)：要获取曝光时间的传感器类型
+[sensorType.value](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
 
-byref(tmp)：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同
+byref(tmp)：The maximum exposure time. The maximum exposure time is different at different frame rates.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**tmp**：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同
+**tmp**：The maximum exposure time. The maximum exposure time is different at different frame rates.
 
 ### 3.1.5.3.48. scSetParamsByJson
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetParamsByJson(self, imgpath):
@@ -1774,46 +1825,46 @@ def scSetParamsByJson(self, imgpath):
    return self.sc_cam_lib.scSetParamsByJson(self.device_handle,  byref(pimgpath))
 ```
 
-**函数功能：**
+**Description：**
 
-从配置文件设置相机的参数
+Set the parameters by Json file that can be saved by ScepterGUITool.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-byref(pimgpath)：配置文件路径
+byref(pimgpath)：Pointer to the path of Json file.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.49. scSetColorGain
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetColorGain(self, params = c_float(1.0)):
    return self.sc_cam_lib.scSetColorGain(self.device_handle,  params)
 ```
 
-**函数功能：**
+**Description：**
 
-在手动曝光模式中，设置彩色传感器曝光模式的颜色增益
+Set the color Gain with the exposure mode of Color sensor in SC_EXPOSURE_CONTROL_MODE_MANUAL.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-params：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
+params：The value of color Gain.Different products have different maximum value. Please refer to the product specification.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.50. scGetColorGain
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetColorGain(self):
@@ -1822,48 +1873,48 @@ def scGetColorGain(self):
    return self.sc_cam_lib.scGetColorGain(self.device_handle,  params), params
 ```
 
-**函数功能：**
+**Description：**
 
-获取彩色传感器曝光模式的颜色增益
+Get the color Gain.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-params：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
+params：The value of color Gain.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**params**：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
+**params**：The value of color Gain.
 
 ### 3.1.5.3.51. scSetAutoExposureTime
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scSetAutoExposureTime(self, params = c_int32(0)):
    return self.sc_cam_lib.scSetColorAECMaxExposureTime(self.device_handle, params)
 ```
 
-**函数功能：**
+**Description：**
 
-设置彩色传感器在自动曝光模式下的最大曝光时间。该接口在自动曝光模式下使用
+Set the maximum exposure time of color sensor in automatic mode. The interface is used in automatic mode.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-params：曝光时间参数
+params：The exposure time. The value must be within the maximum exposure time of sensor.
 
-**返回值：**
+**Returns：**
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.1.5.3.52. scGetAutoExposureTime
 
-**函数原型：**
+**Prototype：**
 
 ```python
 def scGetAutoExposureTime(self):
@@ -1871,20 +1922,19 @@ def scGetAutoExposureTime(self):
    return self.sc_cam_lib.scGetColorAECMaxExposureTime(self.device_handle, byref(params)), params
 ```
 
-**函数功能：**
+**Description：**
 
-获取彩色传感器在自动曝光模式下的最大曝光时间。该接口在自动曝光模式下使用
+Get the maximum exposure time of color sensor in automatic mode. The interface is used in automatic mode.
 
-**函数参数：**
+**Parameters：**
 
-self.device_handle：设备句柄
+self.device_handle：The handle of the device.
 
-byref(params)：返回获取的曝光时间参数
+byref(params)：Returns the exposure time.
+**Returns：**
 
-**返回值：**
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-**params**：返回获取的曝光时间参数
+**params**：Returns the exposure time.
 
 <!-- tabs:end -->

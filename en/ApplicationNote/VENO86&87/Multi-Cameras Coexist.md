@@ -1,76 +1,78 @@
-# 2.4. 多机共存
+# 2.4. Multi-Cameras Coexist
 
-## 2.4.1. 原理与背景
+## 2.4.1. Principle and Background
 
-3D 深度相机采用基于 ToF（Time-of-Flight）飞行时间的方式进行距离测量。在工作中，相机会发出红外光，光遇到物体后反射回传感器，相机通过计算光发射与返回的时间差计算物体的距离。
+3D depth camera is based on ToF (Time-of-Flight) for distance measurement. In operation, the camera emits infrared light, which is reflected to the sensor when it encounters an object, and the camera calculates the distance to the object by calculating the time difference between the emission and return of the light.
 
 <div class="center">
 
-![Principle and Background](<pic/Principle and Background.png>)
+![Principle and Background](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Principle and Background.png>)
 
 </div>
 
-因为测量过程中需要主动发送红外光，所以多台相机在同一场景下（FOV 有交叠）工作时，可能发生相互干扰的情况。多相机的干扰导致深度测量产生大量误差，深度质量严重下降，这极大限制了 ToF 相机的应用。基于以上问题我们提供了多机共存的方法。
+Because the measurement process requires active infrared light transmission, mutual interference may occur when multiple cameras work in the same scene (with overlapping FOVs). The interference of multiple cameras leads to many errors in depth measurement and serious degradation in depth quality, which greatly limits the application of ToF cameras. Based on the above problems we provide a Multi-Cameras Coexist method.
 
-## 2.4.2. 相机工作时序
+## 2.4.2. Camera operation timing
 
-相机每个工作周期都会进行红外光发射与采集，并计算每个像素点的距离值。每秒钟可进行测量的次数，称之为帧率。
+Each working cycle of the camera will be transmitted and collected in infrared light, and the distance value of each pixel point is calculated. The number of measurements per second is called frame rate.
 
-VENO86/87 相机的典型帧率为 15fps，即每秒可产生 15 帧的深度图像信息，所以其工作周期时间为 1s / 15 = 66.7ms，则每个工作周期的时间即为 66.7 毫秒。
+The typical frame rate of VENO86&87 series cameras is 15fps, that is the depth image information of 15 frames can be generated per second, so the working cycle time is 1s / 15 = 40ms, and the time of each working cycle is 66.67 milliseconds.
 
-细分每个工作周期，又可以分为曝光（激光发射与采集）、传输两个阶段，如下图：
+Segmentation of each working cycle can be divided into two stages: exposure (laser launch and collection), transmission, as shown below:
 
-![exposure and transmission](<pic/exposure and transmission.png>)
+![exposure and transmission](<../../../zh-cn/ApplicationNote/VENO86&87/pic/exposure and transmission.png>)
 
-当多台相机同时工作时，假如曝光阶段正好发生重叠，A 相机接收到了 B 相机发射出来的激光，就会发生相互干扰的现象。
+When multiple cameras work at the same time, if the exposure phase overlaps, the A camera receives the laser emitted by the B camera, which will interfere with each other.
 
-## 2.4.3. 从触发模式
+## 2.4.3. Slave Trigger Mode
 
-我司生产的 ToF 产品支持从触发模式。在该模式下，相机会等待收到触发信号，再开始一帧的曝光和传输。每一次信号仅触发一次曝光和传输。
+The ToF product produced by us supports the trigger mode. In this mode, the camera will wait for the trigger signal, and then start a frame of exposure and transmission. Each signal only triggers one exposure and transmission.
 
-您可以通过 GUI 工具或 API 函数切换相机到从触发模式，具体可以查看 GUI 工具手册和 API 文档。
+The camera can be switched to the trigger mode through the GUI tool or API function, and it can be viewed in the GUI Tool Manual and API documents in detail.
 
-### 2.4.3.1. 硬件触发：
+### 2.4.3.1. Hardware trigger:
 
-您可以查看相关产品的产品规格书，在“产品接口”部分找到“硬件触发功能”对应的内容，以及相关硬件接口来实现从触发模式。
+You can view the ToF Camera Specification, find corresponding content to " Hardware Trigger Function" in " Interface with Host" section, and related hardware interfaces to achieve a trigger mode.
 
-### 2.4.3.2. 软件触发：
+### 2.4.3.2. Software trigger:
 
-可以通过调用 API 函数完成对相机的触发，具体可以查看 Gitee 或 GitHub 上对应平台 Samples 文件夹下的例程 DeviceSWTriggerMode。
+You can complete the trigger by calling the API function. For details, you can view the sample program DeviceSWTriggerMode under the corresponding platform Samples folder on the Gitee or GitHub.
 
-ScepterSDK 下载链接：
+SDK link:
 
 https://github.com/ScepterSW/ScepterSDK
 
-或
+or
 
 https://gitee.com/ScepterSW/ScepterSDK
 
-## 2.4.4. 多机共存方式与用法
+## 2.4.4. Multi-Cameras Coexist
 
-基于 ToF 的原理和相机提供的从触发模式，VENO 系列多机共存可通过协同控制方式来实现。
+Based on the principle of ToF and the trigger mode, Multi-Cameras Coexist can be implemented by Center Controller Synchronization.
 
-协同控制方式是将多台相机全部设置为 Trigger 模式，由主控平台分别控制不同相机的曝光开始时间，保证不同相机之间不会相互干扰。相机进入 Trigger 模式后，当接收到一次触发信号后，只会工作一个工作周期，所以可以根据需求，灵活的控制不同相机的出图时间以及帧率。但需要注意，此方式需要平衡帧率与相机数量。
+1. Set multiple cameras as slave trigger mode, please find the operation steps in the user manual of the camera.
 
-![Multi-Cameras Coexist](<pic/Multi-Cameras Coexist.png>)
+2. Use a center controller to generate the trigger signal for each camera. Make sure the timing of each trigger signal is timing divided.
 
-**适应场景**：2 台以上相机同时工作，对相机的工作帧率没有过高的要求。
+![Multi-Cameras Coexist](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Multi-Cameras Coexist.png>)
 
-**使用方法：**
+**Adaptation scene**: Two or more cameras work at the same time, and there are no requirements for the working frame rate of the camera.
 
-**1) 硬件触发：**
+**Usage:**
 
-根据所选相机的型号，参考规格书找到 Ext_Trigger 信号引脚。将相应的触发信号分别接到 A,B,C 相机的触发引脚。
+**1) Hardware trigger：**
 
-![Hardware trigger](<pic/Hardware trigger.png>)
+Please find the Ext_Trigger signal, and connect the trigger signal from the center controller to the cameras.
 
-**2) 软件触发：**
+![Hardware trigger](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Hardware trigger.png>)
 
-将 A,B,C 相机全部设置为 slave 模式。等待触发信号的触发。
+**2) Software trigger：**
+
+Set all A, B, C camera to Slave mode. Waiting for triggering signals.
 
 ScStatus scSetWorkMode(ScDeviceHandle device, ScWorkMode mode)
 
-由于相机不同模式下，曝光时间不同，建议相邻相机的触发信号间隔大于等于一个工作周期。例如，以 15fps 为例，A 相机触发信号发出后，B 相机的触发信号要延时 66.7ms 以上。
+Due to the different exposure time of the camera in different modes, it is recommended that the trigger signal interval between adjacent cameras is greater than equal to a working cycle. For example, taking 15FPS as an example, after the A camera triggered the signal, the trigger signal of the B camera should be delayed above 66.7ms.
 
 <style>
 .center

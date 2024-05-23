@@ -1,94 +1,147 @@
-# 2.1. 深度质量测试
+# 2.1. Depth Quality Test
 
-## 2.1.1. 介绍
+## 2.1.1. Introduction
 
-我们可以使用多种指标来评估深度质量。推荐使用一个兼容所有测试的通用环境，例如一个光滑平整、哑光均匀、平行对齐深度相机的平面，测试过程中将其与相机放置在一个可控并已知的距离。安装在刚性框架或结构上的白色或浅色板是一个合适的目标。
+There are a variety of metrics that can be defined to evaluate depth quality. A common environment that is compatible with all tests is recommended to be used, such as a smooth and flat surface with a matt finish uniform, aligned parallel to the depth camera that is placed at a controllable and known distance from the camera under test. White or light color board mounted to a rigid frame or structure is a suitable target.
 
-深度数据的准度和精度（也称为时间噪声或可重复性）是判断深度相机图像质量的主要特征。
+Depth data accuracy and precision (also called temporal noise or repeatability) are the primary characteristics for judging the depth camera image quality.
 
-### 2.1.1.1. 准度（Accuracy）
+### 2.1.1.1. Accuracy
 
-准度是测量深度值与实际距离（标定好的真实数据，Ground Truth）之间的平均差。它是对系统绝对误差的描述。
-
-![Accuracy](pic/Accuracy.png)
-
-### 2.1.1.2. 精度（Precision）
-
-精度大多被定义为准度的标准差。它也被称为时间噪声或可重复性。精度测量的是特定数量帧上的深度值变动。
-
-![Precision](pic/Precision.png)
-
-下图说明了两者间的关系：
-
-|                                                                                     |
-| :---------------------------------------------------------------------------------: |
-| ![Relation of Precision and Accuracy](<pic/Relation of Precision and Accuracy.png>) |
-|                               图 1: 精度与准度的关系                                |
-
-## 2.1.2. 测试条件
-
-- 目标物体：80cm\*80cm 40%平面反射率的灰色标定板，安装在与运动平台相连的杆上（参考图 2）
-- 相机位置：安装在钢制夹具上（参考图 3），镜头表面与标定板表面平行。
-- 相机设置：默认设置（参考图 4），相机预热 20 分钟。
-- 成像环境：22°C 室温，测试期间室内光线为 200Lux，一侧使用黑色窗帘，尽量减少周围反射（参考图 2）
-- 运动平台从 0.4 米移动到 4.5 米，在 0.4m、1m、1.5m、2m、2.5m、3m、3.5m、4m、4.5m 处停止。每一步测量图像中心 10×10 像素 ROI（感兴趣区域）上的深度，重复 32 次取平均数值。
-- 使用我们自主开发的工具来实时测量和记录深度指标。对于绝对深度值的评估，我们使用每个像素中图像集的平均深度。标准差是根据图像集中的偏差计算的。
-
-|                                                                   |
-| :---------------------------------------------------------------: |
-|   ![40% Reflectivity Target](<pic/40 Reflectivity Target.png>)    |
-|             图 2: 80CM\*80CM 40% 反射率灰板&成像环境              |
-| ![Camera Mounted on Fixture](<pic/Camera Mounted on Fixture.png>) |
-|                      图 3: 相机固定在夹具上                       |
-|    ![Default Camera Setting](<pic/Default Camera Setting.png>)    |
-|                          图 4: 默认设置                           |
-
-## 2.1.3. 准度测试
-
-为了获得尽可能准确的结果，3D ToF 相机在工厂进行了校准和测试，以保证可靠的准确性。VENO 系列相机经过校准，测量范围为 0.4\~4.5 米。从技术上讲，相机可以测量最小 0.15 米的距离，因此如果用户有非常近的测量要求，我们也提供定制范围的产品。
-
-### 测试结果
-
-下面的表显示了基于上述测试条件的两组平均测量误差和准度的数据。测量误差保持在毫米甚至亚毫米级精度，准确度小于 1%。
-
-|                                                                                               |
-| :-------------------------------------------------------------------------------------------: |
-|                     ![Accuracy Test Data](<pic/Accuracy Test Data1.png>)                      |
-|                                      表 1：准度测试数据                                       |
-|                     ![Accuracy Test Data](<pic/Accuracy Test Data2.png>)                      |
-|                                      表 2：准度测试数据                                       |
-| ![Measurement error in Different Distance](<pic/Measurement error in Different Distance.png>) |
-|                                   表 3: 不同距离的测量误差                                    |
-|          ![Accuracy in Different Distance](<pic/Accuracy in Different Distance.png>)          |
-|                                     表 4: 不同距离的准度                                      |
-
-## 2.1.4. 精度测试
-
-精度测量的是特定数量帧上的深度值变动，它也被称为时间噪声或可重复性。 精度测量的目的是了解深度相机的每像素 Z 精度的时间方面的相关性。它是按像素测量的，然后取 ROI 的平均值或中值。
-
-### 测试结果
-
-### 2.1.4.1. 精度与距离的关系
-
-按照第 2 部分描述的测试条件，借助我们自主开发的软件工具，在图像中心测量 10×10 像素 ROI 的平均准确度，在每个位置重复 32 次，然后计算作为深度值标准差的精度数据。
-
-|                                                                                                                                                                                   |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| ![Precision data in Different Distance](<pic/Precision data in Different Distance1.png>) ![Precision data in Different Distance](<pic/Precision data in Different Distance2.png>) |
-|                                                                  表 5：不同距离的精度数据（默认曝光时间为 1MS）                                                                   |
-|                                             ![Precision trend in Different Distance](<pic/Precision trend in Different Distance.png>)                                             |
-|                                                                  表 6：不同距离的精度趋势（默认曝光时间为 1MS）                                                                   |
-
-### 2.1.4.2. 精度与曝光时间的关系
-
-为了帮助用户了解影响精度的因素，在每个距离，我们测试了 1ms、2ms、3ms 和 4ms 不同曝光时间设置的精度。下面的数据表明，相机设置的曝光时间越长，只要图像不过曝，相机就可以获得越高的精度。
+Accuracy is the mean difference between the measured distance and the true distance (ground truth). It is a description of systematic absolute errors.
 
 <div class="center">
 
-|                                                                                                                 |
-| :-------------------------------------------------------------------------------------------------------------: |
-| ![Precision influence with Different Exposure time](<pic/Precision influence with Different Exposure time.png>) |
-|                                          表 7:不同曝光时间对精度的影响                                          |
+![Accuracy](pic/Accuracy.png)
+
+</div>
+
+### 2.1.1.2. Precision
+
+Precision is mostly defined as a standard deviation of accuracy. It is also called temporal noise or repeatability. Precision measures the variation in depth values over a specific number of frames.
+
+<div class="center">
+
+![Precision](pic/Precision.png)
+
+</div>
+
+The following diagrams illustrate the relation between the two aspects:
+
+<div class="center">
+
+![Relation of Precision and Accuracy](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Relation of Precision and Accuracy.png>)
+
+</div>
+
+## 2.1.2. Test Condition
+
+• Target: 80cm\*80cm 40% reflectivity planar grey board mounted on bar attached to motion stage (refer to figure 1)
+• Camera positioning: mounted on a steel fixture (refer to figure 2), laser distance meter used to measure distance from case front to the grey board
+• Camera setting: default setting (refer to figure 3), camera warmed up for 20 minutes.
+• Imaging environment: 22℃ room temperature, 200Lux room light on during testing, black curtain used on one side to minimize reflections around (refer to figure 1)
+• Motion stage moves from 0.4meters to 4.5meters, and stopped in 0.4m, 1m,1.5m, 2m, 2.5m, 3m, 3.5m, 4m, 4.5m. During each step measure depth over 10×10 pixel ROI (region of interest) at image center, repeat 32 times at each position.
+• Depth metrics are measured and recorded in real time by using the self-developed tool. For the evaluation of absolute depth values we use the mean depth of the image set in each pixel. The standard deviation is computed based on the deviation in an image set.
+
+**80CM\*80CM 40% REFLECTIVITY TARGET & IMAGING ENVIRONMENT**:
+
+<div class="center">
+
+![40% Reflectivity Target](<../../../zh-cn/ApplicationNote/VENO86&87/pic/40 Reflectivity Target.png>)
+
+</div>
+
+**CAMERA MOUNTED ON THE FIXTURE**:
+
+<div class="center">
+
+![Camera Mounted on Fixture](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Camera Mounted on Fixture.png>)
+
+</div>
+
+**DEFAULT CAMERA SETTING**:
+
+<div class="center">
+
+![Default Camera Setting](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Default Camera Setting.png>)
+
+</div>
+
+## 2.1.3. Accuracy Testing
+
+To achieve a result as accurate as possible, the cameras are calibrated at the factory and tested to guarantee a reliable accuracy. VENO series cameras are calibrated for a measurement range of 0.4~4.5meters. Technically speaking, the camera is capable of measuring distances as minimal as 0.15meters so if users have quite near measurement requirement, we also offer products at a customized range.
+
+### Test Result
+
+Below Table 2 shows the data of two units’ mean measurement error and accuracy based on the test conditions listed above. Measurement Error keeps in millimeter or even submillimeter precise and accuracy is lower than 1%.
+
+**ACCURACY TEST DATA**:
+
+<div class="center">
+
+![Accuracy Test Data](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Accuracy Test Data1.png>)
+
+</div>
+
+<div class="center">
+
+![Accuracy Test Data](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Accuracy Test Data2.png>)
+
+</div>
+
+**MEASUREMENT ERROR IN DIFFERENT DISTANCE**:
+
+<div class="center">
+
+![Measurement error in Different Distance](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Measurement error in Different Distance.png>)
+
+</div>
+
+**ACCURACY IN DIFFERENT DISTANCE**:
+
+<div class="center">
+
+![Accuracy in Different Distance](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Accuracy in Different Distance.png>)
+
+</div>
+
+## 2.1.4. Precision Testing
+
+Precision measures the variation in depth values over a specific number of frames, so it is also called temporal noise or repeatability. The purpose of precision measurement is to understand the depth camera’s time-dependent aspects of per pixel Z-accuracy. It is measured per pixel and then an average or median is taken over the ROI.
+
+### Test Result
+
+### 2.1.4.1. Relations between precision and distance
+
+Following the test conditions described in Part 2, with the assistant of a self-developed software tool, average accuracy is measured over 10×10 pixels ROI at image center, repeat 32 times at each position then precision data as a standard deviation in depth values is calculated.
+
+**PRECISION DATA IN DIFFERENT DISTANCE (EXPOSURE TIME @1MS DEFAULTED)**:
+
+<div class="center">
+
+![Precision data in Different Distance](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Precision data in Different Distance1.png>)
+
+![Precision data in Different Distance](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Precision data in Different Distance2.png>)
+
+</div>
+
+**PRECISION TREND IN DIFFERENT DISTANCE (EXPOSURE TIME @1MS DEFAULTED)**:
+
+<div class="center">
+
+![Precision trend in Different Distance](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Precision trend in Different Distance.png>)
+
+</div>
+
+### 2.1.4.2. Relations between precision and exposure time
+
+To help users understand the factors to influence precision, in each distance, we tested the precision with different exposure time setting at 1ms, 2ms, 3ms and 4ms. Below data shows that the longer exposure time the camera is set, the higher precision the camera can get, as long as images are not over exposure.
+
+**PRECISION INFLUENCE WITH DIFFERENT EXPOSURE TIME**:
+
+<div class="center">
+
+![Precision influence with Different Exposure time](<../../../zh-cn/ApplicationNote/VENO86&87/pic/Precision influence with Different Exposure time.png>)
 
 </div>
 

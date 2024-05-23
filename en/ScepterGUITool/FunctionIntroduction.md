@@ -112,17 +112,17 @@ The display value below IR Image is the gray value at the white point. As shown 
 
 ![DepthImgToColorSensor](../../zh-cn/ScepterGUITool/pic/DepthImgToColorSensor.png)
 
-Depth image map to RGB domain. When enabled, the images with Depth pixels aligned to the RGB pixel space are output and displayed, that is, the depth imagecorresponding to RGB pixel one by one.
+Depth image map to Color domain. When enabled, the images with Depth pixels aligned to the Color pixel space are output and displayed, that is, the depth imagecorresponding to Color pixel one by one.
 
 #### Principle：
 
 ![RGBD_Principle](../../zh-cn/ScepterGUITool/pic/RGBD_Principle.gif)
 
-There is a distance between the Tof lens and the RGB camera, so there is a parallax from the actual image.
+There is a distance between the Tof lens and the Color camera, so there is a parallax from the actual image.
 
-In order to align the depth image with the RGB image, eliminate the parallax and obtain a true RGB-D image, witch means the color of the object surface and its depth correspond accurately at the pixel level on the two-dimensional image. A conversion is required:
+In order to align the depth image with the Color image, eliminate the parallax and obtain a true RGB-D image, witch means the color of the object surface and its depth correspond accurately at the pixel level on the two-dimensional image. A conversion is required:
 
-The depth under the coordinate system of the infrared camera is converted to the coordinate system of the RGB camera by rigid transformation, and then projected to the two-dimensional image coordinate system of the RGB image, and finally a depth map under the coordinate system of the RGB camera is formed.
+The depth under the coordinate system of the infrared camera is converted to the coordinate system of the Color camera by rigid transformation, and then projected to the two-dimensional image coordinate system of the Color image, and finally a depth map under the coordinate system of the Color camera is formed.
 
 | ![DepthImgToColorSensorImage](../../zh-cn/ScepterGUITool/pic/DepthImgToColorSensorImage.png) | ![ColorImage](../../zh-cn/ScepterGUITool/pic/ColorImage.png) |
 | :------------------------------------------------------------------------------------------: | :----------------------------------------------------------: |
@@ -132,271 +132,271 @@ The depth under the coordinate system of the infrared camera is converted to the
 
 ![ColorImgToDepthSensor](../../zh-cn/ScepterGUITool/pic/ColorImgToDepthSensor.png)
 
-设定 RGB 图像对齐到 Depth 域的功能。启用后将输出并显示 RGB 像素点对齐到 Depth 像素空间的图像，即与 Depth 像素逐一对应的 RGB 图像。
+RGB image map to Depth domain. When enabled, images with RGB pixels maptoDepth pixel space are output and displayed, that is, RGB images correspondingtodepth pixels one by one.
 
 | ![DepthImage](../../zh-cn/ScepterGUITool/pic/DepthImage.png) | ![ColorImgToDepthSensorImage](../../zh-cn/ScepterGUITool/pic/ColorImgToDepthSensorImage.png) |
 | :----------------------------------------------------------: | :------------------------------------------------------------------------------------------: |
-|                          Depth 图像                          |                                      对齐后的 RGB 图像                                       |
+|                         Depth Image                          |                                 ColorImgToDepthSensor Image                                  |
 
 **3. Depth and IR**
 
-除了深度图像，相机还能够输出一个分辨率为 640\*480 的 IR 图像。由于 IR 图像和深度图像出自同一 sensor，所以 IR 图像与深度图在时间和像素上都实现了严格的对齐。
+In addition to the depth image, the camera is also capable of outputting an IR image with a resolution of 640 \* 480. Since the IR image and the depth image come from the same sensor, the IR image and the depth map are strictly aligned in time and pixels.
 
 | ![DepthImage](../../zh-cn/ScepterGUITool/pic/DepthImage.png) | ![IRImage](../../zh-cn/ScepterGUITool/pic/IRImage.png) |
 | :----------------------------------------------------------: | :----------------------------------------------------: |
-|                          Depth 图像                          |                        IR 图像                         |
+|                         Depth Image                          |                        IR Image                        |
 
-### 3.3.3 点云图
+### 3.3.3 Point Cloud
 
-从标签页处选择 3D 可以显示点云，点云默认使用深度伪彩显示。
+Select 3D from the tab to display the point cloud. By default, the point cloud is displayed using a depth pseudo-color map.
 
 ![DepthPointCloudSelect](../../zh-cn/ScepterGUITool/pic/DepthPointCloudSelect.png)
 
-Depth Point Cloud：设定点云使用深度伪彩显示。
+Depth Point Cloud: Sets the point cloud to use depth pseudo-color display.
 
-Depth Point Cloud White：设定点云使用白色单色显示。
+Depth Point Cloud White: Sets the point cloud to display in a white monochrome.
 
-Depth Point Cloud + RGB：设定点云填充 RGB 映射。
+Depth Point Cloud + RGB: Set the point cloud to fill the RGB mapping.
 
-TransformedDepth Point Cloud：设定对齐到彩色像素空间的点云使用深度伪彩显示。
+Transformed Depth Point Cloud: Sets the point cloud aligned to the colored pixel space to be displayed with a deep pseudo-color.
 
-TransformedDepth Point Cloud White：设定对齐到彩色像素空间的点云使用白色单色显示。
+Transformed Depth Point Cloud White: Sets the point cloud aligned to the colored pixel space to use a white monochrome display.
 
-TransformedDepth Point Cloud + RGB：设定对齐到彩色像素空间的点云填充 RGB 映射。
+Transformed Depth Point Cloud + RGB: Sets the point cloud that is aligned to the color pixel space to fill the RGB map.
 
-**点云控件操作：**
+**Point cloud control operation:**
 
-![点云](../../zh-cn/ScepterGUITool/pic/PointCloud.png)
+![PointCloud](../../zh-cn/ScepterGUITool/pic/PointCloud.png)
 
-按住鼠标左键并拖动：旋转点云
+Hold down the left mouse button and drag to rotate the point cloud
 
-按住鼠标右键并拖动：平移点云
+Right-click and drag: Translates the point cloud
 
-鼠标滚轮：缩放点云
+Mouse wheel: scaling point cloud
 
-## 3.4. 设备参数操作
+## 3.4. Device parameter
 
-![操作区](../../zh-cn/ScepterGUITool/pic/OperationArea.png)
+![OperationArea](../../zh-cn/ScepterGUITool/pic/OperationArea.png)
 
-设备参数操作用于介绍控制设备的工作模式与参数，设置图像处理算法等功能。
+The device parameter operation is used to introduce the working mode and parameters of the control device, set the image processing algorithm and other functions.
 
-### 3.4.1 设备帧率
+### 3.4.1 Frame Rate
 
-通过左右滑动 Frame Rate 下方的滑块控制条可以调节相机的帧率，不同设备的最大帧率可能会有差异，请参考对应设备的产品规格书。
+The frame rate of the camera can be adjusted by sliding the slider control bar below Frame Rate left and right. The maximum frame rate of different devices may be different. Please refer to the product specification of the corresponding device.
 
 ![FrameRate](../../zh-cn/ScepterGUITool/pic/FrameRate.png)
 
-### 3.4.2 工作模式
+### 3.4.2 Work Mode
 
-![工作模式](../../zh-cn/ScepterGUITool/pic/WorkMode.png)
+![WorkMode](../../zh-cn/ScepterGUITool/pic/WorkMode.png)
 
-ActiveMode：主动出图模式。
+Active Mode: Active plotting mode.
 
-HardwareTriggerMode：硬触发模式，通过硬件信号触发出图，具体请参考对应产品规格书。
+HardwareTriggerMode: refers to the hardware trigger mode, which triggers the drawing through the hardware signal. For details, please refer to the corresponding product specification.
 
-SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，单击按钮发送软触发指令。
+SoftwareTriggerMode: In the soft trigger mode, trigger the plot by calling the software interface, and click the button to send the soft trigger instruction.
 
-#### 3.4.2.1 硬触发模式
+#### 3.4.2.1 HardwareTriggerMode
 
-![硬触发模式](../../zh-cn/ScepterGUITool/pic/HardwareTriggerMode.png)
+![HardwareTriggerMode](../../zh-cn/ScepterGUITool/pic/HardwareTriggerMode.png)
 
-开启硬触发模式后，点击 Settings 按钮可配置触发信号参数，如下图所示：
+After the hard trigger mode is enabled, click the Settings button to configure the trigger signal parameters, as shown in the following figure:
 
 ![InputSignalParamsForHWTrigger](../../zh-cn/ScepterGUITool/pic/InputSignalParamsForHWTrigger.png)
 
-① polarity：信号有效性检测极性。0 代表低电平有效，1 代表高电平有效。
+① Polarity: signal validity detection polarity. 0 is active low and 1 is active high.
 
-取值范围：\[0,1]
+Value Range: \[0,1]
 
-②width： 信号宽度有效性检测，小于宽度设置的信号不予响应。16-bit，单位为 μs。
+② width: signal width validity detection, the signal less than the width setting will not respond. 16-bit, in μs.
 
-取值范围：\[1,65535]
+Value Range: \[1,65535]
 
-③interval： 连续信号间隔有效性检测，小于间隔设置的信号不予响应。
+③ interval: continuous signal interval validity detection, no response to the signal less than the interval setting.
 
-取值范围：\[34000,65535]
+Value Range: \[34000,65535]
 
-#### 3.4.2.2 软触发模式
+#### 3.4.2.2 SoftwareTriggerMode
 
-![软触发模式](../../zh-cn/ScepterGUITool/pic/SoftwareTriggerMode.png)
+![SoftwareTriggerMode](../../zh-cn/ScepterGUITool/pic/SoftwareTriggerMode.png)
 
-开启软触发模式后，点击 Trigger 按钮可触发设备出图。
+After the soft trigger mode is enabled, click the Trigger button to trigger the device plot.
 
-### 3.4.3 深度图像参数配置
+### 3.4.3 Depth Image Configuration
 
-#### 3.4.3.1. 伪彩色图映射
+#### 3.4.3.1. Color Map
 
-![伪彩色图映射](../../zh-cn/ScepterGUITool/pic/ColorMap.png)
+![ColorMap](../../zh-cn/ScepterGUITool/pic/ColorMap.png)
 
-深度图采用伪彩色图映射显示，将单通道 16 位的原始深度图在范围 ColorMap_Min 至 ColoMap_Max 的深度值线性映射到 0-255 的值域范围，再将单通道 8 位的深度图映射到伪彩色空间（即色度图）COLORMAP_RAINBOW，如下示意图：
+For displaying the depth image intuitively, we map 16-bit depth image to color image. When mapping, we intercept the depth value in a given range: fromColorMap_Min to ColorMap_Max, and then map it to 0-255 range. Finally, theimage is transformed into a color image by using color mapping.
 
-![色度图](../../zh-cn/ScepterGUITool/pic/ChromaticityDiagram.png)
+![ChromaticityDiagram](../../zh-cn/ScepterGUITool/pic/ChromaticityDiagram.png)
 
-您可以通过调整 Range(mm) 下方的滑块控制条调整伪彩色图映射效果，如下图所示：
+The effect of color map mapping is shown below:
 
-![映射效果](../../zh-cn/ScepterGUITool/pic/ColorMapEffect.png)
+![ColorMapEffect](../../zh-cn/ScepterGUITool/pic/ColorMapEffect.png)
 
-#### 3.4.3.2. ToF 曝光时间
+#### 3.4.3.2. ToF Sensor Exposure Time
 
-![ToF 曝光时间](../../zh-cn/ScepterGUITool/pic/ToFExposureTime.png)
+![ToF Sensor Exposure Time](../../zh-cn/ScepterGUITool/pic/ToFExposureTime.png)
 
-设定 ToF 传感器的曝光模式与时间。ToF 传感器默认使用手动曝光模式，可以设定的最大曝光时间与帧率有关。
+The exposure time of the ToF sensor can be set.
 
-不同设备的最大帧率可能会有差异，请参考对应设备的产品规格书。
+The maximum frame rate of different devices may be different. Please refer to the product specification of the corresponding device.
 
-Manual：ToF 传感器设置为手动曝光，通过滑条对曝光时间进行手动调节。
+Manual：The ToF sensor is set to manual exposure, and the exposure time is manually adjusted through the slider or input box. The ToF sensor uses manual exposure mode by default, and the maximumexposure time that can be set is related to the frame rate.
 
-![ToF 曝光时间](../../zh-cn/ScepterGUITool/pic/ToFExposureTime.png)
+![ToF Sensor Exposure Time](../../zh-cn/ScepterGUITool/pic/ToFExposureTime.png)
 
-Auto：ToF 传感器设置为自动曝光，设备会根据图像距离进行曝光时间调节。
+Auto：The ToF sensor is set to automatic exposure, and the device will adjust theexposure time according to the image.
 
-![ToF 自动曝光](../../zh-cn/ScepterGUITool/pic/ToFAutoExposure.png)
+![ToFAutoExposure](../../zh-cn/ScepterGUITool/pic/ToFAutoExposure.png)
 
-#### 3.4.3.3. 图像滤波
+#### 3.4.3.3. Image filter
 
 ![Filter button](<../../zh-cn/ScepterGUITool/pic/Filter button.png>)
 
 ① **All**
 
-开启/关闭所有滤波。
+Enable/disable all filters.
 
 ② **Black BG**
 
-Black BG：开启/关闭黑色背景，仅用于显示效果，对实际数值无影响。效果如下：
+Black BG：enable or disable the Black background. The effect is as follows.
 
 | ![Black BG close](<../../zh-cn/ScepterGUITool/pic/Black BG close.png>) | ![Black BG open](<../../zh-cn/ScepterGUITool/pic/Black BG open.png>) |
 | :--------------------------------------------------------------------: | :------------------------------------------------------------------: |
-|                             Black BG 关闭                              |                            Black BG 开启                             |
+|                              Black BG Off                              |                             Black BG On                              |
 
 ③ **FillHole**
 
-FillHole：数据填补，弥补部分空洞数据，默认开启。
+FillHole：fill up some empty data. This function is enabled by default.
 
 ④ **Spatial Filter**
 
-Spatial Filter：平滑滤波，减少平面噪声与抖动。默认关闭。
+Spatial Filter：similar to Gaussian filter, reduce noise. This function is disabledby default.
 
 | ![Spatial Filter close](<../../zh-cn/ScepterGUITool/pic/Spatial Filter close.png>) | ![Spatial Filter open](<../../zh-cn/ScepterGUITool/pic/Spatial Filter open.png>) |
 | :--------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: |
-|                                Spatial Filter 关闭                                 |                               Spatial Filter 开启                                |
+|                                 Spatial Filter Off                                 |                                Spatial Filter On                                 |
 
 ⑤ **Time Filter**
 
-Time Filter：时间滤波，降低图像帧间抖动。默认开启，值越大，滤波效果越强。
+Time Filter：Time Filter reduce image noise. By default, this function is enabled. The larger value, the stronger filtering effect.
 
 ![Time Filter](<../../zh-cn/ScepterGUITool/pic/Time Filter.png>)
 
 ⑥ **Flying Pixel Filter**
 
-Flying Pixel Filter：飞点消除滤波，消除边界的深度值飞点。默认开启，值越大，滤波效果越强。
+Flying Pixel Filter：Flying Pixel Filter eliminate the depth value of the boundary flying points. The default value is 15, the larger value, the stronger filtering effect.
 
 ![Flying Pixel Filter](<../../zh-cn/ScepterGUITool/pic/Flying Pixel Filter.png>)
 
 | ![Flying Pixel Filter close](<../../zh-cn/ScepterGUITool/pic/Flying Pixel Filter close.png>) | ![Flying Pixel Filter value: 15](<../../zh-cn/ScepterGUITool/pic/Flying Pixel Filter value 15.png>) |
 | :------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
-|                                   Flying Pixel Filter 关闭                                   |                                     Flying Pixel Filter 值为 15                                     |
+|                                   Flying Pixel Filter Off                                    |                                    Flying Pixel Filter value: 15                                    |
 
 ⑦ **Confidence Filter**
 
 ![Flying Pixel Filter](../../zh-cn/ScepterGUITool/pic/ConfidenceFilter.png)
 
-Confidence Filter：置信度滤波，消除信号质量较差点。默认开启，值越大，信号质量要求越高。
+Confidence Filter：Confidence filter eliminate points with poor signal quality. The default threshold of Confidence Filter is 15.
 
 | ![Confidence Filter value 15](<../../zh-cn/ScepterGUITool/pic/Confidence Filter value 15.png>) | ![Confidence Filter value 50](<../../zh-cn/ScepterGUITool/pic/Confidence Filter value 50.png>) |
 | :--------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
-|                                   Confidence Filter 值为 15                                    |                                   Confidence Filter 值为 50                                    |
+|                                   Confidence Filter value 15                                   |                                   Confidence Filter value 50                                   |
 
 ⑧ **HDR Mode**
 
 | ![Exposure58](../../zh-cn/ScepterGUITool/pic/Exposure58.png) |   ![Exposure1000](../../zh-cn/ScepterGUITool/pic/Exposure1000.png) |   ![HDR](../../zh-cn/ScepterGUITool/pic/HDR.png) |
-| :----------------------------------------------------------- | :----------------------------------------------------------------- | :----------------------------------------------- |
-| 曝光时间 58us                                                | 曝光时间 1000us                                                    | HDR 曝光时间 1000us                              |
+| :----------------------------------------------------------: | :----------------------------------------------------------------: | :----------------------------------------------: |
+|                      Exposuretime 58us                       |                        Exposuretime 1000us                         |                     HDR Mode                     |
 
-HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时间的方式，将采集到的多个图像合成到一帧中，完成对整个复杂场景的成像 **(参考产品介绍是否支持)** 。
+The HDR (High Dynamic Range) function synthesizes multiple captured images into one frame by setting multiple different exposure times to complete the imaging of the entire complex scene **(refer to the product introduction for support)**.
 
-### 3.4.4 IR 图像参数配置
+### 3.4.4 IR Image Configuration
 
-![IR 图像增益](../../zh-cn/ScepterGUITool/pic/IRGmmGain.png)
+![IRGmmGain](../../zh-cn/ScepterGUITool/pic/IRGmmGain.png)
 
 #### 3.4.4.1 Gamma Gain
 
-设定 IR 图像的增益，通过更改传感器 Gamma 值参数调整图像亮度，表现为 Gamma Gain 值越高，IR 图像越亮。
+Set the gain of the IR image, and adjust the image brightness by changing the Gamma value parameter of the sensor. The higher the Gamma Gain value is, the brighter the IR image is.
 
 | ![GammaGain25](../../zh-cn/ScepterGUITool/pic/GammaGain25.png) | ![GammaGain100](../../zh-cn/ScepterGUITool/pic/GammaGain100.png) |
 | :------------------------------------------------------------: | :--------------------------------------------------------------: |
-|                        Gamma Gain 值 25                        |                        Gamma Gain 值 100                         |
+|                     Gamma Gain value is 25                     |                     Gamma Gain value is 100                      |
 
 #### 3.4.4.2 Gamma Correction
 
-设定 IR 图像校正的开关和增益，通过软件后处理调整图像亮度，表现为 Gamma Correction 值越高，IR 图像越亮。
+Set the switch and gain of IR image correction, and adjust the image brightness through software post-processing. The higher the Gamma Correction value is, the brighter the IR image is.
 
 | ![GammaCorrectionOff](../../zh-cn/ScepterGUITool/pic/GammaGain25.png) | ![GammaCorrection50](../../zh-cn/ScepterGUITool/pic/GammaCorrection50.png) | ![GammaCorrection100](../../zh-cn/ScepterGUITool/pic/GammaCorrection100.png) |
 | :-------------------------------------------------------------------: | :------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
-|                         Gamma Correction 关闭                         |                           Gamma Correction 值 50                           |                           Gamma Correction 值 100                            |
+|                         Gamma Correction Off                          |                        Gamma Correction value is 50                        |                        Gamma Correction value is 100                         |
 
-### 3.4.5 彩色图像参数配置
+### 3.4.5 Color Image Configuration
 
-![彩色图像](../../zh-cn/ScepterGUITool/pic/Color.png)
+![Color](../../zh-cn/ScepterGUITool/pic/Color.png)
 
-#### 3.4.5.1. 彩色图像分辨率
+#### 3.4.5.1. Color Image Resolution
 
-![彩色图像分辨率](../../zh-cn/ScepterGUITool/pic/ColorResolution.png)
+![ColorResolution](../../zh-cn/ScepterGUITool/pic/ColorResolution.png)
 
-彩色图像分辨率可根据实际列表显示进行切换，如上图示例的分辨率有三种：640\*480，800\*600，1600\*1200。
+The color image resolution can be switched according to the actual list display. As shown in the figure above, there are three resolutions: 640 \* 480, 800 \* 600, 1600 \* 1200.
 
-不同设备的彩色图像分辨率列表可能会有差异，请参考对应设备的产品规格书。
+Different devices may have different color image resolution lists. Please refer to the product specifications of the corresponding devices.
 
-#### 3.4.5.2. 彩色图像曝光时间
+#### 3.4.5.2. Color Sensor Exposure Time
 
-设定 RGB 传感器曝光模式与时间。RGB 传感器的默认曝光模式为自动曝光。
+Set the Color sensor exposure mode and time. The default exposure mode for the Color sensor is Auto Exposure.
 
 **Auto:**
 
-![彩色图像自动曝光](../../zh-cn/ScepterGUITool/pic/ColorAutoExposure.png)
+![ColorAutoExposure](../../zh-cn/ScepterGUITool/pic/ColorAutoExposure.png)
 
-RGB 传感器设置为自动曝光，下面会显示可以设置 AEC Max ExposureTime(us)的滑块控制条。
+The Color sensor is set to auto exposure, and the slider control for setting the AEC Max ExposureTime (us) is shown below.
 
-当相机作业时会自动调节曝光时间。
+The exposure time is automatically adjusted when the camera is operating.
 
-AEC Max ExposureTime(us) ：设置相机自动曝光模式下的最大曝光时间。
+AEC Max ExposureTime (us): Sets the maximum exposure time when the camera is in auto exposure mode.
 
 **Manual:**
 
-![彩色图像手动曝光](../../zh-cn/ScepterGUITool/pic/ColorManualExposureTime.png)
+![ColorManualExposureTime](../../zh-cn/ScepterGUITool/pic/ColorManualExposureTime.png)
 
-RGB 传感器设置为手动曝光，下面会显示 ExposureTime(us)和 Gain(dB)两行状态栏。
+The Color sensor is set to manual exposure, and two status bars, ExposureTime (us) and Gain (dB), are displayed below.
 
-当相机作业时，需要手动调节相机曝光时间与相机 RGB 图像的亮度。
+When the camera is working, you need to manually adjust the camera exposure time and the brightness of the camera Color image.
 
-ExposureTime(us)：设置 RGB 相机的曝光时间，通过滑条对曝光时间进行手动调节。
+ExposureTime (us): Set the exposure time of the Color camera. Manually adjust the exposure time with the slider.
 
-Gain(dB): 设置 RGB 图像的亮度，通过滑条对 Gain 值进行手动调节。
+Gain (dB): Set the brightness of the Color image, and adjust the Gain value manually through the slider.
 
-### 3.4.6. 保存图像
+### 3.4.6. Save Image
 
 ![SaveButton](../../zh-cn/ScepterGUITool/pic/SaveButton.png)
 
-Record：保存多帧当前所有显示区域的图像。如果显示区域未开启，则不会保存。
+Record: Record images of all current display areas. If the display area is not turned on, it is not saved. Recording failed to save the point cloud.
 
-Total Count：需要保存图像的数量，取值范围：\[1,10000]。
+Total Count: The number of images to be recorded. Value range: \[1,10000].
 
-Snapshot：保存一帧当前所有显示区域的图像。如果显示区域未开启，则不会保存。
+Snapshot: Save a frame of images of all the current display areas. If the display area is not turned on, it is not saved.
 
-> 保存的所有图像/点云会存储在同一文件夹，文件夹以当前时间命名，存放在 ScepterGUITool.exe 的同级目录下的 SaveImage 文件夹中。如下图目录所示：
+> All saved images/point clouds are stored in the same folder, named for the current time, in the SaveImage folder at the same level as the ScepterGUITool. Exe. As shown in the following table of contents:
 >
 > ![Path to save the original data](<../../zh-cn/ScepterGUITool/pic/Path to save the original data.png>)
 
-**文件格式：**
+**File format:**
 
-Depth 图存储格式为 16 位单通道 png 格式，数值单位 mm；
+The Depth image is stored in 16-bit PNG format, the unit is mm.
 
-IR 图存储格式为 8 位单通道 png 格式；
+IR images are stored in 8-bit single-channel PNG format.
 
-RGB 图存储格式为 8 位三通道彩色图，采用 JPG 格式保存；
+The RGB diagram is an 8-bit three-channel color map, saved in JPG format.
 
-PointCloud 数据以 txt 格式保存，每行数据表示一个点的三维坐标(Float: X, Y, Z)，单位 mm。保存后的文件可使用 CloudCompare 工具打开。
+The PointCloud data is saved in txt format, and each row of data represents thecoordinates of a point (X, Y, Z). The saved file can be viewed using CloudCompare.
 
-> ScepterGUITool 保存的深度图是 16bit 单通道 png 格式图像，每个 pixel 由 2 个字节表示。Windows 默认的图像显示工具只能显示 8bit 单通道的图像，所以看上去是黑色的。可以使用 Image J 来显示并查看像素距离值。
+> ScepterGUITooll's saved depth map is a 16bit single-channel PNG image, witheachpixel represented by two bytes. Windows' default image display tool can only display 8bit single-channel images, so they look black. User can use Image J todisplay and view pixel distance values.
 
 <!-- ### 3.4.7. 导出、导入参数
 
@@ -408,75 +408,75 @@ Import：导入参数到 ScepterGUITool 中
 
 导出的参数可以通过调用 API 函数在自编写的程序中直接使用。 -->
 
-## 3.5. 设备网络设置
+## 3.5. Device Network Settings
 
-点击顶部菜单栏![IP 设置](<../../zh-cn/ScepterGUITool/pic/IP address setting.png>)，弹出设备网络设置页面。
+Click on the top menu bar![IP address setting](<../../zh-cn/ScepterGUITool/pic/IP address setting.png>), the device network setting page pops up.
 
 ![Device Setting Interface](<../../zh-cn/ScepterGUITool/pic/Device Setting Interface.png>)
 
-① **设置动态 IP：**
+① **To set dynamic IP address:**
 
-Obtain an IP address automatically(DHCP): 设置设备的 IP 地址为 DHCP 模式，由局域网内的路由器分配 IP 地址，使用该模式，主机端也需要设置为 DHCP 模式.
+Obtain an IP address automatically(DHCP): Set the IP address of the device to the DHCP mode. The IP address is assigned by the router in the LAN. Using this mode, the host also needs to be set to the DHCP mode.
 
-Step1:  选择“Obtain an IP address automatically（DHCP）”。
+Step1: Choose “Obtain an IP address automatically (DHCP)”.
 
 ![set camera DHCP](<../../zh-cn/ScepterGUITool/pic/set DHCP.png>)
 
-Step2: 点击 OK 保存。
+Step2: Click OK to save.
 
-Step3: 设备自动重启后生效。
+Step3: The device takes effect after automatic restart.
 
-② **设置静态 IP：**
+② **To set static IP address**
 
-Use the following IP address：设置设备的 IP 地址为固定地址。使用该模式，需要注意主机的 IP 地址以及子网掩码，确保主机和设备的 IP 地址在同一网段。
+Use the following IP address：Set the IP address of the device to a fixed address. In this mode, you need to pay attention to the IP address of the host and the subnet mask to ensure that the IP addresses of the host and the device are on the same network segment.
 
-Step1:  选择“Use the following IP address”。
+Step1: Select "Use the following IP address"
 
 ![Use the following IP address](<../../zh-cn/ScepterGUITool/pic/Use the following IP address.png>)
 
-Step2:  更改 IP 地址和子网掩码。
+Step2: Change the IP address and subnet mask
 
-Step3:  点击 OK 保存。
+Step3: Click OK to save.
 
-Step4: 设备自动重启后生效。
+Step4: The device takes effect after automatic restart.
 
-## 3.6. 设备固件升级
+## 3.6. Firmware upgrade
 
-点击顶部菜单栏![设备固件升级](../../zh-cn/ScepterGUITool/pic/Upgrade.png)，弹出设备固件升级设置页面。
+Click on the top menu bar![Upgrade](../../zh-cn/ScepterGUITool/pic/Upgrade.png), the firmware upgrade setting page pops up.
 
 ![Upgrade Firmware](<../../zh-cn/ScepterGUITool/pic/Upgrade Firmware.png>)
 
-设备固件升级操作方法：
+Perform the following operations to upgrade firmware:
 
-1.  点击![Path](../../zh-cn/ScepterGUITool/pic/Path.png)，选择固件镜像。
+1. Click![Path](../../zh-cn/ScepterGUITool/pic/Path.png),and select firmware.
 
-> 暂不支持中文路径
+> The path cannot contain Chinese
 
-2.  点击“Upgrade”按钮，等待升级开始（升级过程中设备不可断电）。
+2. Tap the Upgrade button and wait for the Upgrade to start (do not power off thedevice during the Upgrade).
 
-3.  升级开始后，进度条会开始增长，增长到“100%”升级完成。
+3. After the upgrade starts, the progress bar increases to 100%.
 
-4.  提示设备重启，点击确定后设备重启并完成固件升级。
+4. Prompt to restart the device. Click OK to restart the device and complete the firmware upgrade.
 
-## 3.7. 查看已保存图像/点云
+## 3.7. View Saved Images/Point Cloud
 
-1. 进入 ScepterGUITool 根目录下的 SaveImage 文件夹，选择想要查看的图像。
+1. Go to the SaveImage folder in the root directory of the Scepter GUI Tool and select the image you want to view.
 
-2. ScepterGUITool 保存的 Depth 和 IR 图像是 16bit 图片数据，可以使用 ImageJ 打开查看，鼠标指上去可以读出对应坐标下的深度值/IR 信号值。
+2. The Depth and IR images saved by ScepterGUITool are 16-bit image data, which can be opened and viewed by ImageJ, and the depth value/IR signal value under the corresponding coordinates can be read out by pointing the mouse.
 
-   ImageJ 下载地址：<https://fiji.sc/>
+   ImageJ download address：<https://fiji.sc/>
 
    ![ImageJ](../../zh-cn/ScepterGUITool/pic/ImageJ.png)
 
-   > 可以使用 ImageJ 中的 LUT 菜单给图片添加伪彩色，并通过菜单 Image->Adjust->Brightness/Contrast(**Ctrl+Shift+C**)进行效果的调整。
+   > You can use the LUT menu in ImageJ to add pseudo-color to the image, and adjust the effect through the menu Image->Adjust->Brightness/Contrast(**Ctrl+Shift+C**).
 
-3. ScepterGUITool 保存的点云图是.txt 格式，可使用 CloudCompare 打开查看。
+3. ScepterGUITool saves point clouds in.txt format, which can be opened and viewed using CloudCompare.
 
-   CloudCompare 下载地址：<https://www.cloudcompare.org/>
+   CloudCompare download address：<https://www.cloudcompare.org/>
 
    ![CloudCompare](../../zh-cn/ScepterGUITool/pic/CloudCompare.png)
 
-   ScepterGUITool 保存的.txt 格式点云图，从上到下行依次为 pixel 0 至最后一个 pixel，每一行的数值依次为该 pixel 的 X,Y,Z 值(RGBD 相机保存的彩色点云依次为 X,Y,Z,R,G,B 值)，说明如下：
+   The.txt format point cloud image saved by ScepterGUITool is pixel 0 to the last pixel from top to bottom, and the values of each line are the X, Y, Z values of the pixel in turn (the color point cloud saved by RGBD camera is X, Y, Z, R, G, B values in turn). The description is as follows:
 
    ![.txt point cloud file](<../../zh-cn/ScepterGUITool/pic/txt point cloud file.png>)​
 
