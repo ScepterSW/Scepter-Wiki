@@ -1,14 +1,14 @@
 # 4.1. ROS
 
-该 ROS 软件包可用于 ScepterSDK 的深度、IR 和 RGB 数据的采集和处理。
+该 ROS 软件包可用于 ScepterSDK 的深度、IR 和 Color 数据的采集和处理。
 
 ## 4.1.1. 环境要求
 
 **1. 为您的操作系统安装推荐的 ROS 发行版(http://wiki.ros.org/Distributions)**
 
-- ROS 安装页面:<http://wiki.ros.org/ROS/Installation>
+- ROS 安装页面：<http://wiki.ros.org/ROS/Installation>
 
-- 您可以使用第三方插件*FishROS*，实现快速安装 ROS:<https://github.com/fishros/install>
+- 您可以使用第三方插件 FishROS，实现快速安装 ROS：<https://github.com/fishros/install>
 
 **2. 已验证的版本**
 
@@ -21,16 +21,12 @@
 
 ## 4.1.2. 安装 ROS 软件包
 
-在 ScepterSDK 中，ROS 可以用于连接单个设备，而 ROS_MultiCameras 则适用于连接多个设备。
-
-<!-- tabs:start -->
-
-#### **ROS**
+在 ScepterSDK 中，ScepterROS 可以用于连接单个设备，而 ScepterROS_MultiCameras 则适用于连接多个设备。
 
 **1. 安装 ScepterSDK**
 
 ```console
-git clone https://gitee.com/gmiorg/ScepterSDK
+git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
   <div class="center">
@@ -39,10 +35,10 @@ git clone https://gitee.com/gmiorg/ScepterSDK
 
   </div>
 
-**2. 将 SDK 更新为 ROS 包**
+**2. 创建工作空间**
 
 ```console
-cd ROS/src
+cd 3rd-PartyPlugin/ROS/src
 catkin_init_workspace
 ```
 
@@ -54,9 +50,21 @@ catkin_init_workspace
 
   </div>
 
+<!-- tabs:start -->
+
+#### **ROS**
+
 ```console
 cd ScepterROS
 ```
+
+#### **ROS_MultiCameras**
+
+```console
+cd ScepterROS_MultiCameras
+```
+
+<!-- tabs:end -->
 
 <div class="center">
 
@@ -70,13 +78,31 @@ cd ScepterROS
 python install.py Ubuntu18.04
 ```
 
-<!-- <div class="center">
+<!-- tabs:start -->
+
+#### **ROS**
+
+<div class="center">
 
 ![step3](pic/ROS/step3.png)
 
-</div> -->
+</div>
+
+#### **ROS_MultiCameras**
+
+<div class="center">
+
+![step3](pic/ROS_MultiCameras/step3.png)
+
+</div>
+
+<!-- tabs:end -->
 
 **4. 构建 ScepterROS 包**
+
+<!-- tabs:start -->
+
+#### **ROS**
 
 ```console
 cd ../../
@@ -89,70 +115,7 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS"
 
 </div>
 
-<div class="center">
-
-![step5](pic/ROS/step5.png)
-
-</div>
-
-**5. 环境设置**
-
-```console
-source devel/setup.bash
-```
-
 #### **ROS_MultiCameras**
-
-**1. 安装 ScepterSDK**
-
-```console
-git clone https://gitee.com/gmiorg/ScepterSDK
-```
-
-  <div class="center">
-
-![step0](pic/ROS/step0.png)
-
-  </div>
-
-**2. 将 SDK 更新为 ROS 包**
-
-```console
-cd ROS/src
-catkin_init_workspace
-```
-
-在运行**catkin_init_workspace**命令之后，其会在**ROS/src**文件夹下生成**CmakeLists.txt**
-
-  <div class="center">
-
-![step1](pic/ROS/step1.png)
-
-  </div>
-
-```console
-cd ScepterROS_MultiCameras
-```
-
-<div class="center">
-
-![step2](pic/ROS/step2.png)
-
-</div>
-
-**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
-
-```console
-python install.py Ubuntu18.04
-```
-
-<!-- <div class="center">
-
-![step3](pic/ROS_MultiCameras/step3.png)
-
-</div> -->
-
-**4. 构建 ScepterROS 包**
 
 ```console
 cd ../../
@@ -165,13 +128,13 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS_MultiCameras"
 
 </div>
 
+<!-- tabs:end -->
+
 **5. 环境设置**
 
 ```console
 source devel/setup.bash
 ```
-
-<!-- tabs:end -->
 
 ## 4.1.3. 使用方式
 
@@ -182,7 +145,8 @@ source devel/setup.bash
 **1. 启动相机节点**
 
 ```console
-roslaunch ScepterROS Scepter_camera.launch
+cd src/ScepterROS/launch
+roslaunch ScepterROS scepter_camera.launch
 ```
 
 <div class="center">
@@ -223,15 +187,20 @@ rosrun rqt_reconfigure rqt_reconfigure
 
 > **说明:**
 >
-> - 修改 **FrameRate** 将影响 **ToFExposureTime** 和 **RGBExposureTime** 的最大值
-> - 当 **ToFExposureTime** 或 **RGBExposureTime** 设置高于最大值时，该值无效
-> - **HDRMode**仅在**ToFManual**为 True 时生效
-> - **ToFManual** 设置为 false 时，**HDRMode** 为 True 时无效
+> - 修改 FrameRate 将影响 ToFExposureTime 和 ColorExposureTime 的最大值
+> - 当 ToFExposureTime 或 ColorExposureTime 设置高于最大值时，该值无效
+> - HDRMode 仅在 ToFManual 为 True 时生效
+> - ToFManual 设置为 false 时，HDRMode 为 True 时无效
 
 **4. 显示点云**
 
+打开一个新终端
+
 ```console
-roslaunch ScepterROS Scepter_pointCloudxyz.launch
+cd 3rd-PartyPlugin/ROS
+source devel/setup.bash
+cd src/ScepterROS/launch
+roslaunch ScepterROS scepter_pointCloudxyz.launch
 ```
 
 <div class="center">
@@ -249,8 +218,14 @@ roslaunch ScepterROS Scepter_pointCloudxyz.launch
 **5. 显示彩色点云**
 
 ```console
-roslaunch ScepterROS Scepter_pointCloudxyzrgb.launch
+roslaunch ScepterROS scepter_pointCloudxyzcolor.launch
 ```
+
+<div class="center">
+
+![step12](pic/ROS/step111.png)
+
+</div>
 
 <div class="center">
 
@@ -262,7 +237,7 @@ roslaunch ScepterROS Scepter_pointCloudxyzrgb.launch
 
 **1. 修改启动项**
 
-**Scepter_xxx.launch**支持 2 个相机。修改**camera1.lauch**和**camera2.launch**中的 ip。
+**scepter_xxxxx.launch**支持 2 个相机。修改**camera1.lauch**和**camera2.launch**中的 ip。
 
 <div class="center">
 
@@ -279,7 +254,8 @@ roslaunch ScepterROS Scepter_pointCloudxyzrgb.launch
 **2. 启动相机节点**
 
 ```console
-roslaunch ScepterROS_MultiCameras Scepter_camera.launch
+cd src/ScepterROS_MultiCameras/launch
+roslaunch ScepterROS_MultiCameras scepter_camera.launch
 ```
 
 <div class="center">
@@ -298,7 +274,7 @@ rviz
 
 <div class="center">
 
-![step7](pic/ROS_MultiCameras/step7.png)
+![step7](pic/ROS/step7.png)
 
 </div>
 
@@ -328,17 +304,20 @@ rosrun rqt_reconfigure rqt_reconfigure
 
 > **说明:**
 >
-> - 修改 **FrameRate** 将影响 **ToFExposureTime** 和 **RGBExposureTime** 的最大值
-> - 当 **ToFExposureTime** 或 **RGBExposureTime** 设置高于最大值时，该值无效
-> - **HDRMode**仅在**ToFManual**为 True 时生效
-> - **ToFManual** 设置为 false 时，**HDRMode** 为 True 时无效
+> - 修改 FrameRate 将影响 ToFExposureTime 和 ColorExposureTime 的最大值
+> - 当 ToFExposureTime 或 ColorExposureTime 设置高于最大值时，该值无效
+> - HDRMode 仅在 ToFManual 为 True 时生效
+> - ToFManual 设置为 false 时，HDRMode 为 True 时无效
 
 **5. 显示点云**
 
-Rviz 只能显示一个话题
+打开一个新终端，Rviz 只能显示一个话题
 
 ```console
-roslaunch ScepterROS_MultiCameras Scepter_pointCloudxyz.launch
+cd 3rd-PartyPlugin/ROS
+source devel/setup.bash
+cd src/ScepterROS_MultiCameras/launch
+roslaunch ScepterROS_MultiCameras scepter_pointCloudxyz.launch
 ```
 
 <div class="center">
@@ -364,12 +343,18 @@ roslaunch ScepterROS_MultiCameras Scepter_pointCloudxyz.launch
 Rviz 只能显示一个话题
 
 ```console
-roslaunch ScepterROS_MultiCameras Scepter_pointCloudxyzrgb.launch
+roslaunch ScepterROS_MultiCameras scepter_pointCloudxyzcolor.launch
 ```
 
 <div class="center">
 
 ![step12](pic/ROS_MultiCameras/step12.png)
+
+</div>
+
+<div class="center">
+
+![step13](pic/ROS_MultiCameras/step13.png)
 
 </div>
 
@@ -387,8 +372,8 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 - /Scepter/color/image_raw
 - /Scepter/depth/image_raw
 - /Scepter/ir/image_raw
-- /Scepter/transformedDepth/image_raw
 - /Scepter/transformedColor/image_raw
+- /Scepter/transformedDepth/image_raw
 
 #### **ROS_MultiCameras**
 
@@ -408,9 +393,9 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 ## 4.1.5. 编程指南
 
 如果开发者需要设置相机参数或算法开关，请参考以下流程。
-以调用**VZ_SetSpatialFilterEnabled**为例：
+以调用**scSetSpatialFilterEnabled**为例：
 
-1. 从**dependencies/Include/Scepter_api.h**查找 api
+1. 从 **/src/ScepterROS/dependencies/include/Scepter_api.h** 查找 api
 
 <div class="center">
 
@@ -418,17 +403,13 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 
 </div>
 
-2. 将代码添加到 **/src/Scepter_manager.cpp**
+2. 将代码添加到 **/src/ScepterROS/src/scepter_manager.cpp**
 
 <div class="center">
 
 ![step14](pic/ROS/step14.png)
 
 </div>
-
-## 4.1.6. 说明
-
-- 当使用多个网卡时，需要设置不同的 IP 网段。
 
 <style>
 .center

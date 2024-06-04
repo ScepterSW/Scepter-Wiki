@@ -1,128 +1,247 @@
-# 快速开始
+## 1. 设备连接<!-- {docsify-ignore-all} -->
+
+1. 将相机安装在一个合适的固定装置中，例如相机支架。
+
+![DeviceConnection](pic/DeviceConnection.png)
+
+2. 通过多功能线为相机提供 12~24V 电源（典型值：12V 3A）。部分型号可选用 PoE+供电模式，具体请参考产品规格书。
+
+3. 通过以太网电缆将产品连接到主机。此时设备处于以太网广播无连接建立的状态，侧面用于显示相机的状态的 LED 指示灯会呈**蓝色**并且反复闪烁。
+
+![BlueLed1](pic/BlueLed1.png)
+
+4. 设置主机 IP 地址与相机在同一网段，设备默认 IP 为 **192.168.1.101**。
 
 <!-- tabs:start -->
 
 #### **Windows**
 
-1. 通过电源线或多功能线给相机提供 12~24V 电源（典型值：12V 3A），
-
-   **VENO87/VENO77 Pro/VENO77C Pro** 支持 PoE+供电模式，推荐使用以下 PoE+供电器：
-
-   | 供应商  | 型号        |
-   | :------ | :---------- |
-   | H3C     | EWPAM2NPoE+ |
-   | TP LINK | TL-PoE+170S |
-
-2. 通过以太网线/航插网线将相机连接至主机。
-
-   ![DeviceConnection](pic/DeviceConnection.png)
-   _硬件模组安装示意图_
-
-3. 设置主机 IP 地址与相机在同一网段，设备默认 IP 为 **192.168.1.101**。
-
-   设置 Windows 端的**本地连接**，子网掩码设为 255.255.255.0，
-
-   IP 地址设为同一网段（如 192.168.1.100）。
-
-   <div class="center">
-
-   ![固定地址](pic/WindowsStaticAddress.png)
-
-   </div>
-
-**注意：**
-
-1、PC 端使用的网卡、路由器、交换机都要满足**千兆**要求。
-
-2、在首次运行 ScepterGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。
+设置 Windows 端的本地连接，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。
 
 <div class="center">
 
-![防火墙配置](pic/WindowsFirewallSetting.png)
+![WindowsStaticAddress](pic/WindowsStaticAddress1.png)
 
 </div>
 
-4. 用户可通过下述链接下载 **ScepterGUITool**：
+<div class="center">
 
-   <https://gitee.com/gmiorg/ScepterGUITool>
+![WindowsStaticAddress](pic/WindowsStaticAddress2.png)
 
-   ScepterGUITool 包含 ScepterGUITool 可执行文件，用户手册文档及相关动态链接库。
+</div>
 
-   ![目录结构](pic/WindowsContents.png)
+<div class="center">
 
-5. 双击 ScepterGUITool 可执行文件，运行 ScepterGUITool，按照以下步骤连接设备：
+![WindowsStaticAddress](pic/WindowsStaticAddress3.png)
 
-   ① 搜索设备
+</div>
 
-   ② 选中设备的 SN
+<!-- <div class="center">
 
-   ③ 点击 Open 打开设备，或者双击设备 SN 打开设备
+![固定地址](pic/WindowsStaticAddress.png)
 
-   ![设备连接](pic/ConnectDevice.png)
-
-6. 按照 ScepterGUITool 使用指南，开始探索相机。
+</div> -->
 
 #### **Ubuntu**
 
-1. 通过电源线或多功能线给相机提供 12~24V 电源（典型值：12V 3A），
+设置 Linux 端的本地连接，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。
 
-   **VENO87/VENO77 Pro/VENO77C Pro** 支持 PoE+供电模式，推荐使用以下 PoE+供电器：
+<div class="center">
 
-   | 供应商  | 型号        |
-   | :------ | :---------- |
-   | H3C     | EWPAM2NPoE+ |
-   | TP LINK | TL-PoE+170S |
+![LinuxEditConnections](pic/LinuxEditConnections1.png)
 
-2. 通过以太网线/航插网线将相机连接至主机。
+</div>
 
-   ![DeviceConnection](pic/DeviceConnection.png)
-   _硬件模组安装示意图_
+<div class="center">
 
-3. 设置 Linux 端的**本地连接**，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。
+![LinuxEdit](pic/LinuxEdit2.png)
+
+</div>
+
+<div class="center">
+
+![固定地址](pic/LinuxStaticAddress3.png)
+
+</div>
+
+#### **AArch64**
+
+设置 ARM-Linux 端的本地连接，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。可选用 numtui 进行设置。
+
+```consle
+sudo nmtui
+```
 
    <div class="center">
 
-   ![LinuxEditConnections](pic/LinuxEditConnections.png)
+![固定地址](pic/ARMLinuxStaticAddress.png)
 
    </div>
 
-   <div class="center">
+<!-- tabs:end -->
 
-   ![LinuxEdit](pic/LinuxEdit.png)
+> ① 主机端使用的网卡、路由器、交换机都要满足**千兆**要求。
+>
+> ② 当使用多个网卡时，需要设置不同的 IP 网段。当多个网卡被配置为相同的 IP 地址段时，这会导致网络冲突和连接问题。在这种情况下，如果主机与相机之间的连接中断，由于 IP 地址冲突，其他设备也可能无法与主机建立或维持连接。为了避免这种情况，每个网卡应该被分配不同的 IP 网段，确保网络中的每一台设备都能稳定地通信。
 
-   </div>
+## 2. 打开设备
 
-   <div class="center">
+Windows 端 和 Ubuntu18.04/20.04/22/04 端用户可下载 **ScepterGUITool**探索相机，
 
-   ![固定地址](pic/LinuxStaticAddress.png)
+Ubuntu16.04 端无图形化工具，AArch64 端常用 headless 模式，用户可下载 **ScepterSDK**探索相机：
 
-   </div>
+ <!-- tabs:start -->
 
-   **注意：**
+#### **ScepterGUITool**
 
-   PC 端使用的网卡、路由器、交换机都要满足**千兆**要求。
+ScepterGUITool 下载链接：
 
-4. 用户可通过下述链接下载 **ScepterGUITool**，
+<https://github.com/ScepterSW/ScepterGUITool>
 
-   ScepterGUITool 支持 Ubuntu18.04(x86/x64) 及以上操作系统：
+或
 
-   <https://gitee.com/gmiorg/ScepterGUITool>
+<https://gitee.com/ScepterSW/ScepterGUITool>
 
-   ScepterGUITool 包含 ScepterGUITool 可执行文件，用户手册文档及相关动态链接库。
+您可以通过以下两种下载方式下载 ScepterSDK 开发包：
 
-   ![目录结构](pic/LinuxContents.png)
+方式一通过 git clone 下载到本地；
 
-5. 双击 ScepterGUITool 可执行文件，运行 ScepterGUITool，按照以下步骤连接设备：
+方式二通过下载压缩包到本地。
 
-   ① 搜索设备
+<!-- tabs:start -->
 
-   ② 选中设备的 SN
+#### **方式一**
 
-   ③ 点击 Open 打开设备，或者双击设备 SN 打开设备
+① 打开下载链接，点击 Code，复制链接；
 
-   ![设备连接](pic/ConnectDevice.png)
+```
+git clone https://github.com/ScepterSW/ScepterGUITool
+```
 
-6. 按照 ScepterGUITool 使用指南，开始探索相机。
+![git clone http](<pic/git clone http.png>)
+
+② 打开终端，输入复制代码回车，等待下载完成。
+
+![get clone GUITool.png](<pic/git clone GUITool.png>)
+
+#### **方式二**
+
+打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterGUITool 工具压缩包下载到本地。
+
+![GitHubGUITool](<pic/GitHub GUITool.png>)
+
+<!-- tabs:end -->
+
+ScepterGUITool 包含 ScepterGUITool 可执行文件及相关动态链接库。
+
+<!-- tabs:start -->
+
+#### **Windows**
+
+![目录结构](pic/WindowsContents.png)
+
+> 在首次运行 ScepterGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。
+>
+>  <div class="center">
+>
+> ![防火墙配置](pic/WindowsFirewallSetting.png)
+>
+>  </div>
+
+#### **Ubuntu**
+
+![目录结构](pic/LinuxContents.png)
+
+<!-- tabs:end -->
+
+双击 ScepterGUITool 可执行文件，运行 ScepterGUITool，按照以下步骤连接设备：
+
+① 搜索设备。
+
+![ScanDevice](pic/ScanDevice.png)
+
+② 选中需要打开的设备。
+
+![SelectDevice](pic/SelectDevice.png)
+
+③ 点击 Connect 连接设备。
+
+![ConnectDevice](pic/ConnectDevice.png)
+
+④ 设备连接成功后，点击 Stream 右侧的开关，启动相机的视频流。
+
+![DeviceStreamOn](pic/DeviceStreamOn.png)
+
+⑤ 启动成功后，图像在右侧正常显现。
+
+![图像显现](pic/DisplayArea.png)
+
+⑥ 此时设备处于以太网广播连接建立的状态，侧面用于显示相机的状态的 LED 指示灯会呈**蓝色**并且常亮。
+
+![BlueLed2](pic/BlueLed2.png)
+
+您可以参考[Scepter 图形化工具介绍](/zh-cn/ScepterGUITool/Overview.md)了解相机的详细功能，开始探索相机。
+
+#### **ScepterSDK**
+
+ScepterSDK 下载链接：
+
+<https://github.com/ScepterSW/ScepterSDK>
+
+或
+
+<https://gitee.com/ScepterSW/ScepterSDK>
+
+您可以通过以下两种下载方式下载 ScepterSDK 开发包：
+
+方式一通过 git clone 下载到本地；
+
+方式二通过下载压缩包到本地。
+
+<!-- tabs:start -->
+
+#### **方式一**
+
+① 打开下载链接，点击 Code，复制链接；
+
+```
+git clone https://github.com/ScepterSW/ScepterSDK
+```
+
+![git clone SDK http](<pic/git clone SDK http.png>)
+
+② 打开终端，输入复制代码回车，等待下载完成。
+
+![git clone ScepterSDK](<pic/git clone ScepterSDK.png>)
+
+#### **方式二**
+
+打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterSDK 压缩包下载到本地。
+
+如需在 Ubuntu 系统下使用，请确保下载后的压缩包是在 Ubuntu 系统下解压，请勿在 Windows 系统解压后复制使用。
+
+![GitHub ScepterSDK](<pic/GitHub ScepterSDK.png>)
+
+<!-- tabs:end -->
+
+ScepterSDK 包含一系列友好的 API ，应用示例程序及相关动态链接库。
+
+![目录结构](pic/ARMLinuxContents.png)
+
+进入 AArch64/PrecompiledSamples 文件夹，使用终端打开对应相机的预编译好的程序：
+
+```consle
+cd PrecompiledSamples
+./XXXX_OpenCVSample
+```
+
+![设备连接](pic/ARMLinuxConnect.png)
+
+此时设备处于以太网广播连接建立的状态，侧面用于显示相机的状态的 LED 指示灯会呈**蓝色**并且常亮。
+
+![BlueLed2](pic/BlueLed2.png)
+
+您可以参考[Scepter 软件开发包介绍](/zh-cn/ScepterSDK/Overview.md)了解相机的详细功能，开始探索相机。
 
 <!-- tabs:end -->
 

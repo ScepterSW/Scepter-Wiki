@@ -1,285 +1,60 @@
 # 3. 功能介绍
 
-## 3.1. 设备列表
+## 3.1. 目录结构
 
-设备列表用于设备的搜索与连接。本软件出于展示目的，仅支持同一时刻打开一台相机，SDK 支持多台同时工作。
+ScepterGUITool 包含 ScepterGUITool 可执行文件及相关动态链接库。
 
-![设备列表](pic/DeviceList.png)
+<!-- tabs:start -->
 
-### 3.1.1. 设备连接
+#### **Windows**
 
-![设备连接](pic/ConnectDevice.png)
+![目录结构](pic/WindowsContents.png)
 
-1. 搜索设备
+> 在首次运行 ScepterGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。
+>
+> <div class="center">
+>
+> ![防火墙配置](pic/FirewallSetting.png)
+>
+> </div>
 
-2. 选中设备的 SN
+#### **Linux**
 
-3. 点击 Open 打开设备，或者双击设备 SN 打开设备
+![目录结构](pic/LinuxContents.png)
 
-### 3.1.2. 设备断开
+<!-- tabs:end -->
 
-![设备断开](pic/DisconnectDevice.png)
+## 3.2. 设备连接管理
 
-- 点击 Close 关闭设备。
+设备连接管理用于介绍设备的搜索与连接。本软件出于展示目的只打开一台相机；
 
-## 3.2. 显示区
+多个软件可以支持打开多台相机，SDK 也支持多台同时工作。
 
-![显示区](pic/DisplayArea.png)
+![设备管理](pic/DeviceManage.png)
 
-显示区用于显示图像，从左到右依次为深度图视窗、IR 图视窗、彩色图视窗、点云图视窗（默认关闭）。
+### 3.2.1. 设备打开
 
-深度图视窗中显示数值为白点处**实时像素点**的深度值，单位为 mm，如上图该点深度值为 2038mm 。
+① 连接好设备后，等待设备蓝灯闪烁，开始搜索设备。
 
-注意：鼠标右键单击可自行选择白点位置，同时显示对应点的深度值。
+![ScanDevice](pic/ScanDevice.png)
 
-## 3.3. 操作区
+② 选中需要打开的设备。
 
-![操作区](pic/OperationArea.png)
+![SelectDevice](pic/SelectDevice.png)
 
-操作区用于控制设备的工作模式与参数，设置图像处理算法，查看设备信息等功能。
+③ 点击 Connect 连接设备。
 
-### 3.3.1. 设备控制
+![ConnectDevice](pic/ConnectDevice.png)
 
-#### 3.3.1.1. 工作模式
+④ 设备连接成功后，点击 Stream 右侧的开关，启动相机的视频流。
 
-![工作模式](pic/WorkMode.png)
+![DeviceStreamOn](pic/DeviceStreamOn.png)
 
-ActiveMode：主动出图模式。
+⑤ 启动成功后，图像在右侧正常显现。
 
-HardwareTriggerMode：硬触发模式，通过硬件信号触发出图，具体请参考对应产品规格书。
+![图像显现](pic/DisplayArea.png)
 
-SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，单击按钮发送软触发指令。
-
-![软触发模式](pic/SoftwareTriggerMode.png)
-
-开启软触发模式后，点击“Trigger”按钮可触发设备出图。
-
-#### 3.3.1.2. 伪彩色图映射
-
-![伪彩色图映射](pic/ColorMap.png)
-
-深度图采用伪彩色图映射显示，将单通道 16 位的原始深度图在范围 ColorMap_Min 至 ColoMap_Max 的深度值线性映射到 0-255 的值域范围，再将单通道 8 位的深度图映射到伪彩色空间（即色度图）COLORMAP_RAINBOW，如下示意图：
-
-![色度图](pic/ChromaticityDiagram.png)
-
-伪彩色图映射效果如下图所示：
-
-![映射效果](pic/ColorMapEffect.png)
-
-#### 3.3.1.3. IR 图像增益
-
-![IR 图像增益](pic/IRGmmGain.png)
-
-设定 IR 图像的增益，表现为 GmmGain 值越高，IR 图像越亮。设备默认 GmmGain 值为 64。
-
-|                                     |                                       |
-| :---------------------------------: | :-----------------------------------: |
-| ![IRGmmGain64](pic/IRGmmGain64.png) | ![IRGmmGain255](pic/IRGmmGain255.png) |
-|           IRGmmGain 值 64           |           IRGmmGain 值 255            |
-
-#### 3.3.1.4. RGB 图像分辨率设置
-
-![RGB 图像分辨率](pic/RGBResolution.png)
-
-RGB 图像分辨率可根据实际列表显示进行切换，如上图示例的分辨率有三种：1600\*1200，800\*600，640\*480。
-
-### 3.3.2. 曝光时间设置
-
-#### 3.3.2.1. ToF 曝光时间
-
-![ToF 曝光时间](pic/ToFExposureTime.png)
-
-设定 ToF 传感器的曝光模式与时间。
-
-Auto：ToF 传感器设置为自动曝光，设备会根据图像距离进行曝光时间调节。
-
-Manual：ToF 传感器设置为手动曝光，通过滑条或输入框对曝光时间进行手动调节。
-
-ToF 传感器默认使用手动曝光模式，可以设定的最大曝光时间与帧率有关。
-
-<!-- | 帧率                    | 最大曝光时间(us) |
-| :---------------------- | :--------------- |
-| 5fps                    | 4000             |
-| 10fps                   | 2000             |
-| 15fps(HDR 模式最大支持) | 1300             |
-| 25fps                   | 1000             | -->
-
-HDR Mode **(仅限 VENO 系列相机)** ： HDR (高动态范围)功能通过设置多个不同曝光时间的方式，将采集到的多个图像合成到一帧中，完成对整个复杂场景的成像。
-
-| ![Exposure58](pic/Exposure58.png) |   ![Exposure1000](pic/Exposure1000.png) |   ![HDR](pic/HDR.png) |
-| :-------------------------------- | :-------------------------------------- | :-------------------- |
-| 曝光时间 58us                     | 曝光时间 1000us                         | HDR 曝光时间 1000us   |
-
-#### 3.3.2.2. RGB 曝光时间
-
-![RGB 曝光时间](pic/RGBExposureTime.png)
-
-设定 RGB 传感器曝光模式与时间
-
-Auto：RGB 传感器设置为自动曝光。
-
-AETimeMax(us) ：设置自动曝光的最大曝光时间，与帧率有关。
-
-<!-- | 帧率                    | 最大曝光时间(us) |
-| :---------------------- | :--------------- |
-| 5fps                    | 30000            |
-| 10fps                   | 16000            |
-| 15fps(HDR 模式最大支持) | 10000            |
-| 20fps                   | 5000             |
-| 25fps                   | 3000             | -->
-
-Manual：RGB 传感器设置为手动曝光。
-
-ExposureTime(us)：设置手动曝光的曝光时间
-
-RGB 传感器的默认曝光模式为自动曝光。
-
-### 3.3.3. 图像处理
-
-#### 3.3.3.1. 图像显示
-
-![图像显示](pic/ImageDisplay.png)
-
-可设定在显示区显示图像内容。取消选中后，显示区将不再显示对应图像视窗。
-
-软件默认打开 Depth 图像、IR 图像和 RGB 图像（如有）。
-
-#### 3.3.3.2. 点云图
-
-勾选 Point Cloud 可以设定是否显示点云，点云默认使用深度伪彩显示。
-
-Point Cloud White：设定点云使用单色显示（白色）。
-
-Point Cloud + RGB：设定点云填充 RGB 映射。
-
-**点云控件操作：**
-
-双击点云：全屏显示点云
-
-按住鼠标左键并拖动：旋转点云
-
-按住鼠标右键并拖动：平移点云
-
-鼠标滚轮：缩放点云
-
-![点云](pic/PointCloud.png)
-
-#### 3.3.3.3. RGBD 对齐
-
-1. DepthImgToColorSensor
-
-![DepthImgToColorSensor](pic/DepthImgToColorSensor.png)
-
-设定 Depth 图像对齐到 RGB 域的功能。启用后将输出并显示 Depth 像素点对齐到 RGB 像素空间的图像，即与 RGB 像素逐一对应的 Depth 图像。
-
-|                                                                   |                               |
-| :---------------------------------------------------------------: | :---------------------------: |
-| ![DepthImgToColorSensorImage](pic/DepthImgToColorSensorImage.png) | ![RGBImage](pic/RGBImage.png) |
-|                        对齐后的 Depth 图像                        |         原始 RGB 图像         |
-
-2. ColorImgToDepthSensor
-
-![ColorImgToDepthSensor](pic/ColorImgToDepthSensor.png)
-
-设定 RGB 图像对齐到 Depth 域的功能。启用后将输出并显示 RGB 像素点对齐到 Depth 像素空间的图像，即与 Depth 像素逐一对应的 RGB 图像。
-
-|                                   |                                                                   |
-| :-------------------------------: | :---------------------------------------------------------------: |
-| ![DepthImage](pic/DepthImage.png) | ![ColorImgToDepthSensorImage](pic/ColorImgToDepthSensorImage.png) |
-|          原始 Depth 图像          |                         对齐后的 RGB 图像                         |
-
-### 3.3.4. 保存图像
-
-**SaveImg：**
-
-![SaveButton](pic/SaveButton.png)
-
-保存一帧当前所有显示区域的图像，点击一次保存一张。如果显示区域未开启，则不会保存。
-
-注意：保存的所有图像/点云会存储在同一文件夹，文件夹以当前时间命名，存放在 ScepterGUITool.exe 的同级目录下的 SaveImage 文件夹中。如下图目录所示：
-
-![Path to save the original data](<pic/Path to save the original data.png>)
-
-**Record：**
-连续保存当前所有显示区域图像（不支持点云连续保存）。
-
-![Save depth effect continuously](<pic/Save depth effect continuously.png>)
-
-文件格式：
-
-Depth 图存储格式为 16 位单通道 png 格式，数值单位 mm；
-
-IR 图存储格式为 8 位单通道 png 格式；
-
-RGB 图存储格式为 8 位三通道彩色图，采用 JPG 格式保存；
-
-PointCloud 数据以 txt 格式保存，每行数据表示一个点的三维坐标(Float: X, Y, Z)，单位 mm。保存后的文件可使用 CloudCompare 工具打开。
-
-**注意：**
-
-ScepterGUITool 保存的深度图是 16bit 单通道 png 格式图像，每个 pixel 由 2 个字节表示。Windows 默认的图像显示工具只能显示 8bit 单通道的图像，所以看上去是黑色的。可以使用 Image J 来显示并查看像素距离值。
-
-### 3.3.5. 滤波处理
-
-#### 3.3.5.1. 图像滤波
-
-![Filter button](<pic/Filter button.png>)
-
-1．**All**
-
-开启/关闭所有滤波。
-
-2．**Black BG**
-
-Black BG：开启/关闭黑色背景，仅用于显示效果，对实际数值无影响。效果如下：
-
-|                                             |                                           |
-| :-----------------------------------------: | :---------------------------------------: |
-| ![Black BG close](<pic/Black BG close.png>) | ![Black BG open](<pic/Black BG open.png>) |
-|                Black BG 关闭                |               Black BG 开启               |
-
-3．**FillHole**
-
-FillHole：数据填补，弥补部分空洞数据，默认开启。
-
-4．**Spatial Filter**
-
-Spatial Filter：平滑滤波，减少平面噪声与抖动。默认关闭。
-
-|                                                         |                                                       |
-| :-----------------------------------------------------: | :---------------------------------------------------: |
-| ![Spatial Filter close](<pic/Spatial Filter close.png>) | ![Spatial Filter open](<pic/Spatial Filter open.png>) |
-|                   Spatial Filter 关闭                   |                  Spatial Filter 开启                  |
-
-5．**Time Filter**
-
-![Time Filter](<pic/Time Filter.png>)
-
-Time Filter：时间滤波，降低图像帧间抖动。默认开启，默认值 1（值越大，滤波效果越强）。
-
-6．**Flying Pixel Filter**
-
-![Flying Pixel Filter](<pic/Flying Pixel Filter.png>)
-
-Flying Pixel Filter：飞点消除滤波，消除边界的深度值飞点。默认开启，默认值 15（值越大，滤波效果越强）。
-
-|                                                                   |                                                                          |
-| :---------------------------------------------------------------: | :----------------------------------------------------------------------: |
-| ![Flying Pixel Filter close](<pic/Flying Pixel Filter close.png>) | ![Flying Pixel Filter value: 15](<pic/Flying Pixel Filter value 15.png>) |
-|                     Flying Pixel Filter 关闭                      |                       Flying Pixel Filter 值为 15                        |
-
-7．**Confidence Filter**
-
-![Flying Pixel Filter](pic/ConfidenceFilter.png)
-
-Confidence Filter：置信度滤波，消除信号质量较差点，默认开启，默认值 15（值越大，信号质量要求越高）。
-
-|                                                                     |                                                                     |
-| :-----------------------------------------------------------------: | :-----------------------------------------------------------------: |
-| ![Confidence Filter value 15](<pic/Confidence Filter value 15.png>) | ![Confidence Filter value 50](<pic/Confidence Filter value 50.png>) |
-|                      Confidence Filter 值为 15                      |                      Confidence Filter 值为 50                      |
-
-### 3.3.6. 设备信息
+### 3.2.2. 设备信息
 
 ![设备信息](<pic/Device information.png>)
 
@@ -293,91 +68,337 @@ MAC：设备 MAC 地址。
 
 Model：设备类型。
 
-### 3.3.7. IP 设置与固件升级
+State：设备当前状态。
 
-![IP 设置](<pic/IP address setting.png>)：设备 IP 设置与固件升级页面。
+### 3.2.3. 设备关闭
 
-#### 3.3.7.1. **IP 地址更改**
+![设备断开](pic/DeviceStreamOff.png)
 
-点击![IP 设置](<pic/IP address setting.png>)，弹出如下页面。
+点击 Disconnect 按钮，断开 GUITool 与相机连接。
 
-![Device Setting Interface](<pic/Device Setting Interface.png>)
+点击 Stream 右侧的开关，关闭相机的视频流。
 
-Obtain an IP address automatically(DHCP): 设置设备的 IP 地址为 DHCP 模式，由局域网内的路由器分配 IP 地址，使用该模式，主机端也需要设置为 DHCP 模式.
+## 3.3. 设备图像显示
 
-Use the following IP address：设置设备的 IP 地址为固定地址。使用该模式，需要注意主机的 IP 地址以及子网掩码，确保主机和设备的 IP 地址在同一网段。
+设备图像显示用于介绍图像显示的方式，可以从标签页处选择 2D 图像或 3D 点云:
 
-1．设置动态 IP：
+![TabSelect](pic/TabSelect.png)
 
-![Set DHCP](<pic/Set DHCP.png>)
+![显示区](pic/DisplayArea.png)
 
-Step1:  选择“Obtain an IP address automatically（DHCP）”。
+### 3.3.1. 图像显示
 
-Step2: 点击 OK 保存。
+默认的 2D 图像从左到右依次为深度图视窗、彩色图视窗。
 
-Step3: 设备自动重启后生效。
+深度图视窗可以通过下拉选项菜单选择深度图视窗、对齐到彩色像素空间的深度图视窗。
 
-2．设置静态 IP：
+![DepthImgToColorSensor](pic/DepthImgToColorSensor.png)
 
-Step1:  选择“Use the following IP address”。
+彩色图视窗可以通过下拉选项菜单选择彩色图视窗、对齐到深度像素空间的彩色图视窗、IR（红外）图视窗。
 
-Step2:  更改 IP 地址和子网掩码。
+![ColorImgToDepthSensor](pic/ColorImgToDepthSensor.png)
 
-Step3:  点击 OK 保存。
+深度图视窗下显示数值为白点处实时像素点的坐标值和深度值，深度值单位为 mm，如图该点深度值为 2894mm 。
 
-Step4: 设备自动重启后生效。
+IR 视窗下显示数值为白点处实时像素点的灰度值，如图该点灰度值为 39 。
 
-#### 3.3.7.2. 升级固件
+![WhitePoint](pic/WhitePoint.png)
 
-![Upgrade](pic/Upgrade.png)
+> 鼠标左键单击可自行选择白点位置，同时显示对应点的深度值和灰度值。
 
-设备固件升级操作方法：
+### 3.3.2. RGBD 对齐
 
-1.  点击![Path](pic/Path.png)，选择 ScepterGUITool 文件夹内的固件镜像，如图：
+**1. DepthImgToColorSensor 和 Color 的对齐**
 
-**注意：暂不支持中文路径**
+![DepthImgToColorSensor](pic/DepthImgToColorSensor.png)
 
-2.  点击“Upgrade”按钮，等待升级开始（升级过程中设备不可断电）。
+设定 Depth 图像对齐到 Color 域的功能。启用后将输出并显示 Depth 像素点对齐到 Color 像素空间的图像，即与 Color 像素逐一对应的 Depth 图像。
 
-3.  升级开始后，进度条会开始增长，增长到“100%”升级完成。
+#### 原理：
 
-4.  提示设备重启，点击确定后软件自动关闭。
+![RGBD_Principle](pic/RGBD_Principle.gif)
 
-#### 3.3.7.3. 信号参数配置（仅限 VENO86/VENO87）
+Tof 镜头和 Color 摄像头二者有安装距离，所以从实际采集的图像上看存在视差。
 
-信号参数配置在 Device Setting 页面，如下图所示：
+为了把深度和 Color 图像对齐，消除视差，得到一个真正的 RGB-D 图像，即物体表面的颜色和它的深度在二维图像上像素级精确对应，需要做一个转换：
 
-![Signal Parameters Settings](<pic/Signal Parameters Settings.png>)
+首先把红外相机坐标系下的深度先换为空间点云，再通过刚性变换转换到 Color 摄像头的坐标系，并最终投影到 Color 图像的二维图像坐标系，形成一张在 Color 相机坐标系下的深度图。
 
-硬触发相关的输入信号参数配置：
+| ![DepthImgToColorSensorImage](pic/DepthImgToColorSensorImage.png) | ![ColorImage](pic/ColorImage.png) |
+| :---------------------------------------------------------------: | :-------------------------------: |
+|                        对齐后的 Depth 图像                        |            Color 图像             |
 
-1） polarity：信号有效性检测极性。0 代表低电平有效，1 代表高电平有效。
+**2. ColorImgToDepthSensor 和 Depth 的对齐**
+
+![ColorImgToDepthSensor](pic/ColorImgToDepthSensor.png)
+
+设定 Color 图像对齐到 Depth 域的功能。启用后将输出并显示 Color 像素点对齐到 Depth 像素空间的图像，即与 Depth 像素逐一对应的 Color 图像。
+
+| ![DepthImage](pic/DepthImage.png) | ![ColorImgToDepthSensorImage](pic/ColorImgToDepthSensorImage.png) |
+| :-------------------------------: | :---------------------------------------------------------------: |
+|            Depth 图像             |                        对齐后的 Color 图像                        |
+
+**3. Depth 和 IR 的对齐**
+
+除了深度图像，相机还能够输出一个分辨率为 640\*480 的 IR 图像。由于 IR 图像和深度图像出自同一 sensor，所以 IR 图像与深度图在时间和像素上都实现了严格的对齐。
+
+| ![DepthImage](pic/DepthImage.png) | ![IRImage](pic/IRImage.png) |
+| :-------------------------------: | :-------------------------: |
+|            Depth 图像             |           IR 图像           |
+
+### 3.3.3 点云图
+
+从标签页处选择 3D 可以显示点云，点云默认使用深度伪彩显示。
+
+![DepthPointCloudSelect](pic/DepthPointCloudSelect.png)
+
+Depth Point Cloud：设定点云使用深度伪彩显示。
+
+Depth Point Cloud White：设定点云使用白色单色显示。
+
+Depth Point Cloud + RGB：设定点云填充 RGB 映射。
+
+TransformedDepth Point Cloud：设定对齐到彩色像素空间的点云使用深度伪彩显示。
+
+TransformedDepth Point Cloud White：设定对齐到彩色像素空间的点云使用白色单色显示。
+
+TransformedDepth Point Cloud + RGB：设定对齐到彩色像素空间的点云填充 RGB 映射。
+
+**点云控件操作：**
+
+![点云](pic/PointCloud.png)
+
+按住鼠标左键并拖动：旋转点云
+
+按住鼠标右键并拖动：平移点云
+
+鼠标滚轮：缩放点云
+
+## 3.4. 设备参数操作
+
+![操作区](pic/OperationArea.png)
+
+设备参数操作用于介绍控制设备的工作模式与参数，设置图像处理算法等功能。
+
+### 3.4.1 设备帧率
+
+通过左右滑动 Frame Rate 下方的滑块控制条可以调节相机的帧率，不同设备的最大帧率可能会有差异，请参考对应设备的产品规格书。
+
+![FrameRate](pic/FrameRate.png)
+
+### 3.4.2 工作模式
+
+![工作模式](pic/WorkMode.png)
+
+ActiveMode：主动出图模式。
+
+HardwareTriggerMode：硬触发模式，通过硬件信号触发出图，具体请参考对应产品规格书。
+
+SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，单击按钮发送软触发指令。
+
+#### 3.4.2.1 硬触发模式
+
+![硬触发模式](pic/HardwareTriggerMode.png)
+
+开启硬触发模式后，点击 Settings 按钮可配置触发信号参数，如下图所示：
+
+![InputSignalParamsForHWTrigger](pic/InputSignalParamsForHWTrigger.png)
+
+① polarity：信号有效性检测极性。0 代表低电平有效，1 代表高电平有效。
 
 取值范围：\[0,1]
 
-2） width： 信号宽度有效性检测，小于宽度设置的信号不予响应。16-bit，单位为 μs。
+②width： 信号宽度有效性检测，小于宽度设置的信号不予响应。16-bit，单位为 μs。
 
 取值范围：\[1,65535]
 
-3） interval： 连续信号间隔有效性检测，小于间隔设置的信号不予响应。
+③interval： 连续信号间隔有效性检测，小于间隔设置的信号不予响应。
 
 取值范围：\[34000,65535]
 
-输出信号参数配置：
+#### 3.4.2.2 软触发模式
 
-1） polarity：输出信号极性。0 代表低电平有效，1 代表高电平有效。
+![软触发模式](pic/SoftwareTriggerMode.png)
 
-取值范围：\[0,1]
+开启软触发模式后，点击 Trigger 按钮可触发设备出图。
 
-2\) width：输出信号宽度。总共 16-bit，单位为 μs。
+### 3.4.3 深度图像参数配置
 
-取值范围：\[1,65535]
+#### 3.4.3.1. 伪彩色图映射
 
-3\) delay：输出信号延时，即收到输入信号后，延时多久再开始输出信号。
+![伪彩色图映射](pic/ColorMap.png)
 
-取值范围：\[0,65535]
+深度图采用伪彩色图映射显示，将单通道 16 位的原始深度图在范围 ColorMap_Min 至 ColoMap_Max 的深度值线性映射到 0-255 的值域范围，再将单通道 8 位的深度图映射到伪彩色空间（即色度图）COLORMAP_RAINBOW，如下示意图：
 
-### 3.3.8. 导出、导入参数
+![色度图](pic/ChromaticityDiagram.png)
+
+您可以通过调整 Range(mm) 下方的滑块控制条调整伪彩色图映射效果，如下图所示：
+
+![映射效果](pic/ColorMapEffect.png)
+
+#### 3.4.3.2. ToF 曝光时间
+
+![ToF 曝光时间](pic/ToFExposureTime.png)
+
+设定 ToF 传感器的曝光模式与时间。ToF 传感器默认使用手动曝光模式，可以设定的最大曝光时间与帧率有关。
+
+不同设备的最大帧率可能会有差异，请参考对应设备的产品规格书。
+
+Manual：ToF 传感器设置为手动曝光，通过滑条对曝光时间进行手动调节。
+
+![ToF 曝光时间](pic/ToFExposureTime.png)
+
+Auto：ToF 传感器设置为自动曝光，设备会根据图像距离进行曝光时间调节。
+
+![ToF 自动曝光](pic/ToFAutoExposure.png)
+
+#### 3.4.3.3. 图像滤波
+
+![Filter button](<pic/Filter button.png>)
+
+① **All**
+
+开启/关闭所有滤波。
+
+② **Black BG**
+
+Black BG：开启/关闭黑色背景，仅用于显示效果，对实际数值无影响。效果如下：
+
+| ![Black BG close](<pic/Black BG close.png>) | ![Black BG open](<pic/Black BG open.png>) |
+| :-----------------------------------------: | :---------------------------------------: |
+|                Black BG 关闭                |               Black BG 开启               |
+
+③ **FillHole**
+
+FillHole：数据填补，弥补部分空洞数据，默认开启。
+
+④ **Spatial Filter**
+
+Spatial Filter：平滑滤波，减少平面噪声与抖动。默认关闭。
+
+| ![Spatial Filter close](<pic/Spatial Filter close.png>) | ![Spatial Filter open](<pic/Spatial Filter open.png>) |
+| :-----------------------------------------------------: | :---------------------------------------------------: |
+|                   Spatial Filter 关闭                   |                  Spatial Filter 开启                  |
+
+⑤ **Time Filter**
+
+Time Filter：时间滤波，降低图像帧间抖动。默认开启，值越大，滤波效果越强。
+
+![Time Filter](<pic/Time Filter.png>)
+
+⑥ **Flying Pixel Filter**
+
+Flying Pixel Filter：飞点消除滤波，消除边界的深度值飞点。默认开启，值越大，滤波效果越强。
+
+![Flying Pixel Filter](<pic/Flying Pixel Filter.png>)
+
+| ![Flying Pixel Filter close](<pic/Flying Pixel Filter close.png>) | ![Flying Pixel Filter value: 15](<pic/Flying Pixel Filter value 15.png>) |
+| :---------------------------------------------------------------: | :----------------------------------------------------------------------: |
+|                     Flying Pixel Filter 关闭                      |                       Flying Pixel Filter 值为 15                        |
+
+⑦ **Confidence Filter**
+
+![Flying Pixel Filter](pic/ConfidenceFilter.png)
+
+Confidence Filter：置信度滤波，消除信号质量较差点。默认开启，值越大，信号质量要求越高。
+
+| ![Confidence Filter value 15](<pic/Confidence Filter value 15.png>) | ![Confidence Filter value 50](<pic/Confidence Filter value 50.png>) |
+| :-----------------------------------------------------------------: | :-----------------------------------------------------------------: |
+|                      Confidence Filter 值为 15                      |                      Confidence Filter 值为 50                      |
+
+⑧ **HDR Mode**
+
+| ![Exposure58](pic/Exposure58.png) |   ![Exposure1000](pic/Exposure1000.png) |   ![HDR](pic/HDR.png) |
+| :-------------------------------: | :-------------------------------------: | :-------------------: |
+|           曝光时间 58us           |             曝光时间 1000us             |       HDR 模式        |
+
+HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时间的方式，将采集到的多个图像合成到一帧中，完成对整个复杂场景的成像 **(参考产品介绍是否支持)** 。
+
+### 3.4.4 IR 图像参数配置
+
+![IR 图像增益](pic/IRGmmGain.png)
+
+#### 3.4.4.1 Gamma Gain
+
+设定 IR 图像的增益，通过更改传感器 Gamma 值参数调整图像亮度，表现为 Gamma Gain 值越高，IR 图像越亮。
+
+| ![GammaGain25](pic/GammaGain25.png) | ![GammaGain100](pic/GammaGain100.png) |
+| :---------------------------------: | :-----------------------------------: |
+|          Gamma Gain 值 25           |           Gamma Gain 值 100           |
+
+#### 3.4.4.2 Gamma Correction
+
+设定 IR 图像校正的开关和增益，通过软件后处理调整图像亮度，表现为 Gamma Correction 值越高，IR 图像越亮。
+
+| ![GammaCorrectionOff](pic/GammaGain25.png) | ![GammaCorrection50](pic/GammaCorrection50.png) | ![GammaCorrection100](pic/GammaCorrection100.png) |
+| :----------------------------------------: | :---------------------------------------------: | :-----------------------------------------------: |
+|           Gamma Correction 关闭            |             Gamma Correction 值 50              |              Gamma Correction 值 100              |
+
+### 3.4.5 彩色图像参数配置
+
+![彩色图像](pic/Color.png)
+
+#### 3.4.5.1. 彩色图像分辨率
+
+![彩色图像分辨率](pic/ColorResolution.png)
+
+彩色图像分辨率可根据实际列表显示进行切换，如上图示例的分辨率有三种：640\*480，800\*600，1600\*1200。
+
+不同设备的彩色图像分辨率列表可能会有差异，请参考对应设备的产品规格书。
+
+#### 3.4.5.2. 彩色图像曝光时间
+
+设定 Color 传感器曝光模式与时间。Color 传感器的默认曝光模式为自动曝光。
+
+**Auto:**
+
+![彩色图像自动曝光](pic/ColorAutoExposure.png)
+
+Color 传感器设置为自动曝光，下面会显示可以设置 AEC Max ExposureTime(us)的滑块控制条。
+
+当相机作业时会自动调节曝光时间。
+
+AEC Max ExposureTime(us) ：设置相机自动曝光模式下的最大曝光时间。
+
+**Manual:**
+
+![彩色图像手动曝光](pic/ColorManualExposureTime.png)
+
+Color 传感器设置为手动曝光，下面会显示 ExposureTime(us)和 Gain(dB)两行状态栏。
+
+当相机作业时，需要手动调节相机曝光时间与相机 Color 图像的亮度。
+
+ExposureTime(us)：设置 Color 相机的曝光时间，通过滑条对曝光时间进行手动调节。
+
+Gain(dB): 设置 Color 图像的亮度，通过滑条对 Gain 值进行手动调节。
+
+### 3.4.6. 保存图像
+
+![SaveButton](pic/SaveButton.png)
+
+Record：录制当前所有显示区域的图像。如果显示区域未开启，则不会保存。录制无法保存点云。
+
+Total Count：需要录制的图像的数量，取值范围：\[1,10000]。
+
+Snapshot：保存一帧当前所有显示区域的图像。如果显示区域未开启，则不会保存。
+
+> 保存的所有图像/点云会存储在同一文件夹，文件夹以当前时间命名，存放在 ScepterGUITool.exe 的同级目录下的 SaveImage 文件夹中。如下图目录所示：
+>
+> ![Path to save the original data](<pic/Path to save the original data.png>)
+
+**文件格式：**
+
+Depth 图存储格式为 16 位单通道 png 格式，数值单位 mm；
+
+IR 图存储格式为 8 位单通道 png 格式；
+
+Color 图存储格式为 8 位三通道彩色图，采用 JPG 格式保存；
+
+PointCloud 数据以 txt 格式保存，每行数据表示一个点的三维坐标(Float: X, Y, Z)，单位 mm。保存后的文件可使用 CloudCompare 工具打开。
+
+> ScepterGUITool 保存的深度图是 16bit 单通道 png 格式图像，每个 pixel 由 2 个字节表示。Windows 默认的图像显示工具只能显示 8bit 单通道的图像，所以看上去是黑色的。可以使用 Image J 来显示并查看像素距离值。
+
+<!-- ### 3.4.7. 导出、导入参数
 
 ![DeviceParams](pic/DeviceParams.png)
 
@@ -385,25 +406,78 @@ Export：导出通过 ScepterGUITool 设置的参数
 
 Import：导入参数到 ScepterGUITool 中
 
-导出的参数可以通过调用 API 函数在自编写的程序中直接使用。
+导出的参数可以通过调用 API 函数在自编写的程序中直接使用。 -->
 
-## 3.4. 查看已保存图像/点云
+## 3.5. 设备网络设置
+
+点击顶部菜单栏![IP 设置](<pic/IP address setting.png>)，弹出设备网络设置页面。
+
+![Device Setting Interface](<pic/Device Setting Interface.png>)
+
+① **设置动态 IP：**
+
+Obtain an IP address automatically(DHCP): 设置设备的 IP 地址为 DHCP 模式，由局域网内的路由器分配 IP 地址，使用该模式，主机端也需要设置为 DHCP 模式.
+
+Step1:  选择“Obtain an IP address automatically（DHCP）”。
+
+![set camera DHCP](<pic/set DHCP.png>)
+
+Step2: 点击 OK 保存。
+
+Step3: 设备自动重启后生效。
+
+② **设置静态 IP：**
+
+Use the following IP address：设置设备的 IP 地址为固定地址。使用该模式，需要注意主机的 IP 地址以及子网掩码，确保主机和设备的 IP 地址在同一网段。
+
+Step1:  选择“Use the following IP address”。
+
+![Use the following IP address](<pic/Use the following IP address.png>)
+
+Step2:  更改 IP 地址和子网掩码。
+
+Step3:  点击 OK 保存。
+
+Step4: 设备自动重启后生效。
+
+## 3.6. 设备固件升级
+
+点击顶部菜单栏![设备固件升级](pic/Upgrade.png)，进入设备固件升级设置页面。
+
+![Upgrade Firmware](<pic/Upgrade Firmware.png>)
+
+设备固件升级操作方法：
+
+1.  点击![Path](pic/Path.png)，选择固件镜像。
+
+> 暂不支持中文路径
+
+2.  点击“Upgrade”按钮，等待升级开始（升级过程中设备不可断电）。
+
+3.  升级开始后，进度条会开始增长，增长到“100%”升级完成。
+
+4.  提示设备重启，点击确定后设备重启并完成固件升级。
+
+## 3.7. 查看已保存图像/点云
 
 1. 进入 ScepterGUITool 根目录下的 SaveImage 文件夹，选择想要查看的图像。
+
 2. ScepterGUITool 保存的 Depth 和 IR 图像是 16bit 图片数据，可以使用 ImageJ 打开查看，鼠标指上去可以读出对应坐标下的深度值/IR 信号值。
 
-   **ImageJ 下载地址：**<https://fiji.sc/>
+   ImageJ 下载地址：<https://fiji.sc/>
 
    ![ImageJ](pic/ImageJ.png)
 
-   **注意：**可以使用 ImageJ 中的 LUT 菜单给图片添加伪彩色，并通过菜单 Image->Adjust->Brightness/Contrast(**Ctrl+Shift+C**)进行效果的调整。
+   > 可以使用 ImageJ 中的 LUT 菜单给图片添加伪彩色，并通过菜单 Image->Adjust->Brightness/Contrast(**Ctrl+Shift+C**)进行效果的调整。
 
 3. ScepterGUITool 保存的点云图是.txt 格式，可使用 CloudCompare 打开查看。
 
-   **CloudCompare 下载地址：**<https://www.cloudcompare.org/>
+   CloudCompare 下载地址：<https://www.cloudcompare.org/>
 
    ![CloudCompare](pic/CloudCompare.png)
 
    ScepterGUITool 保存的.txt 格式点云图，从上到下行依次为 pixel 0 至最后一个 pixel，每一行的数值依次为该 pixel 的 X,Y,Z 值(RGBD 相机保存的彩色点云依次为 X,Y,Z,R,G,B 值)，说明如下：
 
    ![.txt point cloud file](<pic/txt point cloud file.png>)​
+
+   ![.txt color point cloud file](<pic/txt color point cloud file.png>)​

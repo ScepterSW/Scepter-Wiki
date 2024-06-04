@@ -3,22 +3,18 @@
 
 <head>
    <meta charset="UTF-8" />
-   <title>GMI 3D Camera Docs</title>
+   <title>Scepter-Wiki</title>
    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
    <meta name="description" content="Description" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-   <link rel="stylesheet" href="plugins/css/theme-simple.css" />
-   <link rel="stylesheet" href="plugins/css/button-custom.css" />
-   <link rel="stylesheet" href="plugins/css/main-custom.css" />
-
+   <!-- 网页图标，临时使用以后需要替换 -->
    <link rel="shortcut icon" href="favicon.ico" />
-   <!-- 箭头样式 -->
-   <link rel="stylesheet" href="plugins/css/sidebar.min.css" />
-   <!-- 文件夹样式 -->
-   <!-- <link rel="stylesheet" href="plugins/css/sidebar-folder.min.css" /> -->
-
-
-   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css"> -->
+   <!-- 网页主题布局文件 -->
+   <link rel="stylesheet" href="plugins/css/theme-simple.css" />
+   <!-- 基于主题修改后的布局文件：字号，高亮颜色等 -->
+   <link rel="stylesheet" href="plugins/css/main-custom.css" />
+   <!-- 侧边栏折叠样式 -->
+   <link rel="stylesheet" href="plugins/css/sidebar-folder.min.css" />
    <style>
       :root {
          --docsifytabs-border-color: #ededed;
@@ -31,32 +27,36 @@
    <div id="app"></div>
    <script>
       window.$docsify = {
-         name: "GMI 3D Camera Docs",
+         //侧边栏顶部标题
+         name: "Scepter-Wiki",
          repo: "",
          // 开启侧边栏
          loadSidebar: true,
          subMaxLevel: 2,
-         // sidebarDisplayLevel: 1, // set sidebar display level
+         // set sidebar display level
+         sidebarDisplayLevel: 1, 
          loadNavbar: true,
+         //点击标题是否内容跳转到标题最顶端
+         auto2top: true,
+
+         //plugin1: 侧边栏全文搜索配置
          search: {
-            maxAge: 1, // 过期时间，单位毫秒，默认一天
+            // 过期时间，单位毫秒，默认一天
+            maxAge: 86400000, 
             placeholder: 'Type to search',
             noData: 'No Results!',
             // 搜索标题的最大层级, 1 - 6
-            depth: 4,
-            hideOtherSidebarContent: false, // 是否隐藏其他侧边栏内容
+            depth: 6,
+            // 是否隐藏其他侧边栏内容
+            hideOtherSidebarContent: true, 
          },
-         auto2top: true,
-         plugins: [
-            function (hook, vm) {
-               hook.ready(function () {
-                  mermaid.initialize({ startOnLoad: false });
-               });
-               hook.doneEach(function () {
-                  mermaid.init(undefined, ".mermaid");
-               });
-            },
-         ],
+         //plugin2: 代码段复制配置参数
+         copyCode: {
+            buttonText: 'Copy',
+            errorText: 'Error',
+            successText: 'OK!'
+         },
+         //plugin3: 文章标签页配置
          tabs: {
             persist: true,      // default
             sync: true,      // default
@@ -64,43 +64,26 @@
             tabComments: true,      // default
             tabHeadings: true       // default
          },
-         markdown: {
-            renderer: {
-               code: function (code, lang) {
-                  if (lang === "mermaid") {
-                     return '<div class="mermaid">' + code + "</div>";
-                  }
-                  return this.origin.code.apply(this, arguments);
-               },
-            },
-         },
       };
    </script>
-   <!-- Docsify v4 -->
-   <script src="plugins/js/npm/docsify@4.js"></script>
+   <!-- Docsify v4 :default config 核心代码-->
+   <script src="plugins/js/docsify@4.js"></script>
+   <!-- plugin1: 用于侧边栏对全文进行关键词搜索-->
+   <script src="plugins/js/search.min.js"></script>
+   <!-- plugin2: 用于copy代码段代码-->
+   <script src="plugins/js/docsify-copy-code.min.js"></script>
+   <!-- plugin3: 用于文章内容使用tab页-->
+   <script src="plugins/js/docsify-tabs@1.js"></script>
+   <!-- plugin4: 用于代码段内容，根据代码类型高亮（无参数配置）。不同代码需要增加不同的插件-->
+   <script src="plugins/js/prismjs/prism-c.js"></script>
+   <script src="plugins/js/prismjs/prism-cpp.js"></script>
+   <script src="plugins/js/prismjs/prism-python.js"></script>
+   <script src="plugins/js/prismjs/prism-csharp.js"></script>
+   <!-- plugin5: 用于点击放大图片功能（无参数配置）-->
+   <script src="plugins/js/zoom-image.min.js"></script>
+   <!-- plugin6: 用于折叠左侧标题栏的层叠标题-->
+   <script src="plugins/js/docsify-sidebar-collapse.min.js"></script>
 
-   <!-- 全文搜索 -->
-   <script src="plugins/js/npm/docsify/lib/plugins/search.min.js"></script>
-
-   <!-- 代码复制插件 -->
-   <script src="plugins/js/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-
-   <!-- 标签页插件 docsify-tabs (latest v1.x.x) -->
-   <script src="plugins/js/npm/docsify-tabs@1.js"></script>
-
-   <!-- 代码高亮插件 -->
-   <script src="plugins/js/npm/prismjs@1/components/prism-c.js"></script>
-   <script src="plugins/js/npm/prismjs@1/components/prism-cpp.js"></script>
-   <script src="plugins/js/npm/prismjs@1/components/prism-python.js"></script>
-   <script src="plugins/js/npm/prismjs@1/components/prism-csharp.js"></script>
-
-   <!-- zoom image -->
-   <script src="plugins/js/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-   <scriptss type="text/javascript" src="plugins/js/mermaid.min.js">
-      </script>
-
-      <!-- docsify-sidebar-collapse    -->
-      <script src="plugins/js/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
 </body>
 
 </html>
