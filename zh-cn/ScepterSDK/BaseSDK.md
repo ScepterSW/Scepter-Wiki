@@ -819,6 +819,21 @@ typedef struct
     uint8_t  polarity;    //表示电平有效性，[0，1]，0表示低电平有效，1表示高电平有效
 } ScOutputSignalParams;
 ```
+### 2.5.2.17. ScTimeSyncConfig
+
+**功能：**
+
+对时参数。
+
+**成员：**
+
+```cpp
+typedef struct
+{
+    uint8_t flag;     //!< 0:表示关闭对时，1:表示开启NTP对时，2:表示开启PTP对时，只有NTP对时需要IP
+    uint8_t ip[16];   //!< 只有NTP对时需要ip
+} ScTimeSyncConfig;
+```
 
 #### **API 介绍**
 
@@ -2212,4 +2227,166 @@ ScStatus scSetParamsByJson(ScDeviceHandle device, char* pfilePath)
 
 [**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
+
+### 2.5.3.63. scGetDepthRangeValue
+
+**函数原型：**
+
+``` cpp
+cStatus scGetDepthRangeValue(ScDeviceHandle device, int16_t* minValue, int16_t* maxValue)
+```
+
+**函数功能：**
+
+获取设备当前工作模式下的深度范围
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">int16_t</span>\* minValue： 深度最小值
+
+<span style="color: #4ec9b0; font-weight: bold">int16_t</span>\* maxValue： 深度最大值
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 2.5.3.64. scSetTimeSyncConfig
+
+**函数原型：**
+
+``` cpp
+ScStatus scSetTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig params)
+```
+
+**函数功能：**
+
+设置时间同步的参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScTimeSyncConfig**](#_25217-sctimesyncconfig) params: 时间同步参数
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 2.5.3.65. scGetTimeSyncConfig
+
+**函数原型：**
+
+``` cpp
+ScStatus scGetTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig* pParams);
+```
+
+**函数功能：**
+
+获取时间同步的参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScTimeSyncConfig**](#_25217-sctimesyncconfig)\* pParams: 时间同步参数 
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 2.5.3.66. scGetDistanceLevelCountOfHDRMode
+
+**函数原型：**
+
+``` cpp
+ScStatus scGetDistanceLevelCountOfHDRMode(ScDeviceHandle device, int32_t* pCount);
+```
+
+**函数功能：**
+
+在HDR模式下获取距离级别的计数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pCount: 距离级别计数
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 2.5.3.67. scSetExposureTimeOfHDR
+
+**函数原型：**
+
+``` cpp
+ScStatus scSetExposureTimeOfHDR(ScDeviceHandle device, uint8_t level, int32_t exposureTime)
+```
+
+**函数功能：**
+
+在HDR模式下，设置深度传感器的曝光时间
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> level: HDR模式远近程度
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime: 曝光时间
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 2.5.3.68. scGetExposureTimeOfHDR
+
+**函数原型：**
+
+``` cpp
+ScStatus scGetExposureTimeOfHDR(ScDeviceHandle device, uint8_t level, int32_t* pExposureTime)
+```
+
+**函数功能：**
+
+在HDR模式下，获取深度传感器的曝光时间
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> level:  HDR模式远近程度
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pExposureTime: 曝光时间
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 2.5.3.69. scGetMaxExposureTimeOfHDR
+
+**函数原型：**
+
+``` cpp
+ScStatus scGetMaxExposureTimeOfHDR(ScDeviceHandle device, uint8_t level, int32_t* pMaxExposureTime)
+```
+
+**函数功能：**
+
+在HDR模式下，获取深度传感器的最大曝光时间
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> level:   HDR模式远近程度
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* exposureTime: 曝光时间
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 <!-- tabs:end -->

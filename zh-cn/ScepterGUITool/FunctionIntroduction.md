@@ -30,33 +30,103 @@ ScepterGUITool 包含 ScepterGUITool 可执行文件及相关动态链接库。
 
 多个软件可以支持打开多台相机，SDK 也支持多台同时工作。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![设备管理](pic/DeviceManage.png)
+
+#### **Linux**
+
+![设备管理](pic/DeviceManage_ubuntu.png)
+
+<!-- tabs:end -->
 
 ### 3.2.1. 设备打开
 
 ① 连接好设备后，等待设备蓝灯闪烁，开始搜索设备。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![ScanDevice](pic/ScanDevice.png)
+
+#### **Linux**
+
+![ScanDevice](pic/ScanDevice_ubuntu.png)
+
+<!-- tabs:end -->
 
 ② 选中需要打开的设备。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![SelectDevice](pic/SelectDevice.png)
+
+#### **Linux**
+
+![SelectDevice](pic/SelectDevice_ubuntu.png)
+
+<!-- tabs:end -->
 
 ③ 点击 Connect 连接设备。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![ConnectDevice](pic/ConnectDevice.png)
+
+#### **Linux**
+
+![ConnectDevice](pic/ConnectDevice_ubuntu.png)
+
+<!-- tabs:end -->
 
 ④ 设备连接成功后，点击 Stream 右侧的开关，启动相机的视频流。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![DeviceStreamOn](pic/DeviceStreamOn.png)
+
+#### **Linux**
+
+![DeviceStreamOn](pic/DeviceStreamOn_ubuntu.png)
+
+<!-- tabs:end -->
 
 ⑤ 启动成功后，图像在右侧正常显现。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![图像显现](pic/DisplayArea.png)
+
+#### **Linux**
+
+![图像显现](pic/DisplayArea_ubuntu.png)
+
+<!-- tabs:end -->
 
 ### 3.2.2. 设备信息
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![设备信息](<pic/Device information.png>)
+
+#### **Linux**
+
+![设备信息](<pic/Device information_ubuntu.png>)
+
+<!-- tabs:end -->
 
 SN：设备序列号。
 
@@ -72,7 +142,17 @@ State：设备当前状态。
 
 ### 3.2.3. 设备关闭
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![设备断开](pic/DeviceStreamOff.png)
+
+#### **Linux**
+
+![设备断开](pic/DeviceStreamOff_ubuntu.png)
+
+<!-- tabs:end -->
 
 点击 Disconnect 按钮，断开 GUITool 与相机连接。
 
@@ -82,9 +162,21 @@ State：设备当前状态。
 
 设备图像显示用于介绍图像显示的方式，可以从标签页处选择 2D 图像或 3D 点云:
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![TabSelect](pic/TabSelect.png)
 
 ![显示区](pic/DisplayArea.png)
+
+#### **Linux**
+
+![TabSelect](pic/TabSelect_ubuntu.png)
+
+![显示区](pic/DisplayArea_ubuntu.png)
+
+<!-- tabs:end -->
 
 ### 3.3.1. 图像显示
 
@@ -98,11 +190,25 @@ State：设备当前状态。
 
 ![ColorImgToDepthSensor](pic/ColorImgToDepthSensor.png)
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 深度图视窗下显示数值为白点处实时像素点的坐标值和深度值，深度值单位为 mm，如图该点深度值为 2894mm 。
 
 IR 视窗下显示数值为白点处实时像素点的灰度值，如图该点灰度值为 39 。
 
 ![WhitePoint](pic/WhitePoint.png)
+
+#### **Linux**
+
+深度图视窗下显示数值为白点处实时像素点的坐标值和深度值，深度值单位为 mm，如图该点深度值为 2385mm 。
+
+IR 视窗下显示数值为白点处实时像素点的灰度值，如图该点灰度值为 44 。
+
+![WhitePoint](pic/WhitePoint_ubuntu.png)
+
+<!-- tabs:end -->
 
 > 鼠标左键单击可自行选择白点位置，同时显示对应点的深度值和灰度值。
 
@@ -124,9 +230,21 @@ Tof 镜头和 Color 摄像头二者有安装距离，所以从实际采集的图
 
 首先把红外相机坐标系下的深度先换为空间点云，再通过刚性变换转换到 Color 摄像头的坐标系，并最终投影到 Color 图像的二维图像坐标系，形成一张在 Color 相机坐标系下的深度图。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 | ![DepthImgToColorSensorImage](pic/DepthImgToColorSensorImage.png) | ![ColorImage](pic/ColorImage.png) |
 | :---------------------------------------------------------------: | :-------------------------------: |
 |                        对齐后的 Depth 图像                        |            Color 图像             |
+
+#### **Linux**
+
+| ![DepthImgToColorSensorImage](pic/DepthImgToColorSensorImage_ubuntu.png) | ![ColorImage](pic/ColorImage_ubuntu.png) |
+| :---------------------------------------------------------------: | :-------------------------------: |
+|                        对齐后的 Depth 图像                        |            Color 图像             |
+
+<!-- tabs:end -->
 
 **2. ColorImgToDepthSensor 和 Depth 的对齐**
 
@@ -134,17 +252,42 @@ Tof 镜头和 Color 摄像头二者有安装距离，所以从实际采集的图
 
 设定 Color 图像对齐到 Depth 域的功能。启用后将输出并显示 Color 像素点对齐到 Depth 像素空间的图像，即与 Depth 像素逐一对应的 Color 图像。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 | ![DepthImage](pic/DepthImage.png) | ![ColorImgToDepthSensorImage](pic/ColorImgToDepthSensorImage.png) |
 | :-------------------------------: | :---------------------------------------------------------------: |
 |            Depth 图像             |                        对齐后的 Color 图像                        |
+
+#### **Linux**
+
+| ![DepthImage](pic/DepthImage_ubuntu.png) | ![ColorImgToDepthSensorImage](pic/ColorImgToDepthSensorImage_ubuntu.png) |
+| :-------------------------------: | :---------------------------------------------------------------: |
+|            Depth 图像             |                        对齐后的 Color 图像                        |
+
+<!-- tabs:end -->
+
 
 **3. Depth 和 IR 的对齐**
 
 除了深度图像，相机还能够输出一个分辨率为 640\*480 的 IR 图像。由于 IR 图像和深度图像出自同一 sensor，所以 IR 图像与深度图在时间和像素上都实现了严格的对齐。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 | ![DepthImage](pic/DepthImage.png) | ![IRImage](pic/IRImage.png) |
 | :-------------------------------: | :-------------------------: |
 |            Depth 图像             |           IR 图像           |
+
+#### **Linux**
+
+| ![DepthImage](pic/DepthImage_ubuntu.png) | ![IRImage](pic/IRImage_ubuntu.png) |
+| :-------------------------------: | :-------------------------: |
+|            Depth 图像             |           IR 图像           |
+
+<!-- tabs:end -->
 
 ### 3.3.3 点云图
 
@@ -166,7 +309,17 @@ TransformedDepth Point Cloud + RGB：设定对齐到彩色像素空间的点云
 
 **点云控件操作：**
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![点云](pic/PointCloud.png)
+
+#### **Linux**
+
+![点云](pic/PointCloud_ubuntu.png)
+
+<!-- tabs:end -->
 
 按住鼠标左键并拖动：旋转点云
 
@@ -176,7 +329,17 @@ TransformedDepth Point Cloud + RGB：设定对齐到彩色像素空间的点云
 
 ## 3.4. 设备参数操作
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![操作区](pic/OperationArea.png)
+
+#### **Linux**
+
+![操作区](pic/OperationArea_ubuntu.png)
+
+<!-- tabs:end -->
 
 设备参数操作用于介绍控制设备的工作模式与参数，设置图像处理算法等功能。
 
@@ -184,7 +347,17 @@ TransformedDepth Point Cloud + RGB：设定对齐到彩色像素空间的点云
 
 通过左右滑动 Frame Rate 下方的滑块控制条可以调节相机的帧率，不同设备的最大帧率可能会有差异，请参考对应设备的产品规格书。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![FrameRate](pic/FrameRate.png)
+
+#### **Linux**
+
+![FrameRate](pic/FrameRate.png)
+
+<!-- tabs:end -->
 
 ### 3.4.2 工作模式
 
@@ -198,11 +371,32 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 #### 3.4.2.1 硬触发模式
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![硬触发模式](pic/HardwareTriggerMode.png)
+
+#### **Linux**
+
+![硬触发模式](pic/HardwareTriggerMode.png)
+
+<!-- tabs:end -->
 
 开启硬触发模式后，点击 Settings 按钮可配置触发信号参数，如下图所示：
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![InputSignalParamsForHWTrigger](pic/InputSignalParamsForHWTrigger.png)
+
+#### **Linux**
+
+![InputSignalParamsForHWTrigger](pic/InputSignalParamsForHWTrigger_ubuntu.png)
+
+<!-- tabs:end -->
+
 
 ① polarity：信号有效性检测极性。0 代表低电平有效，1 代表高电平有效。
 
@@ -218,7 +412,17 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 #### 3.4.2.2 软触发模式
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![软触发模式](pic/SoftwareTriggerMode.png)
+
+#### **Linux**
+
+![软触发模式](pic/SoftwareTriggerMode_ubuntu.png)
+
+<!-- tabs:end -->
 
 开启软触发模式后，点击 Trigger 按钮可触发设备出图。
 
@@ -226,7 +430,17 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 #### 3.4.3.1. 伪彩色图映射
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![伪彩色图映射](pic/ColorMap.png)
+
+#### **Linux**
+
+![伪彩色图映射](pic/ColorMap_ubuntu.png)
+
+<!-- tabs:end -->
 
 深度图采用伪彩色图映射显示，将单通道 16 位的原始深度图在范围 ColorMap_Min 至 ColoMap_Max 的深度值线性映射到 0-255 的值域范围，再将单通道 8 位的深度图映射到伪彩色空间（即色度图）COLORMAP_RAINBOW，如下示意图：
 
@@ -234,11 +448,19 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 您可以通过调整 Range(mm) 下方的滑块控制条调整伪彩色图映射效果，如下图所示：
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![映射效果](pic/ColorMapEffect.png)
 
-#### 3.4.3.2. ToF 曝光时间
+#### **Linux**
 
-![ToF 曝光时间](pic/ToFExposureTime.png)
+![映射效果](pic/ColorMapEffect.png)
+
+<!-- tabs:end -->
+
+#### 3.4.3.2. ToF 曝光时间
 
 设定 ToF 传感器的曝光模式与时间。ToF 传感器默认使用手动曝光模式，可以设定的最大曝光时间与帧率有关。
 
@@ -246,15 +468,45 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 Manual：ToF 传感器设置为手动曝光，通过滑条对曝光时间进行手动调节。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![ToF 曝光时间](pic/ToFExposureTime.png)
+
+#### **Linux**
+
+![ToF 曝光时间](pic/ToFExposureTime_ubuntu.png)
+
+<!-- tabs:end -->
 
 Auto：ToF 传感器设置为自动曝光，设备会根据图像距离进行曝光时间调节。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![ToF 自动曝光](pic/ToFAutoExposure.png)
+
+#### **Linux**
+
+![ToF 自动曝光](pic/ToFAutoExposure_ubuntu.png)
+
+<!-- tabs:end -->
 
 #### 3.4.3.3. 图像滤波
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![Filter button](<pic/Filter button.png>)
+
+#### **Linux**
+
+![Filter button](<pic/Filter button_ubuntu.png>)
+
+<!-- tabs:end -->
 
 ① **All**
 
@@ -284,13 +536,33 @@ Spatial Filter：平滑滤波，减少平面噪声与抖动。默认关闭。
 
 Time Filter：时间滤波，降低图像帧间抖动。默认开启，值越大，滤波效果越强。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![Time Filter](<pic/Time Filter.png>)
+
+#### **Linux**
+
+![Time Filter](<pic/Time Filter_ubuntu.png>)
+
+<!-- tabs:end -->
 
 ⑥ **Flying Pixel Filter**
 
 Flying Pixel Filter：飞点消除滤波，消除边界的深度值飞点。默认开启，值越大，滤波效果越强。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![Flying Pixel Filter](<pic/Flying Pixel Filter.png>)
+
+#### **Linux**
+
+![Flying Pixel Filter](<pic/Flying Pixel Filter_ubuntu.png>)
+
+<!-- tabs:end -->
 
 | ![Flying Pixel Filter close](<pic/Flying Pixel Filter close.png>) | ![Flying Pixel Filter value: 15](<pic/Flying Pixel Filter value 15.png>) |
 | :---------------------------------------------------------------: | :----------------------------------------------------------------------: |
@@ -298,7 +570,17 @@ Flying Pixel Filter：飞点消除滤波，消除边界的深度值飞点。默�
 
 ⑦ **Confidence Filter**
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![Flying Pixel Filter](pic/ConfidenceFilter.png)
+
+#### **Linux**
+
+![Flying Pixel Filter](pic/ConfidenceFilter_ubuntu.png)
+
+<!-- tabs:end -->
 
 Confidence Filter：置信度滤波，消除信号质量较差点。默认开启，值越大，信号质量要求越高。
 
@@ -316,7 +598,17 @@ HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时
 
 ### 3.4.4 IR 图像参数配置
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![IR 图像增益](pic/IRGmmGain.png)
+
+#### **Linux**
+
+![IR 图像增益](pic/IRGmmGain_ubuntu.png)
+
+<!-- tabs:end -->
 
 #### 3.4.4.1 Gamma Gain
 
@@ -336,11 +628,31 @@ HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时
 
 ### 3.4.5 彩色图像参数配置
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![彩色图像](pic/Color.png)
+
+#### **Linux**
+
+![彩色图像](pic/Color_ubuntu.png)
+
+<!-- tabs:end -->
 
 #### 3.4.5.1. 彩色图像分辨率
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![彩色图像分辨率](pic/ColorResolution.png)
+
+#### **Linux**
+
+![彩色图像分辨率](pic/ColorResolution.png)
+
+<!-- tabs:end -->
 
 彩色图像分辨率可根据实际列表显示进行切换，如上图示例的分辨率有三种：640\*480，800\*600，1600\*1200。
 
@@ -352,7 +664,17 @@ HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时
 
 **Auto:**
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![彩色图像自动曝光](pic/ColorAutoExposure.png)
+
+#### **Linux**
+
+![彩色图像自动曝光](pic/ColorAutoExposure_ubuntu.png)
+
+<!-- tabs:end -->
 
 Color 传感器设置为自动曝光，下面会显示可以设置 AEC Max ExposureTime(us)的滑块控制条。
 
@@ -362,7 +684,17 @@ AEC Max ExposureTime(us) ：设置相机自动曝光模式下的最大曝光时
 
 **Manual:**
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![彩色图像手动曝光](pic/ColorManualExposureTime.png)
+
+#### **Linux**
+
+![彩色图像手动曝光](pic/ColorManualExposureTime_ubuntu.png)
+
+<!-- tabs:end -->
 
 Color 传感器设置为手动曝光，下面会显示 ExposureTime(us)和 Gain(dB)两行状态栏。
 
@@ -374,7 +706,17 @@ Gain(dB): 设置 Color 图像的亮度，通过滑条对 Gain 值进行手动调
 
 ### 3.4.6. 保存图像
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![SaveButton](pic/SaveButton.png)
+
+#### **Linux**
+
+![SaveButton](pic/SaveButton.png)
+
+<!-- tabs:end -->
 
 Record：录制当前所有显示区域的图像。如果显示区域未开启，则不会保存。录制无法保存点云。
 
@@ -420,7 +762,17 @@ Obtain an IP address automatically(DHCP): 设置设备的 IP 地址为 DHCP 模�
 
 Step1:  选择“Obtain an IP address automatically（DHCP）”。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![set camera DHCP](<pic/set DHCP.png>)
+
+#### **Linux**
+
+![set camera DHCP](<pic/set DHCP_ubuntu.png>)
+
+<!-- tabs:end -->
 
 Step2: 点击 OK 保存。
 
@@ -432,7 +784,17 @@ Use the following IP address：设置设备的 IP 地址为固定地址。使用
 
 Step1:  选择“Use the following IP address”。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![Use the following IP address](<pic/Use the following IP address.png>)
+
+#### **Linux**
+
+![Use the following IP address](<pic/Use the following IP address_ubuntu.png>)
+
+<!-- tabs:end -->
 
 Step2:  更改 IP 地址和子网掩码。
 
@@ -443,6 +805,10 @@ Step4: 设备自动重启后生效。
 ## 3.6. 设备固件升级
 
 点击顶部菜单栏![设备固件升级](pic/Upgrade.png)，进入设备固件升级设置页面。
+
+<!-- tabs:start -->
+
+#### **Windows**
 
 ![Upgrade Firmware](<pic/Upgrade Firmware.png>)
 
@@ -457,6 +823,26 @@ Step4: 设备自动重启后生效。
 3.  升级开始后，进度条会开始增长，增长到“100%”升级完成。
 
 4.  提示设备重启，点击确定后设备重启并完成固件升级。
+
+#### **Linux**
+
+![Upgrade Firmware](<pic/Upgrade Firmware_ubuntu.png>)
+
+设备固件升级操作方法：
+
+1.  点击![Path](pic/Path_ubuntu.png)，选择固件镜像。
+
+> 暂不支持中文路径
+
+2.  点击“Upgrade”按钮，等待升级开始（升级过程中设备不可断电）。
+
+3.  升级开始后，进度条会开始增长，增长到“100%”升级完成。
+
+4.  提示设备重启，点击确定后设备重启并完成固件升级。
+
+
+<!-- tabs:end -->
+
 
 ## 3.7. 查看已保存图像/点云
 

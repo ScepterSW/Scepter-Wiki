@@ -14,7 +14,7 @@
 
 - [1. NYX650/660](zh-cn/ProductIntroduction/NYX650,660.md)
 
-* [2. VENO86/87](zh-cn/ProductIntroduction/VENO86,87.md)
+* [2. DS86/87](zh-cn/ProductIntroduction/DS86,87.md)
 
 快速开始
 
@@ -62,12 +62,12 @@ Scepter 软件开发包介绍
 
   - [1.3. 多机共存](zh-cn/ApplicationNote/NYX650&660/Multi-Cameras%20Coexist.md)
 
-* [2. VENO86/87](javascript:;)
+* [2. DS86/87](javascript:;)
 
-  - [2.1. 深度质量测试](zh-cn/ApplicationNote/VENO86&87/Depth%20Quality%20Test.md)
+  - [2.1. 深度质量测试](zh-cn/ApplicationNote/DS86&87/Depth%20Quality%20Test.md)
 
-  * [2.2. AGV 场景测试数据](zh-cn/ApplicationNote/VENO86&87/AGV%20scene%20Testing%20Data.md)
+  * [2.2. AGV 场景测试数据](zh-cn/ApplicationNote/DS86&87/AGV%20scene%20Testing%20Data.md)
 
-  - [2.3. HDR 模式](zh-cn/ApplicationNote/VENO86&87/HDR%20Mode.md)
+  - [2.3. HDR 模式](zh-cn/ApplicationNote/DS86&87/HDR%20Mode.md)
 
-  * [2.4. 多机共存](zh-cn/ApplicationNote/VENO86&87/Multi-Cameras%20Coexist.md)
+  * [2.4. 多机共存](zh-cn/ApplicationNote/DS86&87/Multi-Cameras%20Coexist.md)
