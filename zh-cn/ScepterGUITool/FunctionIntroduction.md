@@ -20,6 +20,13 @@ ScepterGUITool 包含 ScepterGUITool 可执行文件及相关动态链接库。
 
 #### **Linux**
 
+Open in Terminal 输入下面代码或者双击ScepterGUIToo打开。
+
+```copy
+./ScepterGUITool
+
+```
+
 ![目录结构](pic/LinuxContents.png)
 
 <!-- tabs:end -->
@@ -55,6 +62,7 @@ ScepterGUITool 包含 ScepterGUITool 可执行文件及相关动态链接库。
 #### **Linux**
 
 ![ScanDevice](pic/ScanDevice_ubuntu.png)
+
 
 <!-- tabs:end -->
 
@@ -802,6 +810,28 @@ Step3:  点击 OK 保存。
 
 Step4: 设备自动重启后生效。
 
+③ **设置相机 NTP 对时：**
+
+相机默认没有开启任何对时功能，设置相机与NTP Sever对时。
+
+Step1: 在 Time sync 一栏选择 NTP Server address。
+
+![NTP](pic/NTP.png)
+
+Step2: 输入对时服务器的地址。
+
+Step3: 点击Set设置成功。
+
+③ **设置相机 PTP 对时：**
+
+相机默认没有开启任何对时功能，设置相机PTP对时。
+
+Step1: 在 Time sync 一栏选择 PTP。
+
+![PTP](pic/PTP.png)
+
+Step2: 点击Set设置成功。
+
 ## 3.6. 设备固件升级
 
 点击顶部菜单栏![设备固件升级](pic/Upgrade.png)，进入设备固件升级设置页面。
@@ -842,6 +872,7 @@ Step4: 设备自动重启后生效。
 
 
 <!-- tabs:end -->
+
 
 
 ## 3.7. 查看已保存图像/点云

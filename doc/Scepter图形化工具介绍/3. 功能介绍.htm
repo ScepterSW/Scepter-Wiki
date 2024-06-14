@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<!-- saved from url=(0109)http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_31-%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">:root{--docsifytabs-border-color:#ededed;--docsifytabs-border-px:1px;--docsifytabs-border-radius-px: ;--docsifytabs-margin:1.5em 0;--docsifytabs-tab-background:#f8f8f8;--docsifytabs-tab-background--active:#fff;--docsifytabs-tab-color:#999;--docsifytabs-tab-color--active:inherit;--docsifytabs-tab-highlight-px:3px;--docsifytabs-tab-highlight-color:var(--theme-color,currentColor);--docsifytabs-tab-padding:0.6em 1em;--docsifytabs-content-background:inherit;--docsifytabs-content-padding:1.5rem}.docsify-tabs:before,.docsify-tabs__tab{z-index:1}.docsify-tabs__tab--active,.docsify-tabs__tab:focus{z-index:2}.docsify-tabs{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;position:relative}.docsify-tabs:before{-ms-flex-order:0;content:"";-ms-flex:1 1;flex:1 1;order:0}.docsify-tabs__tab{-ms-flex-order:-1;appearance:none;font-size:inherit;margin:0;order:-1;position:relative}.docsify-tabs__content[class]{height:0;overflow:hidden;position:absolute;visibility:hidden;width:100%}.docsify-tabs__content[class]>:first-child{margin-top:0}.docsify-tabs__content[class]>:last-child{margin-bottom:0}.docsify-tabs__tab--active+.docsify-tabs__content[class]{height:auto;overflow:auto;position:relative;visibility:visible}[class*=docsify-tabs--]{margin:1.5em 0;margin:var(--docsifytabs-margin)}[class*=docsify-tabs--]>.docsify-tabs__tab{background:#f8f8f8;background:#eee;color:#999;color:var(--docsifytabs-tab-color);padding:.6em 1em;padding:var(--docsifytabs-tab-padding)}[class*=docsify-tabs--]>.docsify-tabs__tab--active{background:inherit;background:var(--docsifytabs-tab-background--active);color:inherit;color:var(--docsifytabs-tab-color--active)}[class*=docsify-tabs--]>.docsify-tabs__content{background:inherit;background:#fff}[class*=docsify-tabs--]>.docsify-tabs__tab--active+.docsify-tabs__content{padding:1.5rem;padding:var(--docsifytabs-content-padding)}.docsify-tabs--classic:before,.docsify-tabs--classic>.docsify-tabs__content,.docsify-tabs--classic>.docsify-tabs__tab{border-color:#ededed;border-color:var(--docsifytabs-border-color);border-style:solid;border-width:1px;border-width:var(--docsifytabs-border-px)}.docsify-tabs--classic:before{border-left-width:0;border-right-width:0;border-top-width:0;margin-right:1px;margin-right:var(--docsifytabs-border-px)}.docsify-tabs--classic>.docsify-tabs__tab:first-of-type{border-top-left-radius:var(--docsifytabs-border-radius-px)}.docsify-tabs--classic>.docsify-tabs__tab:last-of-type{border-top-right-radius:var(--docsifytabs-border-radius-px)}.docsify-tabs--classic>.docsify-tabs__tab~.docsify-tabs__tab{margin-left:-1px;margin-left:calc(0px - var(--docsifytabs-border-px))}.docsify-tabs--classic>.docsify-tabs__tab--active{border-bottom-width:0;box-shadow:inset 0 3px 0 0 currentColor;box-shadow:inset 0 var(--docsifytabs-tab-highlight-px) 0 0 var(--docsifytabs-tab-highlight-color)}.docsify-tabs--classic>.docsify-tabs__content{border-radius:0;border-radius:0 var(--docsifytabs-border-radius-px) var(--docsifytabs-border-radius-px) var(--docsifytabs-border-radius-px);border-top:0;margin-top:-1px;margin-top:calc(0px - var(--docsifytabs-border-px))}.docsify-tabs--material>.docsify-tabs__tab{background:transparent;border:0;margin-bottom:2px;margin-bottom:calc(var(--docsifytabs-tab-highlight-px) - var(--docsifytabs-border-px))}.docsify-tabs--material>.docsify-tabs__tab--active{background:transparent;box-shadow:0 3px 0 0 currentColor;box-shadow:0 var(--docsifytabs-tab-highlight-px) 0 0 var(--docsifytabs-tab-highlight-color)}.docsify-tabs--material>.docsify-tabs__content{border-color:#ededed;border-color:var(--docsifytabs-border-color);border-style:solid;border-width:1px 0;border-width:var(--docsifytabs-border-px) 0}</style>
+   
+   <title>3. 功能介绍</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <meta name="description" content="Description">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+   <!-- 网页图标，临时使用以后需要替换 -->
+   <link rel="shortcut icon" href="http://localhost:3000/favicon.ico">
+   <!-- 网页主题布局文件 -->
+   <link rel="stylesheet" href="./3. 功能介绍_files/theme-simple.css">
+   <!-- 基于主题修改后的布局文件：字号，高亮颜色等 -->
+   <link rel="stylesheet" href="./3. 功能介绍_files/main-custom.css">
+   <!-- 侧边栏折叠样式 -->
+   <link rel="stylesheet" href="./3. 功能介绍_files/sidebar-folder.min.css">
+   <style>
+      :root {
+         --docsifytabs-border-color: #ededed;
+         /* --docsifytabs-tab-highlight-color: rgb(0, 255, 0); */
+      }
+   </style>
+<style type="text/css">.docsify-copy-code-button,.docsify-copy-code-button>span{cursor:pointer;transition:all .25s ease}.docsify-copy-code-button{background:grey;background:var(--theme-color,grey);border:0;border-radius:0;color:#fff;font-size:1em;opacity:0;outline:0;overflow:visible;padding:.65em .8em;position:absolute;right:0;top:0;z-index:1}.docsify-copy-code-button>span{background:inherit;border-radius:3px;pointer-events:none}.docsify-copy-code-button>.error,.docsify-copy-code-button>.success{font-size:.825em;opacity:0;padding:.5em .65em;position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:-100}.docsify-copy-code-button.error>.error,.docsify-copy-code-button.success>.success{opacity:1;right:100%;transform:translate(-25%,-50%)}.docsify-copy-code-button:focus,pre:hover .docsify-copy-code-button{opacity:1}.docsify-copy-code-button>[aria-live]{height:1px;left:-10000px;overflow:hidden;position:absolute;top:auto;width:1px}</style><style type="text/css">.medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}</style><style type="text/css">.sidebar-nav > ul > li ul {
+  display: none;
+}
+
+.app-sub-sidebar {
+  display: none;
+}
+
+.app-sub-sidebar.open {
+  display: block;
+}
+
+.sidebar-nav .open > ul:not(.app-sub-sidebar),
+.sidebar-nav .active:not(.collapse) > ul {
+  display: block;
+}
+
+/* 抖动 */
+.sidebar-nav li.open:not(.collapse) > ul {
+  display: block;
+}
+
+.active + ul.app-sub-sidebar {
+  display: block;
+}
+</style><style type="text/css">@media screen and (max-width: 768px) {
+  /* 移动端适配 */
+  .markdown-section {
+    max-width: none;
+    padding: 16px;
+  }
+  /* 改变原来按钮热区大小 */
+  .sidebar-toggle {
+    padding: 0 0 10px 10px;
+  }
+  /* my pin */
+  .sidebar-pin {
+    appearance: none;
+    outline: none;
+    position: fixed;
+    bottom: 0;
+    border: none;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+  }
+}
+</style><style>
+.sidebar {
+  padding-top: 0;
+}
+
+.search {
+  margin-bottom: 20px;
+  padding: 6px;
+  border-bottom: 1px solid #eee;
+}
+
+.search .input-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.search .results-panel {
+  display: none;
+}
+
+.search .results-panel.show {
+  display: block;
+}
+
+.search input {
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 0.6em 7px;
+  font-size: inherit;
+  border: 1px solid transparent;
+}
+
+.search input:focus {
+  box-shadow: 0 0 5px var(--theme-color, #42b983);
+  border: 1px solid var(--theme-color, #42b983);
+}
+
+.search input::-webkit-search-decoration,
+.search input::-webkit-search-cancel-button,
+.search input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.search input::-ms-clear {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+.search .clear-button {
+  cursor: pointer;
+  width: 36px;
+  text-align: right;
+  display: none;
+}
+
+.search .clear-button.show {
+  display: block;
+}
+
+.search .clear-button svg {
+  transform: scale(.5);
+}
+
+.search h2 {
+  font-size: 17px;
+  margin: 10px 0;
+}
+
+.search a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.search .matching-post {
+  border-bottom: 1px solid #eee;
+}
+
+.search .matching-post:last-child {
+  border-bottom: 0;
+}
+
+.search p {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.search p.empty {
+  text-align: center;
+}
+
+.app-name.hide, .sidebar-nav.hide {
+  display: none;
+}</style></head>
+
+<body data-page="zh-cn/ScepterGUITool/FunctionIntroduction.md" class="ready sticky">
+   <nav class="app-nav no-badge"><ul><li><a href="http://localhost:3000/#/en/" title="English">English</a></li><li><a href="http://localhost:3000/#/zh-cn/" title="中文" class="active">中文</a></li></ul></nav><main><button class="sidebar-toggle" aria-label="Menu"><div class="sidebar-toggle-button"><span></span><span></span><span></span></div></button><aside class="sidebar"><div class="search"><div class="input-wrap">
+      <input type="search" value="" aria-label="Search text" placeholder="Type to search">
+      <div class="clear-button">
+        <svg width="26" height="24">
+          <circle cx="12" cy="12" r="11" fill="#ccc"></circle>
+          <path stroke="white" stroke-width="2" d="M8.25,8.25,15.75,15.75"></path>
+          <path stroke="white" stroke-width="2" d="M8.25,15.75,15.75,8.25"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="results-panel"></div>
+    </div><h1 class="app-name"><a class="app-name-link" data-nosearch="" href="http://localhost:3000/">Scepter-Wiki</a></h1><div class="sidebar-nav"><p>技术原理简介</p><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ToFBasicPrinciple/3DTecIntroduction" title="1. 3D 视觉技术简介">1. 3D 视觉技术简介</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ToFBasicPrinciple/3DTecClassification" title="2. 3D 技术的分类">2. 3D 技术的分类</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ToFBasicPrinciple/ToFComposition" title="3. ToF 相机的组成">3. ToF 相机的组成</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ToFBasicPrinciple/ToFPrinciple" title="4. ToF 相机的实现原理">4. ToF 相机的实现原理</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ToFBasicPrinciple/ToFFeatures" title="5. ToF 相机的技术特点">5. ToF 相机的技术特点</a></li></ul><p>产品介绍</p><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ProductIntroduction/NYX650,660" title="1. NYX650/660">1. NYX650/660</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ProductIntroduction/DS86,87" title="2. DS86/87">2. DS86/87</a></li></ul><p>快速开始</p><ul><li class="file"><p><a href="http://localhost:3000/#/zh-cn/Quickstart/Quickstart?id=_1-%e8%ae%be%e5%a4%87%e8%bf%9e%e6%8e%a5" title="1.设备连接">1.设备连接</a></p></li><li class="file"><p><a href="http://localhost:3000/#/zh-cn/Quickstart/Quickstart?id=_2-%e6%89%93%e5%bc%80%e8%ae%be%e5%a4%87" title="2.打开设备">2.打开设备</a></p></li></ul><p>Scepter 图形化工具介绍</p><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/Overview" title="1. 概述">1. 概述</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/DeviceConnection" title="2. 设备连接">2. 设备连接</a></li></ul><ul><li class="file open"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction" title="3. 功能介绍">3. 功能介绍</a><ul class="app-sub-sidebar open"><li class="file open active"><a class="section-link" href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_31-%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84" title="3.1. 目录结构">3.1. 目录结构</a></li><li class="file"><a class="section-link" href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_32-%e8%ae%be%e5%a4%87%e8%bf%9e%e6%8e%a5%e7%ae%a1%e7%90%86" title="3.2. 设备连接管理">3.2. 设备连接管理</a></li><li class="file"><a class="section-link" href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_33-%e8%ae%be%e5%a4%87%e5%9b%be%e5%83%8f%e6%98%be%e7%a4%ba" title="3.3. 设备图像显示">3.3. 设备图像显示</a></li><li class="file"><a class="section-link" href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_34-%e8%ae%be%e5%a4%87%e5%8f%82%e6%95%b0%e6%93%8d%e4%bd%9c" title="3.4. 设备参数操作">3.4. 设备参数操作</a></li><li class="file"><a class="section-link" href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_35-%e8%ae%be%e5%a4%87%e7%bd%91%e7%bb%9c%e8%ae%be%e7%bd%ae" title="3.5. 设备网络设置">3.5. 设备网络设置</a></li><li class="file"><a class="section-link" href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_36-%e8%ae%be%e5%a4%87%e5%9b%ba%e4%bb%b6%e5%8d%87%e7%ba%a7" title="3.6. 设备固件升级">3.6. 设备固件升级</a></li><li class="file"><a class="section-link" href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_37-%e6%9f%a5%e7%9c%8b%e5%b7%b2%e4%bf%9d%e5%ad%98%e5%9b%be%e5%83%8f%e7%82%b9%e4%ba%91" title="3.7. 查看已保存图像/点云">3.7. 查看已保存图像/点云</a></li></ul></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FAQ" title="4. FAQ">4. FAQ</a></li></ul><p>Scepter 软件开发包介绍</p><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ScepterSDK/Overview" title="1. 简介">1. 简介</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ScepterSDK/BaseSDK" title="2. BaseSDK (C/C++)">2. BaseSDK (C/C++)</a></li></ul><ul><li class="folder"><p><a href="http://localhost:3000/#/zh-cn/ScepterSDK/MultilanguageSDK/Overview" title="3. MultilanguageSDK">3. MultilanguageSDK</a></p><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ScepterSDK/MultilanguageSDK/Python" title="3.1. Python">3.1. Python</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ScepterSDK/MultilanguageSDK/CSharp" title="3.2. CSharp">3.2. CSharp</a></li></ul></li></ul><ul><li class="folder"><p><a href="http://localhost:3000/#/zh-cn/ScepterSDK/3rd-Party%20Plugin/Overview" title="4. 3rd-Party Plugin">4. 3rd-Party Plugin</a></p><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ScepterSDK/3rd-Party%20Plugin/ROS" title="4.1. ROS">4.1. ROS</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ScepterSDK/3rd-Party%20Plugin/ROS2" title="4.2. ROS2">4.2. ROS2</a></li></ul></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ScepterSDK/FAQ" title="5. FAQ">5. FAQ</a></li></ul><p>应用笔记</p><ul><li class="folder"><p><a href="javascript:;" target="_self" rel="noopener" title="1. NYX650/660">1. NYX650/660</a></p><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ApplicationNote/NYX650&amp;660/Depth%20Quality%20Test" title="1.1. 深度质量测试">1.1. 深度质量测试</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ApplicationNote/NYX650&amp;660/AGV%20scene%20Testing%20Data" title="1.2. AGV 场景测试数据">1.2. AGV 场景测试数据</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ApplicationNote/NYX650&amp;660/Multi-Cameras%20Coexist" title="1.3. 多机共存">1.3. 多机共存</a></li></ul></li></ul><ul><li class="folder"><p><a href="javascript:;" target="_self" rel="noopener" title="2. DS86/87">2. DS86/87</a></p><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ApplicationNote/DS86&amp;87/Depth%20Quality%20Test" title="2.1. 深度质量测试">2.1. 深度质量测试</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ApplicationNote/DS86&amp;87/AGV%20scene%20Testing%20Data" title="2.2. AGV 场景测试数据">2.2. AGV 场景测试数据</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ApplicationNote/DS86&amp;87/HDR%20Mode" title="2.3. HDR 模式">2.3. HDR 模式</a></li></ul><ul><li class="file"><a href="http://localhost:3000/#/zh-cn/ApplicationNote/DS86&amp;87/Multi-Cameras%20Coexist" title="2.4. 多机共存">2.4. 多机共存</a></li></ul></li></ul></div></aside><section class="content"><article class="markdown-section" id="main"><h1 id="_3-功能介绍"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_3-%e5%8a%9f%e8%83%bd%e4%bb%8b%e7%bb%8d" data-id="_3-功能介绍" class="anchor"><span>3. 功能介绍</span></a></h1><h2 id="_31-目录结构"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_31-%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84" data-id="_31-目录结构" class="anchor"><span>3.1. 目录结构</span></a></h2><p>ScepterGUITool 包含 ScepterGUITool 可执行文件及相关动态链接库。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/WindowsContents.png" data-origin="pic/WindowsContents.png" alt="目录结构" class="medium-zoom-image"></p><blockquote>
+<p>在首次运行 ScepterGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。</p><div class="center">
+
+<p><img src="./3. 功能介绍_files/FirewallSetting.png" data-origin="pic/FirewallSetting.png" alt="防火墙配置" class="medium-zoom-image"></p></div>
+</blockquote>
+</div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p>Open in Terminal 输入下面代码或者双击ScepterGUIToo打开。</p><pre v-pre="" data-lang="copy"><code class="lang-copy">./ScepterGUITool
+</code><button class="docsify-copy-code-button"><span class="label">Copy</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">OK!</span><span aria-live="polite"></span></button></pre><p><img src="./3. 功能介绍_files/LinuxContents.png" data-origin="pic/LinuxContents.png" alt="目录结构" class="medium-zoom-image"></p></div>
+</div>
+
+<h2 id="_32-设备连接管理"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_32-%e8%ae%be%e5%a4%87%e8%bf%9e%e6%8e%a5%e7%ae%a1%e7%90%86" data-id="_32-设备连接管理" class="anchor"><span>3.2. 设备连接管理</span></a></h2><p>设备连接管理用于介绍设备的搜索与连接。本软件出于展示目的只打开一台相机；</p><p>多个软件可以支持打开多台相机，SDK 也支持多台同时工作。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/DeviceManage.png" data-origin="pic/DeviceManage.png" alt="设备管理" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/DeviceManage_ubuntu.png" data-origin="pic/DeviceManage_ubuntu.png" alt="设备管理" class="medium-zoom-image"></p></div>
+</div>
+
+<h3 id="_321-设备打开"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_321-%e8%ae%be%e5%a4%87%e6%89%93%e5%bc%80" data-id="_321-设备打开" class="anchor"><span>3.2.1. 设备打开</span></a></h3><p>① 连接好设备后，等待设备蓝灯闪烁，开始搜索设备。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/ScanDevice.png" data-origin="pic/ScanDevice.png" alt="ScanDevice" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/ScanDevice_ubuntu.png" data-origin="pic/ScanDevice_ubuntu.png" alt="ScanDevice" class="medium-zoom-image"></p></div>
+</div>
+
+<p>② 选中需要打开的设备。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/SelectDevice.png" data-origin="pic/SelectDevice.png" alt="SelectDevice" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/SelectDevice_ubuntu.png" data-origin="pic/SelectDevice_ubuntu.png" alt="SelectDevice" class="medium-zoom-image"></p></div>
+</div>
+
+<p>③ 点击 Connect 连接设备。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/ConnectDevice.png" data-origin="pic/ConnectDevice.png" alt="ConnectDevice" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/ConnectDevice_ubuntu.png" data-origin="pic/ConnectDevice_ubuntu.png" alt="ConnectDevice" class="medium-zoom-image"></p></div>
+</div>
+
+<p>④ 设备连接成功后，点击 Stream 右侧的开关，启动相机的视频流。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/DeviceStreamOn.png" data-origin="pic/DeviceStreamOn.png" alt="DeviceStreamOn" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/DeviceStreamOn_ubuntu.png" data-origin="pic/DeviceStreamOn_ubuntu.png" alt="DeviceStreamOn" class="medium-zoom-image"></p></div>
+</div>
+
+<p>⑤ 启动成功后，图像在右侧正常显现。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/DisplayArea.png" data-origin="pic/DisplayArea.png" alt="图像显现" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/DisplayArea_ubuntu.png" data-origin="pic/DisplayArea_ubuntu.png" alt="图像显现" class="medium-zoom-image"></p></div>
+</div>
+
+<h3 id="_322-设备信息"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_322-%e8%ae%be%e5%a4%87%e4%bf%a1%e6%81%af" data-id="_322-设备信息" class="anchor"><span>3.2.2. 设备信息</span></a></h3><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/Device information.png" data-origin="pic/Device information.png" alt="设备信息" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/Device information_ubuntu.png" data-origin="pic/Device information_ubuntu.png" alt="设备信息" class="medium-zoom-image"></p></div>
+</div>
+
+<p>SN：设备序列号。</p><p>FW：设备固件版本。</p><p>IP：设备当前 IP 地址。</p><p>MAC：设备 MAC 地址。</p><p>Model：设备类型。</p><p>State：设备当前状态。</p><h3 id="_323-设备关闭"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_323-%e8%ae%be%e5%a4%87%e5%85%b3%e9%97%ad" data-id="_323-设备关闭" class="anchor"><span>3.2.3. 设备关闭</span></a></h3><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/DeviceStreamOff.png" data-origin="pic/DeviceStreamOff.png" alt="设备断开" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/DeviceStreamOff_ubuntu.png" data-origin="pic/DeviceStreamOff_ubuntu.png" alt="设备断开" class="medium-zoom-image"></p></div>
+</div>
+
+<p>点击 Disconnect 按钮，断开 GUITool 与相机连接。</p><p>点击 Stream 右侧的开关，关闭相机的视频流。</p><h2 id="_33-设备图像显示"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_33-%e8%ae%be%e5%a4%87%e5%9b%be%e5%83%8f%e6%98%be%e7%a4%ba" data-id="_33-设备图像显示" class="anchor"><span>3.3. 设备图像显示</span></a></h2><p>设备图像显示用于介绍图像显示的方式，可以从标签页处选择 2D 图像或 3D 点云:</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/TabSelect.png" data-origin="pic/TabSelect.png" alt="TabSelect" class="medium-zoom-image"></p><p><img src="./3. 功能介绍_files/DisplayArea.png" data-origin="pic/DisplayArea.png" alt="显示区" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/TabSelect_ubuntu.png" data-origin="pic/TabSelect_ubuntu.png" alt="TabSelect" class="medium-zoom-image"></p><p><img src="./3. 功能介绍_files/DisplayArea_ubuntu.png" data-origin="pic/DisplayArea_ubuntu.png" alt="显示区" class="medium-zoom-image"></p></div>
+</div>
+
+<h3 id="_331-图像显示"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_331-%e5%9b%be%e5%83%8f%e6%98%be%e7%a4%ba" data-id="_331-图像显示" class="anchor"><span>3.3.1. 图像显示</span></a></h3><p>默认的 2D 图像从左到右依次为深度图视窗、彩色图视窗。</p><p>深度图视窗可以通过下拉选项菜单选择深度图视窗、对齐到彩色像素空间的深度图视窗。</p><p><img src="./3. 功能介绍_files/DepthImgToColorSensor.png" data-origin="pic/DepthImgToColorSensor.png" alt="DepthImgToColorSensor" class="medium-zoom-image"></p><p>彩色图视窗可以通过下拉选项菜单选择彩色图视窗、对齐到深度像素空间的彩色图视窗、IR（红外）图视窗。</p><p><img src="./3. 功能介绍_files/ColorImgToDepthSensor.png" data-origin="pic/ColorImgToDepthSensor.png" alt="ColorImgToDepthSensor" class="medium-zoom-image"></p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p>深度图视窗下显示数值为白点处实时像素点的坐标值和深度值，深度值单位为 mm，如图该点深度值为 2894mm 。</p><p>IR 视窗下显示数值为白点处实时像素点的灰度值，如图该点灰度值为 39 。</p><p><img src="./3. 功能介绍_files/WhitePoint.png" data-origin="pic/WhitePoint.png" alt="WhitePoint" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p>深度图视窗下显示数值为白点处实时像素点的坐标值和深度值，深度值单位为 mm，如图该点深度值为 2385mm 。</p><p>IR 视窗下显示数值为白点处实时像素点的灰度值，如图该点灰度值为 44 。</p><p><img src="./3. 功能介绍_files/WhitePoint_ubuntu.png" data-origin="pic/WhitePoint_ubuntu.png" alt="WhitePoint" class="medium-zoom-image"></p></div>
+</div>
+
+<blockquote>
+<p>鼠标左键单击可自行选择白点位置，同时显示对应点的深度值和灰度值。</p></blockquote>
+<h3 id="_332-rgbd-对齐"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_332-rgbd-%e5%af%b9%e9%bd%90" data-id="_332-rgbd-对齐" class="anchor"><span>3.3.2. RGBD 对齐</span></a></h3><p><strong>1. DepthImgToColorSensor 和 Color 的对齐</strong></p><p><img src="./3. 功能介绍_files/DepthImgToColorSensor.png" data-origin="pic/DepthImgToColorSensor.png" alt="DepthImgToColorSensor" class="medium-zoom-image"></p><p>设定 Depth 图像对齐到 Color 域的功能。启用后将输出并显示 Depth 像素点对齐到 Color 像素空间的图像，即与 Color 像素逐一对应的 Depth 图像。</p><h4 id="原理："><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=%e5%8e%9f%e7%90%86%ef%bc%9a" data-id="原理：" class="anchor"><span>原理：</span></a></h4><p><img src="./3. 功能介绍_files/RGBD_Principle.gif" data-origin="pic/RGBD_Principle.gif" alt="RGBD_Principle" class="medium-zoom-image"></p><p>Tof 镜头和 Color 摄像头二者有安装距离，所以从实际采集的图像上看存在视差。</p><p>为了把深度和 Color 图像对齐，消除视差，得到一个真正的 RGB-D 图像，即物体表面的颜色和它的深度在二维图像上像素级精确对应，需要做一个转换：</p><p>首先把红外相机坐标系下的深度先换为空间点云，再通过刚性变换转换到 Color 摄像头的坐标系，并最终投影到 Color 图像的二维图像坐标系，形成一张在 Color 相机坐标系下的深度图。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/DepthImgToColorSensorImage.png" data-origin="pic/DepthImgToColorSensorImage.png" alt="DepthImgToColorSensorImage" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/ColorImage.png" data-origin="pic/ColorImage.png" alt="ColorImage" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">对齐后的 Depth 图像</td>
+<td align="center">Color 图像</td>
+</tr>
+</tbody></table>
+</div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/DepthImgToColorSensorImage_ubuntu.png" data-origin="pic/DepthImgToColorSensorImage_ubuntu.png" alt="DepthImgToColorSensorImage" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/ColorImage_ubuntu.png" data-origin="pic/ColorImage_ubuntu.png" alt="ColorImage" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">对齐后的 Depth 图像</td>
+<td align="center">Color 图像</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p><strong>2. ColorImgToDepthSensor 和 Depth 的对齐</strong></p><p><img src="./3. 功能介绍_files/ColorImgToDepthSensor.png" data-origin="pic/ColorImgToDepthSensor.png" alt="ColorImgToDepthSensor" class="medium-zoom-image"></p><p>设定 Color 图像对齐到 Depth 域的功能。启用后将输出并显示 Color 像素点对齐到 Depth 像素空间的图像，即与 Depth 像素逐一对应的 Color 图像。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/DepthImage.png" data-origin="pic/DepthImage.png" alt="DepthImage" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/ColorImgToDepthSensorImage.png" data-origin="pic/ColorImgToDepthSensorImage.png" alt="ColorImgToDepthSensorImage" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Depth 图像</td>
+<td align="center">对齐后的 Color 图像</td>
+</tr>
+</tbody></table>
+</div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/DepthImage_ubuntu.png" data-origin="pic/DepthImage_ubuntu.png" alt="DepthImage" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/ColorImgToDepthSensorImage_ubuntu.png" data-origin="pic/ColorImgToDepthSensorImage_ubuntu.png" alt="ColorImgToDepthSensorImage" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Depth 图像</td>
+<td align="center">对齐后的 Color 图像</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+
+<p><strong>3. Depth 和 IR 的对齐</strong></p><p>除了深度图像，相机还能够输出一个分辨率为 640*480 的 IR 图像。由于 IR 图像和深度图像出自同一 sensor，所以 IR 图像与深度图在时间和像素上都实现了严格的对齐。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/DepthImage.png" data-origin="pic/DepthImage.png" alt="DepthImage" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/IRImage.png" data-origin="pic/IRImage.png" alt="IRImage" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Depth 图像</td>
+<td align="center">IR 图像</td>
+</tr>
+</tbody></table>
+</div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/DepthImage_ubuntu.png" data-origin="pic/DepthImage_ubuntu.png" alt="DepthImage" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/IRImage_ubuntu.png" data-origin="pic/IRImage_ubuntu.png" alt="IRImage" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Depth 图像</td>
+<td align="center">IR 图像</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<h3 id="_333-点云图"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_333-%e7%82%b9%e4%ba%91%e5%9b%be" data-id="_333-点云图" class="anchor"><span>3.3.3 点云图</span></a></h3><p>从标签页处选择 3D 可以显示点云，点云默认使用深度伪彩显示。</p><p><img src="./3. 功能介绍_files/DepthPointCloudSelect.png" data-origin="pic/DepthPointCloudSelect.png" alt="DepthPointCloudSelect" class="medium-zoom-image"></p><p>Depth Point Cloud：设定点云使用深度伪彩显示。</p><p>Depth Point Cloud&nbsp;White：设定点云使用白色单色显示。</p><p>Depth Point Cloud&nbsp;+ RGB：设定点云填充 RGB 映射。</p><p>TransformedDepth Point Cloud：设定对齐到彩色像素空间的点云使用深度伪彩显示。</p><p>TransformedDepth Point Cloud&nbsp;White：设定对齐到彩色像素空间的点云使用白色单色显示。</p><p>TransformedDepth Point Cloud&nbsp;+ RGB：设定对齐到彩色像素空间的点云填充 RGB 映射。</p><p><strong>点云控件操作：</strong></p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/PointCloud.png" data-origin="pic/PointCloud.png" alt="点云" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/PointCloud_ubuntu.png" data-origin="pic/PointCloud_ubuntu.png" alt="点云" class="medium-zoom-image"></p></div>
+</div>
+
+<p>按住鼠标左键并拖动：旋转点云</p><p>按住鼠标右键并拖动：平移点云</p><p>鼠标滚轮：缩放点云</p><h2 id="_34-设备参数操作"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_34-%e8%ae%be%e5%a4%87%e5%8f%82%e6%95%b0%e6%93%8d%e4%bd%9c" data-id="_34-设备参数操作" class="anchor"><span>3.4. 设备参数操作</span></a></h2><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/OperationArea.png" data-origin="pic/OperationArea.png" alt="操作区" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/OperationArea_ubuntu.png" data-origin="pic/OperationArea_ubuntu.png" alt="操作区" class="medium-zoom-image"></p></div>
+</div>
+
+<p>设备参数操作用于介绍控制设备的工作模式与参数，设置图像处理算法等功能。</p><h3 id="_341-设备帧率"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_341-%e8%ae%be%e5%a4%87%e5%b8%a7%e7%8e%87" data-id="_341-设备帧率" class="anchor"><span>3.4.1 设备帧率</span></a></h3><p>通过左右滑动 Frame Rate 下方的滑块控制条可以调节相机的帧率，不同设备的最大帧率可能会有差异，请参考对应设备的产品规格书。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/FrameRate.png" data-origin="pic/FrameRate.png" alt="FrameRate" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/FrameRate.png" data-origin="pic/FrameRate.png" alt="FrameRate" class="medium-zoom-image"></p></div>
+</div>
+
+<h3 id="_342-工作模式"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_342-%e5%b7%a5%e4%bd%9c%e6%a8%a1%e5%bc%8f" data-id="_342-工作模式" class="anchor"><span>3.4.2 工作模式</span></a></h3><p><img src="./3. 功能介绍_files/WorkMode.png" data-origin="pic/WorkMode.png" alt="工作模式" class="medium-zoom-image"></p><p>ActiveMode：主动出图模式。</p><p>HardwareTriggerMode：硬触发模式，通过硬件信号触发出图，具体请参考对应产品规格书。</p><p>SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，单击按钮发送软触发指令。</p><h4 id="_3421-硬触发模式"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_3421-%e7%a1%ac%e8%a7%a6%e5%8f%91%e6%a8%a1%e5%bc%8f" data-id="_3421-硬触发模式" class="anchor"><span>3.4.2.1 硬触发模式</span></a></h4><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/HardwareTriggerMode.png" data-origin="pic/HardwareTriggerMode.png" alt="硬触发模式" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/HardwareTriggerMode.png" data-origin="pic/HardwareTriggerMode.png" alt="硬触发模式" class="medium-zoom-image"></p></div>
+</div>
+
+<p>开启硬触发模式后，点击 Settings 按钮可配置触发信号参数，如下图所示：</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/InputSignalParamsForHWTrigger.png" data-origin="pic/InputSignalParamsForHWTrigger.png" alt="InputSignalParamsForHWTrigger" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/InputSignalParamsForHWTrigger_ubuntu.png" data-origin="pic/InputSignalParamsForHWTrigger_ubuntu.png" alt="InputSignalParamsForHWTrigger" class="medium-zoom-image"></p></div>
+</div>
+
+
+<p>①&nbsp;polarity：信号有效性检测极性。0 代表低电平有效，1 代表高电平有效。</p><p>取值范围：[0,1]</p><p>②width： 信号宽度有效性检测，小于宽度设置的信号不予响应。16-bit，单位为 μs。</p><p>取值范围：[1,65535]</p><p>③interval： 连续信号间隔有效性检测，小于间隔设置的信号不予响应。</p><p>取值范围：[34000,65535]</p><h4 id="_3422-软触发模式"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_3422-%e8%bd%af%e8%a7%a6%e5%8f%91%e6%a8%a1%e5%bc%8f" data-id="_3422-软触发模式" class="anchor"><span>3.4.2.2 软触发模式</span></a></h4><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/SoftwareTriggerMode.png" data-origin="pic/SoftwareTriggerMode.png" alt="软触发模式" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/SoftwareTriggerMode_ubuntu.png" data-origin="pic/SoftwareTriggerMode_ubuntu.png" alt="软触发模式" class="medium-zoom-image"></p></div>
+</div>
+
+<p>开启软触发模式后，点击 Trigger 按钮可触发设备出图。</p><h3 id="_343-深度图像参数配置"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_343-%e6%b7%b1%e5%ba%a6%e5%9b%be%e5%83%8f%e5%8f%82%e6%95%b0%e9%85%8d%e7%bd%ae" data-id="_343-深度图像参数配置" class="anchor"><span>3.4.3 深度图像参数配置</span></a></h3><h4 id="_3431-伪彩色图映射"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_3431-%e4%bc%aa%e5%bd%a9%e8%89%b2%e5%9b%be%e6%98%a0%e5%b0%84" data-id="_3431-伪彩色图映射" class="anchor"><span>3.4.3.1. 伪彩色图映射</span></a></h4><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/ColorMap.png" data-origin="pic/ColorMap.png" alt="伪彩色图映射" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/ColorMap_ubuntu.png" data-origin="pic/ColorMap_ubuntu.png" alt="伪彩色图映射" class="medium-zoom-image"></p></div>
+</div>
+
+<p>深度图采用伪彩色图映射显示，将单通道 16 位的原始深度图在范围 ColorMap_Min 至 ColoMap_Max 的深度值线性映射到 0-255 的值域范围，再将单通道 8 位的深度图映射到伪彩色空间（即色度图）COLORMAP_RAINBOW，如下示意图：</p><p><img src="./3. 功能介绍_files/ChromaticityDiagram.png" data-origin="pic/ChromaticityDiagram.png" alt="色度图" class="medium-zoom-image"></p><p>您可以通过调整 Range(mm) 下方的滑块控制条调整伪彩色图映射效果，如下图所示：</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/ColorMapEffect.png" data-origin="pic/ColorMapEffect.png" alt="映射效果" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/ColorMapEffect.png" data-origin="pic/ColorMapEffect.png" alt="映射效果" class="medium-zoom-image"></p></div>
+</div>
+
+<h4 id="_3432-tof-曝光时间"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_3432-tof-%e6%9b%9d%e5%85%89%e6%97%b6%e9%97%b4" data-id="_3432-tof-曝光时间" class="anchor"><span>3.4.3.2. ToF 曝光时间</span></a></h4><p>设定 ToF 传感器的曝光模式与时间。ToF 传感器默认使用手动曝光模式，可以设定的最大曝光时间与帧率有关。</p><p>不同设备的最大帧率可能会有差异，请参考对应设备的产品规格书。</p><p>Manual：ToF 传感器设置为手动曝光，通过滑条对曝光时间进行手动调节。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/ToFExposureTime.png" data-origin="pic/ToFExposureTime.png" alt="ToF 曝光时间" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/ToFExposureTime_ubuntu.png" data-origin="pic/ToFExposureTime_ubuntu.png" alt="ToF 曝光时间" class="medium-zoom-image"></p></div>
+</div>
+
+<p>Auto：ToF 传感器设置为自动曝光，设备会根据图像距离进行曝光时间调节。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/ToFAutoExposure.png" data-origin="pic/ToFAutoExposure.png" alt="ToF 自动曝光" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/ToFAutoExposure_ubuntu.png" data-origin="pic/ToFAutoExposure_ubuntu.png" alt="ToF 自动曝光" class="medium-zoom-image"></p></div>
+</div>
+
+<h4 id="_3433-图像滤波"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_3433-%e5%9b%be%e5%83%8f%e6%bb%a4%e6%b3%a2" data-id="_3433-图像滤波" class="anchor"><span>3.4.3.3. 图像滤波</span></a></h4><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/Filter button.png" data-origin="pic/Filter button.png" alt="Filter button" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/Filter button_ubuntu.png" data-origin="pic/Filter button_ubuntu.png" alt="Filter button" class="medium-zoom-image"></p></div>
+</div>
+
+<p>① <strong>All</strong></p><p>开启/关闭所有滤波。</p><p>② <strong>Black BG</strong></p><p>Black BG：开启/关闭黑色背景，仅用于显示效果，对实际数值无影响。效果如下：</p><table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/Black BG close.png" data-origin="pic/Black BG close.png" alt="Black BG close" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/Black BG open.png" data-origin="pic/Black BG open.png" alt="Black BG open" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Black BG 关闭</td>
+<td align="center">Black BG 开启</td>
+</tr>
+</tbody></table>
+<p>③ <strong>FillHole</strong></p><p>FillHole：数据填补，弥补部分空洞数据，默认开启。</p><p>④ <strong>Spatial Filter</strong></p><p>Spatial Filter：平滑滤波，减少平面噪声与抖动。默认关闭。</p><table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/Spatial Filter close.png" data-origin="pic/Spatial Filter close.png" alt="Spatial Filter close" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/Spatial Filter open.png" data-origin="pic/Spatial Filter open.png" alt="Spatial Filter open" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Spatial Filter 关闭</td>
+<td align="center">Spatial Filter 开启</td>
+</tr>
+</tbody></table>
+<p>⑤ <strong>Time Filter</strong></p><p>Time Filter：时间滤波，降低图像帧间抖动。默认开启，值越大，滤波效果越强。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/Time Filter.png" data-origin="pic/Time Filter.png" alt="Time Filter" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/Time Filter_ubuntu.png" data-origin="pic/Time Filter_ubuntu.png" alt="Time Filter" class="medium-zoom-image"></p></div>
+</div>
+
+<p>⑥ <strong>Flying Pixel Filter</strong></p><p>Flying Pixel Filter：飞点消除滤波，消除边界的深度值飞点。默认开启，值越大，滤波效果越强。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/Flying Pixel Filter.png" data-origin="pic/Flying Pixel Filter.png" alt="Flying Pixel Filter" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/Flying Pixel Filter_ubuntu.png" data-origin="pic/Flying Pixel Filter_ubuntu.png" alt="Flying Pixel Filter" class="medium-zoom-image"></p></div>
+</div>
+
+<table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/Flying Pixel Filter close.png" data-origin="pic/Flying Pixel Filter close.png" alt="Flying Pixel Filter close" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/Flying Pixel Filter value 15.png" data-origin="pic/Flying Pixel Filter value 15.png" alt="Flying Pixel Filter value: 15" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Flying Pixel Filter 关闭</td>
+<td align="center">Flying Pixel Filter 值为 15</td>
+</tr>
+</tbody></table>
+<p>⑦ <strong>Confidence&nbsp;Filter</strong></p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/ConfidenceFilter.png" data-origin="pic/ConfidenceFilter.png" alt="Flying Pixel Filter" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/ConfidenceFilter_ubuntu.png" data-origin="pic/ConfidenceFilter_ubuntu.png" alt="Flying Pixel Filter" class="medium-zoom-image"></p></div>
+</div>
+
+<p>Confidence Filter：置信度滤波，消除信号质量较差点。默认开启，值越大，信号质量要求越高。</p><table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/Confidence Filter value 15.png" data-origin="pic/Confidence Filter value 15.png" alt="Confidence Filter value 15" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/Confidence Filter value 50.png" data-origin="pic/Confidence Filter value 50.png" alt="Confidence Filter value 50" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Confidence Filter 值为 15</td>
+<td align="center">Confidence Filter 值为 50</td>
+</tr>
+</tbody></table>
+<p>⑧ <strong>HDR&nbsp;Mode</strong></p><table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/Exposure58.png" data-origin="pic/Exposure58.png" alt="Exposure58" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/Exposure1000.png" data-origin="pic/Exposure1000.png" alt="Exposure1000" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/HDR.png" data-origin="pic/HDR.png" alt="HDR" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">曝光时间 58us</td>
+<td align="center">曝光时间 1000us</td>
+<td align="center">HDR 模式</td>
+</tr>
+</tbody></table>
+<p>HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时间的方式，将采集到的多个图像合成到一帧中，完成对整个复杂场景的成像 <strong>(参考产品介绍是否支持)</strong> 。</p><h3 id="_344-ir-图像参数配置"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_344-ir-%e5%9b%be%e5%83%8f%e5%8f%82%e6%95%b0%e9%85%8d%e7%bd%ae" data-id="_344-ir-图像参数配置" class="anchor"><span>3.4.4 IR 图像参数配置</span></a></h3><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/IRGmmGain.png" data-origin="pic/IRGmmGain.png" alt="IR 图像增益" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/IRGmmGain_ubuntu.png" data-origin="pic/IRGmmGain_ubuntu.png" alt="IR 图像增益" class="medium-zoom-image"></p></div>
+</div>
+
+<h4 id="_3441-gamma-gain"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_3441-gamma-gain" data-id="_3441-gamma-gain" class="anchor"><span>3.4.4.1 Gamma Gain</span></a></h4><p>设定 IR 图像的增益，通过更改传感器 Gamma 值参数调整图像亮度，表现为 Gamma Gain 值越高，IR 图像越亮。</p><table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/GammaGain25.png" data-origin="pic/GammaGain25.png" alt="GammaGain25" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/GammaGain100.png" data-origin="pic/GammaGain100.png" alt="GammaGain100" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Gamma Gain 值 25</td>
+<td align="center">Gamma Gain 值 100</td>
+</tr>
+</tbody></table>
+<h4 id="_3442-gamma-correction"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_3442-gamma-correction" data-id="_3442-gamma-correction" class="anchor"><span>3.4.4.2 Gamma Correction</span></a></h4><p>设定 IR 图像校正的开关和增益，通过软件后处理调整图像亮度，表现为 Gamma Correction 值越高，IR 图像越亮。</p><table>
+<thead>
+<tr>
+<th align="center"><img src="./3. 功能介绍_files/GammaGain25.png" data-origin="pic/GammaGain25.png" alt="GammaCorrectionOff" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/GammaCorrection50.png" data-origin="pic/GammaCorrection50.png" alt="GammaCorrection50" class="medium-zoom-image"></th>
+<th align="center"><img src="./3. 功能介绍_files/GammaCorrection100.png" data-origin="pic/GammaCorrection100.png" alt="GammaCorrection100" class="medium-zoom-image"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Gamma Correction 关闭</td>
+<td align="center">Gamma Correction 值 50</td>
+<td align="center">Gamma Correction 值 100</td>
+</tr>
+</tbody></table>
+<h3 id="_345-彩色图像参数配置"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_345-%e5%bd%a9%e8%89%b2%e5%9b%be%e5%83%8f%e5%8f%82%e6%95%b0%e9%85%8d%e7%bd%ae" data-id="_345-彩色图像参数配置" class="anchor"><span>3.4.5 彩色图像参数配置</span></a></h3><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/Color.png" data-origin="pic/Color.png" alt="彩色图像" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/Color_ubuntu.png" data-origin="pic/Color_ubuntu.png" alt="彩色图像" class="medium-zoom-image"></p></div>
+</div>
+
+<h4 id="_3451-彩色图像分辨率"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_3451-%e5%bd%a9%e8%89%b2%e5%9b%be%e5%83%8f%e5%88%86%e8%be%a8%e7%8e%87" data-id="_3451-彩色图像分辨率" class="anchor"><span>3.4.5.1. 彩色图像分辨率</span></a></h4><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/ColorResolution.png" data-origin="pic/ColorResolution.png" alt="彩色图像分辨率" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/ColorResolution.png" data-origin="pic/ColorResolution.png" alt="彩色图像分辨率" class="medium-zoom-image"></p></div>
+</div>
+
+<p>彩色图像分辨率可根据实际列表显示进行切换，如上图示例的分辨率有三种：640*480，800*600，1600*1200。</p><p>不同设备的彩色图像分辨率列表可能会有差异，请参考对应设备的产品规格书。</p><h4 id="_3452-彩色图像曝光时间"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_3452-%e5%bd%a9%e8%89%b2%e5%9b%be%e5%83%8f%e6%9b%9d%e5%85%89%e6%97%b6%e9%97%b4" data-id="_3452-彩色图像曝光时间" class="anchor"><span>3.4.5.2. 彩色图像曝光时间</span></a></h4><p>设定 Color 传感器曝光模式与时间。Color 传感器的默认曝光模式为自动曝光。</p><p><strong>Auto:</strong></p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/ColorAutoExposure.png" data-origin="pic/ColorAutoExposure.png" alt="彩色图像自动曝光" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/ColorAutoExposure_ubuntu.png" data-origin="pic/ColorAutoExposure_ubuntu.png" alt="彩色图像自动曝光" class="medium-zoom-image"></p></div>
+</div>
+
+<p>Color 传感器设置为自动曝光，下面会显示可以设置 AEC Max ExposureTime(us)的滑块控制条。</p><p>当相机作业时会自动调节曝光时间。</p><p>AEC Max ExposureTime(us)&nbsp;：设置相机自动曝光模式下的最大曝光时间。</p><p><strong>Manual:</strong></p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/ColorManualExposureTime.png" data-origin="pic/ColorManualExposureTime.png" alt="彩色图像手动曝光" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/ColorManualExposureTime_ubuntu.png" data-origin="pic/ColorManualExposureTime_ubuntu.png" alt="彩色图像手动曝光" class="medium-zoom-image"></p></div>
+</div>
+
+<p>Color 传感器设置为手动曝光，下面会显示 ExposureTime(us)和 Gain(dB)两行状态栏。</p><p>当相机作业时，需要手动调节相机曝光时间与相机 Color 图像的亮度。</p><p>ExposureTime(us)：设置 Color 相机的曝光时间，通过滑条对曝光时间进行手动调节。</p><p>Gain(dB): 设置 Color 图像的亮度，通过滑条对 Gain 值进行手动调节。</p><h3 id="_346-保存图像"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_346-%e4%bf%9d%e5%ad%98%e5%9b%be%e5%83%8f" data-id="_346-保存图像" class="anchor"><span>3.4.6. 保存图像</span></a></h3><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/SaveButton.png" data-origin="pic/SaveButton.png" alt="SaveButton" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/SaveButton.png" data-origin="pic/SaveButton.png" alt="SaveButton" class="medium-zoom-image"></p></div>
+</div>
+
+<p>Record：录制当前所有显示区域的图像。如果显示区域未开启，则不会保存。录制无法保存点云。</p><p>Total Count：需要录制的图像的数量，取值范围：[1,10000]。</p><p>Snapshot：保存一帧当前所有显示区域的图像。如果显示区域未开启，则不会保存。</p><blockquote>
+<p>保存的所有图像/点云会存储在同一文件夹，文件夹以当前时间命名，存放在 ScepterGUITool.exe 的同级目录下的 SaveImage 文件夹中。如下图目录所示：</p><p><img src="./3. 功能介绍_files/Path to save the original data.png" data-origin="pic/Path to save the original data.png" alt="Path to save the original data" class="medium-zoom-image"></p></blockquote>
+<p><strong>文件格式：</strong></p><p>Depth 图存储格式为 16 位单通道 png 格式，数值单位 mm；</p><p>IR 图存储格式为 8 位单通道 png 格式；</p><p>Color 图存储格式为 8 位三通道彩色图，采用 JPG 格式保存；</p><p>PointCloud 数据以 txt 格式保存，每行数据表示一个点的三维坐标(Float: X,&nbsp;Y,&nbsp;Z)，单位 mm。保存后的文件可使用 CloudCompare 工具打开。</p><blockquote>
+<p>ScepterGUITool 保存的深度图是 16bit 单通道 png 格式图像，每个 pixel 由 2 个字节表示。Windows 默认的图像显示工具只能显示 8bit 单通道的图像，所以看上去是黑色的。可以使用 Image J 来显示并查看像素距离值。</p></blockquote>
+<!-- ### 3.4.7. 导出、导入参数
+
+![DeviceParams](pic/DeviceParams.png)
+
+Export：导出通过 ScepterGUITool 设置的参数
+
+Import：导入参数到 ScepterGUITool 中
+
+导出的参数可以通过调用 API 函数在自编写的程序中直接使用。 -->
+
+<h2 id="_35-设备网络设置"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_35-%e8%ae%be%e5%a4%87%e7%bd%91%e7%bb%9c%e8%ae%be%e7%bd%ae" data-id="_35-设备网络设置" class="anchor"><span>3.5. 设备网络设置</span></a></h2><p>点击顶部菜单栏<img src="./3. 功能介绍_files/IP address setting.png" data-origin="pic/IP address setting.png" alt="IP 设置" class="medium-zoom-image">，弹出设备网络设置页面。</p><p><img src="./3. 功能介绍_files/Device Setting Interface.png" data-origin="pic/Device Setting Interface.png" alt="Device Setting Interface" class="medium-zoom-image"></p><p>① <strong>设置动态 IP：</strong></p><p>Obtain an IP address automatically(DHCP): 设置设备的 IP 地址为 DHCP 模式，由局域网内的路由器分配 IP 地址，使用该模式，主机端也需要设置为 DHCP 模式.</p><p>Step1:&nbsp; 选择“Obtain an IP address automatically（DHCP）”。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/set DHCP.png" data-origin="pic/set DHCP.png" alt="set camera DHCP" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/set DHCP_ubuntu.png" data-origin="pic/set DHCP_ubuntu.png" alt="set camera DHCP" class="medium-zoom-image"></p></div>
+</div>
+
+<p>Step2: 点击 OK 保存。</p><p>Step3: 设备自动重启后生效。</p><p>② <strong>设置静态 IP：</strong></p><p>Use the following IP address：设置设备的 IP 地址为固定地址。使用该模式，需要注意主机的 IP 地址以及子网掩码，确保主机和设备的 IP 地址在同一网段。</p><p>Step1:&nbsp; 选择“Use the following IP address”。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/Use the following IP address.png" data-origin="pic/Use the following IP address.png" alt="Use the following IP address" class="medium-zoom-image"></p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/Use the following IP address_ubuntu.png" data-origin="pic/Use the following IP address_ubuntu.png" alt="Use the following IP address" class="medium-zoom-image"></p></div>
+</div>
+
+<p>Step2:&nbsp; 更改 IP 地址和子网掩码。</p><p>Step3:&nbsp; 点击 OK 保存。</p><p>Step4: 设备自动重启后生效。</p><p>③ <strong>设置相机 NTP 对时：</strong></p><p>相机默认没有开启任何对时功能，设置相机与NTP Sever对时。</p><p>Step1: 在 Time sync 一栏选择 NTP Server address。</p><p><img src="./3. 功能介绍_files/NTP.png" data-origin="pic/NTP.png" alt="NTP" class="medium-zoom-image"></p><p>Step2: 输入对时服务器的地址。</p><p>Step3: 点击Set设置成功。</p><p>③ <strong>设置相机 PTP 对时：</strong></p><p>相机默认没有开启任何对时功能，设置相机PTP对时。</p><p>Step1: 在 Time sync 一栏选择 PTP。</p><p><img src="./3. 功能介绍_files/PTP.png" data-origin="pic/PTP.png" alt="PTP" class="medium-zoom-image"></p><p>Step2: 点击Set设置成功。</p><h2 id="_36-设备固件升级"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_36-%e8%ae%be%e5%a4%87%e5%9b%ba%e4%bb%b6%e5%8d%87%e7%ba%a7" data-id="_36-设备固件升级" class="anchor"><span>3.6. 设备固件升级</span></a></h2><p>点击顶部菜单栏<img src="./3. 功能介绍_files/Upgrade.png" data-origin="pic/Upgrade.png" alt="设备固件升级" class="medium-zoom-image">，进入设备固件升级设置页面。</p><div class="docsify-tabs docsify-tabs--classic">
+<button class="docsify-tabs__tab" data-tab="windows">Windows</button>
+<div class="docsify-tabs__content" data-tab-content="windows">
+
+<p><img src="./3. 功能介绍_files/Upgrade Firmware.png" data-origin="pic/Upgrade Firmware.png" alt="Upgrade Firmware" class="medium-zoom-image"></p><p>设备固件升级操作方法：</p><p>1.&nbsp; 点击<img src="./3. 功能介绍_files/Path.png" data-origin="pic/Path.png" alt="Path" class="medium-zoom-image">，选择固件镜像。</p><blockquote>
+<p>暂不支持中文路径</p></blockquote>
+<p>2.&nbsp; 点击“Upgrade”按钮，等待升级开始（升级过程中设备不可断电）。</p><p>3.&nbsp; 升级开始后，进度条会开始增长，增长到“100%”升级完成。</p><p>4.&nbsp; 提示设备重启，点击确定后设备重启并完成固件升级。</p></div>
+<button class="docsify-tabs__tab" data-tab="linux">Linux</button>
+<div class="docsify-tabs__content" data-tab-content="linux">
+
+<p><img src="./3. 功能介绍_files/Upgrade Firmware_ubuntu.png" data-origin="pic/Upgrade Firmware_ubuntu.png" alt="Upgrade Firmware" class="medium-zoom-image"></p><p>设备固件升级操作方法：</p><p>1.&nbsp; 点击<img src="./3. 功能介绍_files/Path_ubuntu.png" data-origin="pic/Path_ubuntu.png" alt="Path" class="medium-zoom-image">，选择固件镜像。</p><blockquote>
+<p>暂不支持中文路径</p></blockquote>
+<p>2.&nbsp; 点击“Upgrade”按钮，等待升级开始（升级过程中设备不可断电）。</p><p>3.&nbsp; 升级开始后，进度条会开始增长，增长到“100%”升级完成。</p><p>4.&nbsp; 提示设备重启，点击确定后设备重启并完成固件升级。</p></div>
+</div>
+
+
+
+<h2 id="_37-查看已保存图像点云"><a href="http://localhost:3000/#/zh-cn/ScepterGUITool/FunctionIntroduction?id=_37-%e6%9f%a5%e7%9c%8b%e5%b7%b2%e4%bf%9d%e5%ad%98%e5%9b%be%e5%83%8f%e7%82%b9%e4%ba%91" data-id="_37-查看已保存图像点云" class="anchor"><span>3.7. 查看已保存图像/点云</span></a></h2><ol><li><p>进入 ScepterGUITool 根目录下的 SaveImage 文件夹，选择想要查看的图像。</p></li><li><p>ScepterGUITool 保存的 Depth 和 IR 图像是 16bit 图片数据，可以使用 ImageJ 打开查看，鼠标指上去可以读出对应坐标下的深度值/IR 信号值。</p><p>ImageJ 下载地址：<a href="https://fiji.sc/" target="_self" rel="noopener">https://fiji.sc/</a></p><p><img src="./3. 功能介绍_files/ImageJ.png" data-origin="pic/ImageJ.png" alt="ImageJ" class="medium-zoom-image"></p><blockquote>
+<p>可以使用 ImageJ 中的 LUT 菜单给图片添加伪彩色，并通过菜单 Image-&gt;Adjust-&gt;Brightness/Contrast(<strong>Ctrl+Shift+C</strong>)进行效果的调整。</p></blockquote>
+</li><li><p>ScepterGUITool 保存的点云图是.txt 格式，可使用 CloudCompare 打开查看。</p><p>CloudCompare 下载地址：<a href="https://www.cloudcompare.org/" target="_self" rel="noopener">https://www.cloudcompare.org/</a></p><p><img src="./3. 功能介绍_files/CloudCompare.png" data-origin="pic/CloudCompare.png" alt="CloudCompare" class="medium-zoom-image"></p><p>ScepterGUITool 保存的.txt 格式点云图，从上到下行依次为 pixel 0 至最后一个 pixel，每一行的数值依次为该 pixel 的 X,Y,Z 值(RGBD 相机保存的彩色点云依次为 X,Y,Z,R,G,B 值)，说明如下：</p><p><img src="./3. 功能介绍_files/txt point cloud file.png" data-origin="pic/txt point cloud file.png" alt=".txt point cloud file" class="medium-zoom-image">​</p><p><img src="./3. 功能介绍_files/txt color point cloud file.png" data-origin="pic/txt color point cloud file.png" alt=".txt color point cloud file" class="medium-zoom-image">​</p></li></ol></article></section></main>
+   <script>
+      window.$docsify = {
+         //侧边栏顶部标题
+         name: "Scepter-Wiki",
+         repo: "",
+         // 开启侧边栏
+         loadSidebar: true,
+         subMaxLevel: 2,
+         // set sidebar display level
+         sidebarDisplayLevel: 1, 
+         loadNavbar: true,
+         //点击标题是否内容跳转到标题最顶端
+         auto2top: true,
+
+         //plugin1: 侧边栏全文搜索配置
+         search: {
+            // 过期时间，单位毫秒，默认一天
+            maxAge: 86400000, 
+            placeholder: 'Type to search',
+            noData: 'No Results!',
+            // 搜索标题的最大层级, 1 - 6
+            depth: 6,
+            // 是否隐藏其他侧边栏内容
+            hideOtherSidebarContent: true, 
+         },
+         //plugin2: 代码段复制配置参数
+         copyCode: {
+            buttonText: 'Copy',
+            errorText: 'Error',
+            successText: 'OK!'
+         },
+         //plugin3: 文章标签页配置
+         tabs: {
+            persist: true,      // default
+            sync: true,      // default
+            theme: 'classic', // default
+            tabComments: true,      // default
+            tabHeadings: true       // default
+         },
+      };
+   </script>
+   <!-- Docsify v4 :default config 核心代码-->
+   <script src="./3. 功能介绍_files/docsify@4.js.下载"></script>
+   <!-- plugin1: 用于侧边栏对全文进行关键词搜索-->
+   <script src="./3. 功能介绍_files/search.min.js.下载"></script>
+   <!-- plugin2: 用于copy代码段代码-->
+   <script src="./3. 功能介绍_files/docsify-copy-code.min.js.下载"></script>
+   <!-- plugin3: 用于文章内容使用tab页-->
+   <script src="./3. 功能介绍_files/docsify-tabs@1.js.下载"></script>
+   <!-- plugin4: 用于代码段内容，根据代码类型高亮（无参数配置）。不同代码需要增加不同的插件-->
+   <script src="./3. 功能介绍_files/prism-c.js.下载"></script>
+   <script src="./3. 功能介绍_files/prism-cpp.js.下载"></script>
+   <script src="./3. 功能介绍_files/prism-python.js.下载"></script>
+   <script src="./3. 功能介绍_files/prism-csharp.js.下载"></script>
+   <!-- plugin5: 用于点击放大图片功能（无参数配置）-->
+   <script src="./3. 功能介绍_files/zoom-image.min.js.下载"></script>
+   <!-- plugin6: 用于折叠左侧标题栏的层叠标题-->
+   <script src="./3. 功能介绍_files/docsify-sidebar-collapse.min.js.下载"></script>
+
+<script src="./3. 功能介绍_files/livereload.js.下载" async="" defer=""></script>
+
+<div class="progress" style="opacity: 0; width: 0%;"></div></body></html>
