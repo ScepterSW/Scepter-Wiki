@@ -976,6 +976,22 @@ typedef struct
 } ScOutputSignalParams;
 ```
 
+### 2.5.2.17. ScTimeSyncConfig
+
+**Description：**
+
+Time Sync parameters.
+
+**Members：**
+
+```cpp
+typedef struct
+{
+    uint8_t flag;     //!< 0: disable, 1: NTP, 2: PTP, only NTP needs the ip.
+    uint8_t ip[16];   //!< just for NTP.
+} ScTimeSyncConfig;
+```
+
 #### **API**
 
 ### 2.5.3.1. scInitialize
@@ -1906,7 +1922,7 @@ Get the parameters of the ConfidenceFilter feature.
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：The handle of the device.
 
-[**ScConfidenceFilterParams**](#_25212-scconfidencefilterparams) params：Pointer to a variable in which to store the returned value.
+[**ScConfidenceFilterParams**](#_25212-scconfidencefilterparams) *pParams：Pointer to a variable in which to store the returned value.
 
 **Returns：**
 
@@ -2365,4 +2381,166 @@ Set the parameters by Json file that can be saved by ScepterGUITool.
 
 [**ScStatus**](#_2514-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
+### 2.5.3.63. scGetDepthRangeValue
+
+**Prototype：**
+
+```cpp
+ScStatus scGetDepthRangeValue(ScDeviceHandle device, int16_t* minValue, int16_t* maxValue)
+```
+
+**Description：**
+
+Get the depth range in the current working mode of the device.
+
+**Parameters：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int16_t</span> \* minValue: The min value of the depth.
+
+<span style="color: #4ec9b0; font-weight: bold">int16_t</span> \* maxValue: The max value of the depth.
+
+**Returns：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 2.5.3.64. scSetTimeSyncConfig
+
+**Prototype：**
+
+```cpp
+ScStatus scSetTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig params)
+```
+
+**Description：**
+
+Set the parameters for time sync.
+
+**Parameters：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：The handle of the device.
+
+[**ScTimeSyncConfig**](#_25217-sctimesyncconfig) params : The parameters for time sync.
+
+**Returns：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 2.5.3.65. scGetTimeSyncConfig
+
+**Prototype：**
+
+```cpp
+ScStatus scGetTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig* pParams)
+```
+
+**Description：**
+
+Get the parameters for time sync.
+
+**Parameters：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：The handle of the device.
+
+[**ScTimeSyncConfig**](#_25217-sctimesyncconfig)* pParams : The parameters for time sync.
+
+**Returns：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 2.5.3.66. scGetDistanceLevelCountOfHDRMode
+
+**Prototype：**
+
+```cpp
+ScStatus scGetDistanceLevelCountOfHDRMode(ScDeviceHandle device, int32_t* pCount)
+```
+
+**Description：**
+
+ Get the count of distance level in HDR mode.
+
+ **Parameters：**
+
+ <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：The handle of the device.
+
+ <span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pCount：The distance level count.
+
+ **Returns：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 2.5.3.67. scSetExposureTimeOfHDR
+
+**Prototype：**
+
+```cpp
+ScStatus scSetExposureTimeOfHDR(ScDeviceHandle device, uint8_t level, int32_t exposureTime)
+```
+
+**Description：**
+
+Set the exposure time of depth sensor with the level in HDR mode.
+
+ **Parameters：**
+
+ <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：The handle of the device.
+
+ <span style="color: #4ec9b0; font-weight: bold">uint8_t</span> levelThe distance level from 0 to the count (get by scGetDistanceLevelCountOfHDRMode).
+
+ <span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime：The exposure time. The value must be within the maximum exposure time of sensor.
+
+ **Returns：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 2.5.3.68. scGetExposureTimeOfHDR
+
+**Prototype：**
+
+```cpp
+ScStatus scGetExposureTimeOfHDR(ScDeviceHandle device, uint8_t level, int32_t* pExposureTime)
+```
+
+**Description：**
+
+Get the exposure time of depth sensor with the level in HDR mode.
+
+ **Parameters：**
+
+ <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：The handle of the device.
+
+ <span style="color: #4ec9b0; font-weight: bold">uint8_t</span> level: The distance level from 0 to the count (get by scGetDistanceLevelCountOfHDRMode).
+
+ <span style="color: #4ec9b0; font-weight: bold">int32_t</span> pExposureTime：The exposure time.
+
+ **Returns：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+
+### 2.5.3.69. scGetMaxExposureTimeOfHDR
+
+**Prototype：**
+
+```cpp
+ScStatus scGetMaxExposureTimeOfHDR(ScDeviceHandle device, uint8_t level, int32_t* pMaxExposureTime)
+```
+
+**Description：**
+
+Get the maximum exposure time of depth sensor with the level in HDR mode.
+
+ **Parameters：**
+
+ <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：The handle of the device.
+
+ <span style="color: #4ec9b0; font-weight: bold">uint8_t</span> level: The distance level from 0 to the count (get by scGetDistanceLevelCountOfHDRMode).
+
+ <span style="color: #4ec9b0; font-weight: bold">int32_t</span> pExposureTime：The exposure time.
+
+ **Returns：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 <!-- tabs:end -->

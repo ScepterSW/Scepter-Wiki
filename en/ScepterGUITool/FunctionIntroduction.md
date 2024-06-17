@@ -20,6 +20,12 @@ ScepterGUITool Contents ScepterGUITool executable files and related dynamic link
 
 #### **Linux**
 
+Open in Terminal Enter the code below or double-click Scepter GUIToo to open it.
+
+```
+./ScepterGUITool
+```
+
 ![Contents](../../zh-cn/ScepterGUITool/pic/LinuxContents.png)
 
 <!-- tabs:end -->
@@ -439,6 +445,28 @@ Step2: Change the IP address and subnet mask
 Step3: Click OK to save.
 
 Step4: The device takes effect after automatic restart.
+
+③ **To set Camera NTP timing：**
+
+By default, the camera does not have any time synchronization function. Set the camera to synchronize with the NTP Sever.
+
+Step1: Select NTP Server address in the Time sync column.
+
+![NTP](<../../zh-cn/ScepterGUITool/pic/NTP.png>)
+
+Step2: Enter the address of the time synchronization server.
+
+Step3: Click Set to set successfully.
+
+③ **To set Camera PTP timing：**
+
+The camera defaults to no-turn-on dual-time function, and the camera PTP dual-time is set.
+
+Step1: Select PTP in the Time sync column.
+
+![PTP](<../../zh-cn/ScepterGUITool/pic/PTP.png>)
+
+Step2: Click Set to set successfully.
 
 ## 3.6. Firmware upgrade
 
