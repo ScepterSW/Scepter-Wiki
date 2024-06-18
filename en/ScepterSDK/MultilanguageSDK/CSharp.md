@@ -14,15 +14,15 @@ The CSharp SDK directory structure is as follows:
 
 <!-- - Samples：主要包含使用 ScepterSDK 开发的例程。 -->
 
-- Samples:Primarily contains samples developed using the Scepter SDK.
+- Samples: Primarily contains samples developed using the Scepter SDK.
 
 <!-- - install.py：用于从指定的路径中提取并移动 Scepter_CSharp.dll 文件的脚本文件。 -->
 
-- install. Py: a script file used to extract and move the Scepter_CSharp.dll file from the specified path.
+- install.py: A script file used to extract and move the Scepter_CSharp.dll file from the specified path.
 
 <!-- - README.md：SDK 的项目配置的简要说明。 -->
 
-- README:Introduction to the SDK.
+- README: Introduction to the SDK.
 
 ## 3.2.2. Project Configuration
 
@@ -52,7 +52,7 @@ The second method is to manually copy the specified file.
 
 <!-- 运行**ScepterSDK/C#/install.py** , install.py 用于从指定的路径中提取并移动 Scepter_CSharp.dll 文件的脚本文件。 -->
 
-Run the **NebulaSDK/C#/install.py**.
+Run the **ScepterSDK/C#/install.py**.
 
 ```console
 python install.py x64
@@ -82,7 +82,7 @@ Open device, image acquisition, software/hardware trigger, point cloud store are
 
 <!-- 接下来，我们将详细介绍每个例程的Function。 -->
 
-Next, we will detail the Function for each sample.
+Next, we will detail the function for each sample.
 
 ```csharp
 ColorExposureTimeSetGet                         //Set and get the exposure time of color sensor.
@@ -416,18 +416,18 @@ SDK has realized the function of converting depth image to point cloud and image
 ```csharp
 typedef struct
 {
-    double fx;   //x方向的焦距，单位为像素
-    double fy;   //y方向的焦距，单位为像素
-    double cx;   //主点的x坐标，图像的中心，单位为像素
-    double cy;   //主点的y坐标，图像的中心，单位为像素
-    double k1;   //径向畸变, 1st
-    double k2;   //径向畸变, 2nd
-    double p1;   //轴向畸变
-    double p2;   //轴向畸变
-    double k3;   //径向畸变, 3rd
-    double k4;   //径向畸变, 4st
-    double k5;   //径向畸变, 5nd
-    double k6;   //径向畸变, 6rd
+    double fx;   //!< Focal length x (pixel).
+    double fy;   //!< Focal length y (pixel).
+    double cx;   //!< Principal point x (pixel).
+    double cy;   //!< Principal point y (pixel).
+    double k1;   //!< Radial distortion coefficient, 1st-order.
+    double k2;   //!< Radial distortion coefficient, 2nd-order.
+    double p1;   //!< Tangential distortion coefficient.
+    double p2;   //!< Tangential distortion coefficient.
+    double k3;   //!< Radial distortion coefficient, 3rd-order.
+    double k4;   //!< Radial distortion coefficient, 4st-order.
+    double k5;   //!< Radial distortion coefficient, 5nd-order.
+    double k6;   //!< Radial distortion coefficient, 6rd-order.
 } ScSensorIntrinsicParameters;
 ```
 

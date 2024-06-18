@@ -18,7 +18,7 @@ Product Introduction
 
 Quick Start
 
-- [1.Hardware Connection](en/Quickstart/Quickstart#_1hardware-connection)
+- [1.Hardware Connection](en/Quickstart/Quickstart#_1hardware-connection)   
 
 - [2.Device Open](en/Quickstart/Quickstart#_2device-open)
 
