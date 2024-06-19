@@ -776,9 +776,6 @@ Step1:  选择“Obtain an IP address automatically（DHCP）”。
 
 ![set camera DHCP](<pic/set DHCP.png>)
 
-#### **Linux**
-
-![set camera DHCP](<pic/set DHCP_ubuntu.png>)
 
 <!-- tabs:end -->
 
@@ -798,9 +795,6 @@ Step1:  选择“Use the following IP address”。
 
 ![Use the following IP address](<pic/Use the following IP address.png>)
 
-#### **Linux**
-
-![Use the following IP address](<pic/Use the following IP address_ubuntu.png>)
 
 <!-- tabs:end -->
 
@@ -816,7 +810,13 @@ Step4: 设备自动重启后生效。
 
 Step1: 在 Time sync 一栏选择 NTP Server address。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![NTP](pic/NTP.png)
+
+<!-- tabs:end -->
 
 Step2: 输入对时服务器的地址。
 
@@ -828,7 +828,14 @@ Step3: 点击Set设置成功。
 
 Step1: 在 Time sync 一栏选择 PTP。
 
+<!-- tabs:start -->
+
+#### **Windows**
+
 ![PTP](pic/PTP.png)
+
+
+<!-- tabs:end -->
 
 Step2: 点击Set设置成功。
 
