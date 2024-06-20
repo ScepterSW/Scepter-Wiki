@@ -62,6 +62,8 @@ Scepter 软件开发包介绍
 
   - [1.3. 多机共存](zh-cn/ApplicationNote/NYX650&660/Multi-Cameras%20Coexist.md)
 
+  * [1.4. 时间同步](zh-cn/ApplicationNote/NYX650&660/Time%20Synchronization.md)
+
 * [2. DS86/87](javascript:;)
 
   - [2.1. 深度质量测试](zh-cn/ApplicationNote/DS86&87/Depth%20Quality%20Test.md)
