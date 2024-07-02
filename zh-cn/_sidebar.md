@@ -62,7 +62,7 @@ Scepter 软件开发包介绍
 
   - [1.3. 多机共存](zh-cn/ApplicationNote/NYX650&660/Multi-Cameras%20Coexist.md)
 
-  * [1.4. 时间同步](zh-cn/ApplicationNote/NYX650&660/Time%20Synchronization.md)
+  * [1.4. NTP设置使用方法](zh-cn/ApplicationNote/NYX650&660/NTP-client-configuration.md)
 
 * [2. DS86/87](javascript:;)
 
