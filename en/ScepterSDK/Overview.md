@@ -6,7 +6,7 @@ ScepterSDK is a software development kit based on 3D ToF camera, which is curren
 
 Based on the development kit, users can obtain high-precision depth data information, gray image information and color image information, which is convenient for users to develop 3D applications such as face brushing payment, gesture recognition, projection touch control, face recognition, fatigue detection, 3D reconstruction, navigation ,obstacle avoidance and so on.
 
-![ScepterSDK](../../zh-cn/ScepterSDK/pic/ScepterSDK.png)
+![ScepterSDK](../../zh-cn/ScepterSDK/Overview-asserts/01.png)
 
 ScepterSDK download link：
 
@@ -40,13 +40,13 @@ The second way is to download the compressed package to the local.
 git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
-![git clone SDK http](<../../zh-cn/ScepterSDK/pic/git clone SDK http.png>)
+![git clone SDK http](<../../zh-cn/ScepterSDK/Overview-asserts/02.png>)
 
 <!-- ② 打开终端，输入复制代码回车，等待下载完成。 -->
 
 ② Open the terminal, enter the copy code and press Enter to wait for the download to be completed.
 
-![git clone ScepterSDK](<../../zh-cn/ScepterSDK/pic/git clone ScepterSDK.png>)
+![git clone ScepterSDK](<../../zh-cn/ScepterSDK/Overview-asserts/03.png>)
 
 #### **Method 2**
 
@@ -58,13 +58,13 @@ Open the download link, click Code, and then click Download ZIP to download the 
 
 If you need to use it under Ubuntu system, please make sure that the compressed package after downloading is unzipped under Ubuntu system. Do not copy it after unzipping under Windows system.
 
-![GitHub ScepterSDK](<../../zh-cn/ScepterSDK/pic/GitHub ScepterSDK.png>)
+![GitHub ScepterSDK](<../../zh-cn/ScepterSDK/Overview-asserts/04.png>)
 
 <!-- tabs:end -->
 
 **Introduction to the SDK Home Directory**
 
-![ScepterSDK Content](<../../zh-cn/ScepterSDK/pic/ScepterSDK Content.png>)
+![ScepterSDK Content](<../../zh-cn/ScepterSDK/Overview-asserts/05.png>)
 
 <!-- ScepterSDK 提供的多平台和开发语言的开发包，包含如下内容： -->
 

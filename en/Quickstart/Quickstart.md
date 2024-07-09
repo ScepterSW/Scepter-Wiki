@@ -2,13 +2,13 @@
 
 1. Mount the camera in a suitable fixture, such as a camera stand.
 
-![DeviceConnection](../../zh-cn/Quickstart/pic/DeviceConnection.png)
+![DeviceConnection](../../zh-cn/Quickstart/Quickstart-asserts/01.png)
 
 2. Provide 12~24V power to the camera through the multi-function cable (typical value: 12V 3A). Some models can use PoE+ power supply mode, please refer to the product specifications for details.
 
 3. Connect the product to the host computer via an Ethernet cable. At this time, the device is in a state of Ethernet broadcast and no connection is established, and the LED indicator light on the side used to display the status of the camera will turn **blue** and flash repeatedly.
 
-![BlueLed1](../../zh-cn/Quickstart/pic/BlueLed1.png)
+![BlueLed1](../../zh-cn/Quickstart/Quickstart-asserts/02.png)
 
 4. Set the host IP address to be in the same network segment as the camera. The default IP of the device is **192.168.1.101**.
 
@@ -20,19 +20,19 @@ Set the local connection on Windows PC, set the subnet mask to 255.255.255.0, an
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress1.png)
+![WindowsStaticAddress](Quickstart-asserts/01.png)
 
 </div>
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress2.png)
+![WindowsStaticAddress](Quickstart-asserts/02.png)
 
 </div>
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress3.png)
+![WindowsStaticAddress](Quickstart-asserts/03.png)
 
 </div>
 
@@ -42,19 +42,19 @@ Set the local connection on Linux, set the subnet mask to 255.255.255.0, and set
 
 <div class="center">
 
-![LinuxEditConnections](pic/LinuxEditConnections1.png)
+![LinuxEditConnections](Quickstart-asserts/04.png)
 
 </div>
 
 <div class="center">
 
-![LinuxEdit](pic/LinuxEdit2.png)
+![LinuxEdit](Quickstart-asserts/05.png)
 
 </div>
 
 <div class="center">
 
-![LinuxStaticAddress](pic/LinuxStaticAddress3.png)
+![LinuxStaticAddress](Quickstart-asserts/06.png)
 
 </div>
 
@@ -68,7 +68,7 @@ sudo nmtui
 
    <div class="center">
 
-![ARMLinuxStaticAddress](../../zh-cn/Quickstart/pic/ARMLinuxStaticAddress.png)
+![ARMLinuxStaticAddress](../../zh-cn/Quickstart/Quickstart-asserts/09.png)
 
    </div>
 
@@ -112,17 +112,17 @@ Method 2: Download the compressed package locally.
 git clone https://github.com/ScepterSW/ScepterGUITool
 ```
 
-![git clone http](<../../zh-cn/Quickstart/pic/git clone http.png>)
+![git clone http](<../../zh-cn/Quickstart/Quickstart-asserts/10.png>)
 
 ② Open the terminal, enter the copied code and press Enter, and wait for the download to complete.
 
-![get clone GUITool.png](<../../zh-cn/Quickstart/pic/git clone GUITool.png>)
+![get clone GUITool.png](<../../zh-cn/Quickstart/Quickstart-asserts/11.png>)
 
 #### **Method 2**
 
 Open the download link, click Code, and then click Download ZIP to download the ScepterGUITool compressed package locally.
 
-![GitHubGUITool](<../../zh-cn/Quickstart/pic/GitHub GUITool.png>)
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12.png>)
 
 <!-- tabs:end -->
 
@@ -132,19 +132,19 @@ ScepterGUITool includes the ScepterGUITool executable file and related dynamic l
 
 #### **Windows**
 
-![WindowsContents](../../zh-cn/Quickstart/pic/WindowsContents.png)
+![WindowsContents](../../zh-cn/Quickstart/Quickstart-asserts/13.png)
 
 > When running ScepterGUITool for the first time, set permissions for the program to pass through the system firewall, as shown in the figure below.
 >
 >  <div class="center">
 >
-> ![WindowsFirewallSetting](pic/WindowsFirewallSetting.png)
+> ![WindowsFirewallSetting](Quickstart-asserts/07.png)
 >
 >  </div>
 
 #### **Ubuntu**
 
-![LinuxContents](../../zh-cn/Quickstart/pic/LinuxContents.png)
+![LinuxContents](../../zh-cn/Quickstart/Quickstart-asserts/15.png)
 
 <!-- tabs:end -->
 
@@ -152,27 +152,27 @@ Double-click the ScepterGUITool executable file, run ScepterGUITool, and follow 
 
 ① Search for devices.
 
-![ScanDevice](../../zh-cn/Quickstart/pic/ScanDevice.png)
+![ScanDevice](../../zh-cn/Quickstart/Quickstart-asserts/16.png)
 
 ② Select the device you want to open.
 
-![SelectDevice](../../zh-cn/Quickstart/pic/SelectDevice.png)
+![SelectDevice](../../zh-cn/Quickstart/Quickstart-asserts/17.png)
 
 ③ Click Connect to connect the device.
 
-![ConnectDevice](../../zh-cn/Quickstart/pic/ConnectDevice.png)
+![ConnectDevice](../../zh-cn/Quickstart/Quickstart-asserts/18.png)
 
 ④ After the device is successfully connected, click the switch on the right side of Stream to start the camera's stream.
 
-![DeviceStreamOn](../../zh-cn/Quickstart/pic/DeviceStreamOn.png)
+![DeviceStreamOn](../../zh-cn/Quickstart/Quickstart-asserts/19.png)
 
 ⑤ After successful startup, the image will appear on the right side.
 
-![Image display](../../zh-cn/Quickstart/pic/DisplayArea.png)
+![Image display](../../zh-cn/Quickstart/Quickstart-asserts/20.png)
 
 ⑥ At this time, the device is in the state where the Ethernet broadcast connection is established, and the LED indicator light on the side used to display the status of the camera will be **blue** and always on.
 
-![BlueLed2](../../zh-cn/Quickstart/pic/BlueLed2.png)
+![BlueLed2](../../zh-cn/Quickstart/Quickstart-asserts/21.png)
 
 You can refer to [ScepterGUITool introduction](/en/ScepterGUITool/Overview.md) to learn about the detailed functions of the camera and start exploring the camera.
 
@@ -202,11 +202,11 @@ Method 2: Download the compressed package locally.
 git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
-![git clone SDK http](<../../zh-cn/Quickstart/pic/git clone SDK http.png>)
+![git clone SDK http](<../../zh-cn/Quickstart/Quickstart-asserts/22.png>)
 
 ② Open the terminal, enter the copied code and press Enter, and wait for the download to complete.
 
-![git clone ScepterSDK](<../../zh-cn/Quickstart/pic/git clone ScepterSDK.png>)
+![git clone ScepterSDK](<../../zh-cn/Quickstart/Quickstart-asserts/23.png>)
 
 #### **Method 2**
 
@@ -214,13 +214,13 @@ Open the download link, click Code, and then click Download ZIP to download Scep
 
 If you want to use it under Ubuntu system, please make sure that the downloaded compressed package is decompressed under Ubuntu system. Do not copy and use it after decompression under Windows system.
 
-![GitHub ScepterSDK](<../../zh-cn/Quickstart/pic/GitHub ScepterSDK.png>)
+![GitHub ScepterSDK](<../../zh-cn/Quickstart/Quickstart-asserts/24.png>)
 
 <!-- tabs:end -->
 
 ScepterSDK includes a series of friendly APIs, application sample programs and related dynamic link libraries.
 
-![ARMLinuxContents](../../zh-cn/Quickstart/pic/ARMLinuxContents.png)
+![ARMLinuxContents](../../zh-cn/Quickstart/Quickstart-asserts/25.png)
 
 Enter the AArch64/PrecompiledSamples folder and use the terminal to open the precompiled program for the corresponding camera:
 
@@ -229,11 +229,11 @@ cd PrecompiledSamples
 ./XXXX_OpenCVSample
 ```
 
-![ARMLinuxConnect](../../zh-cn/Quickstart/pic/ARMLinuxConnect.png)
+![ARMLinuxConnect](../../zh-cn/Quickstart/Quickstart-asserts/26.png)
 
 At this time, the device is in the state where the Ethernet broadcast connection is established, and the LED indicator light on the side used to display the status of the camera will be **blue** and always on.
 
-![BlueLed2](../../zh-cn/Quickstart/pic/BlueLed2.png)
+![BlueLed2](../../zh-cn/Quickstart/Quickstart-asserts/21.png)
 
 You can refer to [ScepterSDK introduction](/en/ScepterSDK/Overview.md) to learn about the detailed functions of the camera and start exploring the camera.
 

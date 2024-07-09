@@ -4,7 +4,7 @@
 
 CSharp SDK 目录结构如下：
 
-![CSharpContents](pic/CSharpContents.png)
+![CSharpContents](CSharp-asserts/01.png)
 
 - Bin：目录主要包含 SDK 的动态链接库，如 Scepter_CSharp.dll，包括 x64 和 x86 的版本，运行基于该 SDK 开发的应用之前，需要先将相应平台的 dll 文件拷贝到可执行程序所在的目录。
 
@@ -36,7 +36,7 @@ Windows 下使用 Visual Studio 2017 开发，需要.NET Framework 为 4.6.x 版
 python install.py x64
 ```
 
-![CSharpInstall](pic/CSharpInstall.png)
+![CSharpInstall](CSharp-asserts/02.png)
 
 #### **方法二**
 
@@ -50,7 +50,7 @@ python install.py x64
 
 例程包含打开图像数据流、图像获取、软/硬触发、点云转换与保存等 API 接口的使用。
 
-![CSharpSamples](pic/CSharpSamples.png)
+![CSharpSamples](CSharp-asserts/03.png)
 
 接下来，我们将详细介绍每个例程的功能。
 
@@ -91,11 +91,11 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
 
    ② 点击菜单栏的“调试”按钮，选择下拉栏中的“开始调试”或使用快捷键“F5”编译运行项目。
 
-   ![CsharpDeviceConnectBySN](pic/CsharpDeviceConnectBySN.png)
+   ![CsharpDeviceConnectBySN](CSharp-asserts/04.png)
 
 2. 编译完成，调试运行。结果如下图：
 
-   ![CsharpDeviceConnectBySNResult](pic/CsharpDeviceConnectBySNResult.png)
+   ![CsharpDeviceConnectBySNResult](CSharp-asserts/05.png)
 
 ## 3.2.4. API 参考
 
@@ -388,7 +388,7 @@ typedef struct
 
 相机外参 R 与 T，用于 depth 与 rgb 图像的对齐，参考公式如下:
 
-![ScSensorExtrinsicParameters](pic/ScSensorExtrinsicParameters.png)
+![ScSensorExtrinsicParameters](CSharp-asserts/06.png)
 
 **成员：**
 

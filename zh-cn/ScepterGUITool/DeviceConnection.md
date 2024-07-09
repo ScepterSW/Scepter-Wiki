@@ -22,7 +22,7 @@
 
 ## 2.2. 设备连接
 
-![设备连接](pic/DeviceConnection.png)
+![设备连接](DeviceConnection-asserts/01.png)
 
 <div class="center">
 
@@ -44,7 +44,7 @@
 
 <div class="center">
 
-![直连](pic/DirectConnection-NoSwitchboard.png)
+![直连](DeviceConnection-asserts/02.png)
 
 </div>
 
@@ -52,7 +52,7 @@
 
 <div class="center">
 
-![多机连接](pic/Multi-CarmeraConnection.png)
+![多机连接](DeviceConnection-asserts/03.png)
 
 </div>
 <!-- tabs:start -->
@@ -61,19 +61,19 @@
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress1.png)
+![WindowsStaticAddress](DeviceConnection-asserts/04.png)
 
 </div>
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress2.png)
+![WindowsStaticAddress](DeviceConnection-asserts/05.png)
 
 </div>
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress3.png)
+![WindowsStaticAddress](DeviceConnection-asserts/06.png)
 
 </div>
 
@@ -81,19 +81,19 @@
 
 <div class="center">
 
-![LinuxEditConnections](pic/LinuxEditConnections1.png)
+![LinuxEditConnections](DeviceConnection-asserts/07.png)
 
 </div>
 
 <div class="center">
 
-![LinuxEdit](pic/LinuxEdit2.png)
+![LinuxEdit](DeviceConnection-asserts/08.pngg)
 
 </div>
 
 <div class="center">
 
-![固定地址](pic/LinuxStaticAddress3.png)
+![固定地址](DeviceConnection-asserts/09.png)
 
 </div>
 
@@ -105,7 +105,7 @@ DHCP 连接方式，需要将相机连接在开启 DHCP 功能的路由器上，
 
 <div class="center">
 
-![DHCP 连接方式](pic/DHCP-CarmeraConnection.png)
+![DHCP 连接方式](DeviceConnection-asserts/10.png)
 
 </div>
 
@@ -115,7 +115,7 @@ DHCP 连接方式，需要将相机连接在开启 DHCP 功能的路由器上，
 
 <div class="center">
 
-![DHCP](pic/WindowsDHCP.png)
+![DHCP](DeviceConnection-asserts/11.png)
 
 </div>
 
@@ -123,7 +123,7 @@ DHCP 连接方式，需要将相机连接在开启 DHCP 功能的路由器上，
 
 <div class="center">
 
-![DHCP](pic/LinuxDHCP1.png)
+![DHCP](DeviceConnection-asserts/12.png)
 
 </div>
 

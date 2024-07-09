@@ -4,7 +4,7 @@ The ToF camera refers to the area array non scanning 3D imaging depth informatio
 
 <div class="center">
 
-![CalculationUnit](../../zh-cn/ToFBasicPrinciple/pic/CalculationUnit.gif)
+![CalculationUnit](../../zh-cn/ToFBasicPrinciple/ToFComposition-asserts/01.gif)
 
 </div>
 

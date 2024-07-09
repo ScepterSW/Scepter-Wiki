@@ -2,13 +2,13 @@
 
 1. 将相机安装在一个合适的固定装置中，例如相机支架。
 
-![DeviceConnection](pic/DeviceConnection.png)
+![DeviceConnection](Quickstart-asserts/01.png)
 
 2. 通过多功能线为相机提供 12~24V 电源（典型值：12V 3A）。部分型号可选用 PoE+供电模式，具体请参考产品规格书。
 
 3. 通过以太网电缆将产品连接到主机。此时设备处于以太网广播无连接建立的状态，侧面用于显示相机的状态的 LED 指示灯会呈**蓝色**并且反复闪烁。
 
-![BlueLed1](pic/BlueLed1.png)
+![BlueLed1](Quickstart-asserts/02.png)
 
 4. 设置主机 IP 地址与相机在同一网段，设备默认 IP 为 **192.168.1.101**。
 
@@ -20,25 +20,25 @@
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress1.png)
+![WindowsStaticAddress](Quickstart-asserts/03.png)
 
 </div>
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress2.png)
+![WindowsStaticAddress](Quickstart-asserts/04.png)
 
 </div>
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress3.png)
+![WindowsStaticAddress](Quickstart-asserts/05.png)
 
 </div>
 
 <!-- <div class="center">
 
-![固定地址](pic/WindowsStaticAddress.png)
+![固定地址](Quickstart-asserts/WindowsStaticAddress.png)
 
 </div> -->
 
@@ -48,19 +48,19 @@
 
 <div class="center">
 
-![LinuxEditConnections](pic/LinuxEditConnections1.png)
+![LinuxEditConnections](Quickstart-asserts/06.png)
 
 </div>
 
 <div class="center">
 
-![LinuxEdit](pic/LinuxEdit2.png)
+![LinuxEdit](Quickstart-asserts/07.png)
 
 </div>
 
 <div class="center">
 
-![固定地址](pic/LinuxStaticAddress3.png)
+![固定地址](Quickstart-asserts/08.png)
 
 </div>
 
@@ -74,7 +74,7 @@ sudo nmtui
 
    <div class="center">
 
-![固定地址](pic/ARMLinuxStaticAddress.png)
+![固定地址](Quickstart-asserts/09.png)
 
    </div>
 
@@ -118,17 +118,17 @@ ScepterGUITool 下载链接：
 git clone https://github.com/ScepterSW/ScepterGUITool
 ```
 
-![git clone http](<pic/git clone http.png>)
+![git clone http](<Quickstart-asserts/10.png>)
 
 ② 打开终端，输入复制代码回车，等待下载完成。
 
-![get clone GUITool.png](<pic/git clone GUITool.png>)
+![get clone GUITool.png](<Quickstart-asserts/11.png>)
 
 #### **方式二**
 
 打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterGUITool 工具压缩包下载到本地。
 
-![GitHubGUITool](<pic/GitHub GUITool.png>)
+![GitHubGUITool](<Quickstart-asserts/12.png>)
 
 <!-- tabs:end -->
 
@@ -138,19 +138,19 @@ ScepterGUITool 包含 ScepterGUITool 可执行文件及相关动态链接库。
 
 #### **Windows**
 
-![目录结构](pic/WindowsContents.png)
+![目录结构](Quickstart-asserts/13.png)
 
 > 在首次运行 ScepterGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。
 >
 >  <div class="center">
 >
-> ![防火墙配置](pic/WindowsFirewallSetting.png)
+> ![防火墙配置](Quickstart-asserts/14.png)
 >
 >  </div>
 
 #### **Ubuntu**
 
-![目录结构](pic/LinuxContents.png)
+![目录结构](Quickstart-asserts/15.png)
 
 <!-- tabs:end -->
 
@@ -158,27 +158,27 @@ ScepterGUITool 包含 ScepterGUITool 可执行文件及相关动态链接库。
 
 ① 搜索设备。
 
-![ScanDevice](pic/ScanDevice.png)
+![ScanDevice](Quickstart-asserts/16.png)
 
 ② 选中需要打开的设备。
 
-![SelectDevice](pic/SelectDevice.png)
+![SelectDevice](Quickstart-asserts/17.png)
 
 ③ 点击 Connect 连接设备。
 
-![ConnectDevice](pic/ConnectDevice.png)
+![ConnectDevice](Quickstart-asserts/18.png)
 
 ④ 设备连接成功后，点击 Stream 右侧的开关，启动相机的视频流。
 
-![DeviceStreamOn](pic/DeviceStreamOn.png)
+![DeviceStreamOn](Quickstart-asserts/19.png)
 
 ⑤ 启动成功后，图像在右侧正常显现。
 
-![图像显现](pic/DisplayArea.png)
+![图像显现](Quickstart-asserts/20.png)
 
 ⑥ 此时设备处于以太网广播连接建立的状态，侧面用于显示相机的状态的 LED 指示灯会呈**蓝色**并且常亮。
 
-![BlueLed2](pic/BlueLed2.png)
+![BlueLed2](Quickstart-asserts/21.png)
 
 您可以参考[Scepter 图形化工具介绍](/zh-cn/ScepterGUITool/Overview.md)了解相机的详细功能，开始探索相机。
 
@@ -208,11 +208,11 @@ ScepterSDK 下载链接：
 git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
-![git clone SDK http](<pic/git clone SDK http.png>)
+![git clone SDK http](<Quickstart-asserts/22.png>)
 
 ② 打开终端，输入复制代码回车，等待下载完成。
 
-![git clone ScepterSDK](<pic/git clone ScepterSDK.png>)
+![git clone ScepterSDK](<Quickstart-asserts/23.png>)
 
 #### **方式二**
 
@@ -220,13 +220,13 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
 如需在 Ubuntu 系统下使用，请确保下载后的压缩包是在 Ubuntu 系统下解压，请勿在 Windows 系统解压后复制使用。
 
-![GitHub ScepterSDK](<pic/GitHub ScepterSDK.png>)
+![GitHub ScepterSDK](<Quickstart-asserts/24.png>)
 
 <!-- tabs:end -->
 
 ScepterSDK 包含一系列友好的 API ，应用示例程序及相关动态链接库。
 
-![目录结构](pic/ARMLinuxContents.png)
+![目录结构](Quickstart-asserts/25.png)
 
 进入 AArch64/PrecompiledSamples 文件夹，使用终端打开对应相机的预编译好的程序：
 
@@ -235,11 +235,11 @@ cd PrecompiledSamples
 ./XXXX_OpenCVSample
 ```
 
-![设备连接](pic/ARMLinuxConnect.png)
+![设备连接](Quickstart-asserts/26.png)
 
 此时设备处于以太网广播连接建立的状态，侧面用于显示相机的状态的 LED 指示灯会呈**蓝色**并且常亮。
 
-![BlueLed2](pic/BlueLed2.png)
+![BlueLed2](Quickstart-asserts/21.png)
 
 您可以参考[Scepter 软件开发包介绍](/zh-cn/ScepterSDK/Overview.md)了解相机的详细功能，开始探索相机。
 

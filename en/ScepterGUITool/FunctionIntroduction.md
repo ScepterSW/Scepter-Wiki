@@ -8,13 +8,13 @@ ScepterGUITool Contents ScepterGUITool executable files and related dynamic link
 
 #### **Windows**
 
-![Contents](../../zh-cn/ScepterGUITool/pic/WindowsContents.png)
+![Contents](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/01.png)
 
 > When the ScepterGUITool first run, all options of the firewall should be chosen.
 >
 > <div class="center">
 >
-> ![FirewallSetting](pic/FirewallSetting.png)
+> ![FirewallSetting](FunctionIntroduction-asserts/01.png)
 >
 > </div>
 
@@ -26,7 +26,7 @@ Open in Terminal Enter the code below or double-click Scepter GUIToo to open it.
 ./ScepterGUITool
 ```
 
-![Contents](../../zh-cn/ScepterGUITool/pic/LinuxContents.png)
+![Contents](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/03.png)
 
 <!-- tabs:end -->
 
@@ -36,33 +36,33 @@ This part is used to describe the discovery and connection of devices. In this D
 
 Multiple software can support opening multiple cameras, and the SDK also supports multiple cameras working at the same time.
 
-![DeviceManage](../../zh-cn/ScepterGUITool/pic/DeviceManage.png)
+![DeviceManage](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/04.png)
 
 ### 3.2.1. Open Device
 
 ① After the device is connected, wait for the blue light of the device flash and start scaning the device.
 
-![ScanDevice](../../zh-cn/ScepterGUITool/pic/ScanDevice.png)
+![ScanDevice](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/06.png)
 
 ② Select the device you want to open.
 
-![SelectDevice](../../zh-cn/ScepterGUITool/pic/SelectDevice.png)
+![SelectDevice](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/08.png)
 
 ③ Click the Connect button to connect device.
 
-![ConnectDevice](../../zh-cn/ScepterGUITool/pic/ConnectDevice.png)
+![ConnectDevice](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/10.png)
 
 ④ After the device is connected successfully, click the switch on the right side of Stream to start camera stream.
 
-![DeviceStreamOn](../../zh-cn/ScepterGUITool/pic/DeviceStreamOn.png)
+![DeviceStreamOn](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/12.png)
 
 ⑤ After successful startup, the image appears on the right side.
 
-![DisplayArea](../../zh-cn/ScepterGUITool/pic/DisplayArea.png)
+![DisplayArea](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/14.png)
 
 ### 3.2.2. Device information
 
-![Device information](<../../zh-cn/ScepterGUITool/pic/Device information.png>)
+![Device information](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/16.png>)
 
 SN：serial number.
 
@@ -78,7 +78,7 @@ State：current status of the device.
 
 ### 3.2.3. Device Close
 
-![DeviceStreamOff](../../zh-cn/ScepterGUITool/pic/DeviceStreamOff.png)
+![DeviceStreamOff](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/18.png)
 
 Click the Disconnect button to disconnect the camera from GUITool.
 
@@ -88,9 +88,9 @@ Click the switch on the right side of Stream to turn off the camera's stream.
 
 This part is used to introduce the way of image display. You can select 2D image or 3D point cloud from the tab:
 
-![TabSelect](../../zh-cn/ScepterGUITool/pic/TabSelect.png)
+![TabSelect](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/20.png)
 
-![DisplayArea](../../zh-cn/ScepterGUITool/pic/DisplayArea.png)
+![DisplayArea](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/14.png)
 
 ### 3.3.1. Image Display
 
@@ -98,17 +98,17 @@ The default 2D images are Depth image and Color image.
 
 The depth map selection box allows you to select Depth image, DepthImgToColorSensor image via the drop-down options menu.
 
-![DepthImgToColorSensor](../../zh-cn/ScepterGUITool/pic/DepthImgToColorSensor.png)
+![DepthImgToColorSensor](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/22.png)
 
 The Color map selection box allows you to select Color image, ColorImgToDepthSensor image, IR image via the drop-down options menu.
 
-![ColorImgToDepthSensor](../../zh-cn/ScepterGUITool/pic/ColorImgToDepthSensor.png)
+![ColorImgToDepthSensor](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/23.png)
 
 The values displayed below Depth Image are the coordinate value and depth value at the white point. The unit of the depth value is mm. As shown in the figure, the depth value of this point is 2894 mm.
 
 The display value below IR Image is the gray value at the white point. As shown in the figure, the gray value of this point is 39.
 
-![WhitePoint](../../zh-cn/ScepterGUITool/pic/WhitePoint.png)
+![WhitePoint](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/24.png)
 
 > Click the left mouse button to select the position of the white point, and the depth value and gray value of the corresponding point will be displayed.
 
@@ -116,13 +116,13 @@ The display value below IR Image is the gray value at the white point. As shown 
 
 **1. DepthImgToColorSensor and Color**
 
-![DepthImgToColorSensor](../../zh-cn/ScepterGUITool/pic/DepthImgToColorSensor.png)
+![DepthImgToColorSensor](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/22.png)
 
 Depth image map to Color domain. When enabled, the images with Depth pixels aligned to the Color pixel space are output and displayed, that is, the depth imagecorresponding to Color pixel one by one.
 
 #### Principle：
 
-![RGBD_Principle](../../zh-cn/ScepterGUITool/pic/RGBD_Principle.gif)
+![RGBD_Principle](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/26.gif)
 
 There is a distance between the Tof lens and the Color camera, so there is a parallax from the actual image.
 
@@ -130,17 +130,17 @@ In order to align the depth image with the Color image, eliminate the parallax a
 
 The depth under the coordinate system of the infrared camera is converted to the coordinate system of the Color camera by rigid transformation, and then projected to the two-dimensional image coordinate system of the Color image, and finally a depth map under the coordinate system of the Color camera is formed.
 
-| ![DepthImgToColorSensorImage](../../zh-cn/ScepterGUITool/pic/DepthImgToColorSensorImage.png) | ![ColorImage](../../zh-cn/ScepterGUITool/pic/ColorImage.png) |
+| ![DepthImgToColorSensorImage](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/27.png) | ![ColorImage](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/28.png) |
 | :------------------------------------------------------------------------------------------: | :----------------------------------------------------------: |
 |                                 DepthImgToColorSensor Image                                  |                         Color Image                          |
 
 **2. ColorImgToDepthSensor and Depth**
 
-![ColorImgToDepthSensor](../../zh-cn/ScepterGUITool/pic/ColorImgToDepthSensor.png)
+![ColorImgToDepthSensor](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/23.png)
 
 RGB image map to Depth domain. When enabled, images with RGB pixels maptoDepth pixel space are output and displayed, that is, RGB images correspondingtodepth pixels one by one.
 
-| ![DepthImage](../../zh-cn/ScepterGUITool/pic/DepthImage.png) | ![ColorImgToDepthSensorImage](../../zh-cn/ScepterGUITool/pic/ColorImgToDepthSensorImage.png) |
+| ![DepthImage](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/31.png) | ![ColorImgToDepthSensorImage](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/32.png) |
 | :----------------------------------------------------------: | :------------------------------------------------------------------------------------------: |
 |                         Depth Image                          |                                 ColorImgToDepthSensor Image                                  |
 
@@ -148,7 +148,7 @@ RGB image map to Depth domain. When enabled, images with RGB pixels maptoDepth p
 
 In addition to the depth image, the camera is also capable of outputting an IR image with a resolution of 640 \* 480. Since the IR image and the depth image come from the same sensor, the IR image and the depth map are strictly aligned in time and pixels.
 
-| ![DepthImage](../../zh-cn/ScepterGUITool/pic/DepthImage.png) | ![IRImage](../../zh-cn/ScepterGUITool/pic/IRImage.png) |
+| ![DepthImage](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/31.png) | ![IRImage](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/35.png) |
 | :----------------------------------------------------------: | :----------------------------------------------------: |
 |                         Depth Image                          |                        IR Image                        |
 
@@ -156,7 +156,7 @@ In addition to the depth image, the camera is also capable of outputting an IR i
 
 Select 3D from the tab to display the point cloud. By default, the point cloud is displayed using a depth pseudo-color map.
 
-![DepthPointCloudSelect](../../zh-cn/ScepterGUITool/pic/DepthPointCloudSelect.png)
+![DepthPointCloudSelect](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/37.png)
 
 Depth Point Cloud: Sets the point cloud to use depth pseudo-color display.
 
@@ -172,7 +172,7 @@ Transformed Depth Point Cloud + RGB: Sets the point cloud that is aligned to the
 
 **Point cloud control operation:**
 
-![PointCloud](../../zh-cn/ScepterGUITool/pic/PointCloud.png)
+![PointCloud](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/38.png)
 
 Hold down the left mouse button and drag to rotate the point cloud
 
@@ -182,7 +182,7 @@ Mouse wheel: scaling point cloud
 
 ## 3.4. Device parameter
 
-![OperationArea](../../zh-cn/ScepterGUITool/pic/OperationArea.png)
+![OperationArea](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/40.png)
 
 The device parameter operation is used to introduce the working mode and parameters of the control device, set the image processing algorithm and other functions.
 
@@ -190,11 +190,11 @@ The device parameter operation is used to introduce the working mode and paramet
 
 The frame rate of the camera can be adjusted by sliding the slider control bar below Frame Rate left and right. The maximum frame rate of different devices may be different. Please refer to the product specification of the corresponding device.
 
-![FrameRate](../../zh-cn/ScepterGUITool/pic/FrameRate.png)
+![FrameRate](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/42.png)
 
 ### 3.4.2 Work Mode
 
-![WorkMode](../../zh-cn/ScepterGUITool/pic/WorkMode.png)
+![WorkMode](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/44.png)
 
 Active Mode: Active plotting mode.
 
@@ -204,11 +204,11 @@ SoftwareTriggerMode: In the soft trigger mode, trigger the plot by calling the s
 
 #### 3.4.2.1 HardwareTriggerMode
 
-![HardwareTriggerMode](../../zh-cn/ScepterGUITool/pic/HardwareTriggerMode.png)
+![HardwareTriggerMode](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/45.png)
 
 After the hard trigger mode is enabled, click the Settings button to configure the trigger signal parameters, as shown in the following figure:
 
-![InputSignalParamsForHWTrigger](../../zh-cn/ScepterGUITool/pic/InputSignalParamsForHWTrigger.png)
+![InputSignalParamsForHWTrigger](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/47.png)
 
 ① Polarity: signal validity detection polarity. 0 is active low and 1 is active high.
 
@@ -224,7 +224,7 @@ Value Range: \[34000,65535]
 
 #### 3.4.2.2 SoftwareTriggerMode
 
-![SoftwareTriggerMode](../../zh-cn/ScepterGUITool/pic/SoftwareTriggerMode.png)
+![SoftwareTriggerMode](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/49.png)
 
 After the soft trigger mode is enabled, click the Trigger button to trigger the device plot.
 
@@ -232,19 +232,19 @@ After the soft trigger mode is enabled, click the Trigger button to trigger the 
 
 #### 3.4.3.1. Color Map
 
-![ColorMap](../../zh-cn/ScepterGUITool/pic/ColorMap.png)
+![ColorMap](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/51.png)
 
 For displaying the depth image intuitively, we map 16-bit depth image to color image. When mapping, we intercept the depth value in a given range: fromColorMap_Min to ColorMap_Max, and then map it to 0-255 range. Finally, theimage is transformed into a color image by using color mapping.
 
-![ChromaticityDiagram](../../zh-cn/ScepterGUITool/pic/ChromaticityDiagram.png)
+![ChromaticityDiagram](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/53.png)
 
 The effect of color map mapping is shown below:
 
-![ColorMapEffect](../../zh-cn/ScepterGUITool/pic/ColorMapEffect.png)
+![ColorMapEffect](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/54.png)
 
 #### 3.4.3.2. ToF Sensor Exposure Time
 
-![ToF Sensor Exposure Time](../../zh-cn/ScepterGUITool/pic/ToFExposureTime.png)
+![ToF Sensor Exposure Time](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/56.png)
 
 The exposure time of the ToF sensor can be set.
 
@@ -252,15 +252,15 @@ The maximum frame rate of different devices may be different. Please refer to th
 
 Manual：The ToF sensor is set to manual exposure, and the exposure time is manually adjusted through the slider or input box. The ToF sensor uses manual exposure mode by default, and the maximumexposure time that can be set is related to the frame rate.
 
-![ToF Sensor Exposure Time](../../zh-cn/ScepterGUITool/pic/ToFExposureTime.png)
+![ToF Sensor Exposure Time](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/56.png)
 
 Auto：The ToF sensor is set to automatic exposure, and the device will adjust theexposure time according to the image.
 
-![ToFAutoExposure](../../zh-cn/ScepterGUITool/pic/ToFAutoExposure.png)
+![ToFAutoExposure](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/58.png)
 
 #### 3.4.3.3. Image filter
 
-![Filter button](<../../zh-cn/ScepterGUITool/pic/Filter button.png>)
+![Filter button](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/60.png>)
 
 ① **All**
 
@@ -270,7 +270,7 @@ Enable/disable all filters.
 
 Black BG：enable or disable the Black background. The effect is as follows.
 
-| ![Black BG close](<../../zh-cn/ScepterGUITool/pic/Black BG close.png>) | ![Black BG open](<../../zh-cn/ScepterGUITool/pic/Black BG open.png>) |
+| ![Black BG close](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/62.png>) | ![Black BG open](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/63.png>) |
 | :--------------------------------------------------------------------: | :------------------------------------------------------------------: |
 |                              Black BG Off                              |                             Black BG On                              |
 
@@ -282,7 +282,7 @@ FillHole：fill up some empty data. This function is enabled by default.
 
 Spatial Filter：similar to Gaussian filter, reduce noise. This function is disabledby default.
 
-| ![Spatial Filter close](<../../zh-cn/ScepterGUITool/pic/Spatial Filter close.png>) | ![Spatial Filter open](<../../zh-cn/ScepterGUITool/pic/Spatial Filter open.png>) |
+| ![Spatial Filter close](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/64.png>) | ![Spatial Filter open](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/65.png>) |
 | :--------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: |
 |                                 Spatial Filter Off                                 |                                Spatial Filter On                                 |
 
@@ -290,31 +290,31 @@ Spatial Filter：similar to Gaussian filter, reduce noise. This function is disa
 
 Time Filter：Time Filter reduce image noise. By default, this function is enabled. The larger value, the stronger filtering effect.
 
-![Time Filter](<../../zh-cn/ScepterGUITool/pic/Time Filter.png>)
+![Time Filter](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/66.png>)
 
 ⑥ **Flying Pixel Filter**
 
 Flying Pixel Filter：Flying Pixel Filter eliminate the depth value of the boundary flying points. The default value is 15, the larger value, the stronger filtering effect.
 
-![Flying Pixel Filter](<../../zh-cn/ScepterGUITool/pic/Flying Pixel Filter.png>)
+![Flying Pixel Filter](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/68.png>)
 
-| ![Flying Pixel Filter close](<../../zh-cn/ScepterGUITool/pic/Flying Pixel Filter close.png>) | ![Flying Pixel Filter value: 15](<../../zh-cn/ScepterGUITool/pic/Flying Pixel Filter value 15.png>) |
+| ![Flying Pixel Filter close](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/70.png>) | ![Flying Pixel Filter value: 15](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/71.png>) |
 | :------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
 |                                   Flying Pixel Filter Off                                    |                                    Flying Pixel Filter value: 15                                    |
 
 ⑦ **Confidence Filter**
 
-![Flying Pixel Filter](../../zh-cn/ScepterGUITool/pic/ConfidenceFilter.png)
+![Flying Pixel Filter](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/72.png)
 
 Confidence Filter：Confidence filter eliminate points with poor signal quality. The default threshold of Confidence Filter is 15.
 
-| ![Confidence Filter value 15](<../../zh-cn/ScepterGUITool/pic/Confidence Filter value 15.png>) | ![Confidence Filter value 50](<../../zh-cn/ScepterGUITool/pic/Confidence Filter value 50.png>) |
+| ![Confidence Filter value 15](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/74.png>) | ![Confidence Filter value 50](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/75.png>) |
 | :--------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
 |                                   Confidence Filter value 15                                   |                                   Confidence Filter value 50                                   |
 
 ⑧ **HDR Mode**
 
-| ![Exposure58](../../zh-cn/ScepterGUITool/pic/Exposure58.png) |   ![Exposure1000](../../zh-cn/ScepterGUITool/pic/Exposure1000.png) |   ![HDR](../../zh-cn/ScepterGUITool/pic/HDR.png) |
+| ![Exposure58](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/76.png) |   ![Exposure1000](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/77.png) |   ![HDR](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/78.png) |
 | :----------------------------------------------------------: | :----------------------------------------------------------------: | :----------------------------------------------: |
 |                      Exposuretime 58us                       |                        Exposuretime 1000us                         |                     HDR Mode                     |
 
@@ -322,13 +322,13 @@ The HDR (High Dynamic Range) function synthesizes multiple captured images into 
 
 ### 3.4.4 IR Image Configuration
 
-![IRGmmGain](../../zh-cn/ScepterGUITool/pic/IRGmmGain.png)
+![IRGmmGain](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/79.png)
 
 #### 3.4.4.1 Gamma Gain
 
 Set the gain of the IR image, and adjust the image brightness by changing the Gamma value parameter of the sensor. The higher the Gamma Gain value is, the brighter the IR image is.
 
-| ![GammaGain25](../../zh-cn/ScepterGUITool/pic/GammaGain25.png) | ![GammaGain100](../../zh-cn/ScepterGUITool/pic/GammaGain100.png) |
+| ![GammaGain25](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/81.png) | ![GammaGain100](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/82.png) |
 | :------------------------------------------------------------: | :--------------------------------------------------------------: |
 |                     Gamma Gain value is 25                     |                     Gamma Gain value is 100                      |
 
@@ -336,17 +336,17 @@ Set the gain of the IR image, and adjust the image brightness by changing the Ga
 
 Set the switch and gain of IR image correction, and adjust the image brightness through software post-processing. The higher the Gamma Correction value is, the brighter the IR image is.
 
-| ![GammaCorrectionOff](../../zh-cn/ScepterGUITool/pic/GammaGain25.png) | ![GammaCorrection50](../../zh-cn/ScepterGUITool/pic/GammaCorrection50.png) | ![GammaCorrection100](../../zh-cn/ScepterGUITool/pic/GammaCorrection100.png) |
+| ![GammaCorrectionOff](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/82.png) | ![GammaCorrection50](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/83.png) | ![GammaCorrection100](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/84.png) |
 | :-------------------------------------------------------------------: | :------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
 |                         Gamma Correction Off                          |                        Gamma Correction value is 50                        |                        Gamma Correction value is 100                         |
 
 ### 3.4.5 Color Image Configuration
 
-![Color](../../zh-cn/ScepterGUITool/pic/Color.png)
+![Color](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/85.png)
 
 #### 3.4.5.1. Color Image Resolution
 
-![ColorResolution](../../zh-cn/ScepterGUITool/pic/ColorResolution.png)
+![ColorResolution](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/87.png)
 
 The color image resolution can be switched according to the actual list display. As shown in the figure above, there are three resolutions: 640 \* 480, 800 \* 600, 1600 \* 1200.
 
@@ -358,7 +358,7 @@ Set the Color sensor exposure mode and time. The default exposure mode for the C
 
 **Auto:**
 
-![ColorAutoExposure](../../zh-cn/ScepterGUITool/pic/ColorAutoExposure.png)
+![ColorAutoExposure](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/89.png)
 
 The Color sensor is set to auto exposure, and the slider control for setting the AEC Max ExposureTime (us) is shown below.
 
@@ -368,7 +368,7 @@ AEC Max ExposureTime (us): Sets the maximum exposure time when the camera is in 
 
 **Manual:**
 
-![ColorManualExposureTime](../../zh-cn/ScepterGUITool/pic/ColorManualExposureTime.png)
+![ColorManualExposureTime](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/91.png)
 
 The Color sensor is set to manual exposure, and two status bars, ExposureTime (us) and Gain (dB), are displayed below.
 
@@ -380,7 +380,7 @@ Gain (dB): Set the brightness of the Color image, and adjust the Gain value manu
 
 ### 3.4.6. Save Image
 
-![SaveButton](../../zh-cn/ScepterGUITool/pic/SaveButton.png)
+![SaveButton](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/93.png)
 
 Record: Record images of all current display areas. If the display area is not turned on, it is not saved. Recording failed to save the point cloud.
 
@@ -390,7 +390,7 @@ Snapshot: Save a frame of images of all the current display areas. If the displa
 
 > All saved images/point clouds are stored in the same folder, named for the current time, in the SaveImage folder at the same level as the ScepterGUITool. Exe. As shown in the following table of contents:
 >
-> ![Path to save the original data](<../../zh-cn/ScepterGUITool/pic/Path to save the original data.png>)
+> ![Path to save the original data](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/95.png>)
 
 **File format:**
 
@@ -416,9 +416,9 @@ Import：导入参数到 ScepterGUITool 中
 
 ## 3.5. Device Network Settings
 
-Click on the top menu bar![IP address setting](<../../zh-cn/ScepterGUITool/pic/IP address setting.png>), the device network setting page pops up.
+Click on the top menu bar![IP address setting](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/96.png>), the device network setting page pops up.
 
-![Device Setting Interface](<../../zh-cn/ScepterGUITool/pic/Device Setting Interface.png>)
+![Device Setting Interface](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/97.png>)
 
 ① **To set dynamic IP address:**
 
@@ -426,7 +426,7 @@ Obtain an IP address automatically(DHCP): Set the IP address of the device to th
 
 Step1: Choose “Obtain an IP address automatically (DHCP)”.
 
-![set camera DHCP](<../../zh-cn/ScepterGUITool/pic/set DHCP.png>)
+![set camera DHCP](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/98.png>)
 
 Step2: Click OK to save.
 
@@ -438,7 +438,7 @@ Use the following IP address：Set the IP address of the device to a fixed addre
 
 Step1: Select "Use the following IP address"
 
-![Use the following IP address](<../../zh-cn/ScepterGUITool/pic/Use the following IP address.png>)
+![Use the following IP address](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/99.png>)
 
 Step2: Change the IP address and subnet mask
 
@@ -452,7 +452,7 @@ By default, the camera does not have any time synchronization function. Set the 
 
 Step1: Select NTP Server address in the Time sync column.
 
-![NTP](<../../zh-cn/ScepterGUITool/pic/NTP.png>)
+![NTP](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/100.png>)
 
 Step2: Enter the address of the time synchronization server.
 
@@ -464,19 +464,19 @@ The camera defaults to no-turn-on dual-time function, and the camera PTP dual-ti
 
 Step1: Select PTP in the Time sync column.
 
-![PTP](<../../zh-cn/ScepterGUITool/pic/PTP.png>)
+![PTP](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/101.png>)
 
 Step2: Click Set to set successfully.
 
 ## 3.6. Firmware upgrade
 
-Click on the top menu bar![Upgrade](../../zh-cn/ScepterGUITool/pic/Upgrade.png), the firmware upgrade setting page pops up.
+Click on the top menu bar![Upgrade](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/102.png), the firmware upgrade setting page pops up.
 
-![Upgrade Firmware](<../../zh-cn/ScepterGUITool/pic/Upgrade Firmware.png>)
+![Upgrade Firmware](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/103.png>)
 
 Perform the following operations to upgrade firmware:
 
-1. Click![Path](../../zh-cn/ScepterGUITool/pic/Path.png),and select firmware.
+1. Click![Path](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/104.png),and select firmware.
 
 > The path cannot contain Chinese
 
@@ -494,7 +494,7 @@ Perform the following operations to upgrade firmware:
 
    ImageJ download address：<https://fiji.sc/>
 
-   ![ImageJ](../../zh-cn/ScepterGUITool/pic/ImageJ.png)
+   ![ImageJ](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/107.png)
 
    > You can use the LUT menu in ImageJ to add pseudo-color to the image, and adjust the effect through the menu Image->Adjust->Brightness/Contrast(**Ctrl+Shift+C**).
 
@@ -502,10 +502,10 @@ Perform the following operations to upgrade firmware:
 
    CloudCompare download address：<https://www.cloudcompare.org/>
 
-   ![CloudCompare](../../zh-cn/ScepterGUITool/pic/CloudCompare.png)
+   ![CloudCompare](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/108.png)
 
    The.txt format point cloud image saved by ScepterGUITool is pixel 0 to the last pixel from top to bottom, and the values of each line are the X, Y, Z values of the pixel in turn (the color point cloud saved by RGBD camera is X, Y, Z, R, G, B values in turn). The description is as follows:
 
-   ![.txt point cloud file](<../../zh-cn/ScepterGUITool/pic/txt point cloud file.png>)​
+   ![.txt point cloud file](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/109.png>)​
 
-   ![.txt color point cloud file](<../../zh-cn/ScepterGUITool/pic/txt color point cloud file.png>)​
+   ![.txt color point cloud file](<../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/110.png>)​

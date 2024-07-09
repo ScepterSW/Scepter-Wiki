@@ -22,7 +22,7 @@
 
 ## 2.2. Device Connection
 
-![Device Connection](../../zh-cn/ScepterGUITool/pic/DeviceConnection.png)
+![Device Connection](../../zh-cn/ScepterGUITool/DeviceConnection-asserts/01.png)
 
 <div class="center">
 
@@ -44,7 +44,7 @@ Direct connection: one end of the cable is connected to the camera, and the othe
 
 <div class="center">
 
-![DirectConnection-NoSwitchboard](../../zh-cn/ScepterGUITool/pic/DirectConnection-NoSwitchboard.png)
+![DirectConnection-NoSwitchboard](../../zh-cn/ScepterGUITool/DeviceConnection-asserts/02.png)
 
 </div>
 
@@ -52,7 +52,7 @@ Connection of multiple cameras: It should be noted that the default IP address o
 
 <div class="center">
 
-![Multi-CarmeraConnection](../../zh-cn/ScepterGUITool/pic/Multi-CarmeraConnection.png)
+![Multi-CarmeraConnection](../../zh-cn/ScepterGUITool/DeviceConnection-asserts/03.png)
 
 </div>
 <!-- tabs:start -->
@@ -61,19 +61,19 @@ Connection of multiple cameras: It should be noted that the default IP address o
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress1.png)
+![WindowsStaticAddress](DeviceConnection-asserts/01.png)
 
 </div>
 
 <div class="center">
 
-![WindowsStaticAddress](pic/WindowsStaticAddress2.png)
+![WindowsStaticAddress](DeviceConnection-asserts/02.png)
 
 </div>
 
 <div class="center">
 
-![WindowsStaticAddress](/pic/WindowsStaticAddress3.png)
+![WindowsStaticAddress](DeviceConnection-asserts/03.png)
 
 </div>
 
@@ -81,19 +81,19 @@ Connection of multiple cameras: It should be noted that the default IP address o
 
 <div class="center">
 
-![LinuxEditConnections](/pic/LinuxEditConnections1.png)
+![LinuxEditConnections](DeviceConnection-asserts/04.png)
 
 </div>
 
 <div class="center">
 
-![LinuxEdit](/pic/LinuxEdit2.png)
+![LinuxEdit](DeviceConnection-asserts/05.png)
 
 </div>
 
 <div class="center">
 
-![LinuxStaticAddress3](/pic/LinuxStaticAddress3.png)
+![LinuxStaticAddress3](DeviceConnection-asserts/06.png)
 
 </div>
 
@@ -105,7 +105,7 @@ Using DHCP connection mode, the camera need be connected to a router which DHCP 
 
 <div class="center">
 
-![DHCP-CarmeraConnection](pic/DHCP-CarmeraConnection.png)
+![DHCP-CarmeraConnection](DeviceConnection-asserts/07.png)
 
 </div>
 
@@ -115,7 +115,7 @@ Using DHCP connection mode, the camera need be connected to a router which DHCP 
 
 <div class="center">
 
-![DHCP](pic/WindowsDHCP.png)
+![DHCP](DeviceConnection-asserts/08.png)
 
 </div>
 
@@ -123,7 +123,7 @@ Using DHCP connection mode, the camera need be connected to a router which DHCP 
 
 <div class="center">
 
-![DHCP](pic/LinuxDHCP1.png)
+![DHCP](DeviceConnection-asserts/09.png)
 
 </div>
 

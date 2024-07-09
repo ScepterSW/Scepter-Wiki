@@ -8,7 +8,7 @@
 
 <div class="center">
 
-![三维视觉](pic/../pic/3dDepth.png)
+![三维视觉](3DTecIntroduction-asserts/01.png)
 
 </div>
 
@@ -16,7 +16,7 @@
 
 <div class="center">
 
-![色域](pic/nimg5.jpg)
+![色域](3DTecIntroduction-asserts/02.jpg)
 
 </div>
 

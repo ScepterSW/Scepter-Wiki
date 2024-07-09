@@ -8,13 +8,13 @@ ScepterGUITool 包含 ScepterGUITool 可执行文件及相关动态链接库。
 
 #### **Windows**
 
-![目录结构](pic/WindowsContents.png)
+![目录结构](FunctionIntroduction-asserts/01.png)
 
 > 在首次运行 ScepterGUITool 时，要为程序设置通过系统防火墙的权限，如下图所示。
 >
 > <div class="center">
 >
-> ![防火墙配置](pic/FirewallSetting.png)
+> ![防火墙配置](FunctionIntroduction-asserts/02.png)
 >
 > </div>
 
@@ -27,7 +27,7 @@ Open in Terminal 输入下面代码或者双击ScepterGUIToo打开。
 
 ```
 
-![目录结构](pic/LinuxContents.png)
+![目录结构](FunctionIntroduction-asserts/03.png)
 
 <!-- tabs:end -->
 
@@ -41,11 +41,11 @@ Open in Terminal 输入下面代码或者双击ScepterGUIToo打开。
 
 #### **Windows**
 
-![设备管理](pic/DeviceManage.png)
+![设备管理](FunctionIntroduction-asserts/04.png)
 
 #### **Linux**
 
-![设备管理](pic/DeviceManage_ubuntu.png)
+![设备管理](FunctionIntroduction-asserts/05.png)
 
 <!-- tabs:end -->
 
@@ -57,11 +57,11 @@ Open in Terminal 输入下面代码或者双击ScepterGUIToo打开。
 
 #### **Windows**
 
-![ScanDevice](pic/ScanDevice.png)
+![ScanDevice](FunctionIntroduction-asserts/06.png)
 
 #### **Linux**
 
-![ScanDevice](pic/ScanDevice_ubuntu.png)
+![ScanDevice](FunctionIntroduction-asserts/07.png)
 
 
 <!-- tabs:end -->
@@ -72,11 +72,11 @@ Open in Terminal 输入下面代码或者双击ScepterGUIToo打开。
 
 #### **Windows**
 
-![SelectDevice](pic/SelectDevice.png)
+![SelectDevice](FunctionIntroduction-asserts/08.png)
 
 #### **Linux**
 
-![SelectDevice](pic/SelectDevice_ubuntu.png)
+![SelectDevice](FunctionIntroduction-asserts/09.png)
 
 <!-- tabs:end -->
 
@@ -86,11 +86,11 @@ Open in Terminal 输入下面代码或者双击ScepterGUIToo打开。
 
 #### **Windows**
 
-![ConnectDevice](pic/ConnectDevice.png)
+![ConnectDevice](FunctionIntroduction-asserts/10.png)
 
 #### **Linux**
 
-![ConnectDevice](pic/ConnectDevice_ubuntu.png)
+![ConnectDevice](FunctionIntroduction-asserts/11.png)
 
 <!-- tabs:end -->
 
@@ -100,11 +100,11 @@ Open in Terminal 输入下面代码或者双击ScepterGUIToo打开。
 
 #### **Windows**
 
-![DeviceStreamOn](pic/DeviceStreamOn.png)
+![DeviceStreamOn](FunctionIntroduction-asserts/12.png)
 
 #### **Linux**
 
-![DeviceStreamOn](pic/DeviceStreamOn_ubuntu.png)
+![DeviceStreamOn](FunctionIntroduction-asserts/13.png)
 
 <!-- tabs:end -->
 
@@ -114,11 +114,11 @@ Open in Terminal 输入下面代码或者双击ScepterGUIToo打开。
 
 #### **Windows**
 
-![图像显现](pic/DisplayArea.png)
+![图像显现](FunctionIntroduction-asserts/14.png)
 
 #### **Linux**
 
-![图像显现](pic/DisplayArea_ubuntu.png)
+![图像显现](FunctionIntroduction-asserts/15.png)
 
 <!-- tabs:end -->
 
@@ -128,11 +128,11 @@ Open in Terminal 输入下面代码或者双击ScepterGUIToo打开。
 
 #### **Windows**
 
-![设备信息](<pic/Device information.png>)
+![设备信息](<FunctionIntroduction-asserts/16.png>)
 
 #### **Linux**
 
-![设备信息](<pic/Device information_ubuntu.png>)
+![设备信息](<FunctionIntroduction-asserts/17.png>)
 
 <!-- tabs:end -->
 
@@ -154,11 +154,11 @@ State：设备当前状态。
 
 #### **Windows**
 
-![设备断开](pic/DeviceStreamOff.png)
+![设备断开](FunctionIntroduction-asserts/18.png)
 
 #### **Linux**
 
-![设备断开](pic/DeviceStreamOff_ubuntu.png)
+![设备断开](FunctionIntroduction-asserts/19.png)
 
 <!-- tabs:end -->
 
@@ -174,15 +174,15 @@ State：设备当前状态。
 
 #### **Windows**
 
-![TabSelect](pic/TabSelect.png)
+![TabSelect](FunctionIntroduction-asserts/20.png)
 
-![显示区](pic/DisplayArea.png)
+![显示区](FunctionIntroduction-asserts/14.png)
 
 #### **Linux**
 
-![TabSelect](pic/TabSelect_ubuntu.png)
+![TabSelect](FunctionIntroduction-asserts/21.png)
 
-![显示区](pic/DisplayArea_ubuntu.png)
+![显示区](FunctionIntroduction-asserts/15.png)
 
 <!-- tabs:end -->
 
@@ -192,11 +192,11 @@ State：设备当前状态。
 
 深度图视窗可以通过下拉选项菜单选择深度图视窗、对齐到彩色像素空间的深度图视窗。
 
-![DepthImgToColorSensor](pic/DepthImgToColorSensor.png)
+![DepthImgToColorSensor](FunctionIntroduction-asserts/22.png)
 
 彩色图视窗可以通过下拉选项菜单选择彩色图视窗、对齐到深度像素空间的彩色图视窗、IR（红外）图视窗。
 
-![ColorImgToDepthSensor](pic/ColorImgToDepthSensor.png)
+![ColorImgToDepthSensor](FunctionIntroduction-asserts/23.png)
 
 <!-- tabs:start -->
 
@@ -206,7 +206,7 @@ State：设备当前状态。
 
 IR 视窗下显示数值为白点处实时像素点的灰度值，如图该点灰度值为 39 。
 
-![WhitePoint](pic/WhitePoint.png)
+![WhitePoint](FunctionIntroduction-asserts/24.png)
 
 #### **Linux**
 
@@ -214,7 +214,7 @@ IR 视窗下显示数值为白点处实时像素点的灰度值，如图该点�
 
 IR 视窗下显示数值为白点处实时像素点的灰度值，如图该点灰度值为 44 。
 
-![WhitePoint](pic/WhitePoint_ubuntu.png)
+![WhitePoint](FunctionIntroduction-asserts/25.png)
 
 <!-- tabs:end -->
 
@@ -224,13 +224,13 @@ IR 视窗下显示数值为白点处实时像素点的灰度值，如图该点�
 
 **1. DepthImgToColorSensor 和 Color 的对齐**
 
-![DepthImgToColorSensor](pic/DepthImgToColorSensor.png)
+![DepthImgToColorSensor](FunctionIntroduction-asserts/22.png)
 
 设定 Depth 图像对齐到 Color 域的功能。启用后将输出并显示 Depth 像素点对齐到 Color 像素空间的图像，即与 Color 像素逐一对应的 Depth 图像。
 
 #### 原理：
 
-![RGBD_Principle](pic/RGBD_Principle.gif)
+![RGBD_Principle](FunctionIntroduction-asserts/26.gif)
 
 Tof 镜头和 Color 摄像头二者有安装距离，所以从实际采集的图像上看存在视差。
 
@@ -242,13 +242,13 @@ Tof 镜头和 Color 摄像头二者有安装距离，所以从实际采集的图
 
 #### **Windows**
 
-| ![DepthImgToColorSensorImage](pic/DepthImgToColorSensorImage.png) | ![ColorImage](pic/ColorImage.png) |
+| ![DepthImgToColorSensorImage](FunctionIntroduction-asserts/27.png) | ![ColorImage](FunctionIntroduction-asserts/28.png) |
 | :---------------------------------------------------------------: | :-------------------------------: |
 |                        对齐后的 Depth 图像                        |            Color 图像             |
 
 #### **Linux**
 
-| ![DepthImgToColorSensorImage](pic/DepthImgToColorSensorImage_ubuntu.png) | ![ColorImage](pic/ColorImage_ubuntu.png) |
+| ![DepthImgToColorSensorImage](FunctionIntroduction-asserts/29.png) | ![ColorImage](FunctionIntroduction-asserts/30.png) |
 | :---------------------------------------------------------------: | :-------------------------------: |
 |                        对齐后的 Depth 图像                        |            Color 图像             |
 
@@ -256,7 +256,7 @@ Tof 镜头和 Color 摄像头二者有安装距离，所以从实际采集的图
 
 **2. ColorImgToDepthSensor 和 Depth 的对齐**
 
-![ColorImgToDepthSensor](pic/ColorImgToDepthSensor.png)
+![ColorImgToDepthSensor](FunctionIntroduction-asserts/23.png)
 
 设定 Color 图像对齐到 Depth 域的功能。启用后将输出并显示 Color 像素点对齐到 Depth 像素空间的图像，即与 Depth 像素逐一对应的 Color 图像。
 
@@ -264,13 +264,13 @@ Tof 镜头和 Color 摄像头二者有安装距离，所以从实际采集的图
 
 #### **Windows**
 
-| ![DepthImage](pic/DepthImage.png) | ![ColorImgToDepthSensorImage](pic/ColorImgToDepthSensorImage.png) |
+| ![DepthImage](FunctionIntroduction-asserts/31.png) | ![ColorImgToDepthSensorImage](FunctionIntroduction-asserts/32.png) |
 | :-------------------------------: | :---------------------------------------------------------------: |
 |            Depth 图像             |                        对齐后的 Color 图像                        |
 
 #### **Linux**
 
-| ![DepthImage](pic/DepthImage_ubuntu.png) | ![ColorImgToDepthSensorImage](pic/ColorImgToDepthSensorImage_ubuntu.png) |
+| ![DepthImage](FunctionIntroduction-asserts/33.png) | ![ColorImgToDepthSensorImage](FunctionIntroduction-asserts/34.png) |
 | :-------------------------------: | :---------------------------------------------------------------: |
 |            Depth 图像             |                        对齐后的 Color 图像                        |
 
@@ -285,13 +285,13 @@ Tof 镜头和 Color 摄像头二者有安装距离，所以从实际采集的图
 
 #### **Windows**
 
-| ![DepthImage](pic/DepthImage.png) | ![IRImage](pic/IRImage.png) |
+| ![DepthImage](FunctionIntroduction-asserts/31.png) | ![IRImage](FunctionIntroduction-asserts/35.png) |
 | :-------------------------------: | :-------------------------: |
 |            Depth 图像             |           IR 图像           |
 
 #### **Linux**
 
-| ![DepthImage](pic/DepthImage_ubuntu.png) | ![IRImage](pic/IRImage_ubuntu.png) |
+| ![DepthImage](FunctionIntroduction-asserts/33.png) | ![IRImage](FunctionIntroduction-asserts/36.png) |
 | :-------------------------------: | :-------------------------: |
 |            Depth 图像             |           IR 图像           |
 
@@ -301,7 +301,7 @@ Tof 镜头和 Color 摄像头二者有安装距离，所以从实际采集的图
 
 从标签页处选择 3D 可以显示点云，点云默认使用深度伪彩显示。
 
-![DepthPointCloudSelect](pic/DepthPointCloudSelect.png)
+![DepthPointCloudSelect](FunctionIntroduction-asserts/37.png)
 
 Depth Point Cloud：设定点云使用深度伪彩显示。
 
@@ -321,11 +321,11 @@ TransformedDepth Point Cloud + RGB：设定对齐到彩色像素空间的点云
 
 #### **Windows**
 
-![点云](pic/PointCloud.png)
+![点云](FunctionIntroduction-asserts/38.png)
 
 #### **Linux**
 
-![点云](pic/PointCloud_ubuntu.png)
+![点云](FunctionIntroduction-asserts/39.png)
 
 <!-- tabs:end -->
 
@@ -341,11 +341,11 @@ TransformedDepth Point Cloud + RGB：设定对齐到彩色像素空间的点云
 
 #### **Windows**
 
-![操作区](pic/OperationArea.png)
+![操作区](FunctionIntroduction-asserts/40.png)
 
 #### **Linux**
 
-![操作区](pic/OperationArea_ubuntu.png)
+![操作区](FunctionIntroduction-asserts/41.png)
 
 <!-- tabs:end -->
 
@@ -359,17 +359,17 @@ TransformedDepth Point Cloud + RGB：设定对齐到彩色像素空间的点云
 
 #### **Windows**
 
-![FrameRate](pic/FrameRate.png)
+![FrameRate](FunctionIntroduction-asserts/42.png)
 
 #### **Linux**
 
-![FrameRate](pic/FrameRate.png)
+![FrameRate](FunctionIntroduction-asserts/43.png)
 
 <!-- tabs:end -->
 
 ### 3.4.2 工作模式
 
-![工作模式](pic/WorkMode.png)
+![工作模式](FunctionIntroduction-asserts/44.png)
 
 ActiveMode：主动出图模式。
 
@@ -383,11 +383,11 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 #### **Windows**
 
-![硬触发模式](pic/HardwareTriggerMode.png)
+![硬触发模式](FunctionIntroduction-asserts/45.png)
 
 #### **Linux**
 
-![硬触发模式](pic/HardwareTriggerMode.png)
+![硬触发模式](FunctionIntroduction-asserts/46.png)
 
 <!-- tabs:end -->
 
@@ -397,11 +397,11 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 #### **Windows**
 
-![InputSignalParamsForHWTrigger](pic/InputSignalParamsForHWTrigger.png)
+![InputSignalParamsForHWTrigger](FunctionIntroduction-asserts/47.png)
 
 #### **Linux**
 
-![InputSignalParamsForHWTrigger](pic/InputSignalParamsForHWTrigger_ubuntu.png)
+![InputSignalParamsForHWTrigger](FunctionIntroduction-asserts/48.png)
 
 <!-- tabs:end -->
 
@@ -424,11 +424,11 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 #### **Windows**
 
-![软触发模式](pic/SoftwareTriggerMode.png)
+![软触发模式](FunctionIntroduction-asserts/49.png)
 
 #### **Linux**
 
-![软触发模式](pic/SoftwareTriggerMode_ubuntu.png)
+![软触发模式](FunctionIntroduction-asserts/50.png)
 
 <!-- tabs:end -->
 
@@ -442,17 +442,17 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 #### **Windows**
 
-![伪彩色图映射](pic/ColorMap.png)
+![伪彩色图映射](FunctionIntroduction-asserts/51.png)
 
 #### **Linux**
 
-![伪彩色图映射](pic/ColorMap_ubuntu.png)
+![伪彩色图映射](FunctionIntroduction-asserts/52.png)
 
 <!-- tabs:end -->
 
 深度图采用伪彩色图映射显示，将单通道 16 位的原始深度图在范围 ColorMap_Min 至 ColoMap_Max 的深度值线性映射到 0-255 的值域范围，再将单通道 8 位的深度图映射到伪彩色空间（即色度图）COLORMAP_RAINBOW，如下示意图：
 
-![色度图](pic/ChromaticityDiagram.png)
+![色度图](FunctionIntroduction-asserts/53.png)
 
 您可以通过调整 Range(mm) 下方的滑块控制条调整伪彩色图映射效果，如下图所示：
 
@@ -460,11 +460,11 @@ SoftwareTriggerMode：软触发模式，通过调用软件接口触发出图，�
 
 #### **Windows**
 
-![映射效果](pic/ColorMapEffect.png)
+![映射效果](FunctionIntroduction-asserts/54.png)
 
 #### **Linux**
 
-![映射效果](pic/ColorMapEffect.png)
+![映射效果](FunctionIntroduction-asserts/55.png)
 
 <!-- tabs:end -->
 
@@ -480,11 +480,11 @@ Manual：ToF 传感器设置为手动曝光，通过滑条对曝光时间进行�
 
 #### **Windows**
 
-![ToF 曝光时间](pic/ToFExposureTime.png)
+![ToF 曝光时间](FunctionIntroduction-asserts/56.png)
 
 #### **Linux**
 
-![ToF 曝光时间](pic/ToFExposureTime_ubuntu.png)
+![ToF 曝光时间](FunctionIntroduction-asserts/57.png)
 
 <!-- tabs:end -->
 
@@ -494,11 +494,11 @@ Auto：ToF 传感器设置为自动曝光，设备会根据图像距离进行曝
 
 #### **Windows**
 
-![ToF 自动曝光](pic/ToFAutoExposure.png)
+![ToF 自动曝光](FunctionIntroduction-asserts/58.png)
 
 #### **Linux**
 
-![ToF 自动曝光](pic/ToFAutoExposure_ubuntu.png)
+![ToF 自动曝光](FunctionIntroduction-asserts/59.png)
 
 <!-- tabs:end -->
 
@@ -508,11 +508,11 @@ Auto：ToF 传感器设置为自动曝光，设备会根据图像距离进行曝
 
 #### **Windows**
 
-![Filter button](<pic/Filter button.png>)
+![Filter button](<FunctionIntroduction-asserts/60.png>)
 
 #### **Linux**
 
-![Filter button](<pic/Filter button_ubuntu.png>)
+![Filter button](<FunctionIntroduction-asserts/61.png>)
 
 <!-- tabs:end -->
 
@@ -524,7 +524,7 @@ Auto：ToF 传感器设置为自动曝光，设备会根据图像距离进行曝
 
 Black BG：开启/关闭黑色背景，仅用于显示效果，对实际数值无影响。效果如下：
 
-| ![Black BG close](<pic/Black BG close.png>) | ![Black BG open](<pic/Black BG open.png>) |
+| ![Black BG close](<FunctionIntroduction-asserts/62.png>) | ![Black BG open](<FunctionIntroduction-asserts/63.png>) |
 | :-----------------------------------------: | :---------------------------------------: |
 |                Black BG 关闭                |               Black BG 开启               |
 
@@ -536,7 +536,7 @@ FillHole：数据填补，弥补部分空洞数据，默认开启。
 
 Spatial Filter：平滑滤波，减少平面噪声与抖动。默认关闭。
 
-| ![Spatial Filter close](<pic/Spatial Filter close.png>) | ![Spatial Filter open](<pic/Spatial Filter open.png>) |
+| ![Spatial Filter close](<FunctionIntroduction-asserts/64.png>) | ![Spatial Filter open](<FunctionIntroduction-asserts/65.png>) |
 | :-----------------------------------------------------: | :---------------------------------------------------: |
 |                   Spatial Filter 关闭                   |                  Spatial Filter 开启                  |
 
@@ -548,11 +548,11 @@ Time Filter：时间滤波，降低图像帧间抖动。默认开启，值越大
 
 #### **Windows**
 
-![Time Filter](<pic/Time Filter.png>)
+![Time Filter](<FunctionIntroduction-asserts/66.png>)
 
 #### **Linux**
 
-![Time Filter](<pic/Time Filter_ubuntu.png>)
+![Time Filter](<FunctionIntroduction-asserts/67.png>)
 
 <!-- tabs:end -->
 
@@ -564,15 +564,15 @@ Flying Pixel Filter：飞点消除滤波，消除边界的深度值飞点。默�
 
 #### **Windows**
 
-![Flying Pixel Filter](<pic/Flying Pixel Filter.png>)
+![Flying Pixel Filter](<FunctionIntroduction-asserts/68.png>)
 
 #### **Linux**
 
-![Flying Pixel Filter](<pic/Flying Pixel Filter_ubuntu.png>)
+![Flying Pixel Filter](<FunctionIntroduction-asserts/69.png>)
 
 <!-- tabs:end -->
 
-| ![Flying Pixel Filter close](<pic/Flying Pixel Filter close.png>) | ![Flying Pixel Filter value: 15](<pic/Flying Pixel Filter value 15.png>) |
+| ![Flying Pixel Filter close](<FunctionIntroduction-asserts/70.png>) | ![Flying Pixel Filter value: 15](<FunctionIntroduction-asserts/71.png>) |
 | :---------------------------------------------------------------: | :----------------------------------------------------------------------: |
 |                     Flying Pixel Filter 关闭                      |                       Flying Pixel Filter 值为 15                        |
 
@@ -582,23 +582,23 @@ Flying Pixel Filter：飞点消除滤波，消除边界的深度值飞点。默�
 
 #### **Windows**
 
-![Flying Pixel Filter](pic/ConfidenceFilter.png)
+![Flying Pixel Filter](FunctionIntroduction-asserts/72.png)
 
 #### **Linux**
 
-![Flying Pixel Filter](pic/ConfidenceFilter_ubuntu.png)
+![Flying Pixel Filter](FunctionIntroduction-asserts/73.png)
 
 <!-- tabs:end -->
 
 Confidence Filter：置信度滤波，消除信号质量较差点。默认开启，值越大，信号质量要求越高。
 
-| ![Confidence Filter value 15](<pic/Confidence Filter value 15.png>) | ![Confidence Filter value 50](<pic/Confidence Filter value 50.png>) |
+| ![Confidence Filter value 15](<FunctionIntroduction-asserts/74.png>) | ![Confidence Filter value 50](<FunctionIntroduction-asserts/75.png>) |
 | :-----------------------------------------------------------------: | :-----------------------------------------------------------------: |
 |                      Confidence Filter 值为 15                      |                      Confidence Filter 值为 50                      |
 
 ⑧ **HDR Mode**
 
-| ![Exposure58](pic/Exposure58.png) |   ![Exposure1000](pic/Exposure1000.png) |   ![HDR](pic/HDR.png) |
+| ![Exposure58](FunctionIntroduction-asserts/76.png) |   ![Exposure1000](FunctionIntroduction-asserts/77.png) |   ![HDR](FunctionIntroduction-asserts/78.png) |
 | :-------------------------------: | :-------------------------------------: | :-------------------: |
 |           曝光时间 58us           |             曝光时间 1000us             |       HDR 模式        |
 
@@ -610,11 +610,11 @@ HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时
 
 #### **Windows**
 
-![IR 图像增益](pic/IRGmmGain.png)
+![IR 图像增益](FunctionIntroduction-asserts/79.png)
 
 #### **Linux**
 
-![IR 图像增益](pic/IRGmmGain_ubuntu.png)
+![IR 图像增益](FunctionIntroduction-asserts/80.png)
 
 <!-- tabs:end -->
 
@@ -622,7 +622,7 @@ HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时
 
 设定 IR 图像的增益，通过更改传感器 Gamma 值参数调整图像亮度，表现为 Gamma Gain 值越高，IR 图像越亮。
 
-| ![GammaGain25](pic/GammaGain25.png) | ![GammaGain100](pic/GammaGain100.png) |
+| ![GammaGain25](FunctionIntroduction-asserts/81.png) | ![GammaGain100](FunctionIntroduction-asserts/82.png) |
 | :---------------------------------: | :-----------------------------------: |
 |          Gamma Gain 值 25           |           Gamma Gain 值 100           |
 
@@ -630,7 +630,7 @@ HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时
 
 设定 IR 图像校正的开关和增益，通过软件后处理调整图像亮度，表现为 Gamma Correction 值越高，IR 图像越亮。
 
-| ![GammaCorrectionOff](pic/GammaGain25.png) | ![GammaCorrection50](pic/GammaCorrection50.png) | ![GammaCorrection100](pic/GammaCorrection100.png) |
+| ![GammaCorrectionOff](FunctionIntroduction-asserts/82.png) | ![GammaCorrection50](FunctionIntroduction-asserts/83.png) | ![GammaCorrection100](FunctionIntroduction-asserts/84.png) |
 | :----------------------------------------: | :---------------------------------------------: | :-----------------------------------------------: |
 |           Gamma Correction 关闭            |             Gamma Correction 值 50              |              Gamma Correction 值 100              |
 
@@ -640,11 +640,11 @@ HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时
 
 #### **Windows**
 
-![彩色图像](pic/Color.png)
+![彩色图像](FunctionIntroduction-asserts/85.png)
 
 #### **Linux**
 
-![彩色图像](pic/Color_ubuntu.png)
+![彩色图像](FunctionIntroduction-asserts/86.png)
 
 <!-- tabs:end -->
 
@@ -654,11 +654,11 @@ HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时
 
 #### **Windows**
 
-![彩色图像分辨率](pic/ColorResolution.png)
+![彩色图像分辨率](FunctionIntroduction-asserts/87.png)
 
 #### **Linux**
 
-![彩色图像分辨率](pic/ColorResolution.png)
+![彩色图像分辨率](FunctionIntroduction-asserts/88.png)
 
 <!-- tabs:end -->
 
@@ -676,11 +676,11 @@ HDR(High Dynamic Range)即高动态范围功能通过设置多个不同曝光时
 
 #### **Windows**
 
-![彩色图像自动曝光](pic/ColorAutoExposure.png)
+![彩色图像自动曝光](FunctionIntroduction-asserts/89.png)
 
 #### **Linux**
 
-![彩色图像自动曝光](pic/ColorAutoExposure_ubuntu.png)
+![彩色图像自动曝光](FunctionIntroduction-asserts/90.png)
 
 <!-- tabs:end -->
 
@@ -696,11 +696,11 @@ AEC Max ExposureTime(us) ：设置相机自动曝光模式下的最大曝光时
 
 #### **Windows**
 
-![彩色图像手动曝光](pic/ColorManualExposureTime.png)
+![彩色图像手动曝光](FunctionIntroduction-asserts/91.png)
 
 #### **Linux**
 
-![彩色图像手动曝光](pic/ColorManualExposureTime_ubuntu.png)
+![彩色图像手动曝光](FunctionIntroduction-asserts/92.png)
 
 <!-- tabs:end -->
 
@@ -718,11 +718,11 @@ Gain(dB): 设置 Color 图像的亮度，通过滑条对 Gain 值进行手动调
 
 #### **Windows**
 
-![SaveButton](pic/SaveButton.png)
+![SaveButton](FunctionIntroduction-asserts/93.png)
 
 #### **Linux**
 
-![SaveButton](pic/SaveButton.png)
+![SaveButton](FunctionIntroduction-asserts/94.png)
 
 <!-- tabs:end -->
 
@@ -734,7 +734,7 @@ Snapshot：保存一帧当前所有显示区域的图像。如果显示区域未
 
 > 保存的所有图像/点云会存储在同一文件夹，文件夹以当前时间命名，存放在 ScepterGUITool.exe 的同级目录下的 SaveImage 文件夹中。如下图目录所示：
 >
-> ![Path to save the original data](<pic/Path to save the original data.png>)
+> ![Path to save the original data](<FunctionIntroduction-asserts/95.png>)
 
 **文件格式：**
 
@@ -750,7 +750,7 @@ PointCloud 数据以 txt 格式保存，每行数据表示一个点的三维坐�
 
 <!-- ### 3.4.7. 导出、导入参数
 
-![DeviceParams](pic/DeviceParams.png)
+![DeviceParams](FunctionIntroduction-asserts/DeviceParams.png)
 
 Export：导出通过 ScepterGUITool 设置的参数
 
@@ -760,9 +760,9 @@ Import：导入参数到 ScepterGUITool 中
 
 ## 3.5. 设备网络设置
 
-点击顶部菜单栏![IP 设置](<pic/IP address setting.png>)，弹出设备网络设置页面。
+点击顶部菜单栏![IP 设置](<FunctionIntroduction-asserts/96.png>)，弹出设备网络设置页面。
 
-![Device Setting Interface](<pic/Device Setting Interface.png>)
+![Device Setting Interface](<FunctionIntroduction-asserts/97.png>)
 
 ① **设置动态 IP：**
 
@@ -774,7 +774,7 @@ Step1:  选择“Obtain an IP address automatically（DHCP）”。
 
 #### **Windows**
 
-![set camera DHCP](<pic/set DHCP.png>)
+![set camera DHCP](<FunctionIntroduction-asserts/98.png>)
 
 
 <!-- tabs:end -->
@@ -793,7 +793,7 @@ Step1:  选择“Use the following IP address”。
 
 #### **Windows**
 
-![Use the following IP address](<pic/Use the following IP address.png>)
+![Use the following IP address](<FunctionIntroduction-asserts/99.png>)
 
 
 <!-- tabs:end -->
@@ -814,7 +814,7 @@ Step1: 在 Time sync 一栏选择 NTP Server address。
 
 #### **Windows**
 
-![NTP](pic/NTP.png)
+![NTP](FunctionIntroduction-asserts/100.png)
 
 <!-- tabs:end -->
 
@@ -832,8 +832,7 @@ Step1: 在 Time sync 一栏选择 PTP。
 
 #### **Windows**
 
-![PTP](pic/PTP.png)
-
+![PTP](FunctionIntroduction-asserts/101.png)
 
 <!-- tabs:end -->
 
@@ -841,17 +840,17 @@ Step2: 点击Set设置成功。
 
 ## 3.6. 设备固件升级
 
-点击顶部菜单栏![设备固件升级](pic/Upgrade.png)，进入设备固件升级设置页面。
+点击顶部菜单栏![设备固件升级](FunctionIntroduction-asserts/102.png)，进入设备固件升级设置页面。
 
 <!-- tabs:start -->
 
 #### **Windows**
 
-![Upgrade Firmware](<pic/Upgrade Firmware.png>)
+![Upgrade Firmware](<FunctionIntroduction-asserts/103.png>)
 
 设备固件升级操作方法：
 
-1.  点击![Path](pic/Path.png)，选择固件镜像。
+1.  点击![Path](FunctionIntroduction-asserts/104.png)，选择固件镜像。
 
 > 暂不支持中文路径
 
@@ -863,11 +862,11 @@ Step2: 点击Set设置成功。
 
 #### **Linux**
 
-![Upgrade Firmware](<pic/Upgrade Firmware_ubuntu.png>)
+![Upgrade Firmware](<FunctionIntroduction-asserts/105.png>)
 
 设备固件升级操作方法：
 
-1.  点击![Path](pic/Path_ubuntu.png)，选择固件镜像。
+1.  点击![Path](FunctionIntroduction-asserts/106.png)，选择固件镜像。
 
 > 暂不支持中文路径
 
@@ -890,7 +889,7 @@ Step2: 点击Set设置成功。
 
    ImageJ 下载地址：<https://fiji.sc/>
 
-   ![ImageJ](pic/ImageJ.png)
+   ![ImageJ](FunctionIntroduction-asserts/107.png)
 
    > 可以使用 ImageJ 中的 LUT 菜单给图片添加伪彩色，并通过菜单 Image->Adjust->Brightness/Contrast(**Ctrl+Shift+C**)进行效果的调整。
 
@@ -898,10 +897,10 @@ Step2: 点击Set设置成功。
 
    CloudCompare 下载地址：<https://www.cloudcompare.org/>
 
-   ![CloudCompare](pic/CloudCompare.png)
+   ![CloudCompare](FunctionIntroduction-asserts/108.png)
 
    ScepterGUITool 保存的.txt 格式点云图，从上到下行依次为 pixel 0 至最后一个 pixel，每一行的数值依次为该 pixel 的 X,Y,Z 值(RGBD 相机保存的彩色点云依次为 X,Y,Z,R,G,B 值)，说明如下：
 
-   ![.txt point cloud file](<pic/txt point cloud file.png>)​
+   ![.txt point cloud file](<FunctionIntroduction-asserts/109.png>)​
 
-   ![.txt color point cloud file](<pic/txt color point cloud file.png>)​
+   ![.txt color point cloud file](<FunctionIntroduction-asserts/110.png>)​

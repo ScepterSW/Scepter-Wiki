@@ -1,6 +1,6 @@
 # 1. 概述
 
-![ScepterGUITool](pic/ScepterGUITool.png)
+![ScepterGUITool](Overview-asserts/01.png)
 
 ScepterGUITool 是基于 Scepter SDK 开发的图形界面工具，提供 Depth 图像彩色映射显示、3D 点云显示、滤波参数调节、设备参数设置以及 RGB & Depth 对齐等功能，并且可以通过设置页面对设备进行 IP 地址设置与固件升级操作。
 
@@ -8,7 +8,7 @@ ScepterGUITool 是基于 Scepter SDK 开发的图形界面工具，提供 Depth 
 >
 > <div class="center">
 >
-> ![Two GUI Open](<pic/Two GUI Open.png>)
+> ![Two GUI Open](<Overview-asserts/02.png>)
 >
 > </div>
 
@@ -36,17 +36,17 @@ ScepterGUITool 下载链接：
 git clone https://github.com/ScepterSW/ScepterGUITool
 ```
 
-![git clone http](<pic/git clone http.png>)
+![git clone http](<Overview-asserts/03.png>)
 
 ② 打开终端，输入复制代码回车，等待下载完成。
 
-![git clone GUITool.png](<pic/git clone GUITool.png>)
+![git clone GUITool.png](<Overview-asserts/04.png>)
 
 #### **方式二**
 
 打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterGUIToo 工具压缩包下载到本地。
 
-![GitHub GUITooL](<pic/GitHub GUITooL.png>)
+![GitHub GUITooL](<Overview-asserts/05.png>)
 
 <!-- tabs:end -->
 

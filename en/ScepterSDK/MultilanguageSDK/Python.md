@@ -6,7 +6,7 @@
 
 The Python SDK directory structure is as follows:
 
-![PythonContents](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonContents.png)
+![PythonContents](../../../zh-cn/ScepterSDK/MultilanguageSDK/Python-asserts/01.png)
 
 <!-- - API：主要包含 SDK 的通用头文件：Scepter_api.py，Scepter_define.py，Scepter_enums.py，Scepter_types.py。 -->
 
@@ -85,7 +85,7 @@ The base sample is used to demonstrate the single feature of basic APIs. In orde
 
 Open device, image acquisition, software/hardware trigger, point cloud store are all included in the SDK example codes.
 
-![PythonSamples](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonSamples.png)
+![PythonSamples](../../../zh-cn/ScepterSDK/MultilanguageSDK/Python-asserts/02.png)
 
 <!-- 接下来，我们将详细介绍每个例程的Function。 -->
 
@@ -128,7 +128,7 @@ Take a single routine of a single product as an example to demonstrate the proce
 
 1. Select the corresponding sample according to the actual product. Take the NYX650 product to compile DeviceConnectBySN as an example:
 
-   ![PythonDeviceConnectBySN](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonDeviceConnectBySN.png)
+   ![PythonDeviceConnectBySN](../../../zh-cn/ScepterSDK/MultilanguageSDK/Python-asserts/03.png)
 
 <!-- 2. 编译完成，调试运行。 -->
 
@@ -143,7 +143,7 @@ Take a single routine of a single product as an example to demonstrate the proce
 
    The results are as follows:
 
-   ![PythonDeviceConnectBySNResult](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonDeviceConnectBySNResult.png)
+   ![PythonDeviceConnectBySNResult](../../../zh-cn/ScepterSDK/MultilanguageSDK/Python-asserts/04.png)
 
 ## 3.1.4. OpenCV Samples
 
@@ -163,7 +163,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 2. Select the corresponding sample according to the actual product, taking NYX650 as an example
 
-   ![PythonOpenCV](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonOpenCV.png)
+   ![PythonOpenCV](../../../zh-cn/ScepterSDK/MultilanguageSDK/Python-asserts/05.png)
 
 <!-- 3. 运行 OpenCV 显示例程 -->
 
@@ -174,7 +174,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
    python FrameViewer.py
    ```
 
-   ![PythonOpenCVResult](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/PythonOpenCVResult.png)
+   ![PythonOpenCVResult](../../../zh-cn/ScepterSDK/MultilanguageSDK/Python-asserts/06.png)
 
 ## 3.1.5. API Introduction
 
@@ -486,7 +486,7 @@ class ScSensorIntrinsicParameters(Structure):
 
 The external parameters R and T of the camera are used to align depth with RGB images. The reference formula is as follows:
 
-![ScSensorExtrinsicParameters](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/ScSensorExtrinsicParameters.png)
+![ScSensorExtrinsicParameters](../../../zh-cn/ScepterSDK/MultilanguageSDK/Python-asserts/07.png)
 
 **Members：**
 

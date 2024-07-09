@@ -1,6 +1,6 @@
 # 1. Overview
 
-![ScepterGUITool](../../zh-cn/ScepterGUITool/pic/ScepterGUITool.png)
+![ScepterGUITool](../../zh-cn/ScepterGUITool/Overview-asserts/01.png)
 
 ScepterGUITool is a graphical interface tool based on Scepter SDK, which provides functions such as depth image color mapping display, 3D point cloud display, filter parameter adjustment, device parameter setting and RGB & depth alignment. You can also set the IP address and upgrade the firmware of the device through the setting page.
 
@@ -8,7 +8,7 @@ ScepterGUITool is a graphical interface tool based on Scepter SDK, which provide
 >
 > <div class="center">
 >
-> ![Two GUI Open](<../../zh-cn/ScepterGUITool/pic/Two GUI Open.png>)
+> ![Two GUI Open](<../../zh-cn/ScepterGUITool/Overview-asserts/02.png>)
 >
 > </div>
 
@@ -36,17 +36,17 @@ Method 2: Download the compressed package locally.
 git clone https://github.com/ScepterSW/ScepterGUITool
 ```
 
-![git clone http](<../../zh-cn/ScepterGUITool/pic/git clone http.png>)
+![git clone http](<../../zh-cn/ScepterGUITool/Overview-asserts/03.png>)
 
 ② Open the terminal, enter the copied code and press Enter, and wait for the download to complete.
 
-![git clone GUITool.png](<../../zh-cn/ScepterGUITool/pic/git clone GUITool.png>)
+![git clone GUITool.png](<../../zh-cn/ScepterGUITool/Overview-asserts/04.png>)
 
 #### **Method 2**
 
 Open the download link, click Code, and then click Download ZIP to download the ScepterGUITool compressed package locally.
 
-![GitHub GUITooL](<../../zh-cn/ScepterGUITool/pic/GitHub GUITooL.png>)
+![GitHub GUITooL](<../../zh-cn/ScepterGUITool/Overview-asserts/05.png>)
 
 <!-- tabs:end -->
 

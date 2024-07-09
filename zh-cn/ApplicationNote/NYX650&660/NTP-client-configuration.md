@@ -12,7 +12,7 @@
 
 网络时钟协议（NTP）是一种基于UDP协议的协议，用于同步计算机系统的时钟。它是由David Mills在1985年创造的，目前已成为广泛应用于互联网的标准协议。NTP使用树形结构来实现时间同步。它分为时钟源和时钟客户端两个角色，时钟源提供时间标准，时钟客户端通过和时钟源通信来同步本地时钟，也就是最典型的C/S方式。
 
-![ntp-1](assets/ntp-1.jpg)
+![ntp-1](NTP-client-configuration-assets/01.jpg)
 
 如上图所示，Client首先向Server发送一个NTP包，其中包含了该包离开Client的时间戳T1，当Server接收到该包时，依次填入包到达的时间戳T2、包离开的时间戳T3，然后立即把包返回给Client。Client在接收到响应包时，记录包返回的时间戳T4。Client用上述4个时间参数就能够计算出2个关键参数：NTP包的往返延迟d和Client与Server之间的时钟偏差t。Client使用时钟偏差来调整本地时钟，以使其Client和Server时间一致。
 
@@ -34,15 +34,15 @@ NTP Server有多种不同存在的形态，如Windows or Linux工控机，专用
 
 win+r打开运行窗口，输入regedit，点击确定。
 
-![ntp-win-1](assets/ntp-win-1.png)
+![ntp-win-1](NTP-client-configuration-assets/02.png)
 
 修改第一个注册表值，目录\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Config，AnnounceFlags值改为5。
 
-![ntp-win-2](assets/ntp-win-2.png)
+![ntp-win-2](NTP-client-configuration-assets/03.png)
 
 修改第二个注册表值，目录\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\NtpServer，Enabled值改为1。
 
-![ntp-win-3](assets/ntp-win-3.png)
+![ntp-win-3](NTP-client-configuration-assets/04.png)
 
 运行Windows powershell(管理员)，并依次执行如下命令：
 
@@ -167,7 +167,7 @@ ntp-test-server：服务器别名
 
 连接成功后，打开Network页面。
 
-![ntp-1](assets/ntp-2.png)
+![ntp-1](NTP-client-configuration-assets/05.png)
 
 勾选NTP使能，并将NTP Server的局域网地址填入，点击Set设置成功。
 

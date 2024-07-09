@@ -2,7 +2,7 @@
 
 ScepterSDK 是基于 3D ToF 相机提供的软件开发包，该开发包目前适用于 Windows、Linux、ARM Linux 操作系统，为应用开发者提供一系列友好的 API 和应用示例程序。用户基于该开发包，可获取高精度的深度数据信息、灰度图像信息和彩色图像信息，方便用户开发刷脸支付、手势识别、投影触控、人脸识别、疲劳检测、三维重建、导航避障等 3D 应用。
 
-![ScepterSDK](pic/ScepterSDK.png)
+![ScepterSDK](Overview-asserts/01.png)
 
 ScepterSDK 下载链接：
 
@@ -28,11 +28,11 @@ ScepterSDK 下载链接：
 git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
-![git clone SDK http](<pic/git clone SDK http.png>)
+![git clone SDK http](<Overview-asserts/02.png>)
 
 ② 打开终端，输入复制代码回车，等待下载完成。
 
-![git clone ScepterSDK](<pic/git clone ScepterSDK.png>)
+![git clone ScepterSDK](<Overview-asserts/03.png>)
 
 #### **方式二**
 
@@ -40,13 +40,13 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
 如需在 Ubuntu 系统下使用，请确保下载后的压缩包是在 Ubuntu 系统下解压，请勿在 Windows 系统解压后复制使用。
 
-![GitHub ScepterSDK](<pic/GitHub ScepterSDK.png>)
+![GitHub ScepterSDK](<Overview-asserts/04.png>)
 
 <!-- tabs:end -->
 
 **SDK 主目录介绍**
 
-![ScepterSDK Content](<pic/ScepterSDK Content.png>)
+![ScepterSDK Content](<Overview-asserts/05.png>)
 
 ScepterSDK 提供的多平台和开发语言的开发包，包含如下内容：
 

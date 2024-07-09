@@ -4,7 +4,7 @@
 
 Python SDK 目录结构如下：
 
-![PythonContents](pic/PythonContents.png)
+![PythonContents](Python-asserts/01.png)
 
 - API：主要包含 SDK 的通用头文件：Scepter_api.py，Scepter_define.py，Scepter_enums.py，Scepter_types.py。
 
@@ -69,7 +69,7 @@ else:
 
 例程包含打开图像数据流、图像获取、软/硬触发、点云转换与保存等 API 接口的使用。
 
-![PythonSamples](pic/PythonSamples.png)
+![PythonSamples](Python-asserts/02.png)
 
 接下来，我们将详细介绍每个例程的功能。
 
@@ -101,7 +101,7 @@ TransformDepthImgToColorSensorFrame             #将深度图像对齐到设备�
 
 1. 根据实际产品选择对应的 sample，以 NYX650 产品编译 DeviceConnectBySN 为例
 
-   ![PythonDeviceConnectBySN](pic/PythonDeviceConnectBySN.png)
+   ![PythonDeviceConnectBySN](Python-asserts/03.png)
 
 2. 编译完成，调试运行。
 
@@ -112,7 +112,7 @@ TransformDepthImgToColorSensorFrame             #将深度图像对齐到设备�
 
    结果如下图：
 
-   ![PythonDeviceConnectBySNResult](pic/PythonDeviceConnectBySNResult.png)
+   ![PythonDeviceConnectBySNResult](Python-asserts/04.png)
 
 ## 3.1.4. OpenCV 例程
 
@@ -126,7 +126,7 @@ OpenCV 例程用于展示如何搭配第三方库使用 Scepter SDK。例程使�
 
 2. 根据实际产品选择对应的 sample，以 NYX650 为例
 
-   ![PythonOpenCV](pic/PythonOpenCV.png)
+   ![PythonOpenCV](Python-asserts/05.png)
 
 3. 运行 OpenCV 显示例程
 
@@ -135,7 +135,7 @@ OpenCV 例程用于展示如何搭配第三方库使用 Scepter SDK。例程使�
    python FrameViewer.py
    ```
 
-   ![PythonOpenCVResult](pic/PythonOpenCVResult.png)
+   ![PythonOpenCVResult](Python-asserts/06.png)
 
 ## 3.1.5. API 参考
 
@@ -435,7 +435,7 @@ class ScSensorIntrinsicParameters(Structure):
 
 相机外参 R 与 T，用于 depth 与 rgb 图像的对齐，参考公式如下:
 
-![ScSensorExtrinsicParameters](pic/ScSensorExtrinsicParameters.png)
+![ScSensorExtrinsicParameters](Python-asserts/07.png)
 
 **成员：**
 

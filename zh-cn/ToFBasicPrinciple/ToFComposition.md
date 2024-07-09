@@ -4,7 +4,7 @@ ToF 相机是指以光学系统为接受路径的面阵非扫描式 3D 成像深
 
 <div class="center">
 
-![ToF 相机的组成](pic/CalculationUnit.gif)
+![ToF 相机的组成](ToFComposition-asserts/01.gif)
 
 </div>
 

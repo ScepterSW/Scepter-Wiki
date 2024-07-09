@@ -44,11 +44,11 @@ Scepter 软件开发包介绍
 
   * [3.2. CSharp](zh-cn/ScepterSDK/MultilanguageSDK/CSharp.md)
 
-* [4. 3rd-Party Plugin](zh-cn/ScepterSDK/3rd-Party%20Plugin/Overview.md)
+* [4. 3rd-Party Plugin](zh-cn/ScepterSDK/3rd-Party-Plugin/Overview.md)
 
-  - [4.1. ROS](zh-cn/ScepterSDK/3rd-Party%20Plugin/ROS.md)
+  - [4.1. ROS](zh-cn/ScepterSDK/3rd-Party-Plugin/ROS.md)
 
-  * [4.2. ROS2](zh-cn/ScepterSDK/3rd-Party%20Plugin/ROS2.md)
+  * [4.2. ROS2](zh-cn/ScepterSDK/3rd-Party-Plugin/ROS2.md)
 
 - [5. FAQ](zh-cn/ScepterSDK/FAQ.md)
 
@@ -56,20 +56,20 @@ Scepter 软件开发包介绍
 
 - [1. NYX650/660](javascript:;)
 
-  - [1.1. 深度质量测试](zh-cn/ApplicationNote/NYX650&660/Depth%20Quality%20Test.md)
+  - [1.1. 深度质量测试](zh-cn/ApplicationNote/NYX650&660/Depth-Quality-Test.md)
 
-  * [1.2. AGV 场景测试数据](zh-cn/ApplicationNote/NYX650&660/AGV%20scene%20Testing%20Data.md)
+  * [1.2. AGV 场景测试数据](zh-cn/ApplicationNote/NYX650&660/AGV-scene-Testing-Data.md)
 
-  - [1.3. 多机共存](zh-cn/ApplicationNote/NYX650&660/Multi-Cameras%20Coexist.md)
+  - [1.3. 多机共存](zh-cn/ApplicationNote/NYX650&660/Multi-Cameras-Coexist.md)
 
   * [1.4. NTP设置使用方法](zh-cn/ApplicationNote/NYX650&660/NTP-client-configuration.md)
 
 * [2. DS86/87](javascript:;)
 
-  - [2.1. 深度质量测试](zh-cn/ApplicationNote/DS86&87/Depth%20Quality%20Test.md)
+  - [2.1. 深度质量测试](zh-cn/ApplicationNote/DS86&87/Depth-Quality-Test.md)
 
-  * [2.2. AGV 场景测试数据](zh-cn/ApplicationNote/DS86&87/AGV%20scene%20Testing%20Data.md)
+  * [2.2. AGV 场景测试数据](zh-cn/ApplicationNote/DS86&87/AGV-scene-Testing-Data.md)
 
-  - [2.3. HDR 模式](zh-cn/ApplicationNote/DS86&87/HDR%20Mode.md)
+  - [2.3. HDR 模式](zh-cn/ApplicationNote/DS86&87/HDR-Mode.md)
 
-  * [2.4. 多机共存](zh-cn/ApplicationNote/DS86&87/Multi-Cameras%20Coexist.md)
+  * [2.4. 多机共存](zh-cn/ApplicationNote/DS86&87/Multi-Cameras-Coexist.md)

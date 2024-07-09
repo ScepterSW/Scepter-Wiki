@@ -12,7 +12,7 @@ For Linux, default location: /home/\<user name>/.config/Scepter/Log
 
 The point cloud format output by SDK is the X, Y, and Z values from the first pixel to the last pixel of the current frame, output in float type, and the unit is mm. The description is as follows:
 
-![SDK output pointcloud](<../../zh-cn/ScepterSDK/pic/SDK output pointcloud.png>)
+![SDK output pointcloud](<../../zh-cn/ScepterSDK/FAQ-asserts/01.png>)
 
 ## 5.3. ScepterSDK cannot search the camera
 

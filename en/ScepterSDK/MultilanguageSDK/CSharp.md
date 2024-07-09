@@ -6,7 +6,7 @@
 
 The CSharp SDK directory structure is as follows:
 
-![CSharpContents](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/CSharpContents.png)
+![CSharpContents](../../../zh-cn/ScepterSDK/MultilanguageSDK/CSharp-asserts/01.png)
 
 <!-- - Bin：目录主要包含 SDK 的动态链接库，如 Scepter_CSharp.dll，包括 x64 和 x86 的版本，运行基于该 SDK 开发的应用之前，需要先将相应平台的 dll 文件拷贝到可执行程序所在的目录。 -->
 
@@ -58,7 +58,7 @@ Run the **ScepterSDK/C#/install.py**.
 python install.py x64
 ```
 
-![CSharpInstall](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/CSharpInstall.png)
+![CSharpInstall](../../../zh-cn/ScepterSDK/MultilanguageSDK/CSharp-asserts/02.png)
 
 #### **Method 2**
 
@@ -78,7 +78,7 @@ The base sample is used to demonstrate the single feature of basic APIs. In orde
 
 Open device, image acquisition, software/hardware trigger, point cloud store are all included in the SDK example codes.
 
-![CSharpSamples](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/CSharpSamples.png)
+![CSharpSamples](../../../zh-cn/ScepterSDK/MultilanguageSDK/CSharp-asserts/03.png)
 
 <!-- 接下来，我们将详细介绍每个例程的Function。 -->
 
@@ -129,13 +129,13 @@ Take a single routine of a single product as an example to demonstrate the proce
 
    ② Click the "Debug" button in the menu bar, and select "Start Debugging" in the drop-down bar or use the shortcut key "F5" to compile and run the project.
 
-   ![CsharpDeviceConnectBySN](pic/CsharpDeviceConnectBySN.png)
+   ![CsharpDeviceConnectBySN](CSharp-asserts/01.png)
 
 <!-- 2. 编译完成，调试运行。结果如下图： -->
 
 2. After compilation is complete, debug and run. The results are as follows:
 
-   ![CsharpDeviceConnectBySNResult](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/CsharpDeviceConnectBySNResult.png)
+   ![CsharpDeviceConnectBySNResult](../../../zh-cn/ScepterSDK/MultilanguageSDK/CSharp-asserts/05.png)
 
 ## 3.2.4. API Introduction
 
@@ -439,7 +439,7 @@ typedef struct
 
 The external parameters R and T of the camera are used to align depth with RGB images. The reference formula is as follows:
 
-![ScSensorExtrinsicParameters](../../../zh-cn/ScepterSDK/MultilanguageSDK/pic/ScSensorExtrinsicParameters.png)
+![ScSensorExtrinsicParameters](../../../zh-cn/ScepterSDK/MultilanguageSDK/CSharp-asserts/06.png)
 
 **Members：**
 

@@ -4,7 +4,7 @@ ToF 3D 相机技术按照具体的实现方式，又可以分为 iToF（indirect
 
 <div class="center">
 
-![ToF相机分类](pic/Classification.jpg)
+![ToF相机分类](ToFPrinciple-asserts/01.jpg)
 
 </div>
 
@@ -16,7 +16,7 @@ dToF (direct time-of-flight) ，即直接飞行时间测距法，通过内部定
 
 <div class="center">
 
-![dToF与房子](pic/dToF.gif)
+![dToF与房子](ToFPrinciple-asserts/02.gif)
 
 </div>
 
@@ -26,7 +26,7 @@ dToF (direct time-of-flight) ，即直接飞行时间测距法，通过内部定
 
 <div class="center">
 
-![CW iToF与橘子](pic/CWToF.gif)
+![CW iToF与橘子](ToFPrinciple-asserts/03.gif)
 
 </div>
 
@@ -40,7 +40,7 @@ dToF (direct time-of-flight) ，即直接飞行时间测距法，通过内部定
 
 <div class="center">
 
-![pToF与橘子](pic/pToF.gif)
+![pToF与橘子](ToFPrinciple-asserts/04.gif)
 
 </div>
 

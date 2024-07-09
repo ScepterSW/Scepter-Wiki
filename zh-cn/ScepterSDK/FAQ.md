@@ -10,7 +10,7 @@ Linux 上默认日志路径： /home/\<user name>/.config/Scepter/Log
 
 SDK 输出的点云格式为从当前帧的第一个 pixel 至最后一个 pixel 的 X,Y,Z 值，以 float 型输出，单位是 mm，说明如下：
 
-![SDK output pointcloud](<pic/SDK output pointcloud.png>)
+![SDK output pointcloud](<FAQ-asserts/01.png>)
 
 ## 5.3. 无法打开相机的排查步骤
 

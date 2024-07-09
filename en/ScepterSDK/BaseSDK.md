@@ -14,7 +14,7 @@ BaseSDK includes Windows, Ubuntu 16.04, Ubuntu 18.04, and AArch64 development ki
 
 The Windows directory contains the personal computer platform (x86 \_ 64) Windows PC development kit, using the standard compiler Visual Studio 2017.
 
-![WindowsContents](../../zh-cn/ScepterSDK/pic/Windows/Contents.png)
+![WindowsContents](../../zh-cn/ScepterSDK/BaseSDK-asserts/01.png)
 
 <!-- - Bin：目录主要包含 SDK 的动态链接库，如 Scepter_api.dll，包括 x64 和 x86 的版本，运行基于该 SDK 开发的应用之前，需要先将相应平台的 dll 文件拷贝到可执行程序所在的目录。 -->
 
@@ -58,8 +58,7 @@ Ubuntu18.04 directory contains the Personal Computer Platform (x86_64) Ubuntu18.
 
 Ubuntu18.04 SDK package is compatible with Ubuntu20.04, Ubuntu22.04.
 
-![UbuntuContents](../../zh-cn/ScepterSDK/pic/Ubuntu/Contents.png)
-
+![UbuntuContents](../../zh-cn/ScepterSDK/BaseSDK-asserts/02.png)
 <!-- - Include：主要包含 SDK 的通用头文件：Scepter_api.h，Scepter_define.h，Scepter_enums.h，Scepter_types.h。 -->
 
 - Include：includes the common header files of SDK:Scepter_api.h，Scepter_define.h，Scepter_enums.h，Scepter_types.h.
@@ -90,7 +89,7 @@ Ubuntu18.04 SDK package is compatible with Ubuntu20.04, Ubuntu22.04.
 
 AArch64 directory contains the 64-bit Arm-Linux development package, using the standard compiler aarch64-linux-gnu(v7.5.0).
 
-![AArch64Contents](../../zh-cn/ScepterSDK/pic/AArch64/Contents.png)
+![AArch64Contents](../../zh-cn/ScepterSDK/BaseSDK-asserts/03.png)
 
 <!-- - Include：主要包含 SDK 的通用头文件：Scepter_api.h，Scepter_define.h，Scepter_enums.h，Scepter_types.h。 -->
 
@@ -144,7 +143,7 @@ The second method is to set the attribute value of C/C++ and linker.
 
 Open the project property, insert the Include path of ScepterSDK to [Include Directories].The Lib path also need be added in [Library Directories].
 
-![项目配置](pic/Windows/ProjectConfiguration1.png)
+![项目配置](BaseSDK-asserts/01.png)
 
 #### **Method 2**
 
@@ -152,13 +151,13 @@ Open the project property, insert the Include path of ScepterSDK to [Include Dir
 
 Open the project property, insert the Include path of ScepterSDK to [Include Directories].
 
-![项目配置](pic/Windows/ProjectConfiguration4.png)
+![项目配置](BaseSDK-asserts/02.png)
 
 <!-- 将 Lib 目录添加到附加库目录中。 -->
 
 The Lib path also need be added in [Library Directories].
 
-![项目配置](pic/Windows/ProjectConfiguration5.png)
+![项目配置](BaseSDK-asserts/03.png)
 
 <!-- tabs:end -->
 
@@ -166,13 +165,13 @@ The Lib path also need be added in [Library Directories].
 
 Additionally, it needs to add the Scepter_api.lib to [Additional Dependencies].
 
-![项目配置](pic/Windows/ProjectConfiguration2.png)
+![项目配置](BaseSDK-asserts/04.png)
 
 <!-- 依据开发环境(x64/x86)将 SDK 的 Bin 文件夹中 x64/x86 下的所有文件拷贝到项目工程指定的输出目录中。 -->
 
 Copy all files under x64/x86 in the Bin folder of SDK to the output directory specified by the project according to the development environment (x64/x86).
 
-![项目配置](pic/Windows/ProjectConfiguration3.png)
+![项目配置](BaseSDK-asserts/05.png)
 
 <!-- 可参考 Samples 中的项目配置。 -->
 
@@ -200,7 +199,7 @@ LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 
 For details, please refer the CMake example in samples.
 
-![项目配置](../../zh-cn/ScepterSDK/pic/Ubuntu/ProjectConfiguration.png)
+![项目配置](../../zh-cn/ScepterSDK/BaseSDK-asserts/09.png)
 
 #### **AArch64**
 
@@ -224,7 +223,7 @@ LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 
 For details, please refer the CMake example in samples.
 
-![项目配置](../../zh-cn/ScepterSDK/pic/AArch64/ProjectConfiguration.png)
+![项目配置](../../zh-cn/ScepterSDK/BaseSDK-asserts/10.png)
 
 <!-- tabs:end -->
 
@@ -238,7 +237,7 @@ The base sample is used to demonstrate the single feature of basic APIs. In orde
 
 Open device, image acquisition, software/hardware trigger, point cloud store are all included in the SDK example codes.
 
-![BaseSDKSamples](../../zh-cn/ScepterSDK/pic/BaseSDKSamples.png)
+![BaseSDKSamples](../../zh-cn/ScepterSDK/BaseSDK-asserts/11.png)
 
 <!-- 接下来，我们将详细介绍每个例程的Function。 -->
 
@@ -293,13 +292,13 @@ Take a single routine of a single product as an example to demonstrate the proce
 
    ② Click the "Debug" button in the menu bar, and select "Start Debugging" in the drop-down bar or use the shortcut key "F5" to compile and run the project.
 
-   ![Compilation](pic/Windows/Compilation.png)
+   ![Compilation](BaseSDK-asserts/06.png)
 
 <!-- 2. 编译完成，调试运行。结果如下图： -->
 
 2. After compilation is complete, debug and run. The results are as follows:
 
-   ![Execution](pic/Windows/Execution.png)
+   ![Execution](BaseSDK-asserts/07.png)
 
 #### **Ubuntu**
 
@@ -315,9 +314,9 @@ Take a single routine of a single product as an example to demonstrate the proce
    make
    ```
 
-   ![Compilation](../../zh-cn/ScepterSDK/pic/Ubuntu/Compilation1.png)
+   ![Compilation](../../zh-cn/ScepterSDK/BaseSDK-asserts/14.png)
 
-   ![Compilation](../../zh-cn/ScepterSDK/pic/Ubuntu/Compilation2.png)
+   ![Compilation](../../zh-cn/ScepterSDK/BaseSDK-asserts/15.png)
 
 <!-- 2. 编译完成，输出路径为 PrecompiledSamples，进入目录后运行。 -->
 
@@ -328,7 +327,7 @@ Take a single routine of a single product as an example to demonstrate the proce
    ./DeviceConnectBySN
    ```
 
-   ![Execution](../../zh-cn/ScepterSDK/pic/Ubuntu/Execution.png)
+   ![Execution](../../zh-cn/ScepterSDK/BaseSDK-asserts/16.png)
 
 #### **AArch64**
 
@@ -344,9 +343,9 @@ Take a single routine of a single product as an example to demonstrate the proce
    make
    ```
 
-   ![Compilation](../../zh-cn/ScepterSDK/pic/AArch64/Compilation1.png)
+   ![Compilation](../../zh-cn/ScepterSDK/BaseSDK-asserts/17.png)
 
-   ![Compilation](../../zh-cn/ScepterSDK/pic/AArch64/Compilation2.png)
+   ![Compilation](../../zh-cn/ScepterSDK/BaseSDK-asserts/18.png)
 
 <!-- 2. 编译完成，输出路径为 PrecompiledSamples，进入目录后运行。 -->
 
@@ -357,7 +356,7 @@ Take a single routine of a single product as an example to demonstrate the proce
    ./DeviceConnectBySN
    ```
 
-   ![Execution](../../zh-cn/ScepterSDK/pic/AArch64/Execution.png)
+   ![Execution](../../zh-cn/ScepterSDK/BaseSDK-asserts/19.png)
 
 <!-- tabs:end -->
 
@@ -379,13 +378,12 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
    The reason for choosing this version is that in Scepter SDK, OpenCV Sample is developed with OpenCV version 3.0.0. You can choose to use different versions of OpenCV according to your actual programming needs.
 
-   ![DownloadOpenCV](../../zh-cn/ScepterSDK/pic/Windows/DownloadOpenCV.png)
-
+   ![DownloadOpenCV](../../zh-cn/ScepterSDK/BaseSDK-asserts/20.png)
    <!-- 选择指定的位置开始解压。 -->
 
    Select the specified location to start the extraction.
 
-   ![Extract](../../zh-cn/ScepterSDK/pic/Windows/Extract.png)
+   ![Extract](../../zh-cn/ScepterSDK/BaseSDK-asserts/21.png)
 
 <!-- 2. 设置环境变量 OPENCV_DIR。
 
@@ -401,7 +399,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
    D:\Programs\OpenCV300\opencv\build。
 
-   ![SetEnvironment](../../zh-cn/ScepterSDK/pic/Windows/SetEnvironment.png)
+   ![SetEnvironment](../../zh-cn/ScepterSDK/BaseSDK-asserts/22.png)
 
 <!-- 3. 根据实际产品选择对应的 sample。
 
@@ -411,7 +409,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
    Next, take NYX650 as an example, use Visual Studio 2017 to open the FrameViewer.vcxproj under the directory ScepterSDK\Windows\Samples\OpenCV\NYX650 to compile directly.
 
-   ![FrameViewer Project](<pic/Windows/FrameViewer Project.png>)
+   ![FrameViewer Project](<BaseSDK-asserts/08.png>)
 
 <!-- 4. 编译生成的可执行文件 FrameViewer.exe 在 ScepterSDK\Windows\Bin\x86\或 ScepterSDK\Windows\Bin\x64\目录下。 -->
 
@@ -421,7 +419,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 5. Run the FrameViewer.exe, and the execution effect is shown in the following figure.
 
-   ![Execution Successful](<pic/Windows/Execution Successful.png>)
+   ![Execution Successful](<BaseSDK-asserts/09.png>)
 
 #### **Ubuntu**
 
@@ -429,7 +427,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 1. For your convenience, the pre-compiled version of OpenCV 3.4.1 is already included in the Samples/OpenCV/Thirdparty directory. You do not need to download and compile it.
 
-   ![UbuntuOpenCV](../../zh-cn/ScepterSDK/pic/Ubuntu/OpenCV.png)
+   ![UbuntuOpenCV](../../zh-cn/ScepterSDK/BaseSDK-asserts/25.png)
 
    <!-- 选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.4.1 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。 -->
 
@@ -447,7 +445,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
    make
    ```
 
-   ![CompilationOpencv](../../zh-cn/ScepterSDK/pic/Ubuntu/CompilationOpencv.png)
+   ![CompilationOpencv](../../zh-cn/ScepterSDK/BaseSDK-asserts/26.png)
 
 <!-- 3. 运行编译成功后的 Demo -->
 
@@ -458,7 +456,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
    ./NYX650_OpenCVSample
    ```
 
-   ![ExecutionOpencv](../../zh-cn/ScepterSDK/pic/Ubuntu/ExecutionOpencv.png)
+   ![ExecutionOpencv](../../zh-cn/ScepterSDK/BaseSDK-asserts/27.png)
 
 #### **AArch64**
 
@@ -466,7 +464,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 1. For your convenience, the pre-compiled version of OpenCV 3.4.1 is already included in the Samples/OpenCV/Thirdparty directory. You do not need to download and compile it.
 
-   ![AArch64OpenCV](../../zh-cn/ScepterSDK/pic/AArch64/OpenCV.png)
+   ![AArch64OpenCV](../../zh-cn/ScepterSDK/BaseSDK-asserts/28.png)
 
    <!-- 选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.4.1 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。
 
@@ -488,7 +486,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
    make
    ```
 
-   ![AArch64CompilationOpenCV](../../zh-cn/ScepterSDK/pic/AArch64/CompilationOpenCV.png)
+   ![AArch64CompilationOpenCV](../../zh-cn/ScepterSDK/BaseSDK-asserts/29.png)
 
 <!-- 3. 运行编译成功后的 Demo -->
 
@@ -499,7 +497,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
    ./NYX650_OpenCVSample
    ```
 
-   ![AArch64ExecutionOpenCV](../../zh-cn/ScepterSDK/pic/AArch64/ExecutionOpenCV.png)
+   ![AArch64ExecutionOpenCV](../../zh-cn/ScepterSDK/BaseSDK-asserts/30.png)
 
 <!-- tabs:end -->
 
@@ -803,7 +801,7 @@ typedef struct
 
 The external parameters R and T of the camera are used to align depth with RGB images. The reference formula is as follows:
 
-![ScSensorExtrinsicParameters](../../zh-cn/ScepterSDK/pic/ScSensorExtrinsicParameters.png)
+![ScSensorExtrinsicParameters](../../zh-cn/ScepterSDK/BaseSDK-asserts/31.png)
 
 **Members：**
 

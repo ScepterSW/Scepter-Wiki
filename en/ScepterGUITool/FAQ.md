@@ -12,19 +12,19 @@
 
 ① Win + R opens the running command, enters the 'cmd' and clicks OK to open the command line program;
 
-![cmd open](<pic/cmd open.png>)
+![cmd open](<FAQ-asserts/01.png>)
 
 ② Enter'ping 192.168.1.101 'and press Enter to check whether the camera is pinged (the default IP address of the camera is 192.168.1.101);
 
-![ping ip](<pic/ping ip.png>)
+![ping ip](<FAQ-asserts/02.png>)
 
 ③ If the ping fails, open cmd and input the 'ipconfig' to check whether the IP of the host is in the same network segment as the default IP of the camera;
 
-![ipconfig](pic/ipconfig.png)
+![ipconfig](FAQ-asserts/03.png)
 
 ④ If you can ping, see if the firewall is down or allow the tool to use the public and private network
 
-![windows defender](<pic/windows defender.png>)
+![windows defender](<FAQ-asserts/04.png>)
 
 If none of the above measures can solve the problem, please use the ipconfig command to check the network status on the PC side, and disable the network other than the same network segment as the camera to search for the device again.
 
@@ -32,11 +32,11 @@ If none of the above measures can solve the problem, please use the ipconfig com
 
 ① Open the Ubuntu terminal, enter'ping -C 5 192.168.1.101 'and press Enter to check whether the camera is pinged (the default IP address of the camera is 192.168.1.101);
 
-![Ubuntu ping ip](<../../zh-cn/ScepterGUITool/pic/Ubuntu ping ip.png>)
+![Ubuntu ping ip](<../../zh-cn/ScepterGUITool/FAQ-asserts/05.png>)
 
 ② If the ping fails, open the terminal and input the 'ifconfig' to check whether the IP of the host and the default IP of the camera are in the same network segment;
 
-![Ubuntu ifconfig](<pic/Ubuntu ifconfig.png>)
+![Ubuntu ifconfig](<FAQ-asserts/05.png>)
 
 If none of the above measures can solve the problem, please use the ifconfig command to check the network status on the PC side, and disable the network other than the same network segment as the camera to search for the device again.
 

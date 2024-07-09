@@ -18,7 +18,7 @@ Time-of-Flight (TOF) technology generally refers to a family of methods for meas
 
 <div class="center">
 
-![z-img206](pic/z-img206.png)
+![z-img206](3DTecClassification-asserts/01.png)
 
 </div>
 
@@ -26,7 +26,7 @@ The simplest single pixel ToF technology uses a modulated collimating laser as t
 
 <div class="center">
 
-![nimg6](../../zh-cn/ToFBasicPrinciple/pic/nimg6.gif)
+![nimg6](../../zh-cn/ToFBasicPrinciple/3DTecClassification-asserts/02.gif)
 
 </div>
 
@@ -34,7 +34,7 @@ The simplest single pixel ToF technology uses a modulated collimating laser as t
 
 <div class="center">
 
-![nimg7](../../zh-cn/ToFBasicPrinciple/pic/nimg7.gif)
+![nimg7](../../zh-cn/ToFBasicPrinciple/3DTecClassification-asserts/03.gif)
 
 </div>
 

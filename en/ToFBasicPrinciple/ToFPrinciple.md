@@ -4,7 +4,7 @@ ToF 3D camera technology can be divided into iToF (indirect ToF) and dToF (direc
 
 <div class="center">
 
-![Classification](../../zh-cn/ToFBasicPrinciple/pic/Classification.jpg)
+![Classification](../../zh-cn/ToFBasicPrinciple/ToFPrinciple-asserts/01.jpg)
 
 </div>
 
@@ -16,7 +16,7 @@ The principle of direct time-of-flight ranging is direct and simple, but the tec
 
 <div class="center">
 
-![dToF](../../zh-cn/ToFBasicPrinciple/pic/dToF.gif)
+![dToF](../../zh-cn/ToFBasicPrinciple/ToFPrinciple-asserts/02.gif)
 
 </div>
 
@@ -26,7 +26,7 @@ The basic principle of CW iToF is to adjust the light into a sine wave with a fi
 
 <div class="center">
 
-![CW iToF](../../zh-cn/ToFBasicPrinciple/pic/CWToF.gif)
+![CW iToF](../../zh-cn/ToFBasicPrinciple/ToFPrinciple-asserts/03.gif)
 
 </div>
 
@@ -40,7 +40,7 @@ Compared with CW iToF continuous wave debugging mode, Pulse iToF has simpler sol
 
 <div class="center">
 
-![pToF](../../zh-cn/ToFBasicPrinciple/pic/pToF.gif)
+![pToF](../../zh-cn/ToFBasicPrinciple/ToFPrinciple-asserts/04.gif)
 
 </div>
 

@@ -6,7 +6,7 @@
 
 <div class="center">
 
-![技术分类](pic/z-img206.png)
+![技术分类](3DTecClassification-asserts/01.png)
 
 </div>
 
@@ -14,7 +14,7 @@
 
 <div class="center">
 
-![单像素ToF测距技术的原理](pic/nimg6.gif)
+![单像素ToF测距技术的原理](3DTecClassification-asserts/02.gif)
 
 </div>
 
@@ -22,7 +22,7 @@
 
 <div class="center">
 
-![花盆测距图](pic/nimg7.gif)
+![花盆测距图](3DTecClassification-asserts/03.gif)
 
 </div>
 

@@ -8,7 +8,7 @@ The field of machine vision has experienced the evolution process from analog to
 
 <div class="center">
 
-![3dDepth](../../zh-cn/ToFBasicPrinciple/pic/../../../zh-cn/ToFBasicPrinciple/pic/3dDepth.png)
+![3dDepth](../../zh-cn/ToFBasicPrinciple/3DTecIntroduction-asserts/01.png)
 
 </div>
 
@@ -16,7 +16,7 @@ As shown in the above figure, unlike the image taken by the left traditional col
 
 <div class="center">
 
-![nimg5](../../zh-cn/ToFBasicPrinciple/pic/nimg5.jpg)
+![nimg5](../../zh-cn/ToFBasicPrinciple/3DTecIntroduction-asserts/02.jpg)
 
 </div>
 

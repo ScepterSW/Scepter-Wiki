@@ -10,7 +10,7 @@ BaseSDK 包含 Windows，Ubuntu16.04，Ubuntu18.04，AArch64 开发包部分，�
 
 Windows 目录包含个人计算机平台(x86_64) Windows PC 开发包, 使用标准编译器 VS2017。
 
-![WindowsContents](pic/Windows/Contents.png)
+![WindowsContents](BaseSDK-asserts/01.png)
 
 - Bin：目录主要包含 SDK 的动态链接库，如 Scepter_api.dll，包括 x64 和 x86 的版本，运行基于该 SDK 开发的应用之前，需要先将相应平台的 dll 文件拷贝到可执行程序所在的目录。
 
@@ -34,7 +34,7 @@ Ubuntu18.04 目录包含个人计算机平台(x86_64) Ubuntu18.04 开发包, 使
 
 Ubuntu18.04 SDK 包与 Ubuntu20.04、Ubuntu22.04 兼容。
 
-![UbuntuContents](pic/Ubuntu/Contents.png)
+![UbuntuContents](BaseSDK-asserts/02.png)
 
 - Include：主要包含 SDK 的通用头文件：Scepter_api.h，Scepter_define.h，Scepter_enums.h，Scepter_types.h。
 
@@ -52,7 +52,7 @@ Ubuntu18.04 SDK 包与 Ubuntu20.04、Ubuntu22.04 兼容。
 
 AArch64 目录包含 64 位 Arm-Linux 开发包，使用标准编译器 aarch64-linux-gnu(v7.5.0)。
 
-![AArch64Contents](pic/AArch64/Contents.png)
+![AArch64Contents](BaseSDK-asserts/03.png)
 
 - Include：主要包含 SDK 的通用头文件：Scepter_api.h，Scepter_define.h，Scepter_enums.h，Scepter_types.h。
 
@@ -86,27 +86,27 @@ Windows 下使用 Visual Studio 2017 开发，可以选择以下两种方式新�
 
 新建应用项目工程，设置工程属性，将 Include 目录添加到包含目录中，将 Lib 目录添加到库目录中。
 
-![项目配置](pic/Windows/ProjectConfiguration1.png)
+![项目配置](BaseSDK-asserts/04.png)
 
 #### **方式二**
 
 新建应用项目工程，设置工程属性，将 Include 目录添加到附加包含目录中。
 
-![项目配置](pic/Windows/ProjectConfiguration4.png)
+![项目配置](BaseSDK-asserts/05.png)
 
 将 Lib 目录添加到附加库目录中。
 
-![项目配置](pic/Windows/ProjectConfiguration5.png)
+![项目配置](BaseSDK-asserts/06.png)
 
 <!-- tabs:end -->
 
 将 Scepter_api.lib 添加到附加依赖项中。
 
-![项目配置](pic/Windows/ProjectConfiguration2.png)
+![项目配置](BaseSDK-asserts/07.png)
 
 依据开发环境(x64/x86)将 SDK 的 Bin 文件夹中 x64/x86 下的所有文件拷贝到项目工程指定的输出目录中。
 
-![项目配置](pic/Windows/ProjectConfiguration3.png)
+![项目配置](BaseSDK-asserts/08.png)
 
 可参考 Samples 中的项目配置。
 
@@ -126,7 +126,7 @@ LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 
 具体内容可参考 Samples 中的例程配置。
 
-![项目配置](pic/Ubuntu/ProjectConfiguration.png)
+![项目配置](BaseSDK-asserts/09.png)
 
 #### **AArch64**
 
@@ -144,7 +144,7 @@ LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 
 具体内容可参考 Samples 中的例程配置。
 
-![项目配置](pic/AArch64/ProjectConfiguration.png)
+![项目配置](BaseSDK-asserts/10.png)
 
 <!-- tabs:end -->
 
@@ -154,7 +154,7 @@ LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 
 例程包含打开图像数据流、图像获取、软/硬触发、点云转换与保存等 API 接口的使用。
 
-![BaseSDKSamples](pic/BaseSDKSamples.png)
+![BaseSDKSamples](BaseSDK-asserts/11.png)
 
 接下来，我们将详细介绍每个例程的功能。
 
@@ -199,11 +199,11 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
 
    ② 点击菜单栏的“调试”按钮，选择下拉栏中的“开始调试”或使用快捷键“F5”编译运行项目。
 
-   ![Compilation](pic/Windows/Compilation.png)
+   ![Compilation](BaseSDK-asserts/12.png)
 
 2. 编译完成，调试运行。结果如下图：
 
-   ![Execution](pic/Windows/Execution.png)
+   ![Execution](BaseSDK-asserts/13.png)
 
 #### **Ubuntu**
 
@@ -217,8 +217,8 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
    make
    ```
 
-   ![Compilation](pic/Ubuntu/Compilation1.png)
-   ![Compilation](pic/Ubuntu/Compilation2.png)
+   ![Compilation](BaseSDK-asserts/14.png)
+   ![Compilation](BaseSDK-asserts/15.png)
 
 2. 编译完成，输出路径为 PrecompiledSamples，进入目录后运行。
 
@@ -227,7 +227,7 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
    ./DeviceConnectBySN
    ```
 
-   ![Execution](pic/Ubuntu/Execution.png)
+   ![Execution](BaseSDK-asserts/16.png)
 
 #### **AArch64**
 
@@ -241,8 +241,8 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
    make
    ```
 
-   ![Compilation](pic/AArch64/Compilation1.png)
-   ![Compilation](pic/AArch64/Compilation2.png)
+   ![Compilation](BaseSDK-asserts/17.png)
+   ![Compilation](BaseSDK-asserts/18.png)
 
 2. 编译完成，输出路径为 PrecompiledSamples，进入目录后运行。
 
@@ -251,7 +251,7 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
    ./DeviceConnectBySN
    ```
 
-   ![Execution](pic/AArch64/Execution.png)
+   ![Execution](BaseSDK-asserts/19.png)
 
 <!-- tabs:end -->
 
@@ -267,11 +267,11 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
 
    选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.0.0 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。
 
-   ![DownloadOpenCV](pic/Windows/DownloadOpenCV.png)
+   ![DownloadOpenCV](BaseSDK-asserts/20.png)
 
    选择指定的位置开始解压。
 
-   ![Extract](pic/Windows/Extract.png)
+   ![Extract](BaseSDK-asserts/21.png)
 
 2. 设置环境变量 OPENCV_DIR。
 
@@ -279,25 +279,25 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
 
    其值为安装的 OpenCV 的 build 目录的绝对路径，例如 D:\Programs\OpenCV300\opencv\build。
 
-   ![SetEnvironment](pic/Windows/SetEnvironment.png)
+   ![SetEnvironment](BaseSDK-asserts/22.png)
 
 3. 根据实际产品选择对应的 sample。
 
    下面以 NYX650 为例，使用 Visual Studio 2017 打开 ScepterSDK\Windows\Samples\OpenCV\NYX650 目录下的 FrameViewer.vcxproj，直接编译。
 
-   ![FrameViewer Project](<pic/Windows/FrameViewer Project.png>)
+   ![FrameViewer Project](<BaseSDK-asserts/23.png>)
 
 4. 编译生成的可执行文件 FrameViewer.exe 在 ScepterSDK\Windows\Bin\x86\或 ScepterSDK\Windows\Bin\x64\目录下。
 
 5. 运行 FrameViewer.exe，执行效果如下图。
 
-   ![Execution Successful](<pic/Windows/Execution Successful.png>)
+   ![Execution Successful](<BaseSDK-asserts/24.png>)
 
 #### **Ubuntu**
 
 1. 为方便您直接使用，Samples/OpenCV/Thirdparty 目录下已经包含预编译好的 OpenCV 3.4.1 版本，无需您额外下载和编译。
 
-   ![UbuntuOpenCV](pic/Ubuntu/OpenCV.png)
+   ![UbuntuOpenCV](BaseSDK-asserts/25.png)
 
    选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.4.1 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。
 
@@ -311,7 +311,7 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
    make
    ```
 
-   ![CompilationOpencv](pic/Ubuntu/CompilationOpencv.png)
+   ![CompilationOpencv](BaseSDK-asserts/26.png)
 
 3. 运行编译成功后的 Demo
 
@@ -320,13 +320,13 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
    ./NYX650_OpenCVSample
    ```
 
-   ![ExecutionOpencv](pic/Ubuntu/ExecutionOpencv.png)
+   ![ExecutionOpencv](BaseSDK-asserts/27.png)
 
 #### **AArch64**
 
 1. 为方便您直接使用，Samples/OpenCV/Thirdparty 目录下已经包含预编译好的 OpenCV 3.4.1 版本，无需您额外下载和编译。
 
-   ![AArch64OpenCV](pic/AArch64/OpenCV.png)
+   ![AArch64OpenCV](BaseSDK-asserts/28.png)
 
    选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.4.1 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。
 
@@ -342,7 +342,7 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
    make
    ```
 
-   ![AArch64CompilationOpenCV](pic/AArch64/CompilationOpenCV.png)
+   ![AArch64CompilationOpenCV](BaseSDK-asserts/29.png)
 
 3. 运行编译成功后的 Demo
 
@@ -351,7 +351,7 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
    ./NYX650_OpenCVSample
    ```
 
-   ![AArch64ExecutionOpenCV](pic/AArch64/ExecutionOpenCV.png)
+   ![AArch64ExecutionOpenCV](BaseSDK-asserts/30.png)
 
 <!-- tabs:end -->
 
@@ -646,7 +646,7 @@ typedef struct
 
 相机外参 R 与 T，用于 depth 与 rgb 图像的对齐，参考公式如下:
 
-![ScSensorExtrinsicParameters](pic/ScSensorExtrinsicParameters.png)
+![ScSensorExtrinsicParameters](BaseSDK-asserts/31.png)
 
 **成员：**
 
