@@ -54,22 +54,18 @@ Scepter 软件开发包介绍
 
 应用笔记
 
-- [1. NYX650/660](javascript:;)
+- [NYX650/660](javascript:;)
 
-  - [1.1. 深度质量测试](zh-cn/ApplicationNote/NYX650&660/Depth-Quality-Test.md)
+  * [NTP设置使用方法](zh-cn/ApplicationNote/NYX650&660/NTP-client-configuration.md)
 
-  * [1.2. AGV 场景测试数据](zh-cn/ApplicationNote/NYX650&660/AGV-scene-Testing-Data.md)
+  - [PTP设置使用方法](zh-cn/ApplicationNote/NYX650&660/PTP-client-configuration.md)
 
-  - [1.3. 多机共存](zh-cn/ApplicationNote/NYX650&660/Multi-Cameras-Coexist.md)
+* [DS86/87](javascript:;)
 
-  * [1.4. NTP设置使用方法](zh-cn/ApplicationNote/NYX650&660/NTP-client-configuration.md)
+  - [深度质量测试](zh-cn/ApplicationNote/DS86&87/Depth-Quality-Test.md)
 
-* [2. DS86/87](javascript:;)
+  * [AGV 场景测试数据](zh-cn/ApplicationNote/DS86&87/AGV-scene-Testing-Data.md)
 
-  - [2.1. 深度质量测试](zh-cn/ApplicationNote/DS86&87/Depth-Quality-Test.md)
+  - [HDR 模式](zh-cn/ApplicationNote/DS86&87/HDR-Mode.md)
 
-  * [2.2. AGV 场景测试数据](zh-cn/ApplicationNote/DS86&87/AGV-scene-Testing-Data.md)
-
-  - [2.3. HDR 模式](zh-cn/ApplicationNote/DS86&87/HDR-Mode.md)
-
-  * [2.4. 多机共存](zh-cn/ApplicationNote/DS86&87/Multi-Cameras-Coexist.md)
+  * [多机共存](zh-cn/ApplicationNote/DS86&87/Multi-Cameras-Coexist.md)
