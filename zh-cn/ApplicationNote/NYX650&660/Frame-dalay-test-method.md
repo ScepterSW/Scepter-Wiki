@@ -208,8 +208,8 @@ for (int i = 0; i < frameSpace;	i++)
 				 << "frameIndex:" << depthFrame.frameIndex << endl
                 
             clock_gettime(CLOCK_REALTIME, &time_end);// record the end timestamp
-			uint64_t unix_end = time_end.tv_sec * 1000 + time_end.tv_nsec/1000;
-            uint64_t unix_start = time_start.tv_sec * 1000 + time_start.tv_nsec/1000;
+			uint64_t unix_end = time_end.tv_sec * 1000 + time_end.tv_nsec/1000000;
+            uint64_t unix_start = time_start.tv_sec * 1000 + time_start.tv_nsec/1000000;
             uint64_t unix_exposure_end = depthFrame.deviceTimestamp;
             
             cout << "one frame total time delay from trigger: " << unix_end - unix_start  << endl;
