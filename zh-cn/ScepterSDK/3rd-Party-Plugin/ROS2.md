@@ -23,19 +23,19 @@
 - 安装 python 
 
   ```
-  sudo apt install python3
+  > sudo apt install python3
   ```
 
 - 安装 colcon
 
   ```
-  sudo apt install python3-colcon-common-extensions
+  > sudo apt install python3-colcon-common-extensions
   ```
 
 - 安装 pcl，仅**Jazzy Jalisco**需要
 
   ```console
-  sudo apt install libpcl-dev
+  > sudo apt install libpcl-dev
   ```
 
 
@@ -43,10 +43,10 @@
 
 在 ScepterSDK 中，ScepterROS 可以用于连接单个设备，而 ScepterROS_MultiCameras 则适用于连接多个设备。
 
-**1. 安装 ScepterSDK**
+**1. 下载 Scepter ROS 包**
 
 ```console
-git clone https://github.com/ScepterSW/ScepterSDK
+> git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
   <div class="center">
@@ -55,10 +55,10 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
   </div>
 
-**2. 打开软件包**
+**2. 安装 Scepter ROS SDK**
 
 ```console
-cd ROS2/src/ScepterROS
+> cd ROS2/src/ScepterROS
 ```
 
 <div class="center">
@@ -67,27 +67,27 @@ cd ROS2/src/ScepterROS
 
 </div>
 
-**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu20.04**为例：
+通过命令"**python install.py [您的操作系统]**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中，这里我们以**Ubuntu20.04**为例：
 
 ```console
-python install.py Ubuntu20.04
+> python install.py Ubuntu20.04
+/home/vzense/work/ScepterSDK-master/BaseSDK
+/home/vzense/work/ScepterSDK-master/3rd-PartyPlugin/ROS2/src/ScepterROS
+pull SDK success
 ```
 
 <div class="center">
-
-![step3](ROS2-asserts/03.png)
-
 </div>
 
-**4. 构建 ScepterROS2 包**
+**3. 构建 ScepterROS2 包**
 
 <!-- tabs:start -->
 
 #### **ROS**
 
 ```
-cd ../../
-colcon build --packages-select ScepterROS
+> cd ../../
+> colcon build --packages-select ScepterROS
 ```
 
 <div class="center">
@@ -99,8 +99,8 @@ colcon build --packages-select ScepterROS
 #### **ROS_MultiCameras**
 
 ```console
-cd ../../
-colcon build --packages-select ScepterROS_MultiCameras
+> cd ../../
+> colcon build --packages-select ScepterROS_MultiCameras
 ```
 
 <div class="center">
@@ -111,10 +111,8 @@ colcon build --packages-select ScepterROS_MultiCameras
 
 <!-- tabs:end -->
 
-**5.环境设置**
-
 ```console
-source install/setup.bash
+> source install/setup.bash
 ```
 
 ## 4.2.3. 使用方式
@@ -126,7 +124,7 @@ source install/setup.bash
 **1. 启动相机节点**
 
 ```console
-ros2 run ScepterROS scepter_camera
+> ros2 run ScepterROS scepter_camera
 ```
 
 <div class="center">
@@ -138,7 +136,7 @@ ros2 run ScepterROS scepter_camera
 **2. 启动 Rviz 界面**
 
 ```console
-ros2 run rviz2 rviz2
+> ros2 run rviz2 rviz2
 ```
 
 <div class="center">
@@ -172,13 +170,13 @@ ros2 run rviz2 rviz2
 **1. 启动相机节点**
 
 ```console
-ros2 run ScepterROS_MultiCameras scepter_multicameras <nodename> <ip>
+> ros2 run ScepterROS_MultiCameras scepter_multicameras <nodename> <ip>
 ```
 
 例如：
 
 ```console
-ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
+> ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
 ```
 
 <div class="center">
@@ -192,7 +190,7 @@ ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
 一次只能显示一个话题
 
 ```console
-ros2 run rviz2 rviz2
+> ros2 run rviz2 rviz2
 ```
 
 <div class="center">

@@ -17,16 +17,15 @@
 | Ubuntu20.04 | Noetic Ninjemys |
 | Ubuntu18.04 | Melodic Morenia |
 | Ubuntu16.04 | Kinetic Kame    |
-| AArch64     | Melodic         |
 
 ## 4.1.2. 安装 ROS 软件包
 
 在 ScepterSDK 中，ScepterROS 可以用于连接单个设备，而 ScepterROS_MultiCameras 则适用于连接多个设备。
 
-**1. 安装 ScepterSDK**
+**1. 下载 Scepter ROS 包**
 
 ```console
-git clone https://github.com/ScepterSW/ScepterSDK
+> git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
   <div class="center">
@@ -35,11 +34,11 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
   </div>
 
-**2. 创建工作空间**
+**2. 安装 Scepter ROS SDK**
 
 ```console
-cd 3rd-PartyPlugin/ROS/src
-catkin_init_workspace
+> cd 3rd-PartyPlugin/ROS/src
+> catkin_init_workspace
 ```
 
 在运行**catkin_init_workspace**命令之后，其会在**ROS/src**文件夹下生成**CmakeLists.txt**
@@ -55,13 +54,13 @@ catkin_init_workspace
 #### **ROS**
 
 ```console
-cd ScepterROS
+> cd ScepterROS
 ```
 
 #### **ROS_MultiCameras**
 
 ```console
-cd ScepterROS_MultiCameras
+> cd ScepterROS_MultiCameras
 ```
 
 <!-- tabs:end -->
@@ -72,10 +71,10 @@ cd ScepterROS_MultiCameras
 
 </div>
 
-**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
+通过命令"**python install.py [您的操作系统]**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
 
 ```console
-python install.py Ubuntu18.04
+> python install.py Ubuntu18.04
 ```
 
 <!-- tabs:start -->
@@ -98,15 +97,15 @@ python install.py Ubuntu18.04
 
 <!-- tabs:end -->
 
-**4. 构建 ScepterROS 包**
+**3. 构建 ScepterROS 包**
 
 <!-- tabs:start -->
 
 #### **ROS**
 
 ```console
-cd ../../
-catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS"
+> cd ../../
+> catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS"
 ```
 
 <div class="center">
@@ -118,8 +117,8 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS"
 #### **ROS_MultiCameras**
 
 ```console
-cd ../../
-catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS_MultiCameras"
+> cd ../../
+> catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS_MultiCameras"
 ```
 
 <div class="center">
@@ -130,10 +129,8 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS_MultiCameras"
 
 <!-- tabs:end -->
 
-**5. 环境设置**
-
 ```console
-source devel/setup.bash
+> source devel/setup.bash
 ```
 
 ## 4.1.3. 使用方式
@@ -145,8 +142,8 @@ source devel/setup.bash
 **1. 启动相机节点**
 
 ```console
-cd src/ScepterROS/launch
-roslaunch ScepterROS scepter_camera.launch
+> cd src/ScepterROS/launch
+> roslaunch ScepterROS scepter_camera.launch
 ```
 
 <div class="center">
@@ -158,7 +155,7 @@ roslaunch ScepterROS scepter_camera.launch
 **2. 启动 Rviz 界面**
 
 ```console
-rviz
+> rviz
 ```
 
 <div class="center">
@@ -176,7 +173,7 @@ rviz
 **3. 使用 RQT 动态调整配置**
 
 ```console
-rosrun rqt_reconfigure rqt_reconfigure
+> rosrun rqt_reconfigure rqt_reconfigure
 ```
 
 <div class="center">
@@ -197,10 +194,10 @@ rosrun rqt_reconfigure rqt_reconfigure
 打开一个新终端
 
 ```console
-cd 3rd-PartyPlugin/ROS
-source devel/setup.bash
-cd src/ScepterROS/launch
-roslaunch ScepterROS scepter_pointCloudxyz.launch
+> cd 3rd-PartyPlugin/ROS
+> source devel/setup.bash
+> cd src/ScepterROS/launch
+> roslaunch ScepterROS scepter_pointCloudxyz.launch
 ```
 
 <div class="center">
@@ -218,7 +215,7 @@ roslaunch ScepterROS scepter_pointCloudxyz.launch
 **5. 显示彩色点云**
 
 ```console
-roslaunch ScepterROS scepter_pointCloudxyzcolor.launch
+> roslaunch ScepterROS scepter_pointCloudxyzcolor.launch
 ```
 
 <div class="center">
@@ -269,7 +266,7 @@ roslaunch ScepterROS_MultiCameras scepter_camera.launch
 Rviz 可以显示多个话题的界面
 
 ```console
-rviz
+> rviz
 ```
 
 <div class="center">
@@ -293,7 +290,7 @@ rviz
 **4. 使用 RQT 动态调整配置**
 
 ```console
-rosrun rqt_reconfigure rqt_reconfigure
+> rosrun rqt_reconfigure rqt_reconfigure
 ```
 
 <div class="center">
@@ -314,10 +311,10 @@ rosrun rqt_reconfigure rqt_reconfigure
 打开一个新终端，Rviz 只能显示一个话题
 
 ```console
-cd 3rd-PartyPlugin/ROS
-source devel/setup.bash
-cd src/ScepterROS_MultiCameras/launch
-roslaunch ScepterROS_MultiCameras scepter_pointCloudxyz.launch
+> cd 3rd-PartyPlugin/ROS
+> source devel/setup.bash
+> cd src/ScepterROS_MultiCameras/launch
+> roslaunch ScepterROS_MultiCameras scepter_pointCloudxyz.launch
 ```
 
 <div class="center">

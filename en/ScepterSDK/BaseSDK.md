@@ -4,7 +4,7 @@
 
 <!-- BaseSDK 包含 Windows，Ubuntu16.04，Ubuntu18.04，AArch64 开发包部分，目录结构如下： -->
 
-BaseSDK includes Windows, Ubuntu 16.04, Ubuntu 18.04, and AArch64 development kits. The directory structure is as follows:
+BaseSDK includes Windows, Ubuntu 16.04, Ubuntu, and AArch64 development kits. The directory structure is as follows:
 
 <!-- tabs:start -->
 
@@ -52,11 +52,16 @@ Ubuntu18.04 目录包含个人计算机平台(x86_64) Ubuntu18.04 开发包, 使
 
 Ubuntu18.04 SDK 包与 Ubuntu20.04、Ubuntu22.04 兼容。 -->
 
-Ubuntu16.04 directory contains the personal computer platform (x86_64) Ubuntu 16.04 development package, using the standard compiler x86_64-linux-gnu(v5.4.0).
+Ubuntu16.04 directory contains the personal computer platform (with the standard compiler x86_64-linux-gnu) Ubuntu 16.04(v5.4.0) development package.
 
-Ubuntu18.04 directory contains the Personal Computer Platform (x86_64) Ubuntu18.04 development package, using the standard compiler x86_64-linux-gnu(v7.5.0).
+Ubuntu directory contains the personal computer platform (with the standard compiler x86_64-linux-gnu) Ubuntu18.04/20.04/22.04/24.04 development package.
 
-Ubuntu18.04 SDK package is compatible with Ubuntu20.04, Ubuntu22.04.
+| system       | the standard compiler |
+| ------------ | --------------------- |
+| Ubuntu 24.04 |                       |
+| Ubuntu 22.04 | v11.4.0               |
+| Ubuntu 20.04 | v9.4.0                |
+| Ubuntu 18.04 | v7.5.0                |
 
 ![UbuntuContents](../../zh-cn/ScepterSDK/BaseSDK-asserts/02.png)
 <!-- - Include：主要包含 SDK 的通用头文件：Scepter_api.h，Scepter_define.h，Scepter_enums.h，Scepter_types.h。 -->

@@ -23,19 +23,19 @@ This ROS2 package facilitates depth IR and color data acquisition and processing
 - install python
 
   ```
-  sudo apt install python3
+  > sudo apt install python3
   ```
 
 - install colcon
 
   ```
-  sudo apt install python3-colcon-common-extensions
+  > sudo apt install python3-colcon-common-extensions
   ```
 
 - install pcl, just for **Jazzy Jalisco** 
 
   ```
-  sudo apt install libpcl-dev
+  > sudo apt install libpcl-dev
   ```
 
 
@@ -45,10 +45,10 @@ This ROS2 package facilitates depth IR and color data acquisition and processing
 
 In the ScepterSDK, ScepterROS can be used to connect to a single device, while ScepterROS_MultiCameras is suitable for connecting to multiple devices.
 
-**1. Install the Scepter ROS2 package**
+**1. Download the Scepter ROS2 package**
 
 ```console
-git clone https://github.com/ScepterSW/ScepterSDK
+> git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
   <div class="center">
@@ -57,10 +57,10 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
   </div>
 
-**2. Copy BaseSDK to dependencies**
+**2. Install the Scepter ROS SDK**
 
 ```console
-cd ROS2/src/ScepterROS
+> cd ROS2/src/ScepterROS
 ```
 
 <div class="center">
@@ -71,27 +71,27 @@ cd ROS2/src/ScepterROS
 
 <!-- **3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu20.04**为例： -->
 
-**3. install.py**: **install.py**: copy **ScepterSDK** (match with your operating system) to **dependencies**, with the cmd "**python install.py (your operating system)**", take **Ubuntu20.04** as an example：
+Run the cmd "**python install.py [your operating system]**", take **Ubuntu20.04** as an example：
 
 ```console
-python install.py Ubuntu20.04
+> python install.py Ubuntu20.04
+/home/vzense/work/ScepterSDK-master/BaseSDK
+/home/vzense/work/ScepterSDK-master/3rd-PartyPlugin/ROS/src/ScepterROS
+pull SDK success
 ```
 
 <div class="center">
-
-![step3](../../../zh-cn/ScepterSDK/3rd-Party-Plugin/ROS2-asserts/03.png)
-
 </div>
 
-**4. Build the ScepterROS2 package**
+**3. Build the ScepterROS2 package**
 
 <!-- tabs:start -->
 
 #### **ROS2**
 
 ```console
-cd ../../
-colcon build --packages-select ScepterROS
+> cd ../../
+> colcon build --packages-select ScepterROS
 ```
 
 <div class="center">
@@ -103,8 +103,8 @@ colcon build --packages-select ScepterROS
 #### **ROS_MultiCameras**
 
 ```console
-cd ../../
-colcon build --packages-select ScepterROS_MultiCameras
+> cd ../../
+> colcon build --packages-select ScepterROS_MultiCameras
 ```
 
 <div class="center">
@@ -118,7 +118,7 @@ colcon build --packages-select ScepterROS_MultiCameras
 **5.Environment setup**
 
 ```console
-source install/setup.bash
+> source install/setup.bash
 ```
 
 ## 4.2.3. Usage
@@ -130,7 +130,7 @@ source install/setup.bash
 **1. Starting camera node**
 
 ```console
-ros2 run ScepterROS scepter_camera
+> ros2 run ScepterROS scepter_camera
 ```
 
 <div class="center">
@@ -142,7 +142,7 @@ ros2 run ScepterROS scepter_camera
 **2. With Rviz show frame**
 
 ```console
-ros2 run rviz2 rviz2
+> ros2 run rviz2 rviz2
 ```
 
 <div class="center">
@@ -176,13 +176,13 @@ ros2 run rviz2 rviz2
 **1. Starting camera node**
 
 ```console
-ros2 run ScepterROS_MultiCameras scepter_multicameras <nodename> <ip>
+> ros2 run ScepterROS_MultiCameras scepter_multicameras <nodename> <ip>
 ```
 
 such as:
 
 ```console
-ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
+> ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
 ```
 
 <div class="center">
@@ -196,7 +196,7 @@ ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
 Only one topic can be displayed at a time
 
 ```console
-ros2 run rviz2 rviz2
+> ros2 run rviz2 rviz2
 ```
 
 <div class="center">
