@@ -115,8 +115,6 @@ pull SDK success
 
 <!-- tabs:end -->
 
-**5.Environment setup**
-
 ```console
 > source install/setup.bash
 ```
