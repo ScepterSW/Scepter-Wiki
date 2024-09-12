@@ -12,10 +12,32 @@ This ROS2 package facilitates depth IR and color data acquisition and processing
 
 **2. Version verified**
 
-| system      | details         |
-| ----------- | --------------- |
-| Ubuntu20.04 | Foxy Fitzroy    |
-| Ubuntu18.04 | Eloquent Elusor |
+| system       | details          |
+| ------------ | ---------------- |
+| Ubuntu 24.04 | Jazzy Jalisco    |
+| Ubuntu 22.04 | Humble Hawksbill |
+| Ubuntu 20.04 | Foxy Fitzroy     |
+
+**3. Install the needed tools**
+
+- install python
+
+  ```
+  sudo apt install python3
+  ```
+
+- install colcon
+
+  ```
+  sudo apt install python3-colcon-common-extensions
+  ```
+
+- install pcl, just for **Jazzy Jalisco** 
+
+  ```
+  sudo apt install libpcl-dev
+  ```
+
 
 ## 4.2.2. Install the ROS package
 
@@ -35,7 +57,7 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
   </div>
 
-**2. Update SDK to ROS2 package**
+**2. Copy BaseSDK to dependencies**
 
 ```console
 cd ROS2/src/ScepterROS
@@ -47,12 +69,12 @@ cd ROS2/src/ScepterROS
 
 </div>
 
-<!-- **3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例： -->
+<!-- **3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu20.04**为例： -->
 
-**3. install.py**: **install.py**: copy **ScepterSDK** (match with your operating system) to **dependencies**, with the cmd "**python install.py (your operating system)**", take **Ubuntu18.04** as an example：
+**3. install.py**: **install.py**: copy **ScepterSDK** (match with your operating system) to **dependencies**, with the cmd "**python install.py (your operating system)**", take **Ubuntu20.04** as an example：
 
 ```console
-python install.py Ubuntu18.04
+python install.py Ubuntu20.04
 ```
 
 <div class="center">
@@ -62,13 +84,6 @@ python install.py Ubuntu18.04
 </div>
 
 **4. Build the ScepterROS2 package**
-
-If not installed colcon, run the cmd first:
-
-```console
-sudo apt install python3-colcon-common-extensions
-
-```
 
 <!-- tabs:start -->
 

@@ -17,7 +17,6 @@ This ROS package facilitates depth IR and color data acquisition and processing 
 | Ubuntu20.04 | Noetic Ninjemys |
 | Ubuntu18.04 | Melodic Morenia |
 | Ubuntu16.04 | Kinetic Kame    |
-| AArch64     | Melodic         |
 
 ## 4.1.2. Install the ROS package
 
@@ -37,7 +36,7 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
   </div>
 
-**2. Update SDK to ROS package**
+**2. Copy BaseSDK to dependencies**
 
 ```console
 cd 3rd-PartyPlugin/ROS/src

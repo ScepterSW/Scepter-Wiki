@@ -12,10 +12,32 @@
 
 **2. 已验证的版本**
 
-| 系统        | 详情            |
-| ----------- | --------------- |
-| Ubuntu20.04 | Foxy Fitzroy    |
-| Ubuntu18.04 | Eloquent Elusor |
+| 系统         | 详情             |
+| ------------ | ---------------- |
+| Ubuntu 24.04 | Jazzy Jalisco    |
+| Ubuntu 22.04 | Humble Hawksbill |
+| Ubuntu 20.04 | Foxy Fitzroy     |
+
+**3. 安装需要的工具**
+
+- 安装 python 
+
+  ```
+  sudo apt install python3
+  ```
+
+- 安装 colcon
+
+  ```
+  sudo apt install python3-colcon-common-extensions
+  ```
+
+- 安装 pcl，仅**Jazzy Jalisco**需要
+
+  ```console
+  sudo apt install libpcl-dev
+  ```
+
 
 ## 4.2.2. 安装 ROS 软件包
 
@@ -45,10 +67,10 @@ cd ROS2/src/ScepterROS
 
 </div>
 
-**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
+**3. install.py**: 通过命令"**python install.py (您的操作系统)**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu20.04**为例：
 
 ```console
-python install.py Ubuntu18.04
+python install.py Ubuntu20.04
 ```
 
 <div class="center">
@@ -58,13 +80,6 @@ python install.py Ubuntu18.04
 </div>
 
 **4. 构建 ScepterROS2 包**
-
-如果没有安装 colcon，请先运行 cmd：
-
-```console
-sudo apt install python3-colcon-common-extensions
-
-```
 
 <!-- tabs:start -->
 
