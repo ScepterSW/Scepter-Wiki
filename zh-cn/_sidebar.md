@@ -63,6 +63,8 @@ Scepter 软件开发包介绍
   * [相机默认参数配置方法](zh-cn/ApplicationNote/NYX650&660/Device-initialization-parameter-method.md)
 
   - [图像延时产生原理与测试方法](zh-cn/ApplicationNote/NYX650&660/Frame-dalay-test-method.md)
+  
+  * [HDR & WDR](zh-cn/ApplicationNote/NYX650&660/HDR-WDR-method.md)
 
 * [DS86/87](javascript:;)
 
