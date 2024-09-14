@@ -66,6 +66,8 @@ Scepter 软件开发包介绍
   
   * [HDR & WDR](zh-cn/ApplicationNote/NYX650&660/HDR-WDR-method.md)
 
+  - [Docker中使用ScepterSDK](zh-cn/ApplicationNote/NYX650&660/Use-SDK-in-docker-method.md)
+
 * [DS86/87](javascript:;)
 
   - [深度质量测试](zh-cn/ApplicationNote/DS86&87/Depth-Quality-Test.md)
