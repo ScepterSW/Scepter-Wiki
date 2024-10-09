@@ -59,7 +59,7 @@
 
 #### 1. 生成配置文件：
 
-使用ScepterGUITool，打开相机。根据使用场景，调试相机参数。调整完成后，点击‘GenerateByApp’后，提示保存成功。配置文件保存在JsonConfig文件夹下，以 ’**相机品类_ 年_ 月_ 日_ 时_ 分_ 秒_ SN.json**' 格式命名。
+使用ScepterGUITool，打开相机。根据使用场景，调试相机参数。调整完成后，点击‘Generate’后，提示保存成功。配置文件保存在JsonConfig文件夹下，以 ’**相机品类_ 年_ 月_ 日_ 时_ 分_ 秒_ SN.json**' 格式命名。
 
 ![01](Device-initialization-parameter-method-asserts/01.png)
 
@@ -100,8 +100,6 @@ SCEPTER_C_API_EXPORT ScStatus scSetParamsByJson(ScDeviceHandle device, char* pfi
 验证配置参数是否生效，可以特意改变某个与默认参数不同的值，如曝光时间参数。进行设置后导入，再次断电重启后，观察设置值是否与预期一致。
 
 #### 4. 其他功能
-
-**ExportFromDevice:** 从设备中导出配置文件，可用于多个相机之间的参数统一。导出一台相机的参数，用于其他相机。
 
 **RestoreSettings:** 重置相机参数为出厂设置。
 
