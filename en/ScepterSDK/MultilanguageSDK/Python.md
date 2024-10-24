@@ -14,7 +14,7 @@ The Python SDK directory structure is as follows:
 
 <!-- - Samples：主要包含使用 ScepterSDK 开发的例程。 -->
 
-- Samples:Primarily contains samples developed using the Scepter SDK.
+- Samples:Primarily contains samples developed using the ScepterSDK.
 
 <!-- - README.md：SDK 的内容简介。 -->
 
@@ -24,15 +24,15 @@ The Python SDK directory structure is as follows:
 
 <!-- 在运行 ScepterSDK 之前，请确保您的 Python 版本为 3.7.x 或更高版本，并已安装 ctypes、numpy 模块。在大多数 Python 发行版中，ctypes 都是作为内置模块存在的，因此我们There is no.需额外安装。 -->
 
-Before running the Scepter SDK, make sure that your Python version is 3.7.x or higher and that you have the ctypes, numpy modules installed. In most Python distributions, ctypes exists as a built-in module, so we don't need to install it.
+Before running the ScepterSDK, make sure that your Python version is 3.7.x or higher and that you have the ctypes, numpy modules installed. In most Python distributions, ctypes exists as a built-in module, so we don't need to install it.
 
 ```console
 pip install numpy
 ```
 
-<!-- 使用 Scepter SDK 开发新的项目，需要使用英文路径。针对不同的操作系统，需要同时复制 SDK 中的 Python 文件夹和对应系统的文件夹。API 文件夹中的 Scepter_api.py 会自动读取相机的 libScepter_api.so 或 Scepter_api.dll 库文件。 -->
+<!-- 使用 ScepterSDK 开发新的项目，需要使用英文路径。针对不同的操作系统，需要同时复制 SDK 中的 Python 文件夹和对应系统的文件夹。API 文件夹中的 Scepter_api.py 会自动读取相机的 libScepter_api.so 或 Scepter_api.dll 库文件。 -->
 
-To develop a new project using the Scepter SDK, you need to use the English path. For different operating systems, you need to copy the Python folder in the SDK and the folder of the corresponding system at the same time. The Scepter_api.py in the API folder automatically reads the camera's libScepter_api.so or the Scepter_api.dll library file.
+To develop a new project using the ScepterSDK, you need to use the English path. For different operating systems, you need to copy the Python folder in the SDK and the folder of the corresponding system at the same time. The Scepter_api.py in the API folder automatically reads the camera's libScepter_api.so or the Scepter_api.dll library file.
 
 ```python
 if system_ == 'linux':

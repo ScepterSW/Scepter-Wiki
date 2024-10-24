@@ -6,6 +6,8 @@ ScepterSDK is a software development kit based on 3D ToF camera, which is curren
 
 Based on the development kit, users can obtain high-precision depth data information, gray image information and color image information, which is convenient for users to develop 3D applications such as face brushing payment, gesture recognition, projection touch control, face recognition, fatigue detection, 3D reconstruction, navigation ,obstacle avoidance and so on.
 
+The ScepterSDK version mentioned in the text is **v24.10.1**
+
 ![ScepterSDK](../../zh-cn/ScepterSDK/Overview-asserts/01.png)
 
 ScepterSDK download link：
@@ -18,7 +20,7 @@ or
 
 <!-- 您可以通过以下两种下载方式下载 ScepterSDK 开发包： -->
 
-You can download the Scepter SDK in the following two ways:
+You can download the ScepterSDK in the following two ways:
 
 <!-- 方式一通过 git clone 下载到本地； -->
 
@@ -52,7 +54,7 @@ git clone https://github.com/ScepterSW/ScepterSDK
 
 <!-- 打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterSDK 压缩包下载到本地。 -->
 
-Open the download link, click Code, and then click Download ZIP to download the Scepter SDK compressed package to the local.
+Open the download link, click Code, and then click Download ZIP to download the ScepterSDK compressed package to the local.
 
 <!-- 如需在 Ubuntu 系统下使用，请确保下载后的压缩包是在 Ubuntu 系统下解压，请勿在 Windows 系统解压后复制使用。 -->
 
@@ -68,7 +70,7 @@ If you need to use it under Ubuntu system, please make sure that the compressed 
 
 <!-- ScepterSDK 提供的多平台和开发语言的开发包，包含如下内容： -->
 
-The Scepter SDK provides a development kit for multiple platforms and development languages, including the following content：
+The ScepterSDK provides a development kit for multiple platforms and development languages, including the following content：
 
 **3rd-PartyPlugin：**
 
@@ -102,4 +104,4 @@ The Scepter SDK provides a development kit for multiple platforms and developmen
 
 **LICENSE：**Software License Ordinance Documents.
 
-**README.md：**Introduction to Scepter SDK and related links.
+**README.md：**Introduction to ScepterSDK and related links.

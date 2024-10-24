@@ -14,7 +14,7 @@ The CSharp SDK directory structure is as follows:
 
 <!-- - Samples：主要包含使用 ScepterSDK 开发的例程。 -->
 
-- Samples: Primarily contains samples developed using the Scepter SDK.
+- Samples: Primarily contains samples developed using the ScepterSDK.
 
 <!-- - install.py：用于从指定的路径中提取并移动 Scepter_CSharp.dll 文件的脚本文件。 -->
 

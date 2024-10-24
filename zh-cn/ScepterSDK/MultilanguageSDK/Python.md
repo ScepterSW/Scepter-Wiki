@@ -20,7 +20,7 @@ Python SDK 目录结构如下：
 pip install numpy
 ```
 
-使用 Scepter SDK 开发新的项目，需要使用英文路径。针对不同的操作系统，需要同时复制 SDK 中的 Python 文件夹和对应系统的文件夹。API 文件夹中的 Scepter_api.py 会自动读取相机的 libScepter_api.so 或 Scepter_api.dll 库文件。
+使用 ScepterSDK 开发新的项目，需要使用英文路径。针对不同的操作系统，需要同时复制 SDK 中的 Python 文件夹和对应系统的文件夹。API 文件夹中的 Scepter_api.py 会自动读取相机的 libScepter_api.so 或 Scepter_api.dll 库文件。
 
 ```python
 if system_ == 'linux':
@@ -116,7 +116,7 @@ TransformDepthImgToColorSensorFrame             #将深度图像对齐到设备�
 
 ## 3.1.4. OpenCV 例程
 
-OpenCV 例程用于展示如何搭配第三方库使用 Scepter SDK。例程使用 OpenCV 的图像映射功能展示彩色深度图像、IR 与 Color 图像。
+OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使用 OpenCV 的图像映射功能展示彩色深度图像、IR 与 Color 图像。
 
 1. 安装 opencv-python 模块。
 

@@ -34,7 +34,7 @@ The Windows directory contains the personal computer platform (x86 \_ 64) Window
 
 <!-- - Samples：主要包含使用 ScepterSDK 开发的例程。 -->
 
-- Samples:Primarily contains samples developed using the Scepter SDK.
+- Samples:Primarily contains samples developed using the ScepterSDK.
 
 <!-- - README：SDK 的内容简介。 -->
 
@@ -78,7 +78,7 @@ Ubuntu directory contains the personal computer platform (with the standard comp
 
 <!-- - Samples：主要包含使用 ScepterSDK 开发的例程。 -->
 
-- Samples:Primarily contains routines developed using the Scepter SDK.
+- Samples:Primarily contains routines developed using the ScepterSDK.
 
 <!-- - README：SDK 的内容简介。 -->
 
@@ -110,7 +110,7 @@ AArch64 directory contains the 64-bit Arm-Linux development package, using the s
 
 <!-- - Samples：主要包含使用 ScepterSDK 开发的例程。 -->
 
-- Samples:Primarily contains routines developed using the Scepter SDK.
+- Samples:Primarily contains routines developed using the ScepterSDK.
 
 <!-- - README：SDK 的内容简介。 -->
 
@@ -381,7 +381,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 1. Download and install [OpenCV 3.0.0](https://sourceforge.net/projects/opencvlibrary/files/opencv-win/3.0.0-rc1/opencv-3.0.0-rc1.exe/download) from OpenCV official website.
 
-   The reason for choosing this version is that in Scepter SDK, OpenCV Sample is developed with OpenCV version 3.0.0. You can choose to use different versions of OpenCV according to your actual programming needs.
+   The reason for choosing this version is that in ScepterSDK, OpenCV Sample is developed with OpenCV version 3.0.0. You can choose to use different versions of OpenCV according to your actual programming needs.
 
    ![DownloadOpenCV](../../zh-cn/ScepterSDK/BaseSDK-asserts/20.png)
    <!-- 选择指定的位置开始解压。 -->
@@ -398,7 +398,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 2. Set the environment variable OPENCV \_ DIR.
 
-   The reason for setting this environment variable is that in the Scepter SDK, OpenCVSample uses the OPENCV \_ DIR environment variable.
+   The reason for setting this environment variable is that in the ScepterSDK, OpenCVSample uses the OPENCV \_ DIR environment variable.
 
    Its value is the absolute path to the build directory of the installed OpenCV, for example:
 
@@ -436,7 +436,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
    <!-- 选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.4.1 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。 -->
 
-   The reason for choosing this version is that in Scepter SDK, OpenCV Sample is developed with OpenCV version 3.4.1. You can choose to use different versions of OpenCV according to your actual programming needs.
+   The reason for choosing this version is that in ScepterSDK, OpenCV Sample is developed with OpenCV version 3.4.1. You can choose to use different versions of OpenCV according to your actual programming needs.
 
 <!-- 2. 根据实际产品选择对应的 sample，以 NYX650 为例编译 OpenCV 显示例程 -->
 
@@ -475,7 +475,7 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
    > AArch64 端常用 headless 模式，该模式下运行 OpenCV 会出错。OpenCV 在 headless 模式下运行可能遇到的问题包括：依赖的图形库不可用、图形环境配置错误、或者 OpenCV 的某些Function依赖于图形处理能力。 -->
 
-   The reason for choosing this version is that in Scepter SDK, OpenCV Sample is developed with OpenCV version 3.4.1. You can choose to use different versions of OpenCV according to your actual programming needs.
+   The reason for choosing this version is that in ScepterSDK, OpenCV Sample is developed with OpenCV version 3.4.1. You can choose to use different versions of OpenCV according to your actual programming needs.
 
    > The headless mode is commonly used on the AArch64 side, and running OpenCV in this mode will cause errors. Problems that OpenCV may encounter when running in headless mode include: a dependent graphics library is not available, the graphics environment is misconfigured, or some OpenCV Functions depend on graphics processing capabilities.
 

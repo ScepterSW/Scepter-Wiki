@@ -2,7 +2,9 @@
 
 ![ScepterGUITool](../../zh-cn/ScepterGUITool/Overview-asserts/01.png)
 
-ScepterGUITool is a graphical interface tool based on Scepter SDK, which provides functions such as depth image color mapping display, 3D point cloud display, filter parameter adjustment, device parameter setting and RGB & depth alignment. You can also set the IP address and upgrade the firmware of the device through the setting page.
+ScepterGUITool is a graphical interface tool based on ScepterSDK, which provides functions such as depth image color mapping display, 3D point cloud display, filter parameter adjustment, device parameter setting and RGB & depth alignment. You can also set the IP address and upgrade the firmware of the device through the setting page.
+
+The ScepterGUITool version mentioned in the text is **v24.10.1**
 
 > If you need to operate multiple devices at the same time, you need to open a separate ScepterGUITool instance for each device.
 >
