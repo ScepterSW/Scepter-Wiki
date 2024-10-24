@@ -15,7 +15,7 @@
 
 | **Item** |                            **Requirements**                            |
 | :------: | :--------------------------------------------------------------------: |
-|    OS    | Ubuntu 18.04 64 bits</br>Ubuntu 20.04 64 bits</br>Ubuntu 22.04 64 bits |
+|    OS    | Ubuntu 18.04 64 bits</br>Ubuntu 20.04 64 bits</br>Ubuntu 22.04 64 bits</br>Ubuntu 24.04 64 bits |
 |   RAM    |                              At least 4g                               |
 
 <!-- tabs:end -->

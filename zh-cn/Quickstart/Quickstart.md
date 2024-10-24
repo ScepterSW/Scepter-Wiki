@@ -86,7 +86,7 @@ sudo nmtui
 
 ## 2. 打开设备
 
-Windows 端 和 Ubuntu18.04/20.04/22/04 端用户可下载 **ScepterGUITool**探索相机，
+Windows 端 和 Ubuntu18.04/20.04/22.04/24.04 端用户可下载 **ScepterGUITool**探索相机，
 
 Ubuntu16.04 端无图形化工具，AArch64 端常用 headless 模式，用户可下载 **ScepterSDK**探索相机：
 

@@ -80,7 +80,7 @@ sudo nmtui
 
 ## 2.Device Open
 
-Windows and Ubuntu18.04/20.04/22/04 users can download **ScepterGUITool** to explore the camera,
+Windows and Ubuntu18.04/20.04/22.04/24.04 users can download **ScepterGUITool** to explore the camera,
 
 There is no graphical tool on the Ubuntu16.04 side, and the headless mode is commonly used on the AArch64 side. Users can download **ScepterSDK** to explore the camera:
 

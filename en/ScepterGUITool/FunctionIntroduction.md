@@ -124,7 +124,7 @@ Depth image map to Color domain. When enabled, the images with Depth pixels alig
 
 ![RGBD_Principle](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/26.gif)
 
-There is a distance between the Tof lens and the Color camera, so there is a parallax from the actual image.
+There is a distance between the ToF lens and the Color camera, so there is a parallax from the actual image.
 
 In order to align the depth image with the Color image, eliminate the parallax and obtain a true RGB-D image, witch means the color of the object surface and its depth correspond accurately at the pixel level on the two-dimensional image. A conversion is required:
 
@@ -226,7 +226,7 @@ Value Range: \[34000,65535]
 
 ![SoftwareTriggerMode](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/49.png)
 
-After the soft trigger mode is enabled, click the Trigger button to trigger the device plot.
+After the soft trigger mode is enabled, click the Trigger button to trigger the device plot.The more frames there are, the better frame's quality after algorithm merging, FrameCountToMerge in range [1,10].
 
 ### 3.4.3 Depth Image Configuration
 
