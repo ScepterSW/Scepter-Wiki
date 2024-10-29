@@ -102,11 +102,13 @@ ScepterGUITool 下载链接：
 
 <https://gitee.com/ScepterSW/ScepterGUITool>
 
-您可以通过以下两种下载方式下载 ScepterSDK 开发包：
+您可以通过以下两种下载方式下载 ScepterGUITool 软件：
 
 方式一通过 git clone 下载到本地；
 
 方式二通过下载压缩包到本地。
+
+方式三通过下载发行版中的安装包。
 
 <!-- tabs:start -->
 
@@ -129,6 +131,84 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterGUITool 工具压缩包下载到本地。
 
 ![GitHubGUITool](<Quickstart-asserts/12.png>)
+
+#### **方式三**
+
+打开发行版下载链接，点击 xxx_install.run/exe，即可将 ScepterGUITool安装包载到本地。
+
+![GitHubGUITool](<Quickstart-asserts/12-1.png>)
+
+
+
+<!-- tabs:start -->
+
+#### **Windows**
+
+![GitHubGUITool](<Quickstart-asserts/12-2.png>)
+
+下载完成后，双击xxx_install.exe，默认安装路径是**C:\Users\user.name\AppData\Roaming\ScepterGUITool**。
+
+![GitHubGUITool](<Quickstart-asserts/12-2-1.png>)
+
+> 如需更改安装路径可点击Browse，选择路径后点击OK。
+>
+> ![GitHubGUITool](<Quickstart-asserts/12-2-2.png>)
+>
+> 如重复安装会提示已安装，可覆盖安装或者选择其他路径。
+>
+> ![GitHubGUITool](<Quickstart-asserts/12-2-8.png>)
+
+点击Next。
+
+![GitHubGUITool](<Quickstart-asserts/12-2-3.png>)
+
+点击Next。
+
+![GitHubGUITool](<Quickstart-asserts/12-2-4.png>)
+
+点击Install。
+
+![GitHubGUITool](<Quickstart-asserts/12-2-5.png>)
+
+![GitHubGUITool](<Quickstart-asserts/12-2-6.png>)
+
+安装完成点击Finish，桌面已有快捷方式。
+
+![GitHubGUITool](<Quickstart-asserts/12-2-7.png>)
+
+#### **Ubuntu**
+
+![GitHubGUITool](<Quickstart-asserts/12-3.png>)
+
+下载xxx_install.run，打开终端，进入下载目录，给run文件增加执行权限
+
+```
+> sudo chmod +x ScepterGUITool_vXX.XX.XX_ubuntu_install.run
+```
+
+![GitHubGUITool](<Quickstart-asserts/12-3-1.png>)
+
+```
+> ./ScepterGUITool_vXX.XX.XX_ubuntu_install.run
+```
+
+![GitHubGUITool](<Quickstart-asserts/12-3-2.png>)
+
+安装到Home目录下的ScepterGUITool文件夹，左侧工具栏会出现应用图标。
+
+![GitHubGUITool](<Quickstart-asserts/12-3-3.png>)
+
+运行软件，点击ScepterGUITool图标，或搜索栏中输入ScepterGUITool
+
+![GitHubGUITool](<Quickstart-asserts/12-3-4.png>)
+
+卸载软件可以通过ScepterGUITool文件夹下的uninstall.sh，在终端执行脚本即可。
+
+![GitHubGUITool](<Quickstart-asserts/12-3-5.png>)
+
+![GitHubGUITool](<Quickstart-asserts/12-3-6.png>)
+
+<!-- tabs:end -->
 
 <!-- tabs:end -->
 

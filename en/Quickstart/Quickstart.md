@@ -100,7 +100,9 @@ You can download the Scepter development package through the following download 
 
 Method 1: Downloads to local through git clone;
 
-Method 2: Download the compressed package locally.
+Method 2: Download the compressed package locally；
+
+Method 3: Download the installer.
 
 <!-- tabs:start -->
 
@@ -123,6 +125,84 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 Open the download link, click Code, and then click Download ZIP to download the ScepterGUITool compressed package locally.
 
 ![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12.png>)
+
+#### **Method 3**
+
+Open the **Releases** link，download the xxx_install.run/exe.
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-1.png>)
+
+
+
+<!-- tabs:start -->
+
+#### **Windows**
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-2.png>)
+
+Double-click the xxx_install.exe locally，the default installed path is **C:\Users\user.name\AppData\Roaming\ScepterGUITool**.
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-2-1.png>)
+
+> Change the path with Browse.
+>
+> ![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-2-2.png>)
+>
+> Multi-install, choose overwrite or other path.
+>
+> ![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-2-8.png>)
+
+Click Next.
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-2-3.png>)
+
+Click Next.
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-2-4.png>)
+
+Click Install.
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-2-5.png>)
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-2-6.png>)
+
+Click Finish.
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-2-7.png>)
+
+#### **Ubuntu**
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3.png>)
+
+Open the terminal and add the execution permission to xxx_install.run.
+
+```
+> sudo chmod +x ScepterGUITool_vXX.XX.XX_ubuntu_install.run
+```
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3-1.png>)
+
+```
+> ./ScepterGUITool_vXX.XX.XX_ubuntu_install.run
+```
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3-2.png>)
+
+The installed path is **/home/username/ScepterGUITool/**
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3-3.png>)
+
+Click the ScepterGUITool icon in left, or search the ScepterGUITool, then click.
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3-4.png>)
+
+You can Run the **uninstall.sh** to uninstall the ScepterGUITool.
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3-5.png>)
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3-6.png>)
+
+<!-- tabs:end -->
 
 <!-- tabs:end -->
 
