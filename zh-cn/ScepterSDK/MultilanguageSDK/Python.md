@@ -32,15 +32,15 @@ if system_ == 'linux':
       if system_info.find('18.04') != -1 or system_info.find('20.04') != -1:
          libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep + "../../../../BaseSDK/"))+"/Ubuntu18.04/Lib/libScepter_api.so"
          print(libpath)
-         self.vz_cam_lib = cdll.LoadLibrary(libpath)
+         self.sc_cam_lib = cdll.LoadLibrary(libpath)
       else:
          libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep + "../../../../BaseSDK/"))+"/Ubuntu16.04/Lib/libScepter_api.so"
          print(libpath)
-         self.vz_cam_lib = cdll.LoadLibrary(libpath)
+         self.sc_cam_lib = cdll.LoadLibrary(libpath)
       elif machine_ == 'aarch64':
          libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep + "../../../../BaseSDK/"))+"/AArch64/Lib/libScepter_api.so"
          print(libpath)
-         self.vz_cam_lib = cdll.LoadLibrary(libpath)
+         self.sc_cam_lib = cdll.LoadLibrary(libpath)
    else:
       print('do not supported OS', system_, machine_)
       exit()
@@ -49,11 +49,11 @@ elif platform.system() == 'Windows':
       if architecture_ == '64bit':
          libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep + "../../../../BaseSDK/"))+"/Windows/Bin/x64/Scepter_api.dll"
          print(libpath)
-         elf.vz_cam_lib = cdll.LoadLibrary(libpath)
+         elf.sc_cam_lib = cdll.LoadLibrary(libpath)
    else:
       libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep + "../../../../BaseSDK/"))+"/Windows/Bin/x86/Scepter_api.dll"
       print(libpath)
-      self.vz_cam_lib = cdll.LoadLibrary(libpath)
+      self.sc_cam_lib = cdll.LoadLibrary(libpath)
    else:
       print('do not supported OS', system_, machine_)
       exit()
@@ -157,7 +157,7 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
 class ScFrameType(Enum):
     SC_DEPTH_FRAME       = 0                                #表示深度图像类型，每像素16位，以毫米为单位
     SC_IR_FRAME          = 1                                #表示灰度图像类型，每像素8位
-    SC_COLOR_FRAMEE      = 3                                #表示彩色图像类型，每像素24位，RGB/BGR格式
+    SC_COLOR_FRAME       = 3                                #表示彩色图像类型，每像素24位，RGB/BGR格式
     SC_TRANSFORM_COLOR_IMG_TO_DEPTH_SENSOR_FRAME = 4        #表示映射到深度传感器空间的彩色图像类型，其中分辨率与深度图像的分辨率相同
                                                             #可以使用scSetTransformColorImgToDepthSensorEnabled()启用此帧类型
     SC_TRANSFORM_DEPTH_IMG_TO_COLOR_SENSOR_FRAME = 5        #表示映射到彩色传感器空间的深度图像类型，其中分辨率与彩色图像的分辨率相同。
@@ -174,7 +174,7 @@ class ScFrameType(Enum):
 
 ```python
 class ScSensorType(Enum):
-    SC_TOF_SENSOR = 0x01      #表示深度数据传感器
+    SC_TOF_SENSOR = 0x01,      #表示深度数据传感器
     SC_COLOR_SENSOR = 0x02    #表示彩色图像传感器
 ```
 
@@ -582,17 +582,98 @@ class ScIRGMMCorrectionParams(Structure):
                 ("enable", c_bool)]          #表示滤波是否打开，true 代表打开，false 代表关闭
 ```
 
+### 3.1.5.2.18. ScInputSignalParamsForHWTrigger
+
+**功能：**
+
+IR gain 值校正参数。
+
+**成员：**
+
+```python
+class ScInputSignalParamsForHWTrigger(Structure):
+    _pack_ = 1
+    _fields_ = [("width", c_uint16),        #表示输入信号宽度，阈值[1，65535]
+                ("interval", c_uint16),     #表示输入信号的间隔，阈值[34000，65535]
+                ("polarity", c_uint8)]		#表示电平有效性，[0，1]，0表示低电平有效，1表示高电平有效
+```
+
+### 3.1.5.2.19. ScTimeSyncConfig
+
+**功能：**
+
+IR gain 值校正参数。
+
+**成员：**
+
+```python
+class ScTimeSyncConfig(Structure):
+    _pack_ = 1
+    _fields_ = [("flag", c_uint8),			#0:表示关闭对时，1:表示开启NTP对时，2:表示开启PTP对时，只有NTP对时需要IP
+                ("ip", c_uint8 * 16)]       #只有NTP对时需要ip
+```
+
+#### 
+
 #### **API 介绍**
 
-### 3.1.5.3.1. scGetSDKVersion
+class ScepterTofCam中，对BaseSDK的接口进行Python的封装转换。
+
+### 3.1.5.3.1. scInitialize
+
+**函数原型：**
+
+```python
+def scInitialize(self):
+    return self.sc_cam_lib.scInitialize()
+```
+
+**函数功能：**
+
+初始化SDK
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+
+> 已在 def __init__(self):中调用，故Samples中没有调用
+### 3.1.5.3.2. scShutdown
+
+**函数原型：**
+
+```python
+def scShutdown(self):
+    return self.sc_cam_lib.scShutdown()
+```
+
+**函数功能：**
+
+释放SDK
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+> 已在 def __del__(self)中调用，故Samples中没有调用
+
+### 3.1.5.3.3. scGetSDKVersion
 
 **函数原型：**
 
 ```python
 def scGetSDKVersion(self):
-   tmp = c_char * 64
-   version = tmp()
-   return self.sc_cam_lib.scGetSDKVersion(version, 63),version.value
+    tmp = c_char * 64
+    version = tmp()
+    return self.sc_cam_lib.scGetSDKVersion(version, 63),version.value
 ```
 
 **函数功能：**
@@ -605,17 +686,19 @@ def scGetSDKVersion(self):
 
 **返回值：**
 
-**version.value**：SDK 版本号
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.2. scGetDeviceCount
+version.value：SDK 版本号
+
+### 3.1.5.3.4. scGetDeviceCount
 
 **函数原型：**
 
 ```python
 def scGetDeviceCount(self, scanTime = c_uint32(33)):
-   count = c_int()
-   self.sc_cam_lib.scGetDeviceCount(byref(count), scanTime)
-   return count.value
+    count = c_int()
+    self.sc_cam_lib.scGetDeviceCount(byref(count), scanTime)
+    return count.value
 ```
 
 **函数功能：**
@@ -624,25 +707,23 @@ def scGetDeviceCount(self, scanTime = c_uint32(33)):
 
 **函数参数：**
 
-byref(count)：在该变量中返回设备数量
-
 scanTime：单位为毫秒，数值范围为（0，65535）。
 当设备计数不为 0 时，API 立即返回。
 当设备计数为 0 时，除非设备计数不为 0，否则 API 最多等待等待时间（ms）。
 
 **返回值：**
 
-**count.value**：设备数量
+count.value：设备数量
 
-### 3.1.5.3.3. GetDeviceInfoList
+### 3.1.5.3.5. scGetDeviceInfoList
 
 **函数原型：**
 
 ```python
 def scGetDeviceInfoList(self, cam_count = 1):
-   tmp  = ScDeviceInfo* cam_count
-   device_infolist = tmp()
-   return self.sc_cam_lib.scGetDeviceInfoList(cam_count, device_infolist),device_infolist
+    tmp  = ScDeviceInfo* cam_count
+    device_infolist = tmp()
+    return self.sc_cam_lib.scGetDeviceInfoList(cam_count, device_infolist),device_infolist
 ```
 
 **函数功能：**
@@ -653,24 +734,22 @@ def scGetDeviceInfoList(self, cam_count = 1):
 
 cam_count：需要获取信息列表的设备个数
 
-[device_infolist](#_315213-scdeviceinfo)：返回设备信息列表，其应该指向大小为 sizeof(ScDeviceInfo)\*deviceCount 大小的缓存
-
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
 [**device_infolist**](#_315213-scdeviceinfo)：返回设备信息列表，其应该指向大小为 sizeof(ScDeviceInfo)\*deviceCount 大小的缓存
 
-### 3.1.5.3.4. scOpenDeviceBySN
+### 3.1.5.3.6. scOpenDeviceBySN
 
 **函数原型：**
 
 ```python
 def scOpenDeviceBySN(self,  SN=c_char_p()):
-   if SN:
-      return self.sc_cam_lib.scOpenDeviceBySN(SN, byref(self.device_handle))
-   else:
-      return ScReturnStatus.SC_INPUT_POINTER_IS_NULL
+    if SN:
+        return self.sc_cam_lib.scOpenDeviceBySN(SN, byref(self.device_handle))
+    else:
+        return ScReturnStatus.SC_INPUT_POINTER_IS_NULL
 ```
 
 **函数功能：**
@@ -681,22 +760,20 @@ def scOpenDeviceBySN(self,  SN=c_char_p()):
 
 SN：设备标识符
 
-byref(self.device_handle)： 打开设备成功后，返回的设备句柄
-
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.5. scOpenDeviceByIP
+### 3.1.5.3.7. scOpenDeviceByIP
 
 **函数原型：**
 
 ```python
 def scOpenDeviceByIP(self,  ip=c_char_p()):
-   if ip:
-      return self.sc_cam_lib.scOpenDeviceByIP(ip, byref(self.device_handle))
-   else:
-      return ScReturnStatus.SC_INPUT_POINTER_IS_NULL, 0
+    if ip:
+        return self.sc_cam_lib.scOpenDeviceByIP(ip, byref(self.device_handle))
+    else:
+        return ScReturnStatus.SC_INPUT_POINTER_IS_NULL, 0
 ```
 
 **函数功能：**
@@ -707,19 +784,17 @@ def scOpenDeviceByIP(self,  ip=c_char_p()):
 
 ip：设备的 IP 地址
 
-byref(self.device_handle)： 打开设备成功后，返回的设备句柄
-
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.6. scCloseDevice
+### 3.1.5.3.8. scCloseDevice
 
 **函数原型：**
 
 ```python
 def scCloseDevice(self):
-   return self.sc_cam_lib.scCloseDevice(byref(self.device_handle))
+    return self.sc_cam_lib.scCloseDevice(byref(self.device_handle))
 ```
 
 **函数功能：**
@@ -728,19 +803,19 @@ def scCloseDevice(self):
 
 **函数参数：**
 
-byref(self.device_handle)： 要关闭设备的句柄
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.7. scStartStream
+### 3.1.5.3.9. scStartStream
 
 **函数原型：**
 
 ```python
 def scStartStream(self):
-   return self.sc_cam_lib.scStartStream(self.device_handle)
+    return self.sc_cam_lib.scStartStream(self.device_handle)
 ```
 
 **函数功能：**
@@ -749,19 +824,19 @@ def scStartStream(self):
 
 **函数参数：**
 
-self.device_handle：要打开数据流的设备的句柄
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.8. scStopStream
+### 3.1.5.3.10. scStopStream
 
 **函数原型：**
 
 ```python
 def scStopStream(self):
-   return self.sc_cam_lib.scStopStream(self.device_handle)
+    return self.sc_cam_lib.scStopStream(self.device_handle)
 ```
 
 **函数功能：**
@@ -770,22 +845,22 @@ def scStopStream(self):
 
 **函数参数：**
 
-self.device_handle：要关闭数据流的设备的句柄
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.9. scGetFrameReady
+### 3.1.5.3.11. scGetFrameReady
 
 **函数原型：**
 
 ```python
 def scGetFrameReady(self,waitTime = c_uint16(33)):
-   frameready = ScFrameReady()
-   if not self.device_handle:
-      return -3, frameready
-   return self.sc_cam_lib.scGetFrameReady(self.device_handle, waitTime, byref(frameready)), frameready
+    frameready = ScFrameReady()
+    if not self.device_handle:
+        return -3, frameready
+    return self.sc_cam_lib.scGetFrameReady(self.device_handle, waitTime, byref(frameready)), frameready
 ```
 
 **函数功能：**
@@ -794,11 +869,7 @@ def scGetFrameReady(self,waitTime = c_uint16(33)):
 
 **函数参数：**
 
-self.device_handle： 设备句柄
-
 waitTime：允许等待图像就绪的超时时间(ms)，取值范围为(0，65535)。此值与图像的帧率有关，建议值设置为 2\*1000/fps。例如当前的帧率为 20，则建议设置 waitTime 为 2 \* 1000 / 20 = 100。如果设置 waitTime 为 40，则调用函数时可能返回 ScRetGetFrameReadyTimeOut。
-
-[byref(frameready)](#_315212-scframeready)：返回图像的就绪状态
 
 **返回值：**
 
@@ -806,14 +877,14 @@ waitTime：允许等待图像就绪的超时时间(ms)，取值范围为(0，655
 
 [**frameready**](#_315212-scframeready)：返回图像的就绪状态
 
-### 3.1.5.3.10. scGetFrame
+### 3.1.5.3.12. scGetFrame
 
 **函数原型：**
 
 ```python
 def scGetFrame(self,  frametype = ScFrameType.SC_DEPTH_FRAME):
-   Scframe = ScFrame()
-   return self.sc_cam_lib.scGetFrame(self.device_handle, frametype.value, byref(Scframe)), Scframe
+    Scframe = ScFrame()
+    return self.sc_cam_lib.scGetFrame(self.device_handle, frametype.value, byref(Scframe)), Scframe
 ```
 
 **函数功能：**
@@ -822,11 +893,7 @@ def scGetFrame(self,  frametype = ScFrameType.SC_DEPTH_FRAME):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[frametype.value](#_31511-scframetype)：待获取图像的类型
-
-[byref(Scframe)](#_315211-scframe)：返回的图像数据
+[frametype](#_31511-scframetype)：待获取图像的类型 
 
 **返回值：**
 
@@ -834,105 +901,42 @@ self.device_handle：设备句柄
 
 [**Scframe**](#_315211-scframe)：返回的图像数据
 
-### 3.1.5.3.11. scSetWorkMode
+### 3.1.5.3.13.scGetDepthRangeValue
 
 **函数原型：**
 
 ```python
-def scSetWorkMode(self,  mode = ScWorkMode.SC_ACTIVE_MODE):
-   return self.sc_cam_lib.scSetWorkMode(self.device_handle, mode.value)
+def scGetDepthRangeValue(self):
+    minValue = c_int16(0)
+    maxValue = c_int16(0)
+    return self.sc_cam_lib.scGetDepthRangeValue(self.device_handle, byref(minValue), byref(maxValue)), minValue, maxValue
+ 
 ```
 
 **函数功能：**
 
-设置相机的工作模式
+获取设备当前工作模式下的深度范围
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[mode.value](#_31516-scworkmode)：要设置的工作模式，对于 ActiveMode ，将时间过滤器的默认值设置为 True ，对于 SlaveMode ，将时间过滤器的默认值设置为 False
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.12. scGetWorkMode
+minValue：深度最小值
 
-**函数原型：**
+minValue：深度最大值
 
-```python
-def scGetWorkMode(self):
-   mode = ScWorkMode(0)
-   return self.sc_cam_lib.scGetWorkMode(self.device_handle, byref(mode)), mode
-```
-
-**函数功能：**
-
-获取相机的工作模式
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-[byref(mode)](#_31516-scworkmode)：获取到的设备的工作模式
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-[**mode**](#_31516-scworkmode)：获取到的设备的工作模式
-
-### 3.1.5.3.13. scSoftwareTriggerOnce
-
-**函数原型：**
-
-```python
-def scSoftwareTriggerOnce(self):
-   return self.sc_cam_lib.scSoftwareTriggerOnce(self.device_handle)
-```
-
-**函数功能：**
-
-执行一次软件触发，仅当相机处于 SC_SOFTWARE_TRIGGER_MODE 时有效
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.1.5.3.14. scRebootDevie
-
-**函数原型：**
-
-```python
-def scRebootDevie(self):
-   return self.sc_cam_lib.scRebootDevie(self.device_handle)
-```
-
-**函数功能：**
-
-重启设备
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.1.5.3.15. scGetSensorIntrinsicParameters
+### 3.1.5.3.14. scGetSensorIntrinsicParameters
 
 **函数原型：**
 
 ```python
 def scGetSensorIntrinsicParameters(self, sensorType = ScSensorType.SC_TOF_SENSOR):
-   CameraParameters = ScSensorIntrinsicParameters()
-   return self.sc_cam_lib.scGetSensorIntrinsicParameters(self.device_handle, sensorType.value, byref(CameraParameters)), CameraParameters
+    CameraParameters = ScSensorIntrinsicParameters()
+    return self.sc_cam_lib.scGetSensorIntrinsicParameters(self.device_handle, sensorType.value, byref(CameraParameters)), CameraParameters
 ```
 
 **函数功能：**
@@ -941,11 +945,7 @@ def scGetSensorIntrinsicParameters(self, sensorType = ScSensorType.SC_TOF_SENSOR
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[sensorType.value](#_31512-scsensortype)：传感器类型
-
-[byref(CameraParameters)](#_31528-scsensorintrinsicparameters)：返回传感器镜头的内参
+[sensorType](#_31512-scsensortype)：传感器类型 
 
 **返回值：**
 
@@ -953,14 +953,14 @@ self.device_handle：设备句柄
 
 [**CameraParameters**](#_31528-scsensorintrinsicparameters)：返回传感器镜头的内参
 
-### 3.1.5.3.16. scGetSensorExtrinsicParameters
+### 3.1.5.3.15. scGetSensorExtrinsicParameters
 
 **函数原型：**
 
 ```python
 def scGetSensorExtrinsicParameters(self):
-   CameraExtrinsicParameters = ScSensorExtrinsicParameters()
-   return self.sc_cam_lib.scGetSensorExtrinsicParameters(self.device_handle, byref(CameraExtrinsicParameters)), CameraExtrinsicParameters
+    CameraExtrinsicParameters = ScSensorExtrinsicParameters()
+    return self.sc_cam_lib.scGetSensorExtrinsicParameters(self.device_handle, byref(CameraExtrinsicParameters)), CameraExtrinsicParameters
 ```
 
 **函数功能：**
@@ -969,9 +969,7 @@ def scGetSensorExtrinsicParameters(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[byref(CameraExtrinsicParameters)](#_31529-scsensorextrinsicparameters)：返回设备的外参
+无
 
 **返回值：**
 
@@ -979,15 +977,15 @@ self.device_handle：设备句柄
 
 [**CameraExtrinsicParameters**](#_31529-scsensorextrinsicparameters)：返回设备的外参
 
-### 3.1.5.3.17. scGetFirmwareVersion
+### 3.1.5.3.16. scGetFirmwareVersion
 
 **函数原型：**
 
 ```python
 def scGetFirmwareVersion(self):
-   tmp = c_char * 64
-   fw = tmp()
-   return self.sc_cam_lib.scGetFirmwareVersion(self.device_handle, fw, 63),fw.value
+    tmp = c_char * 64
+    fw = tmp()
+    return self.sc_cam_lib.scGetFirmwareVersion(self.device_handle, fw, 63),fw.value
 ```
 
 **函数功能：**
@@ -996,25 +994,23 @@ def scGetFirmwareVersion(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-fw：返回设备的固件版本
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-**fw.value**：返回设备的固件版本
+fw.value：返回设备的固件版本
 
-### 3.1.5.3.18. scGetDeviceMACAddress
+### 3.1.5.3.17. scGetDeviceMACAddress
 
 **函数原型：**
 
 ```python
 def scGetDeviceMACAddress(self):
-   tmp = c_char * 18
-   mac = tmp()
-   return self.sc_cam_lib.scGetDeviceMACAddress(self.device_handle, mac), mac.value
+    tmp = c_char * 18
+    mac = tmp()
+    return self.sc_cam_lib.scGetDeviceMACAddress(self.device_handle, mac), mac.value
 ```
 
 **函数功能：**
@@ -1023,23 +1019,415 @@ def scGetDeviceMACAddress(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-mac：返回设备的 MAC 地址，其默认是一个字节长度为 18，以‘\0’结尾的字符串
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-**mac.value**：返回设备的 MAC 地址，其默认是一个字节长度为 18，以‘\0’结尾的字符串
+mac.value：返回设备的 MAC 地址，其默认是一个字节长度为 18，以‘\0’结尾的字符串
 
-### 3.1.5.3.19. scSetIRGMMGain
+### 3.1.5.3.18. scSetDeviceDHCPEnabled
+
+**函数原型：**
+
+```python
+def scSetDeviceDHCPEnabled(self, enable = c_bool(True)):
+    return self.sc_cam_lib.scSetDeviceDHCPEnabled(self.device_handle, enable)
+```
+
+**函数功能：**
+
+设置DHCP使能状态
+
+**函数参数：**
+
+enable：true 开启，false 关闭
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+### 3.1.5.3.19. scGetDeviceDHCPEnabled
+
+**函数原型：**
+
+```python
+def scGetDeviceDHCPEnabled(self):
+    enable = c_bool(True)
+    return self.sc_cam_lib.scGetDeviceDHCPEnabled(self.device_handle, byref(enable)), enable.value
+```
+
+**函数功能：**
+
+获取DHCP使能状态
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+enable.value：true 开启，false 关闭
+
+### 3.1.5.3.20. scSetDeviceIPAddr
+
+**函数原型：**
+
+```python
+def scSetDeviceIPAddr(self, IPAddr=c_char_p(), length=c_int32(0)):
+    return self.sc_cam_lib.scSetDeviceIPAddr(self.device_handle, IPAddr, length)
+```
+
+**函数功能：**
+
+设置非DHCP下的IP地址。
+
+**函数参数：**
+
+IPAddr：ip地址
+
+length：ip长度
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+### 3.1.5.3.21. scGetDeviceIPAddr
+
+**函数原型：**
+
+```python
+def scGetDeviceIPAddr(self):
+    tmp = c_char * 16
+    IPAddr = tmp()
+    return self.sc_cam_lib.scGetDeviceIPAddr(self.device_handle, IPAddr), IPAddr.value
+```
+
+**函数功能：**
+
+获取非DHCP下的IP地址。
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+IPAddr.value：IP地址
+
+### 3.1.5.3.22. scSetDeviceSubnetMask
+
+**函数原型：**
+
+```python
+def scSetDeviceSubnetMask(self, subnetMask=c_char_p(), length=c_int32(0)):
+    return self.sc_cam_lib.scSetDeviceSubnetMask(self.device_handle, subnetMask, length)
+```
+
+**函数功能：**
+
+设置非DHCP下的子网掩码。
+
+**函数参数：**
+
+subnetMask：子网掩码地址
+
+length：子网掩码长度
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+### 3.1.5.3.23. scGetDeviceSubnetMask
+
+**函数原型：**
+
+```python
+def scGetDeviceSubnetMask(self):
+    tmp = c_char * 16
+    subnetMask = tmp()
+    return self.sc_cam_lib.scGetDeviceSubnetMask(self.device_handle, subnetMask), subnetMask.value
+```
+
+**函数功能：**
+
+获取非DHCP下的子网掩码。
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+subnetMask.value：子网掩码
+
+### 3.1.5.3.24. scSetRealTimeSyncConfig
+
+**函数原型：**
+
+```python
+def scSetRealTimeSyncConfig(self, params = ScTimeSyncConfig()):
+    return self.sc_cam_lib.scSetRealTimeSyncConfig(self.device_handle, params)
+```
+
+**函数功能：**
+
+设置时间同步的参数
+
+**函数参数：**
+
+[params](#_315219-sctimesyncconfig)：时间同步参数
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+### 3.1.5.3.25. scGetRealTimeSyncConfig
+
+**函数原型：**
+
+```python
+def scGetRealTimeSyncConfig(self):
+    pParams = ScTimeSyncConfig()
+    return self.sc_cam_lib.scGetRealTimeSyncConfig(self.device_handle, byref(pParams)),pParams
+```
+
+**函数功能：**
+
+获取时间同步的参数
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+[**pParams**](#_315219-sctimesyncconfig)：时间同步参数
+
+### 3.1.5.3.26. scSetFrameRate
+
+**函数原型：**
+
+```python
+def scSetFrameRate(self, value = c_uint8(30)):
+    return self.sc_cam_lib.scSetFrameRate(self.device_handle, value)
+```
+
+**函数功能：**
+
+设置设备的图像帧率，同时对深度和彩色图像生效。此接口是同步接口，耗时较长，大约需要 500ms
+
+**函数参数：**
+
+value：要设置的目标帧率
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.27. scGetFrameRate
+
+**函数原型：**
+
+```python
+def scGetFrameRate(self):
+    rate = c_uint8(1)
+    return self.sc_cam_lib.scGetFrameRate(self.device_handle, byref(value)), rate.value
+```
+
+**函数功能：**
+
+获取设备的图像帧率
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+rate.value：返回设备的图像帧率
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+**value.value**：返回设备的图像帧率
+
+### 3.1.5.3.28. scSetWorkMode
+
+**函数原型：**
+
+```python
+def scSetWorkMode(self,  mode = ScWorkMode.SC_ACTIVE_MODE):
+    return self.sc_cam_lib.scSetWorkMode(self.device_handle, mode.value)
+```
+
+**函数功能：**
+
+设置相机的工作模式
+
+**函数参数：**
+
+[mode](#_31516-scworkmode)：工作模式
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.29. scGetWorkMode
+
+**函数原型：**
+
+```python
+def scGetWorkMode(self):
+    mode = ScWorkMode(0)
+    return self.sc_cam_lib.scGetWorkMode(self.device_handle, byref(mode)), mode
+```
+
+**函数功能：**
+
+获取相机的工作模式
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[**mode**](#_31516-scworkmode)：获取到的设备的工作模式
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[**mode**](#_31516-scworkmode)：获取到的设备的工作模式
+
+### 3.1.5.3.30. scSetSoftwareTriggerParameter
+
+**函数原型：**
+
+```python
+def scSetSoftwareTriggerParameter(self, param = c_uint8(0)):
+    return self.sc_cam_lib.scSetSoftwareTriggerParameter(self.device_handle, param)
+```
+
+**函数功能：**
+
+设置软件触发模式下的，做融合处理的图像帧数
+
+**函数参数：**
+
+param：图像帧数
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.31. scGetSoftwareTriggerParameter
+
+**函数原型：**
+
+```python
+def scGetSoftwareTriggerParameter(self):
+    param = c_uint8(0)
+    return self.sc_cam_lib.scGetSoftwareTriggerParameter(self.device_handle, byref(param)), param
+```
+
+**函数功能：**
+
+获取软件触发模式下的，做融合处理的图像帧数
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+param：图像帧数
+
+### 3.1.5.3.32. scSoftwareTriggerOnce
+
+**函数原型：**
+
+```python
+def scSoftwareTriggerOnce(self):
+    return self.sc_cam_lib.scSoftwareTriggerOnce(self.device_handle)
+```
+
+**函数功能：**
+
+执行一次软件触发，仅当相机处于 SC_SOFTWARE_TRIGGER_MODE 时有效
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.33. scSetInputSignalParamsForHWTrigger
+
+**函数原型：**
+
+```python
+def scSetInputSignalParamsForHWTrigger(self, params = ScInputSignalParamsForHWTrigger()):
+    return self.sc_cam_lib.scSetInputSignalParamsForHWTrigger(self.device_handle, params)
+```
+
+**函数功能：**
+
+设置硬触发的输入信号参数
+
+**函数参数：**
+
+[params](#_315218-scinputsignalparamsforhwtrigger)：硬触发的输入信号参数
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.34. scGetInputSignalParamsForHWTrigger
+
+**函数原型：**
+
+```python
+def scSetInputSignalParamsForHWTrigger(self, params = ScInputSignalParamsForHWTrigger()):
+    return self.sc_cam_lib.scSetInputSignalParamsForHWTrigger(self.device_handle, params)
+```
+
+**函数功能：**
+
+获取硬触发的输入信号参数
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[params](#_315218-scinputsignalparamsforhwtrigger)：硬触发的输入信号参数
+
+### 3.1.5.3.35. scSetIRGMMGain
 
 **函数原型：**
 
 ```python
 def scSetIRGMMGain(self, gmmgain = c_uint8(20)):
-   return self.sc_cam_lib.scSetIRGMMGain(self.device_handle, gmmgain)
+    return self.sc_cam_lib.scSetIRGMMGain(self.device_handle, gmmgain)
 ```
 
 **函数功能：**
@@ -1048,22 +1436,20 @@ def scSetIRGMMGain(self, gmmgain = c_uint8(20)):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
 gmmgain：要设置给设备的 IR 增益值
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.20. scGetIRGMMGain
+### 3.1.5.3.36. scGetIRGMMGain
 
 **函数原型：**
 
 ```python
 def scGetIRGMMGain(self):
-   gmmgain = c_uint8(1)
-   return self.sc_cam_lib.scGetIRGMMGain(self.device_handle, byref(gmmgain)), gmmgain.value
+    gmmgain = c_uint8(1)
+    return self.sc_cam_lib.scGetIRGMMGain(self.device_handle, byref(gmmgain)), gmmgain.value
 ```
 
 **函数功能：**
@@ -1072,9 +1458,7 @@ def scGetIRGMMGain(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-byref(gmmgain)：返回设备的 IR 增益值
+无
 
 **返回值：**
 
@@ -1082,13 +1466,13 @@ byref(gmmgain)：返回设备的 IR 增益值
 
 **gmmgain.value**：返回设备的 IR 增益值
 
-### 3.1.5.3.21. scSetIRGMMCorrection
+### 3.1.5.3.37. scSetIRGMMCorrection
 
 **函数原型：**
 
 ```python
 def scSetIRGMMCorrection(self, params = ScIRGMMCorrectionParams()):
-   return self.sc_cam_lib.scSetIRGMMCorrection(self.device_handle, params)
+    return self.sc_cam_lib.scSetIRGMMCorrection(self.device_handle, params)
 ```
 
 **函数功能：**
@@ -1097,15 +1481,13 @@ def scSetIRGMMCorrection(self, params = ScIRGMMCorrectionParams()):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
 [params](#_315217-scirgmmcorrectionparams)：IR Gamma 校正的值
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.22. scGetIRGMMCorrection
+### 3.1.5.3.38. scGetIRGMMCorrection
 
 **函数原型：**
 
@@ -1121,23 +1503,25 @@ def scGetIRGMMCorrection(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[byref(params)](#_315217-scirgmmcorrectionparams)：IR Gamma 校正的值
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+[**params**](#_31514-screturnstatus)：IR Gamma 校正的值
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
 [**params**](#_315217-scirgmmcorrectionparams)：IR Gamma 校正的值
 
-### 3.1.5.3.23. scSetColorPixelFormat
+### 3.1.5.3.39. scSetColorPixelFormat
 
 **函数原型：**
 
 ```python
 def scSetColorPixelFormat(self,pixelFormat=ScPixelFormat.SC_PIXEL_FORMAT_BGR_888_JPEG):
-   return self.sc_cam_lib.scSetColorPixelFormat(self.device_handle, pixelFormat)
+    return self.sc_cam_lib.scSetColorPixelFormat(self.device_handle, pixelFormat)
 ```
 
 **函数功能：**
@@ -1146,21 +1530,90 @@ def scSetColorPixelFormat(self,pixelFormat=ScPixelFormat.SC_PIXEL_FORMAT_BGR_888
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
 [pixelFormat](#_31513-scpixelformat)：要设置的彩色图像的像素格式
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.24. scSetColorResolution
+### 3.1.5.3.40. scSetColorGain
+
+**函数原型：**
+
+```python
+def scSetColorGain(self, params = c_float(1.0)):
+   return self.sc_cam_lib.scSetColorGain(self.device_handle,  params)
+```
+
+**函数功能：**
+
+在手动曝光模式中，设置彩色传感器曝光模式的颜色增益
+
+**函数参数：**
+
+params：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.41. scGetColorGain
+
+**函数原型：**
+
+```python
+def scGetColorGain(self):
+    tmp = c_float*1
+    params = tmp()
+    return self.sc_cam_lib.scGetColorGain(self.device_handle,  params), params
+```
+
+**函数功能：**
+
+获取彩色传感器曝光模式的颜色增益
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+params：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
+
+### 3.1.5.3.42. scGetSupportedResolutionList
+
+**函数原型：**
+
+```python
+def scGetSupportedResolutionList(self, type = ScSensorType.SC_TOF_SENSOR, cam_count=1):
+    tmp = ScResolutionList * cam_count
+    pList = tmp()
+    return self.sc_cam_lib.scGetSupportedResolutionList(self.device_handle, type.value, byref(pList)), pList
+```
+
+**函数功能：**
+
+获取传感器支持的图像分辨率列表
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+pList：支持的图像分辨率列表
+
+### 3.1.5.3.43. scSetColorResolution
 
 **函数原型：**
 
 ```python
 def scSetColorResolution(self, w = c_int32(1600), h = c_int32(1200)):
-   return self.sc_cam_lib.scSetColorResolution(self.device_handle, w, h)
+    return self.sc_cam_lib.scSetColorResolution(self.device_handle, w, h)
 ```
 
 **函数功能：**
@@ -1168,8 +1621,6 @@ def scSetColorResolution(self, w = c_int32(1600), h = c_int32(1200)):
 设置彩色图像的分辨率
 
 **函数参数：**
-
-self.device_handle：设备句柄
 
 w：图像的宽
 
@@ -1179,15 +1630,15 @@ h：图像的高
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.25. scGetColorResolution
+### 3.1.5.3.44. scGetColorResolution
 
 **函数原型：**
 
 ```python
 def scGetColorResolution(self):
-   w = c_int32(1600)
-   h = c_int32(1200)
-   return self.sc_cam_lib.scGetColorResolution(self.device_handle, byref(w), byref(h)), w, h
+    w = c_int32(1600)
+    h = c_int32(1200)
+    return self.sc_cam_lib.scGetColorResolution(self.device_handle, byref(w), byref(h)), w, h
 ```
 
 **函数功能：**
@@ -1196,76 +1647,23 @@ def scGetColorResolution(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-byref(w)：返回彩色图像的图像宽
-
-byref(h)：返回彩色图像的图像高
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-**w**：返回彩色图像的图像宽
+w：返回彩色图像的图像宽
 
-**h**：返回彩色图像的图像高
+h：返回彩色图像的图像高
 
-### 3.1.5.3.26. scSetFrameRate
-
-**函数原型：**
-
-```python
-def scSetFrameRate(self, value = c_uint8(30)):
-   return self.sc_cam_lib.scSetFrameRate(self.device_handle, value)
-```
-
-**函数功能：**
-
-设置设备的图像帧率，同时对深度和彩色图像生效。此接口是同步接口，耗时较长，大约需要 500ms
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-value：要设置的目标帧率
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.1.5.3.27. scGetFrameRate
-
-**函数原型：**
-
-```python
-def scGetFrameRate(self):
-   value = c_uint8(1)
-   return self.sc_cam_lib.scGetFrameRate(self.device_handle, byref(value)), value.value
-```
-
-**函数功能：**
-
-获取设备的图像帧率
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-byref(value)：返回设备的图像帧率
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-**value.value**：返回设备的图像帧率
-
-### 3.1.5.3.28. scSetExposureControlMode
+### 3.1.5.3.45. scSetExposureControlMode
 
 **函数原型：**
 
 ```python
 def scSetExposureControlMode(self, sensorType = ScSensorType.SC_TOF_SENSOR, mode = ScExposureControlMode.SC_EXPOSURE_CONTROL_MODE_MANUAL):
-   return self.sc_cam_lib.scSetExposureControlMode(self.device_handle, sensorType.value, mode.value)
+    return self.sc_cam_lib.scSetExposureControlMode(self.device_handle, sensorType.value, mode.value)
 ```
 
 **函数功能：**
@@ -1274,23 +1672,45 @@ def scSetExposureControlMode(self, sensorType = ScSensorType.SC_TOF_SENSOR, mode
 
 **函数参数：**
 
-self.device_handle：设备句柄
+[sensorType](#_31512-scsensortype)：要设置曝光模式的传感器类型
 
-[sensorType.value](#_31512-scsensortype)：要设置曝光模式的传感器类型
-
-[mode.value](#_31517-scexposurecontrolmode)：要设置的曝光模式
+[mode](#_31517-scexposurecontrolmode)：要设置的曝光模式
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.29. scSetExposureTime
+### 3.1.5.3.46. scGetExposureControlMode
+
+**函数原型：**
+
+```python
+def scGetExposureControlMode(self, sensorType = ScSensorType.SC_TOF_SENSOR):
+    mode = ScCameraExposureControlMode(1)
+    return self.sc_cam_lib.scGetExposureControlMode(self.device_handle, sensorType.value, byref(mode)), mode
+```
+
+**函数功能：**
+
+获取传感器的曝光模式
+
+**函数参数：**
+
+[sensorType](#_31512-scsensortype)：要设置曝光模式的传感器类型
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[mode](#_31517-scexposurecontrolmode)：要设置的曝光模式
+
+### 3.1.5.3.47. scSetExposureTime
 
 **函数原型：**
 
 ```python
 def scSetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR, params = c_int32(0)):
-   return self.sc_cam_lib.scSetExposureTime(self.device_handle, sensorType.value, params)
+    return self.sc_cam_lib.scSetExposureTime(self.device_handle, sensorType.value, params)
 ```
 
 **函数功能：**
@@ -1303,9 +1723,7 @@ def scSetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR, params = c_
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[sensorType.value](#_31512-scsensortype)：要获取曝光时间的传感器类型
+[sensorType](#_31512-scsensortype)：要获取曝光时间的传感器类型
 
 params：要设置的曝光时间参数
 
@@ -1313,14 +1731,14 @@ params：要设置的曝光时间参数
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.30. scGetExposureTime
+### 3.1.5.3.48. scGetExposureTime
 
 **函数原型：**
 
 ```python
 def scGetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR):
-   params = c_int32(0)
-   return self.sc_cam_lib.scGetExposureTime(self.device_handle, sensorType.value, byref(params)), params
+    params = c_int32(0)
+    return self.sc_cam_lib.scGetExposureTime(self.device_handle, sensorType.value, byref(params)), params
 ```
 
 **函数功能：**
@@ -1329,25 +1747,370 @@ def scGetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[sensorType.value](#_31512-scsensortype)：要获取曝光时间的传感器类型
-
-byref(params)：返回获取的曝光时间参数
+[sensorType](#_31512-scsensortype)：要获取曝光时间的传感器类型
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-**params**：返回获取的曝光时间参数
+params：返回获取的曝光时间参数
 
-### 3.1.5.3.31. scSetTimeFilterParams
+### 3.1.5.3.49. scSetColorAECMaxExposureTime
+
+**函数原型：**
+
+```python
+def scSetColorAECMaxExposureTime(self, params = c_int32(0)):
+    return self.sc_cam_lib.scSetColorAECMaxExposureTime(self.device_handle, params)
+```
+
+**函数功能：**
+
+设置彩色传感器在自动曝光模式下的最大曝光时间。该接口在自动曝光模式下使用
+
+**函数参数：**
+
+params：曝光时间参数
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.50. scGetColorAECMaxExposureTime
+
+**函数原型：**
+
+```python
+def scGetColorAECMaxExposureTime(self):
+   params = c_int32(0)
+   return self.sc_cam_lib.scGetColorAECMaxExposureTime(self.device_handle, byref(params)), params
+```
+
+**函数功能：**
+
+获取彩色传感器在自动曝光模式下的最大曝光时间。该接口在自动曝光模式下使用
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+params：返回获取的曝光时间参数
+
+### 3.1.5.3.51. scGetMaxExposureTime
+
+**函数原型：**
+
+```python
+def scGetMaxExposureTime(self, sensorType = ScSensorType.SC_COLOR_SENSOR):
+    tmp = c_int32(1000)
+    return self.sc_cam_lib.scGetMaxExposureTime(self.device_handle, sensorType.value, byref(tmp)), tmp
+```
+
+**函数功能：**
+
+获取传感器的最大曝光时间
+
+**函数参数：**
+
+[sensorType](#_31512-scsensortype)：要获取曝光时间的传感器类型
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+tmp：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同
+
+### 3.1.5.3.52. scSetHDRModeEnabled
+
+**函数原型：**
+
+```python
+def scSetHDRModeEnabled(self, enable =  c_bool(True)):
+    return self.sc_cam_lib.scSetHDRModeEnabled(self.device_handle, enable)
+```
+
+**函数功能：**
+
+开启或关闭 HDR 功能，设备需在手动曝光模式，因此，如果您想切换到自动曝光，请先将 HDR 模式设置为禁用
+
+**函数参数：**
+
+enable：true 开启，false 关闭
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+### 3.1.5.3.53. scGetHDRModeEnabled
+
+**函数原型：**
+
+```python
+def scGetHDRModeEnabled(self):
+    enable = c_bool(True)
+    return self.sc_cam_lib.scGetHDRModeEnabled(self.device_handle, byref(enable)), enable.value
+```
+
+**函数功能：**
+
+获取 HDR 功能开启状态
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+enable：true 开启，false 关闭
+
+### 3.1.5.3.54. scGetFrameCountOfHDRMode
+
+**函数原型：**
+
+```python
+def scGetFrameCountOfHDRMode(self):
+    pCount = c_int32(0)
+    return self.sc_cam_lib.scGetFrameCountOfHDRMode(self.device_handle, byref(pCount)), pCount.value
+```
+
+**函数功能：**
+
+获取HDR模式下进行融合处理的图像帧数
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+pCount.value：图像帧数
+
+### 3.1.5.3.55. scSetExposureTimeOfHDR
+
+**函数原型：**
+
+```python
+def scSetExposureTimeOfHDR(self, frameIndex = c_uint8(0), exposureTime = c_int32(0)):
+    return self.sc_cam_lib.scSetExposureTimeOfHDR(self.device_handle, frameIndex, exposureTime)
+```
+
+**函数功能：**
+
+在HDR模式下，设置深度传感器的曝光时间
+
+**函数参数：**
+
+frameIndex：帧索引
+
+exposureTime：曝光时间
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+### 3.1.5.3.56. scGetExposureTimeOfHDR
+
+**函数原型：**
+
+```python
+def scGetExposureTimeOfHDR(self, frameIndex = c_uint8(0)):
+    exposureTime = c_int32(0)
+    return self.sc_cam_lib.scGetExposureTimeOfHDR(self.device_handle, frameIndex, byref(exposureTime)), exposureTime.value
+```
+
+**函数功能：**
+
+在HDR模式下，获取深度传感器的曝光时间
+
+**函数参数：**
+
+frameIndex：帧索引
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+exposureTime.value：曝光时间
+
+### 3.1.5.3.57. scGetMaxExposureTimeOfHDR
+
+**函数原型：**
+
+```python
+def scGetMaxExposureTimeOfHDR(self, frameIndex = c_uint8(0)):
+    exposureTime = c_int32(0)
+    return self.sc_cam_lib.scGetMaxExposureTimeOfHDR(self.device_handle, frameIndex, byref(exposureTime)), exposureTime.value
+```
+
+**函数功能：**
+
+在HDR模式下，获取深度传感器的最大曝光时间
+
+**函数参数：**
+
+frameIndex：帧索引
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+exposureTime.value：曝光时间
+
+### 3.1.5.3.58. scSetWDRModeEnabled
+
+**函数原型：**
+
+```python
+def scSetWDRModeEnabled(self, enable =  c_bool(True)):
+    return self.sc_cam_lib.scSetWDRModeEnabled(self.device_handle, enable)
+```
+
+**函数功能：**
+
+开启或关闭 WDR 功能，设备需在手动曝光模式，因此，如果您想切换到自动曝光，请先将 WDR 模式设置为禁用
+
+**函数参数：**
+
+enable：true 开启，false 关闭
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+### 3.1.5.3.59. scGetWDRModeEnabled
+
+**函数原型：**
+
+```python
+def scGetWDRModeEnabled(self):
+    enable = c_bool(True)
+    return self.sc_cam_lib.scGetWDRModeEnabled(self.device_handle, byref(enable)), enable.value
+```
+
+**函数功能：**
+
+获取 WDR 功能开启状态
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+enable：true 开启，false 关闭
+
+### 3.1.5.3.60. scGetFrameCountOfWDRMode
+
+**函数原型：**
+
+```python
+def scGetFrameCountOfWDRMode(self):
+    pCount = c_int32(0)
+    return self.sc_cam_lib.scGetFrameCountOfWDRMode(self.device_handle, byref(pCount)), pCount.value
+```
+
+**函数功能：**
+
+获取WDR模式下进行融合处理的图像帧数
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+pCount.value：图像帧数
+
+### 3.1.5.3.61. scSetExposureTimeOfWDR
+
+**函数原型：**
+
+```python
+def scSetExposureTimeOfWDR(self, frameIndex = c_uint8(0), exposureTime = c_int32(0)):
+    return self.sc_cam_lib.scSetExposureTimeOfWDR(self.device_handle, frameIndex, exposureTime)
+```
+
+**函数功能：**
+
+在WDR模式下，设置深度传感器的曝光时间
+
+**函数参数：**
+
+frameIndex：帧索引
+
+exposureTime：曝光时间
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+### 3.1.5.3.62. scGetExposureTimeOfWDR
+
+**函数原型：**
+
+```python
+def scGetExposureTimeOfWDR(self, frameIndex = c_uint8(0)):
+    exposureTime = c_int32(0)
+    return self.sc_cam_lib.scGetExposureTimeOfWDR(self.device_handle, frameIndex, byref(exposureTime)), exposureTime.value
+```
+
+**函数功能：**
+
+在WDR模式下，获取深度传感器的曝光时间
+
+**函数参数：**
+
+frameIndex：帧索引
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+exposureTime.value：曝光时间
+
+### 3.1.5.3.63. scGetMaxExposureTimeOfWDR
+
+**函数原型：**
+
+```python
+def scGetMaxExposureTimeOfWDR(self, frameIndex = c_uint8(0)):
+    exposureTime = c_int32(0)
+    return self.sc_cam_lib.scGetMaxExposureTimeOfWDR(self.device_handle, frameIndex, byref(exposureTime)), exposureTime.value
+```
+
+**函数功能：**
+
+在WDR模式下，获取深度传感器的最大曝光时间
+
+**函数参数：**
+
+frameIndex：帧索引
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
+
+exposureTime.value：曝光时间
+
+### 3.1.5.3.64. scSetTimeFilterParams
 
 **函数原型：**
 
 ```python
 def scSetTimeFilterParams(self, params = ScTimeFilterParams()):
-   return self.sc_cam_lib.scSetTimeFilterParams(self.device_handle, params)
+    return self.sc_cam_lib.scSetTimeFilterParams(self.device_handle, params)
 ```
 
 **函数功能：**
@@ -1356,22 +2119,20 @@ def scSetTimeFilterParams(self, params = ScTimeFilterParams()):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
 [params](#_315216-sctimefilterparams)：指向存储返回值的变量的指针
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.32. scGetTimeFilterParams
+### 3.1.5.3.65. scGetTimeFilterParams
 
 **函数原型：**
 
 ```python
 def scGetTimeFilterParams(self):
-   params = ScTimeFilterParams()
-   return self.sc_cam_lib.scGetTimeFilterParams(self.device_handle, byref(params)),params
+    params = ScTimeFilterParams()
+    return self.sc_cam_lib.scGetTimeFilterParams(self.device_handle, byref(params)),params
 ```
 
 **函数功能：**
@@ -1380,21 +2141,21 @@ def scGetTimeFilterParams(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[params](#_315216-sctimefilterparams)：指向存储返回值的变量的指针
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.33. scSetConfidenceFilterParams
+[params](#_315216-sctimefilterparams)：指向存储返回值的变量的指针
+
+### 3.1.5.3.66. scSetConfidenceFilterParams
 
 **函数原型：**
 
 ```python
 def scSetConfidenceFilterParams(self, params = ScConfidenceFilterParams()):
-   return self.sc_cam_lib.scSetConfidenceFilterParams(self.device_handle, params)
+    return self.sc_cam_lib.scSetConfidenceFilterParams(self.device_handle, params)
 ```
 
 **函数功能：**
@@ -1403,15 +2164,13 @@ def scSetConfidenceFilterParams(self, params = ScConfidenceFilterParams()):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[params](#_315214-scconfidencefilterparams)：指向存储返回值的变量的指针
+[params](#_315214-scconfidencefilterparams)：滤波参数值
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.34. scGetConfidenceFilterParams
+### 3.1.5.3.67. scGetConfidenceFilterParams
 
 **函数原型：**
 
@@ -1427,17 +2186,19 @@ def scGetConfidenceFilterParams(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[byref(params)](#_315214-scconfidencefilterparams)：指向存储返回值的变量的指针
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+[params](#_315214-scconfidencefilterparams)：滤波参数值
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
 [**params**](#_315214-scconfidencefilterparams)：指向存储返回值的变量的指针
 
-### 3.1.5.3.35. scSetFlyingPixelFilterParams
+### 3.1.5.3.68. scSetFlyingPixelFilterParams
 
 **函数原型：**
 
@@ -1452,15 +2213,13 @@ def scSetFlyingPixelFilterParams(self, params = ScFlyingPixelFilterParams()):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
 [params](#_315215-scflyingpixelfilterparams)：滤波参数
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.36. scGetFlyingPixelFilterParams
+### 3.1.5.3.69. scGetFlyingPixelFilterParams
 
 **函数原型：**
 
@@ -1476,23 +2235,21 @@ def scGetFlyingPixelFilterParams(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[byref(params)](#_315215-scflyingpixelfilterparams)：滤波参数
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-[**params**](#_315215-scflyingpixelfilterparams)：滤波参数
+[params](#_315215-scflyingpixelfilterparams)：滤波参数
 
-### 3.1.5.3.37. scSetFillHoleFilterEnabled
+### 3.1.5.3.70. scSetFillHoleFilterEnabled
 
 **函数原型：**
 
 ```python
 def scSetFillHoleFilterEnabled(self, enable = c_bool(True)):
-   return self.sc_cam_lib.scSetFillHoleFilterEnabled(self.device_handle, enable)
+    return self.sc_cam_lib.scSetFillHoleFilterEnabled(self.device_handle, enable)
 ```
 
 **函数功能：**
@@ -1501,22 +2258,20 @@ def scSetFillHoleFilterEnabled(self, enable = c_bool(True)):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
 enable：true 开启，false 关闭
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.38. scGetFillHoleFilterEnabled
+### 3.1.5.3.71. scGetFillHoleFilterEnabled
 
 **函数原型：**
 
 ```python
-    def scGetFillHoleFilterEnabled(self):
-        enable = c_bool(True)
-        return self.sc_cam_lib.scGetFillHoleFilterEnabled(self.device_handle, byref(enable)),enable.value
+def scGetFillHoleFilterEnabled(self):
+    enable = c_bool(True)
+    return self.sc_cam_lib.scGetFillHoleFilterEnabled(self.device_handle, byref(enable)),enable.value
 ```
 
 **函数功能：**
@@ -1525,23 +2280,21 @@ enable：true 开启，false 关闭
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-byref(enable)：true 开启，false 关闭
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-**enable.value**：true 开启，false 关闭
+enable.value：true 开启，false 关闭
 
-### 3.1.5.3.39. scSetSpatialFilterEnabled
+### 3.1.5.3.72. scSetSpatialFilterEnabled
 
 **函数原型：**
 
 ```python
 def scSetSpatialFilterEnabled(self, enable = c_bool(True)):
-   return self.sc_cam_lib.scSetSpatialFilterEnabled(self.device_handle, enable)
+    return self.sc_cam_lib.scSetSpatialFilterEnabled(self.device_handle, enable)
 ```
 
 **函数功能：**
@@ -1549,8 +2302,6 @@ def scSetSpatialFilterEnabled(self, enable = c_bool(True)):
 设置深度图像的空间滤波开启关闭
 
 **函数参数：**
-
-self.device_handle：设备句柄
 
 enable：true 开启，false 关闭
 
@@ -1558,14 +2309,14 @@ enable：true 开启，false 关闭
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.40. scGetSpatialFilterEnabled
+### 3.1.5.3.73. scGetSpatialFilterEnabled
 
 **函数原型：**
 
 ```python
 def scGetSpatialFilterEnabled(self):
-   enable = c_bool(True)
-   return self.sc_cam_lib.scGetSpatialFilterEnabled(self.device_handle, byref(enable)),enable.value
+    enable = c_bool(True)
+    return self.sc_cam_lib.scGetSpatialFilterEnabled(self.device_handle, byref(enable)),enable.value
 ```
 
 **函数功能：**
@@ -1574,23 +2325,21 @@ def scGetSpatialFilterEnabled(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-byref(enable)：true 开启，false 关闭
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-**enable.value**：true 开启，false 关闭
+enable.value：true 开启，false 关闭
 
-### 3.1.5.3.41. scSetTransformColorImgToDepthSensorEnabled
+### 3.1.5.3.74. scSetTransformColorImgToDepthSensorEnabled
 
 **函数原型：**
 
 ```python
 def scSetTransformColorImgToDepthSensorEnabled(self, enabled = c_bool(True)):
-   return self.sc_cam_lib.scSetTransformColorImgToDepthSensorEnabled(self.device_handle,  enabled)
+    return self.sc_cam_lib.scSetTransformColorImgToDepthSensorEnabled(self.device_handle,  enabled)
 ```
 
 **函数功能：**
@@ -1599,22 +2348,20 @@ def scSetTransformColorImgToDepthSensorEnabled(self, enabled = c_bool(True)):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
 enabled：true 打开对齐，false 关闭对齐
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.42. scGetTransformColorImgToDepthSensorEnabled
+### 3.1.5.3.75. scGetTransformColorImgToDepthSensorEnabled
 
 **函数原型：**
 
 ```python
 def scGetTransformColorImgToDepthSensorEnabled(self):
-   enabled = c_bool(True)
-   return self.sc_cam_lib.scGetTransformColorImgToDepthSensorEnabled(self.device_handle,  byref(enabled)),enabled
+    enabled = c_bool(True)
+    return self.sc_cam_lib.scGetTransformColorImgToDepthSensorEnabled(self.device_handle,  byref(enabled)),enabled
 ```
 
 **函数功能：**
@@ -1623,23 +2370,25 @@ def scGetTransformColorImgToDepthSensorEnabled(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-byref(enabled)：返回开关状态
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
+enabled：true 打开对齐，false 关闭对齐
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
 **enabled**：返回开关状态
 
-### 3.1.5.3.43. scSetTransformDepthImgToColorSensorEnabled
+### 3.1.5.3.76. scSetTransformDepthImgToColorSensorEnabled
 
 **函数原型：**
 
 ```python
 def scSetTransformDepthImgToColorSensorEnabled(self, enabled = c_bool(True)):
-   return self.sc_cam_lib.scSetTransformDepthImgToColorSensorEnabled(self.device_handle,  enabled)
+    return self.sc_cam_lib.scSetTransformDepthImgToColorSensorEnabled(self.device_handle,  enabled)
 ```
 
 **函数功能：**
@@ -1648,22 +2397,20 @@ def scSetTransformDepthImgToColorSensorEnabled(self, enabled = c_bool(True)):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
 enabled：true 打开对齐，false 关闭对齐
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.44. scGetTransformDepthImgToColorSensorEnabled
+### 3.1.5.3.77. scGetTransformDepthImgToColorSensorEnabled
 
 **函数原型：**
 
 ```python
 def scGetTransformDepthImgToColorSensorEnabled(self):
-   enabled = c_bool(True)
-   return self.sc_cam_lib.scGetTransformDepthImgToColorSensorEnabled(self.device_handle,  byref(enabled)),enabled
+    enabled = c_bool(True)
+    return self.sc_cam_lib.scGetTransformDepthImgToColorSensorEnabled(self.device_handle,  byref(enabled)),enabled
 ```
 
 **函数功能：**
@@ -1672,26 +2419,79 @@ def scGetTransformDepthImgToColorSensorEnabled(self):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-byref(enabled)：返回开关状态
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-**enabled**：返回开关状态
+enabled：返回开关状态
 
-### 3.1.5.3.45. scConvertDepthFrameToPointCloudVector
+### 3.1.5.3.78. scTransformDepthPointToColorPoint
+
+**函数原型：**
+
+```python
+def scTransformDepthPointToColorPoint(self, depthPoint = ScDepthVector3(), colorSize = ScVector2u16()):
+    pPointInColor = ScVector2u16()
+    return self.sc_cam_lib.scTransformDepthPointToColorPoint(self.device_handle, depthPoint, colorSize, byref(pPointInColor)), pPointInColor
+```
+
+**函数功能：**
+
+对齐深度图像上的点到彩色图像空间，可以在彩色图像上获得与传入的深度图像坐标点相对应的点的坐标
+
+**函数参数：**
+
+[depthPoint](#_31525-scdepthvector3)：深度图像的坐标点
+
+[colorSize](#_31524-scvector2u16)：彩色图像尺寸
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[pPointInColor](#_31524-scvector2u16)：获得的与深度图像的坐标点对应的彩色图像坐标点
+
+### 3.1.5.3.79. scConvertDepthToPointCloud
+
+**函数原型：**
+
+```python
+def scConvertDepthToPointCloud(self, pDepthVector = ScDepthVector3(), pointCount = c_int32(0), pSensorParam = ScSensorIntrinsicParameters()):
+    tmp = ScVector3f * pointCount
+    pWorldVector = tmp()
+    return self.sc_cam_lib.scConvertDepthToPointCloud(self.device_handle, byref(pDepthVector), byref(pWorldVector), byref(pSensorParam)),pWorldVector
+```
+
+**函数功能：**
+
+把传入的深度图像坐标点集合转换为世界坐标系点集合。世界坐标原点在深度传感器镜头中心，Z 轴垂直与设备前盖板，其正方向从设备指向远方；X 轴从深度镜头指向激光器，其正方向从设备指向远方；Y 轴垂直与设备指向地面，其正方向从设备指向远方。
+
+**函数参数：**
+
+[pDepthVector](#_31525-scdepthvector3)：深度图像的坐标点的集合
+
+pointCount：坐标点的数目
+
+[pSensorParam](#_31528-scsensorintrinsicparameters)：传感器内参
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+[pWorldVector](#_31523-scvector3f)：转换后点云的坐标点的集合
+
+### 3.1.5.3.80. scConvertDepthFrameToPointCloudVector
 
 **函数原型：**
 
 ```python
 def scConvertDepthFrameToPointCloudVector(self, depthFrame = ScFrame()):
-   len = depthFrame.width*depthFrame.height
-   tmp =ScVector3f*len
-   pointlist = tmp()
-   return self.sc_cam_lib.scConvertDepthFrameToPointCloudVector(self.device_handle, byref(depthFrame) ,pointlist),pointlist
+    len = depthFrame.width*depthFrame.height
+    tmp =ScVector3f*len
+    pointlist = tmp()
+    return self.sc_cam_lib.scConvertDepthFrameToPointCloudVector(self.device_handle, byref(depthFrame) ,pointlist),pointlist
 ```
 
 **函数功能：**
@@ -1700,27 +2500,131 @@ def scConvertDepthFrameToPointCloudVector(self, depthFrame = ScFrame()):
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
 [byref(depthFrame)](#_315211-scframe)：深度图像
-
-[pointlist](#_31523-scvector3f)：转换后点云的坐标点的集合
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-[**pointlist**](#_31523-scvector3f)：转换后点云的坐标点的集合
+[pointlist](#_31523-scvector3f)：转换后点云的坐标点的集合
 
-### 3.1.5.3.46. scSetHotPlugStatusCallback
+### 3.1.5.3.81. scSetParamsByJson
+
+**函数原型：**
+
+```python
+def scSetParamsByJson(self, pfilePath):
+    path = (c_char * 1000)(*bytes(pfilePath, 'utf-8'))
+    return self.sc_cam_lib.scSetParamsByJson(self.device_handle,  byref(path))
+```
+
+**函数功能：**
+
+从配置文件设置相机的参数
+
+**函数参数：**
+
+pfilePath：配置文件路径
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.82. scExportParamInitFile
+
+**函数原型：**
+
+```python
+def scExportParamInitFile(self, pfilePath):
+    path = (c_char * 1000)(*bytes(pfilePath, 'utf-8'))
+    return self.sc_cam_lib.scExportParamInitFile(self.device_handle, byref(path))
+```
+
+**函数功能：**
+
+从相机导出初始化参数文件
+
+**函数参数：**
+
+pfilePath：配置文件路径
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.83. scImportParamInitFile
+
+**函数原型：**
+
+```python
+def scImportParamInitFile(self, pfilePath):
+    path = (c_char * 1000)(*bytes(pfilePath, 'utf-8'))
+    return self.sc_cam_lib.scImportParamInitFile(self.device_handle, byref(path))
+```
+
+**函数功能：**
+
+初始化参数文件导入相机
+
+**函数参数：**
+
+pfilePath：配置文件路径
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.84. scRestoreParamInitFile
+
+**函数原型：**
+
+```python
+def scRestoreParamInitFile(self):
+    return self.sc_cam_lib.scRestoreParamInitFile(self.device_handle)
+```
+
+**函数功能：**
+
+恢复出厂设置
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.85. scRebootDevie
+
+**函数原型：**
+
+```python
+def scRebootDevie(self):
+    return self.sc_cam_lib.scRebootDevie(self.device_handle)
+```
+
+**函数功能：**
+
+重启设备
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.86. scSetHotPlugStatusCallback
 
 **函数原型：**
 
 ```python
 def scSetHotPlugStatusCallback(self,callbackfunc= c_void_p):
-   callbackFunc_= ctypes.CFUNCTYPE(c_void_p,POINTER(ScDeviceInfo),c_int32)(callbackfunc)
-   gCallbackFuncList.append(callbackFunc_)
-   return self.sc_cam_lib.scSetHotPlugStatusCallback(callbackFunc_)
+    callbackFunc_= ctypes.CFUNCTYPE(c_void_p,POINTER(ScDeviceInfo),c_int32)(callbackfunc)
+    gCallbackFuncList.append(callbackFunc_)
+    return self.sc_cam_lib.scSetHotPlugStatusCallback(callbackFunc_)
 ```
 
 **函数功能：**
@@ -1735,155 +2639,53 @@ callbackFunc\_： 回调函数
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.47. scGetMaxExposureTime
+### 3.1.5.3.87. scStartUpgradeFirmWare
 
 **函数原型：**
 
 ```python
-def scGetMaxExposureTime(self, sensorType = ScSensorType.SC_COLOR_SENSOR):
-   tmp = c_int32(1000)
-   return self.sc_cam_lib.scGetMaxExposureTime(self.device_handle, sensorType.value, byref(tmp)), tmp
+def scStartUpgradeFirmWare(self, pfilePath):
+    path = (c_char * 1000)(*bytes(pfilePath, 'utf-8'))
+    return self.sc_cam_lib.scStartUpgradeFirmWare(self.device_handle,  byref(path))
 ```
 
 **函数功能：**
 
-获取传感器的最大曝光时间
+升级固件
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-[sensorType.value](#_31512-scsensortype)：要获取曝光时间的传感器类型
-
-byref(tmp)：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同
+pfilePath：固件文件路径
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-**tmp**：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同
-
-### 3.1.5.3.48. scSetParamsByJson
+### 3.1.5.3.88. scGetUpgradeStatus
 
 **函数原型：**
 
 ```python
-def scSetParamsByJson(self, imgpath):
-   pimgpath = (c_char * 1000)(*bytes(imgpath, 'utf-8'))
-   return self.sc_cam_lib.scSetParamsByJson(self.device_handle,  byref(pimgpath))
+def scGetUpgradeStatus(self):
+    pStatus = c_int32(0)
+    pUpgradeStatus = c_int32(0)
+    return self.sc_cam_lib.scGetUpgradeStatus(self.device_handle, byref(pStatus), byref(pUpgradeStatus)), pStatus.value, pUpgradeStatus.value
 ```
 
 **函数功能：**
 
-从配置文件设置相机的参数
+升级固件
 
 **函数参数：**
 
-self.device_handle：设备句柄
-
-byref(pimgpath)：配置文件路径
+无
 
 **返回值：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.1.5.3.49. scSetColorGain
+pStatus.value：升级状态，1正常，0异常
 
-**函数原型：**
-
-```python
-def scSetColorGain(self, params = c_float(1.0)):
-   return self.sc_cam_lib.scSetColorGain(self.device_handle,  params)
-```
-
-**函数功能：**
-
-在手动曝光模式中，设置彩色传感器曝光模式的颜色增益
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-params：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.1.5.3.50. scGetColorGain
-
-**函数原型：**
-
-```python
-def scGetColorGain(self):
-   tmp = c_float*1
-   params = tmp()
-   return self.sc_cam_lib.scGetColorGain(self.device_handle,  params), params
-```
-
-**函数功能：**
-
-获取彩色传感器曝光模式的颜色增益
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-params：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-**params**：彩色传感器的颜色增益值。不同的产品具有不同的范围，请参考产品说明书
-
-### 3.1.5.3.51. scSetAutoExposureTime
-
-**函数原型：**
-
-```python
-def scSetAutoExposureTime(self, params = c_int32(0)):
-   return self.sc_cam_lib.scSetColorAECMaxExposureTime(self.device_handle, params)
-```
-
-**函数功能：**
-
-设置彩色传感器在自动曝光模式下的最大曝光时间。该接口在自动曝光模式下使用
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-params：曝光时间参数
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.1.5.3.52. scGetAutoExposureTime
-
-**函数原型：**
-
-```python
-def scGetAutoExposureTime(self):
-   params = c_int32(0)
-   return self.sc_cam_lib.scGetColorAECMaxExposureTime(self.device_handle, byref(params)), params
-```
-
-**函数功能：**
-
-获取彩色传感器在自动曝光模式下的最大曝光时间。该接口在自动曝光模式下使用
-
-**函数参数：**
-
-self.device_handle：设备句柄
-
-byref(params)：返回获取的曝光时间参数
-
-**返回值：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-**params**：返回获取的曝光时间参数
+pUpgradeStatus.value：升级进度，[1-100]
 
 <!-- tabs:end -->

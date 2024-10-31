@@ -62,13 +62,19 @@ DevHotPlugCallbackCpp                           //C++设置设备热插拔回调
 DeviceConnectByIP                               //设置设备通过 IP 地址链接
 DeviceConnectBySN                               //设置设备通过设备 SN 连接
 DeviceHWTriggerMode                             //设置设备为硬触发模式
+DeviceImportParamInitFile                       //初始化参数文件导入到相机中
 DeviceInfoGet                                   //获取设备 SN、IP 地址、固件版本信息
+DeviceIPAndSubnetMaskSet						//设置设备静态IP、子网掩码（非DHCP）
 DeviceParamSetGet                               //获取设备内外参、畸变参数，设置、获取设备 GmmaGian 值
 DeviceSearchAndConnect                          //搜索并连接设备
 DeviceSetFrameRate                              //设置设备帧率
+DeviceSetNTP									//设置NTP对时
 DeviceSetParamsByJson                           //通过 Json 设置设备参数
+DeviceSetPTP								    //设置PTP对时
+DeviceSetSoftwareTriggerParameter               //设置软触发融合图像帧数
 DeviceStartStopStreaming                        //开始与停止设备数据流
 DeviceSWTriggerMode                             //设置设备为软触发模式
+DeviceUpgradeFirmWare                           //升级设备固件
 FrameCaptureAndSave                             //捕获与保存设备图像
 IRGMMCorrectionSetGet                           //设置获取设备 ToF IR校正参数
 MultiConnection                                 //多设备连接
@@ -77,6 +83,9 @@ PointCloudCaptureAndSave                        //捕获与保存点云
 PointCloudCaptureAndSaveDepthImgToColorSensor   //捕获点云并且将其保存到彩色图像传感器
 PointCloudVectorAndSave                         //捕获与保存 ROI 区域中的点云
 PointCloudVectorAndSaveDepthImgToColorSensor    //捕获 ROI 区域中的点云并且将其保存到彩色图像传感器
+SingleFrameDelayTest							//触发模式下获取单帧图像耗时测试
+ToFExposureTimeOfHDRSetGet                      //使能HDR设置获取设备 ToF 曝光时间
+ToFExposureTimeOfWDRSetGet                      //使能WDR设置获取设备 ToF 曝光时间
 ToFExposureTimeSetGet                           //设置获取设备 ToF 曝光时间
 ToFFiltersSetGet                                //设置获取设备 ToF 滤波开关
 TransformColorImgToDepthSensorFrame             //将彩色图像对齐到设备的深度图像空间
@@ -582,9 +591,9 @@ ScStatus VN_Initialize()
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.2. VN_Shutdown
+### 3.2.4.3.2. scShutdown
 
 **函数原型：**
 
@@ -602,9 +611,9 @@ ScStatus VN_Shutdown()
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.3. VN_GetSDKVersion
+### 3.2.4.3.3. scGetSDKVersion
 
 **函数原型：**
 
@@ -618,11 +627,13 @@ ScStatus VN_GetSDKVersion(char* pSDKVersion, int32_t length)
 
 **函数参数：**
 
-无
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pSDKVersion：版本号
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> length：版本号长度。
 
 **返回值：**
 
-SDK 版本号
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
 ### 3.2.4.3.4. VN_GetDeviceCount
 
@@ -646,7 +657,7 @@ ScStatus VN_GetDeviceCount(uint32_t* pDeviceCount, uint32_t scanTime)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
 ### 3.2.4.3.5. VN_GetDeviceInfoList
 
@@ -664,11 +675,11 @@ ScStatus VN_GetDeviceInfoList(uint32_t deviceCount, ScDeviceInfo* pDevicesInfoLi
 
 <span style="color: #4ec9b0; font-weight: bold">uint32_t</span> deviceCount：需要获取信息列表的设备个数
 
-[**ScDeviceInfo**](#_324210-scdeviceinfo)* pDevicesInfo：返回设备信息列表，其应该指向大小为 sizeof(ScDeviceInfo)*deviceCount 大小的缓存
+[**ScDeviceInfo**](#_25210-scdeviceinfo)* pDevicesInfo：返回设备信息列表，其应该指向大小为 sizeof(ScDeviceInfo)*deviceCount 大小的缓存
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
 ### 3.2.4.3.6. VN_OpenDeviceBySN
 
@@ -690,7 +701,7 @@ ScStatus VN_OpenDeviceBySN(const char* pSN, ScDeviceHandle* pDevice)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
 ### 3.2.4.3.7. VN_OpenDeviceByIP
 
@@ -712,7 +723,7 @@ ScStatus VN_OpenDeviceByIP(const char* pIP, ScDeviceHandle* pDevice)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
 ### 3.2.4.3.8. VN_CloseDevice
 
@@ -732,7 +743,7 @@ ScStatus VN_CloseDevice(ScDeviceHandle* pDevice)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
 ### 3.2.4.3.9. VN_StartStream
 
@@ -752,7 +763,7 @@ ScStatus VN_StartStream(ScDeviceHandle device)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
 ### 3.2.4.3.10. VN_StopStream
 
@@ -772,7 +783,7 @@ ScStatus VN_StopStream(ScDeviceHandle device)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
 ### 3.2.4.3.11. VN_GetFrameReady
 
@@ -792,11 +803,11 @@ ScStatus VN_GetFrameReady(ScDeviceHandle device, uint16_t waitTime, ScFrameReady
 
 <span style="color: #4ec9b0; font-weight: bold">uint16_t</span> waitTime：允许等待图像就绪的超时时间(ms)，取值范围为(0，65535)。此值与图像的帧率有关，建议值设置为 2\*1000/fps。例如当前的帧率为 20，则建议设置 waitTime 为 2 \* 1000 / 20 = 100。如果设置 waitTime 为 40，则调用函数时可能返回 ScRetGetFrameReadyTimeOut。
 
-[**ScFrameReady**](#_32429-scframeready)\* pFrameReady：返回图像的就绪状态
+[**ScFrameReady**](#_2529-scframeready)\* pFrameReady：返回图像的就绪状态
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
 ### 3.2.4.3.12. VN_GetFrame
 
@@ -814,79 +825,39 @@ ScStatus VN_GetFrame(ScDeviceHandle device, ScFrameType frameType, ScFrame* pScF
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScFrameType**](#_32411-scframetype) frameType：待获取图像的类型
+[**ScFrameType**](#_2511-scframetype) frameType：待获取图像的类型
 
-[**ScFrame**](#_32428-scframe)\* pScFrame：返回的图像数据
+[**ScFrame**](#_2528-scframe)\* pScFrame：返回的图像数据
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.13. VN_SetWorkMode
+### 3.2.4.3.13. VN_GetDepthRangeValue
 
 **函数原型：**
 
 ```csharp
-ScStatus VN_SetWorkMode(ScDeviceHandle device, ScWorkMode mode)
+ScStatus VN_GetDepthRangeValue(ScDeviceHandle device, int16_t* minValue, int16_t* maxValue)
 ```
 
 **函数功能：**
 
-设置相机的工作模式
+获取设备当前工作模式下的深度范围
 
 **函数参数：**
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScWorkMode**](#_32416-scworkmode) mode：要设置的工作模式，对于 ActiveMode ，将时间过滤器的默认值设置为 True ，对于 SlaveMode ，将时间过滤器的默认值设置为 False
+<span style="color: #4ec9b0; font-weight: bold">int16_t</span>\* minValue： 深度最小值
+
+<span style="color: #4ec9b0; font-weight: bold">int16_t</span>\* maxValue： 深度最大值
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.14. VN_GetWorkMode
-
-**函数原型：**
-
-```csharp
-ScStatus VN_GetWorkMode(ScDeviceHandle device, ScWorkMode* pMode)
-```
-
-**函数功能：**
-
-获取相机的工作模式
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-[**ScWorkMode**](#_32416-scworkmode)\* pMode：获取到的设备的工作模式
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.15. VN_SoftwareTriggerOnce
-
-**函数原型：**
-
-```csharp
-ScStatus VN_SoftwareTriggerOnce(ScDeviceHandle device)
-```
-
-**函数功能：**
-
-执行一次软件触发，仅当相机处于 SC_SOFTWARE_TRIGGER_MODE 时有效
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.16. VN_GetSensorIntrinsicParameters
+### 3.2.4.3.14. VN_GetSensorIntrinsicParameters
 
 **函数原型：**
 
@@ -902,15 +873,15 @@ ScStatus VN_GetSensorIntrinsicParameters(ScDeviceHandle device, ScSensorType sen
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScSensorType**](#_32413-scsensortype) sensorType：传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：传感器类型
 
-[**ScSensorIntrinsicParameters**](#_32426-scsensorintrinsicparameters)\* pSensorIntrinsicParameters：返回传感器镜头的内参
+[**ScSensorIntrinsicParameters**](#_2526-scsensorintrinsicparameters)\* pSensorIntrinsicParameters：返回传感器镜头的内参
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.17. VN_GetSensorExtrinsicParameters
+### 3.2.4.3.15. VN_GetSensorExtrinsicParameters
 
 **函数原型：**
 
@@ -926,13 +897,13 @@ ScStatus VN_GetSensorExtrinsicParameters(ScDeviceHandle device, ScSensorExtrinsi
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScSensorExtrinsicParameters**](#_32427-scsensorextrinsicparameters)\* pSensorExtrinsicParameters：返回设备的外参
+[**ScSensorExtrinsicParameters**](#_2527-scsensorextrinsicparameters)\* pSensorExtrinsicParameters：返回设备的外参
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.18. VN_GetFirmwareVersion
+### 3.2.4.3.16. VN_GetFirmwareVersion
 
 **函数原型：**
 
@@ -954,9 +925,9 @@ ScStatus VN_GetFirmwareVersion(ScDeviceHandle device, char* pFirmwareVersion, in
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.19. VN_GetDeviceMACAddress
+### 3.2.4.3.17. VN_GetDeviceMACAddress
 
 **函数原型：**
 
@@ -976,9 +947,385 @@ ScStatus VN_GetDeviceMACAddress(ScDeviceHandle device, char* pMACAddress)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.20. VN_SetIRGMMGain
+### 3.2.4.3.18. VN_SetDeviceDHCPEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetDeviceDHCPEnabled(ScDeviceHandle device, bool bEnabled)
+```
+
+**函数功能：**
+
+设置DHCP使能状态
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 开启，false 关闭
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.19. VN_GetDeviceDHCPEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetDeviceDHCPEnabled(ScDeviceHandle device, bool* bEnabled)
+```
+
+**函数功能：**
+
+获取DHCP使能状态
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span>* bEnabled：true 开启，false 关闭
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.20. VN_SetDeviceIPAddr
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetDeviceIPAddr(ScDeviceHandle device, const char* ipAddr, int32_t length)
+```
+
+**函数功能：**
+
+设置非DHCP下的IP地址
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">const char</span>\* ipAddr：ip地址，以‘\0’结尾的字符串
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> length：ip长度
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.21. VN_GetDeviceIPAddr
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetDeviceIPAddr(ScDeviceHandle device, char* ipAddr)
+```
+
+**函数功能：**
+
+获取非DHCP下的IP地址。
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* ipAddr：ip地址，以‘\0’结尾的字符串
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.22. VN_SetDeviceSubnetMask
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetDeviceSubnetMask(ScDeviceHandle device, const char* pMask, int32_t length)
+```
+
+**函数功能：**
+
+设置非DHCP下的子网掩码
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">const char</span>\* pMask：子网掩码，以‘\0’结尾的字符串
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> length：子网掩码长度
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.23. VN_GetDeviceSubnetMask
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetDeviceSubnetMask(ScDeviceHandle device, char* pMask)
+```
+
+**函数功能：**
+
+获取非DHCP下的子网掩码
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pMask：子网掩码，以‘\0’结尾的字符串
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.24. VN_SetRealTimeSyncConfig
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetRealTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig params)
+```
+
+**函数功能：**
+
+设置时间同步的参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScTimeSyncConfig**](#_25217-sctimesyncconfig) params: 时间同步参数
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.25. VN_GetRealTimeSyncConfig
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetRealTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig* pParams);
+```
+
+**函数功能：**
+
+获取时间同步的参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScTimeSyncConfig**](#_25217-sctimesyncconfig)\* pParams: 时间同步参数 
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.26. VN_SetFrameRate
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetFrameRate(ScDeviceHandle device, int32_t value)
+```
+
+**函数功能：**
+
+设置设备的图像帧率，同时对深度和彩色图像生效。此接口是同步接口，耗时较长，大约需要 500ms
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> value：要设置的目标帧率
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.27. VN_GetFrameRate
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetFrameRate(ScDeviceHandle device, int32_t* pValue)
+```
+
+**函数功能：**
+
+获取设备的图像帧率
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pValue：返回设备的图像帧率
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.28. VN_SetWorkMode
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetWorkMode(ScDeviceHandle device, ScWorkMode mode)
+```
+
+**函数功能：**
+
+设置相机的工作模式
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScWorkMode**](#_2516-scworkmode) mode：要设置的工作模式，对于 ActiveMode ，将时间过滤器的默认值设置为 True ，对于 SlaveMode ，将时间过滤器的默认值设置为 False
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.29. VN_GetWorkMode
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetWorkMode(ScDeviceHandle device, ScWorkMode* pMode)
+```
+
+**函数功能：**
+
+获取相机的工作模式
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScWorkMode**](#_2516-scworkmode)\* pMode：获取到的设备的工作模式
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.30. VN_SetSoftwareTriggerParameter
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetSoftwareTriggerParameter(ScDeviceHandle device, uint8_t frameCount)
+```
+
+**函数功能：**
+
+设置软件触发模式下的，做融合处理的图像帧数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameCount：图像帧数
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.31. VN_GetSoftwareTriggerParameter
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetSoftwareTriggerParameter(ScDeviceHandle device, uint8_t* pframeCount)
+```
+
+**函数功能：**
+
+获取软件触发模式下的，做融合处理的图像帧数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span>* pframeCount：返回图像帧数
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.32. VN_SoftwareTriggerOnce
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SoftwareTriggerOnce(ScDeviceHandle device)
+```
+
+**函数功能：**
+
+执行一次软件触发，仅当相机处于 SC_SOFTWARE_TRIGGER_MODE 时有效
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.33. VN_SetInputSignalParamsForHWTrigger
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetInputSignalParamsForHWTrigger(ScDeviceHandle device, ScInputSignalParamsForHWTrigger params);
+```
+
+**函数功能：**
+
+设置硬触发的输入信号参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScInputSignalParamsForHWTrigger**](#_25215-scinputsignalparamsforhwtrigger) params：硬触发的输入信号参数
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.34. VN_GetInputSignalParamsForHWTrigger
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetInputSignalParamsForHWTrigger(ScDeviceHandle device, ScInputSignalParamsForHWTrigger* pParams);
+```
+
+**函数功能：**
+
+获取硬触发的输入信号参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScInputSignalParamsForHWTrigger**](#_25215-scinputsignalparamsforhwtrigger)\* pParams：硬触发的输入信号参数
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.35. VN_SetIRGMMGain
 
 **函数原型：**
 
@@ -998,9 +1345,9 @@ ScStatus VN_SetIRGMMGain(ScDeviceHandle device, uint8_t gmmgain)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.21. VN_GetIRGMMGain
+### 3.2.4.3.36. VN_GetIRGMMGain
 
 **函数原型：**
 
@@ -1020,9 +1367,9 @@ ScStatus VN_GetIRGMMGain(ScDeviceHandle device, uint8_t* pGmmgain)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.22. VN_SetIRGMMCorrection
+### 3.2.4.3.37. VN_SetIRGMMCorrection
 
 **函数原型：**
 
@@ -1038,13 +1385,13 @@ ScStatus VN_SetIRGMMCorrection(ScDeviceHandle device, const ScIRGMMCorrectionPar
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScIRGMMCorrectionParams**](#_324214-scirgmmcorrectionparams) params：IR GMM 校正的值
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScIRGMMCorrectionParams**](#_25214-scirgmmcorrectionparams) params：IR GMM 校正的值
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.23. VN_GetIRGMMCorrection
+### 3.2.4.3.38. VN_GetIRGMMCorrection
 
 **函数原型：**
 
@@ -1060,13 +1407,13 @@ ScStatus VN_GetIRGMMCorrection(ScDeviceHandle device, ScIRGMMCorrectionParams* p
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScIRGMMCorrectionParams**](#_324214-scirgmmcorrectionparams)\* params：IR GMM 校正的值
+[**ScIRGMMCorrectionParams**](#_25214-scirgmmcorrectionparams)\* params：IR GMM 校正的值
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.24. VN_SetColorPixelFormat
+### 3.2.4.3.39. VN_SetColorPixelFormat
 
 **函数原型：**
 
@@ -1082,13 +1429,13 @@ ScStatus VN_SetColorPixelFormat(ScDeviceHandle device,ScPixelFormat pixelFormat)
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScPixelFormat**](#_32412-scpixelformat) pixelFormat：要设置的彩色图像的像素格式
+[**ScPixelFormat**](#_2512-scpixelformat) pixelFormat：要设置的彩色图像的像素格式
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.25. VN_SetColorGain
+### 3.2.4.3.40. VN_SetColorGain
 
 **函数原型：**
 
@@ -1108,9 +1455,9 @@ ScStatus VN_SetColorGain(ScDeviceHandle device, float params)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.26. VN_GetColorGain
+### 3.2.4.3.41. VN_GetColorGain
 
 **函数原型：**
 
@@ -1130,9 +1477,33 @@ ScStatus VN_GetColorGain(ScDeviceHandle device, float params)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.27. VN_SetColorResolution
+### 3.2.4.3.42. VN_GetSupportedResolutionList
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetSupportedResolutionList(ScDeviceHandle device, ScSensorType type, ScResolutionList* pList)
+```
+
+**函数功能：**
+
+获取传感器支持的图像分辨率列表
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScSensorType**](#_2513-scsensortype) type：传感器类型
+
+[**ScResolutionList**](#_2525-scresolutionlist)\* pList：支持的图像分辨率列表
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.43. VN_SetColorResolution
 
 **函数原型：**
 
@@ -1154,9 +1525,9 @@ ScStatus VN_SetColorResolution(ScDeviceHandle device, int32_t w, int32_t h)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.28. VN_GetColorResolution
+### 3.2.4.3.44. VN_GetColorResolution
 
 **函数原型：**
 
@@ -1178,77 +1549,9 @@ ScStatus VN_GetColorResolution(ScDeviceHandle device, int32_t* pW, int32_t* pH)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.29. VN_GetSupportedResolutionList
-
-**函数原型：**
-
-```csharp
-ScStatus VN_GetSupportedResolutionList(ScDeviceHandle device, ScSensorType type, ScResolutionList* pList)
-```
-
-**函数功能：**
-
-获取传感器支持的图像分辨率列表
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-[**ScSensorType**](#_32413-scsensortype) type：传感器类型
-
-[**ScResolutionList**](#_32425-scresolutionlist)\* pList：支持的图像分辨率列表
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.30. VN_SetFrameRate
-
-**函数原型：**
-
-```csharp
-ScStatus VN_SetFrameRate(ScDeviceHandle device, int32_t value)
-```
-
-**函数功能：**
-
-设置设备的图像帧率，同时对深度和彩色图像生效。此接口是同步接口，耗时较长，大约需要 500ms
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span> value：要设置的目标帧率
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.31. VN_GetFrameRate
-
-**函数原型：**
-
-```csharp
-ScStatus VN_GetFrameRate(ScDeviceHandle device, int32_t* pValue)
-```
-
-**函数功能：**
-
-获取设备的图像帧率
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pValue：返回设备的图像帧率
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.32. VN_SetExposureControlMode
+### 3.2.4.3.45. VN_SetExposureControlMode
 
 **函数原型：**
 
@@ -1264,15 +1567,15 @@ ScStatus VN_SetExposureControlMode(ScDeviceHandle device, ScSensorType sensorTyp
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScSensorType**](#_32413-scsensortype) sensorType：要设置曝光模式的传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：要设置曝光模式的传感器类型
 
-[**ScExposureControlMode**](#_32417-scexposurecontrolmode) controlMode：要设置的曝光模式
+[**ScExposureControlMode**](#_2517-scexposurecontrolmode) controlMode：要设置的曝光模式
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.33. VN_GetExposureControlMode
+### 3.2.4.3.46. VN_GetExposureControlMode
 
 **函数原型：**
 
@@ -1288,15 +1591,15 @@ ScStatus VN_GetExposureControlMode(ScDeviceHandle device, ScSensorType sensorTyp
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScSensorType**](#_32413-scsensortype) sensorType：要获取曝光模式的传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：要获取曝光模式的传感器类型
 
-[**ScExposureControlMode**](#_32417-scexposurecontrolmode) controlMode：返回传感器的曝光模式
+[**ScExposureControlMode**](#_2517-scexposurecontrolmode) controlMode：返回传感器的曝光模式
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.34. VN_SetExposureTime
+### 3.2.4.3.47. VN_SetExposureTime
 
 **函数原型：**
 
@@ -1316,15 +1619,15 @@ ScStatus VN_SetExposureTime(ScDeviceHandle device, ScSensorType sensorType, int3
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScSensorType**](#_32413-scsensortype) sensorType：要获取曝光时间的传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：要获取曝光时间的传感器类型
 
 <span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime：要设置的曝光时间参数
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.35. VN_GetExposureTime
+### 3.2.4.3.48. VN_GetExposureTime
 
 **函数原型：**
 
@@ -1340,15 +1643,15 @@ ScStatus VN_GetExposureTime(ScDeviceHandle device, ScSensorType sensorType, int3
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScSensorType**](#_32413-scsensortype) sensorType：要获取曝光时间的传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：要获取曝光时间的传感器类型
 
 <span style="color: #4ec9b0; font-weight: bold">int32_t\*</span> pExposureTime：返回获取的曝光时间参数
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.36. VN_SetColorAECMaxExposureTime
+### 3.2.4.3.49. VN_SetColorAECMaxExposureTime
 
 **函数原型：**
 
@@ -1368,9 +1671,9 @@ ScStatus VN_SetColorAECMaxExposureTime(ScDeviceHandle device, int32_t exposureTi
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.37. VN_GetColorAECMaxExposureTime
+### 3.2.4.3.50. VN_GetColorAECMaxExposureTime
 
 **函数原型：**
 
@@ -1390,9 +1693,9 @@ ScStatus VN_GetColorAECMaxExposureTime(ScDeviceHandle device, int32_t* pExposure
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.38. VN_GetMaxExposureTime
+### 3.2.4.3.51. VN_GetMaxExposureTime
 
 **函数原型：**
 
@@ -1408,443 +1711,15 @@ ScStatus VN_GetMaxExposureTime(ScDeviceHandle device, ScSensorType sensorType, i
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScSensorType**](#_32413-scsensortype) sensorType：要获取曝光时间的传感器类型
+[**ScSensorType**](#_2513-scsensortype) sensorType：要获取曝光时间的传感器类型
 
 <span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pMaxExposureTime：返回获取的最大曝光时间，在不同的帧率下，最大曝光时间有所不同。
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.39. VN_SetTimeFilterParams
-
-**函数原型：**
-
-```csharp
-ScStatus VN_SetTimeFilterParams(ScDeviceHandle device, ScTimeFilterParams params)
-```
-
-**函数功能：**
-
-设置深度图像的时域滤波参数
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-[**ScTimeFilterParams**](#_324211-sctimefilterparams) params：指向存储返回值的变量的指针
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.40. VN_GetTimeFilterParams
-
-**函数原型：**
-
-```csharp
-ScStatus VN_GetTimeFilterParams(ScDeviceHandle device, ScTimeFilterParams* pParams)
-```
-
-**函数功能：**
-
-获取深度图像的时域滤波参数
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-[**ScTimeFilterParams**](#_324211-sctimefilterparams) params：指向存储返回值的变量的指针
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.41. VN_SetConfidenceFilterParams
-
-**函数原型：**
-
-```csharp
-ScStatus VN_SetConfidenceFilterParams(ScDeviceHandle device,ScConfidenceFilterParams params)
-```
-
-**函数功能：**
-
-设置深度图像的置信度滤波参数
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-[**ScConfidenceFilterParams**](#_324212-scconfidencefilterparams) params：指向存储返回值的变量的指针
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.42. VN_GetConfidenceFilterParams
-
-**函数原型：**
-
-```csharp
-ScStatus VN_GetConfidenceFilterParams(ScDeviceHandle device, ScConfidenceFilterParams *pParams)
-```
-
-**函数功能：**
-
-获取深度图像的置信度滤波参数
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-[**ScConfidenceFilterParams**](#_324212-scconfidencefilterparams) params：指向存储返回值的变量的指针
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.43. VN_SetFlyingPixelFilterParams
-
-**函数原型：**
-
-```csharp
-ScStatus VN_SetFlyingPixelFilterParams(ScDeviceHandle device, const ScFlyingPixelFilterParams params)
-```
-
-**函数功能：**
-
-设置深度图像的去飞点滤波参数
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScFlyingPixelFilterParams**](#_324213-scflyingpixelfilterparams) params：滤波参数
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.44. VN_GetFlyingPixelFilterParams
-
-**函数原型：**
-
-```csharp
-ScStatus VN_GetFlyingPixelFilterParams(ScDeviceHandle device, ScFlyingPixelFilterParams* params)
-```
-
-**函数功能：**
-
-获取深度图像的去飞点滤波参数
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-[**ScFlyingPixelFilterParams**](#_324213-scflyingpixelfilterparams)\* params：滤波参数
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.45. VN_SetFillHoleFilterEnabled
-
-**函数原型：**
-
-```csharp
-ScStatus VN_SetFillHoleFilterEnabled(ScDeviceHandle device, bool bEnabled);
-```
-
-**函数功能：**
-
-设置深度图像的补洞滤波开启关闭
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 开启，false 关闭
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.46. VN_GetFillHoleFilterEnabled
-
-**函数原型：**
-
-```csharp
-ScStatus VN_GetFillHoleFilterEnabled(ScDeviceHandle device, bool* pEnabled);
-```
-
-**函数功能：**
-
-获取深度图像的补洞滤波开启关闭
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span>\* pEnabled：true 开启，false 关闭
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.47. VN_SetSpatialFilterEnabled
-
-**函数原型：**
-
-```csharp
-ScStatus VN_SetSpatialFilterEnabled(ScDeviceHandle device, bool bEnabled)
-```
-
-**函数功能：**
-
-设置深度图像的空间滤波开启关闭
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 开启，false 关闭
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.48. VN_GetSpatialFilterEnabled
-
-**函数原型：**
-
-```csharp
-ScStatus VN_GetSpatialFilterEnabled(ScDeviceHandle device, bool* pEnabled)
-```
-
-**函数功能：**
-
-获取深度图像的空间滤波开启关闭
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span>\* pEnabled：true 开启，false 关闭
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.49. VN_SetTransformColorImgToDepthSensorEnabled
-
-**函数原型：**
-
-```csharp
-ScStatus VN_SetTransformColorImgToDepthSensorEnabled(ScDeviceHandle device, bool bEnabled)
-```
-
-**函数功能：**
-
-设置彩色图像对齐到深度相机空间的开关，只有带彩色传感器的设备才支持此操作。如果打开开关，则调用 scGetFrameReady 时，ScFrameReady.transformedColor 的值为 1，然后调用 scGetFrame 可以得到 ScTransformColorImgToDepthSensorFrame 类型的彩色图像，其大小与深度图像大小相同。
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 打开对齐，false 关闭对齐
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.50. VN_GetTransformColorImgToDepthSensorEnabled
-
-**函数原型：**
-
-```csharp
-ScStatus VN_GetTransformColorImgToDepthSensorEnabled(ScDeviceHandle device, bool *bEnabled)
-```
-
-**函数功能：**
-
-获取彩色图像对齐到深度相机空间的开关状态
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> \*bEnabled：返回开关状态
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.51. VN_SetTransformDepthImgToColorSensorEnabled
-
-**函数原型：**
-
-```csharp
-ScStatus VN_SetTransformDepthImgToColorSensorEnabled(ScDeviceHandle device, bool bEnabled)
-```
-
-**函数功能：**
-
-设置深度图像对齐到彩色相机空间的开关，只有带彩色传感器的设备才支持此操作。如果打开开关，则调用 scGetFrameReady 时，ScFrameReady.transformedDepth 的值为 1，然后调用 scGetFrame 可以得到 ScTransformDepthImgToColorSensorFrame 类型的深度图像，其大小与彩色图像大小相同。
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 打开对齐，false 关闭对齐
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.52. VN_GetTransformDepthImgToColorSensorEnabled
-
-**函数原型：**
-
-```csharp
-ScStatus VN_GetTransformDepthImgToColorSensorEnabled(ScDeviceHandle device, bool *bEnabled)
-```
-
-**函数功能：**
-
-获取深度图像对齐到彩色相机空间的开关状态
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> \*bEnabled：返回开关状态
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.53. VN_TransformDepthPointToColorPoint
-
-**函数原型：**
-
-```csharp
-ScStatus VN_TransformDepthPointToColorPoint(const ScDeviceHandle device, const ScDepthVector3 depthPoint, const ScVector2u16 colorSize, ScVector2u16* pPointInColor)
-```
-
-**函数功能：**
-
-对齐深度图像上的点到彩色图像空间，可以在彩色图像上获得与传入的深度图像坐标点相对应的点的坐标
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScDepthVector3**](#_32423-scdepthvector3) depthPoint：深度图像的坐标点
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScVector2u16**](#_32422-scvector2u16) colorSize：彩色图像尺寸
-
-[**ScVector2u16**](#_32422-scvector2u16)\* pPointInColor：获得的与深度图像的坐标点对应的彩色图像坐标点
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.54. VN_ConvertDepthToPointCloud
-
-**函数原型：**
-
-```csharp
-ScStatus VN_ConvertDepthToPointCloud(ScDeviceHandle device, ScDepthVector3* pDepthVector, ScVector3f* pWorldVector, int32_t pointCount, ScSensorIntrinsicParameters* pSensorParam)
-```
-
-**函数功能：**
-
-把传入的深度图像坐标点集合转换为世界坐标系点集合。世界坐标原点在深度传感器镜头中心，Z 轴垂直与设备前盖板，其正方向从设备指向远方；X 轴从深度镜头指向激光器，其正方向从设备指向远方；Y 轴垂直与设备指向地面，其正方向从设备指向远方。
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-[**ScDepthVector3**](#_32423-scdepthvector3)\* pDepthVector：深度图像的坐标点的集合
-
-[**ScVector3f**](#_32421-scvector3f)\* pWorldVector：转换后点云的坐标点的集合
-
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span> pointCount：坐标点的数目
-
-[**ScSensorIntrinsicParameters**](#_32426-scsensorintrinsicparameters)\* pSensorParam：传感器内参
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.55. VN_ConvertDepthFrameToPointCloudVector
-
-**函数原型：**
-
-```csharp
-ScStatus VN_ConvertDepthFrameToPointCloudVector(ScDeviceHandle device, const ScFrame* pDepthFrame, ScVector3f* pWorldVector)
-```
-
-**函数功能：**
-
-把传入的深度图像转换为世界坐标系点集合，转换后的世界坐标系点集合的大小为 ScFrame.width \* ScFrame.height，支持 ScDepthFrame 和 ScTransformDepthImgToColorSensorFrame 图像
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScFrame**](#_32428-scframe)\* pDepthFrame：深度图像
-
-[**ScVector3f**](#_32421-scvector3f)\* pWorldVector：转换后点云的坐标点的集合
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.56. VN_SetHotPlugStatusCallback
-
-**函数原型：**
-
-```csharp
-ScStatus VN_SetHotPlugStatusCallback(PtrHotPlugStatusCallback pCallback, const void* pUserData)
-```
-
-**函数功能：**
-
-设置设备热拔插状态回调函数
-
-**函数参数：**
-
-PtrHotPlugStatusCallback pCallback： 回调函数
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> <span style="color: #4ec9b0; font-weight: bold">void</span>\* pUserData：用户数据，可以为空
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.57. VN_RebootDevie
-
-**函数原型：**
-
-```csharp
-ScStatus VN_RebootDevie(ScDeviceHandle device);
-```
-
-**函数功能：**
-
-重启设备
-
-**函数参数：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
-
-**返回值：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
-
-### 3.2.4.3.58. VN_SetHDRModeEnabled
+### 3.2.4.3.52. VN_SetHDRModeEnabled
 
 **函数原型：**
 
@@ -1864,9 +1739,9 @@ ScStatus VN_SetHDRModeEnabled(ScDeviceHandle device, bool bEnabled)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.59. VN_GetHDRModeEnabled
+### 3.2.4.3.53. VN_GetHDRModeEnabled
 
 **函数原型：**
 
@@ -1886,53 +1761,627 @@ ScStatus VN_GetHDRModeEnabled(ScDeviceHandle device, bool* bEnabled)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.60. VN_SetInputSignalParamsForHWTrigger
+### 3.2.4.3.54. VN_GetFrameCountOfHDRMode
 
 **函数原型：**
 
 ```csharp
-ScStatus VN_SetInputSignalParamsForHWTrigger(ScDeviceHandle device, ScInputSignalParamsForHWTrigger params);
+ScStatus VN_GetFrameCountOfHDRMode(ScDeviceHandle device, int32_t* pCount);
 ```
 
 **函数功能：**
 
-设置硬触发的输入信号参数
+获取HDR模式下进行融合处理的图像帧数
 
 **函数参数：**
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScInputSignalParamsForHWTrigger**](#_324215-scinputsignalparamsforhwtrigger) params：硬触发的输入信号参数
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pCount: 图像帧数
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.61. VN_GetInputSignalParamsForHWTrigger
+### 3.2.4.3.55. VN_SetExposureTimeOfHDR
 
 **函数原型：**
 
 ```csharp
-ScStatus VN_GetInputSignalParamsForHWTrigger(ScDeviceHandle device, ScInputSignalParamsForHWTrigger* pParams);
+ScStatus VN_SetExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32_t exposureTime)
 ```
 
 **函数功能：**
 
-获取硬触发的输入信号参数
+在HDR模式下，设置深度传感器的曝光时间
 
 **函数参数：**
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
 
-[**ScInputSignalParamsForHWTrigger**](#_324215-scinputsignalparamsforhwtrigger)\* pParams：硬触发的输入信号参数
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: 帧索引
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime: 曝光时间
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
-### 3.2.4.3.62. VN_SetParamsByJson
+### 3.2.4.3.56. VN_GetExposureTimeOfHDR
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pExposureTime)
+```
+
+**函数功能：**
+
+在HDR模式下，获取深度传感器的曝光时间
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: 帧索引
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pExposureTime: 曝光时间
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.57. VN_GetMaxExposureTimeOfHDR
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetMaxExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pMaxExposureTime)
+```
+
+**函数功能：**
+
+在HDR模式下，获取深度传感器的最大曝光时间
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: 帧索引
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* exposureTime: 曝光时间
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.58. VN_SetWDRModeEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetWDRModeEnabled(ScDeviceHandle device, bool bEnabled)
+```
+
+**函数功能：**
+
+开启或关闭 WDR 功能，设备需在手动曝光模式，因此，如果您想切换到自动曝光，请先将 WDR 模式设置为禁用
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 开启，false 关闭
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.59. VN_GetWDRModeEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetWDRModeEnabled(ScDeviceHandle device, bool* bEnabled)
+```
+
+**函数功能：**
+
+获取 WDR 功能开启状态
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* bEnabled：true 开启，false 关闭
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.60. VN_GetFrameCountOfWDRMode
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetFrameCountOfWDRMode(ScDeviceHandle device, int32_t* pCount);
+```
+
+**函数功能：**
+
+获取WDR模式下进行融合处理的图像帧数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pCount: 图像帧数
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.61. VN_SetExposureTimeOfWDR
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32_t exposureTime)
+```
+
+**函数功能：**
+
+在WDR模式下，设置深度传感器的曝光时间
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: 帧索引
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime: 曝光时间
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.62. VN_GetExposureTimeOfWDR
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pExposureTime)
+```
+
+**函数功能：**
+
+在HDR模式下，获取深度传感器的曝光时间
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: 帧索引
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pExposureTime: 曝光时间
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.63. VN_GetMaxExposureTimeOfWDR
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetMaxExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pMaxExposureTime)
+```
+
+**函数功能：**
+
+在HDR模式下，获取深度传感器的最大曝光时间
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: 帧索引
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* exposureTime: 曝光时间
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.64. VN_SetTimeFilterParams
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetTimeFilterParams(ScDeviceHandle device, ScTimeFilterParams params)
+```
+
+**函数功能：**
+
+设置深度图像的时域滤波参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScTimeFilterParams**](#_25211-sctimefilterparams) params：指向存储返回值的变量的指针
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.65. VN_GetTimeFilterParams
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetTimeFilterParams(ScDeviceHandle device, ScTimeFilterParams* pParams)
+```
+
+**函数功能：**
+
+获取深度图像的时域滤波参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScTimeFilterParams**](#_25211-sctimefilterparams) params：指向存储返回值的变量的指针
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.66. VN_SetConfidenceFilterParams
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetConfidenceFilterParams(ScDeviceHandle device,ScConfidenceFilterParams params)
+```
+
+**函数功能：**
+
+设置深度图像的置信度滤波参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScConfidenceFilterParams**](#_25212-scconfidencefilterparams) params：指向存储返回值的变量的指针
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.67. VN_GetConfidenceFilterParams
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetConfidenceFilterParams(ScDeviceHandle device, ScConfidenceFilterParams *pParams)
+```
+
+**函数功能：**
+
+获取深度图像的置信度滤波参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScConfidenceFilterParams**](#_25212-scconfidencefilterparams) params：指向存储返回值的变量的指针
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.68. VN_SetFlyingPixelFilterParams
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetFlyingPixelFilterParams(ScDeviceHandle device, const ScFlyingPixelFilterParams params)
+```
+
+**函数功能：**
+
+设置深度图像的去飞点滤波参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScFlyingPixelFilterParams**](#_25213-scflyingpixelfilterparams) params：滤波参数
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.69. VN_GetFlyingPixelFilterParams
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetFlyingPixelFilterParams(ScDeviceHandle device, ScFlyingPixelFilterParams* params)
+```
+
+**函数功能：**
+
+获取深度图像的去飞点滤波参数
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScFlyingPixelFilterParams**](#_25213-scflyingpixelfilterparams)\* params：滤波参数
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.70. VN_SetFillHoleFilterEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetFillHoleFilterEnabled(ScDeviceHandle device, bool bEnabled);
+```
+
+**函数功能：**
+
+设置深度图像的补洞滤波开启关闭
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 开启，false 关闭
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.71. VN_GetFillHoleFilterEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetFillHoleFilterEnabled(ScDeviceHandle device, bool* pEnabled);
+```
+
+**函数功能：**
+
+获取深度图像的补洞滤波开启关闭
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* pEnabled：true 开启，false 关闭
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.72. VN_SetSpatialFilterEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetSpatialFilterEnabled(ScDeviceHandle device, bool bEnabled)
+```
+
+**函数功能：**
+
+设置深度图像的空间滤波开启关闭
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 开启，false 关闭
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.73. VN_GetSpatialFilterEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetSpatialFilterEnabled(ScDeviceHandle device, bool* pEnabled)
+```
+
+**函数功能：**
+
+获取深度图像的空间滤波开启关闭
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* pEnabled：true 开启，false 关闭
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.74. VN_SetTransformColorImgToDepthSensorEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetTransformColorImgToDepthSensorEnabled(ScDeviceHandle device, bool bEnabled)
+```
+
+**函数功能：**
+
+设置彩色图像对齐到深度相机空间的开关，只有带彩色传感器的设备才支持此操作。如果打开开关，则调用 scGetFrameReady 时，ScFrameReady.transformedColor 的值为 1，然后调用 scGetFrame 可以得到 ScTransformColorImgToDepthSensorFrame 类型的彩色图像，其大小与深度图像大小相同。
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 打开对齐，false 关闭对齐
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.75. VN_GetTransformColorImgToDepthSensorEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetTransformColorImgToDepthSensorEnabled(ScDeviceHandle device, bool *bEnabled)
+```
+
+**函数功能：**
+
+获取彩色图像对齐到深度相机空间的开关状态
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> \*bEnabled：返回开关状态
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.76. VN_SetTransformDepthImgToColorSensorEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetTransformDepthImgToColorSensorEnabled(ScDeviceHandle device, bool bEnabled)
+```
+
+**函数功能：**
+
+设置深度图像对齐到彩色相机空间的开关，只有带彩色传感器的设备才支持此操作。如果打开开关，则调用 scGetFrameReady 时，ScFrameReady.transformedDepth 的值为 1，然后调用 scGetFrame 可以得到 ScTransformDepthImgToColorSensorFrame 类型的深度图像，其大小与彩色图像大小相同。
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：true 打开对齐，false 关闭对齐
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.77. VN_GetTransformDepthImgToColorSensorEnabled
+
+**函数原型：**
+
+```csharp
+ScStatus VN_GetTransformDepthImgToColorSensorEnabled(ScDeviceHandle device, bool *bEnabled)
+```
+
+**函数功能：**
+
+获取深度图像对齐到彩色相机空间的开关状态
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> \*bEnabled：返回开关状态
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.78. VN_TransformDepthPointToColorPoint
+
+**函数原型：**
+
+```csharp
+ScStatus VN_TransformDepthPointToColorPoint(const ScDeviceHandle device, const ScDepthVector3 depthPoint, const ScVector2u16 colorSize, ScVector2u16* pPointInColor)
+```
+
+**函数功能：**
+
+对齐深度图像上的点到彩色图像空间，可以在彩色图像上获得与传入的深度图像坐标点相对应的点的坐标
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScDepthVector3**](#_2523-scdepthvector3) depthPoint：深度图像的坐标点
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScVector2u16**](#_2522-scvector2u16) colorSize：彩色图像尺寸
+
+[**ScVector2u16**](#_2522-scvector2u16)\* pPointInColor：获得的与深度图像的坐标点对应的彩色图像坐标点
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.79. VN_ConvertDepthToPointCloud
+
+**函数原型：**
+
+```csharp
+ScStatus VN_ConvertDepthToPointCloud(ScDeviceHandle device, ScDepthVector3* pDepthVector, ScVector3f* pWorldVector, int32_t pointCount, ScSensorIntrinsicParameters* pSensorParam)
+```
+
+**函数功能：**
+
+把传入的深度图像坐标点集合转换为世界坐标系点集合。世界坐标原点在深度传感器镜头中心，Z 轴垂直与设备前盖板，其正方向从设备指向远方；X 轴从深度镜头指向激光器，其正方向从设备指向远方；Y 轴垂直与设备指向地面，其正方向从设备指向远方。
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+[**ScDepthVector3**](#_2523-scdepthvector3)\* pDepthVector：深度图像的坐标点的集合
+
+[**ScVector3f**](#_2521-scvector3f)\* pWorldVector：转换后点云的坐标点的集合
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> pointCount：坐标点的数目
+
+[**ScSensorIntrinsicParameters**](#_2526-scsensorintrinsicparameters)\* pSensorParam：传感器内参
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.80. VN_ConvertDepthFrameToPointCloudVector
+
+**函数原型：**
+
+```csharp
+ScStatus VN_ConvertDepthFrameToPointCloudVector(ScDeviceHandle device, const ScFrame* pDepthFrame, ScVector3f* pWorldVector)
+```
+
+**函数功能：**
+
+把传入的深度图像转换为世界坐标系点集合，转换后的世界坐标系点集合的大小为 ScFrame.width \* ScFrame.height，支持 ScDepthFrame 和 ScTransformDepthImgToColorSensorFrame 图像
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScFrame**](#_2528-scframe)\* pDepthFrame：深度图像
+
+[**ScVector3f**](#_2521-scvector3f)\* pWorldVector：转换后点云的坐标点的集合
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.81. VN_SetParamsByJson
 
 **函数原型：**
 
@@ -1952,6 +2401,158 @@ ScStatus VN_SetParamsByJson(ScDeviceHandle device, char* pfilePath)
 
 **返回值：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK 调用成功，其他值调用失败
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.82. VN_ExportParamInitFile
+
+**函数原型：**
+
+```csharp
+ScStatus VN_ExportParamInitFile(ScDeviceHandle device, char* pfilePath)
+```
+
+**函数功能：**
+
+从相机导出初始化参数文件
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pfilePath：配置文件路径
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.83. VN_ImportParamInitFile
+
+**函数原型：**
+
+```csharp
+ScStatus VN_ImportParamInitFile(ScDeviceHandle device, char* pfilePath)
+```
+
+**函数功能：**
+
+初始化参数文件导入相机
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pfilePath：配置文件路径
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.84. VN_RestoreParamInitFile
+
+**函数原型：**
+
+```csharp
+ScStatus VN_RestoreParamInitFile(ScDeviceHandle device)
+```
+
+**函数功能：**
+
+恢复出厂设置
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.85. VN_RebootDevie
+
+**函数原型：**
+
+```csharp
+ScStatus VN_RebootDevie(ScDeviceHandle device);
+```
+
+**函数功能：**
+
+重启设备
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.86. VN_SetHotPlugStatusCallback
+
+**函数原型：**
+
+```csharp
+ScStatus VN_SetHotPlugStatusCallback(PtrHotPlugStatusCallback pCallback, const void* pUserData)
+```
+
+**函数功能：**
+
+设置设备热拔插状态回调函数
+
+**函数参数：**
+
+PtrHotPlugStatusCallback pCallback： 回调函数
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> <span style="color: #4ec9b0; font-weight: bold">void</span>\* pUserData：用户数据，可以为空
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.87. VN_StartUpgradeFirmWare
+
+**函数原型：**
+
+```csharp
+ScStatus VN_StartUpgradeFirmWare(ScDeviceHandle device, char* pImgPath)
+```
+
+**函数功能：**
+
+升级固件
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pImgPath：固件文件路径
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.88. VN_GetUpgradeStatus
+
+ **函数原型：**
+
+```csharp
+ScStatus VN_GetUpgradeStatus(ScDeviceHandle device, int32_t* pStatus, int32_t* pProcess)
+```
+
+**函数功能：**
+
+获取升级状态和进度
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pStatus：升级状态，1正常，0异常
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pProcess：升级进度，[1-100]
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
 <!-- tabs:end -->

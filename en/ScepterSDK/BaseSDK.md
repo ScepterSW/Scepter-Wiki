@@ -626,7 +626,7 @@ typedef enum
     SC_GET_OVER_STAY_FRAME          = -23,    // The time from frame ready to get frame is out of 1s.
     SC_CREATE_LOG_DIR_ERROR         = -24,    // Create log directory error.
     SC_CREATE_LOG_FILE_ERROR        = -25,    // Create log file error.
-    SC_NO_ADAPTER_CONNECTED         = -100,   // There is no. adapter connected.
+    SC_NO_ADAPTER_CONNECTED         = -100,   // There is no adapter connected.
     SC_REINITIALIZED                = -101,   // The SDK has been Initialized.
     SC_NO_INITIALIZED               = -102,   // The SDK has not been Initialized.
     SC_CAMERA_OPENED                = -103,   // The camera has been opened.
@@ -794,18 +794,18 @@ SDK has realized the function of converting depth image to point cloud and image
 ```cpp
 typedef struct
 {
-    double fy;   // Focal length y (pixel).
-    double fx;   // Focal length x (pixel).
-    double cx;   // Principal point x (pixel).
-    double cy;   // Principal point y (pixel).
-    double k1;   // Radial distortion coefficient, 1st-order.
-    double k2;   // Radial distortion coefficient, 2nd-order.
-    double p1;   // Tangential distortion coefficient.
-    double p2;   // Tangential distortion coefficient.
-    double k3;   // Radial distortion coefficient, 3rd-order.
-    double k4;   // Radial distortion coefficient, 4st-order.
-    double k5;   // Radial distortion coefficient, 5nd-order.
-    double k6;   // Radial distortion coefficient, 6rd-order.
+    double fx;   //!< Focal length x (pixel).
+    double fy;   //!< Focal length y (pixel).
+    double cx;   //!< Principal point x (pixel).
+    double cy;   //!< Principal point y (pixel).
+    double k1;   //!< Radial distortion coefficient, 1st-order.
+    double k2;   //!< Radial distortion coefficient, 2nd-order.
+    double p1;   //!< Tangential distortion coefficient.
+    double p2;   //!< Tangential distortion coefficient.
+    double k3;   //!< Radial distortion coefficient, 3rd-order.
+    double k4;   //!< Radial distortion coefficient, 4st-order.
+    double k5;   //!< Radial distortion coefficient, 5nd-order.
+    double k6;   //!< Radial distortion coefficient, 6rd-order.
 } ScSensorIntrinsicParameters;
 ```
 
@@ -1548,7 +1548,7 @@ ScStatus scGetRealTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig* pParam
 
 **Description:**
 
- Get the parameters for time sync,such as the status of the NTP/PTP
+Get the parameters for time sync,such as the status of the NTP/PTP
 
 **Parameters:**
 
@@ -1658,7 +1658,7 @@ ScStatus scSetSoftwareTriggerParameter(ScDeviceHandle device, uint8_t frameCount
 
 **Description:**
 
- Set the count of frame in SC_SOFTWARE_TRIGGER_MODE. The more frames there are, the better frame's quality after algorithm processing
+Set the count of frame in SC_SOFTWARE_TRIGGER_MODE. The more frames there are, the better frame's quality after algorithm processing
 
 **Parameters:**
 
@@ -2184,7 +2184,7 @@ Returns the Boolean value of whether the HDR Mode of ToF sensor feature is enabl
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">bool</span>\* bEnabled: Set to true to enable the feature or false to disable the feature.
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* bEnabled: true is enable the feature or false is disable the feature.
 
 **Returns:**
 
@@ -2202,13 +2202,13 @@ ScStatus scGetFrameCountOfHDRMode(ScDeviceHandle device, int32_t* pCount)
 
 Get the count of frame in HDR mode.
 
- **Parameters:**
+**Parameters:**
 
- <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device. 
 
- <span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pCount:  The frame count.
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pCount:  The frame count.
 
- **Returns:**
+**Returns:**
 
 [**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
@@ -2248,15 +2248,15 @@ ScStatus scGetExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32
 
 Get the exposure time of depth sensor with the frameIndex in HDR mode.
 
- **Parameters:**
+**Parameters:**
 
- <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
- <span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: The frameIndex from 0 to the count (get by scGetFrameCountOfHDRMode).
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: The frameIndex from 0 to the count (get by scGetFrameCountOfHDRMode).
 
- <span style="color: #4ec9b0; font-weight: bold">int32_t</span> pExposureTime: The exposure time.
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> pExposureTime: The exposure time.
 
- **Returns:**
+**Returns:**
 
 [**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 

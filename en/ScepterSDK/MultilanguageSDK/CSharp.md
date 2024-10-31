@@ -92,13 +92,19 @@ DevHotPlugCallbackCpp                           //Set the callback function for 
 DeviceConnectByIP                               //Use the device IP address to connect the device.
 DeviceConnectBySN                               //Use the serial number to connect the device.
 DeviceHWTriggerMode                             //Set device to Hardware Trigger Mode.
-DeviceInfoGet                                   //Get Device SN, IP address and firmware version information.
+DeviceImportParamInitFile					   //Import the init file of parameters into device.
+DeviceInfoGet                                   //Get Device SN, IP address and firmware version. information.
+DeviceIPAndSubnetMaskSet					    //Set the IP and the SubnetMask with DHCP disabled.
 DeviceParamSetGet                               //Get intrinsic parameters and extrinsic parameters of the device, and set and get the GmmaGian value of the Device.
 DeviceSearchAndConnect                          //Search and connect the Device.
 DeviceSetFrameRate                              //Set Device Rrame Rate.
+DeviceSetNTP				                    //Set NTP enabled.
 DeviceSetParamsByJson                           //Set device parameters by Json.
-DeviceStartStopStreaming                        //Start and stop device streaming
+DeviceSetPTP				                    //Set PTP enabled.
+DeviceSetSoftwareTriggerParameter               //Set the framecount to merge in Software Trigger Mode.
+DeviceStartStopStreaming                        //Start and stop device streaming.
 DeviceSWTriggerMode                             //Set device to Software Trigger Mode.
+DeviceUpgradeFirmWare                           //Upgrade the firmWare.
 FrameCaptureAndSave                             //Capture and save device frame.
 IRGMMCorrectionSetGet                           //Set and get the IRGMMCorrection parameters of device.
 MultiConnection                                 //Multiple device connection.
@@ -107,6 +113,9 @@ PointCloudCaptureAndSave                        //Capture and save point cloud.
 PointCloudCaptureAndSaveDepthImgToColorSensor   //Capture the point cloud and save the depth image to the color sensor.
 PointCloudVectorAndSave                         //Capture and save point clouds in the ROI.
 PointCloudVectorAndSaveDepthImgToColorSensor    //Capture the point cloud in the ROI and save the depth image to the color sensor.
+SingleFrameDelayTest                            //Get the delay for trigger to get frame in APP.
+ToFExposureTimeOfHDRSetGet                      //Set and get ToF exposure time of the device,in HDR enabled.
+ToFExposureTimeOfWDRSetGet                      //Set and get ToF exposure time of the device,in WDR enabled.
 ToFExposureTimeSetGet                           //Set and get ToF exposure time of the device.
 ToFFiltersSetGet                                //Set and get ToF Filters switch of the device.
 TransformColorImgToDepthSensorFrame             //Color image is transformed to depth sensor space where the resolution is the same as the depth frame's resolution.
@@ -621,7 +630,7 @@ typedef struct
 ScStatus VN_Initialize()
 ```
 
-**Description：**
+**Description:**
 
 Initializes the API on the device. This function must be invoked before any other Scepter APIs.
 
@@ -631,1370 +640,1967 @@ There is no.
 
 **Returns：**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.2. VN_Shutdown
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_Shutdown()
 ```
 
-**Description：**
+**Description:**
 
 Shuts down the API on the device and clears all resources allocated by the API. After invoking this function, no other Scepter APIs can be invoked.
 
-**Parameters：**
+**Parameters:**
 
 There is no.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.3. VN_GetSDKVersion
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetSDKVersion(char* pSDKVersion, int32_t length)
 ```
 
-**Description：**
+**Description:**
 
-Get the version of SDK.
+Obtain the SDK version: X.X.X.
 
-**Parameters：**
+**Parameters:**
 
-There is no.
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pSDKVersion: SDK version
 
-**Returns：**
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> length: the length of SDK version
 
-Returns sdk version.
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.4. VN_GetDeviceCount
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetDeviceCount(uint32_t* pDeviceCount, uint32_t scanTime)
 ```
 
-**Description：**
+**Description:**
 
-Returns the number of camera devices currently connected.
+Get the number of connected devices.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">uint32_t</span>\* pDeviceCount：Pointer to a 32-bit integer variable in which to return the device count.
+<span style="color: #4ec9b0; font-weight: bold">uint32_t</span>\* pDeviceCount: Pointer to a 32-bit integer variable in which to return the device count.
 
-<span style="color: #4ec9b0; font-weight: bold">uint32_t</span> scanTime：Scans time, the unit is millisecond.This function scans devices for scanTime(ms) and then returns the count of devices.
+<span style="color: #4ec9b0; font-weight: bold">uint32_t</span> scanTime: Scans time, the unit is millisecond.This function scans devices for scanTime(ms) and then returns the count of devices.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.5. VN_GetDeviceInfoList
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetDeviceInfoList(uint32_t deviceCount, ScDeviceInfo* pDevicesInfoList)
 ```
 
-**Description：**
+**Description:**
 
-Returns the info lists of the deviceCount camera devices.
+Obtain the device list of the number of Devicecounts.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">uint32_t</span> deviceCount：The number of camera devices.
+<span style="color: #4ec9b0; font-weight: bold">uint32_t</span> deviceCount: The number of camera devices.
 
-[**ScDeviceInfo**](#_324210-scdeviceinfo)\* pDevicesInfoList：Pointer to a buffer in which to store the devices list infos.
+[**ScDeviceInfo**](#_25210-scdeviceinfo)\* pDevicesInfoList: Pointer to a buffer in which to store the devices list infos.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.6. VN_OpenDeviceBySN
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_OpenDeviceBySN(const char* pSN, ScDeviceHandle* pDevice)
 ```
 
-**Description：**
+**Description:**
 
-Opens the device specified by SerialNumber.
+Opens the device using the device SerialNumber. The device must be subsequently closed using scCloseDevice().
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">const</span> char\* pSN：SerialNumber of the device.
+<span style="color: #4ec9b0; font-weight: bold">const</span> char\* pSN: The SerialNumber of the device. See ::ScDeviceInfo for more information.
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span>\* pDevice： The handle of the device on which to open.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span>\* pDevice: The handle of the device on which to open.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.7. VN_OpenDeviceByIP
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_OpenDeviceByIP(const char* pIP, ScDeviceHandle* pDevice)
 ```
 
-**Description：**
+**Description:**
 
-Opens the device specified by ip.
+Use the device IP address to open the device. The device must be subsequently closed using scCloseDevice().
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">const</span> char\* pIP：The ip of the device.
+<span style="color: #4ec9b0; font-weight: bold">const</span> char\* pIP: The IP adress of the device. See ::ScDeviceInfo for more information.
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span>\* pDevice： The handle of the device on which to open.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span>\* pDevice:  The handle of the device on which to open.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.8. VN_CloseDevice
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_CloseDevice(ScDeviceHandle* pDevice)
 ```
 
-**Description：**
+**Description:**
 
-Closes the device specified by device.
+Closes the device specified by device that was opened using scOpenDevice.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span>\* pDevice： The handle of the device to close.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span>\* pDevice:  The handle of the device to close.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.9. VN_StartStream
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_StartStream(ScDeviceHandle device)
 ```
 
-**Description：**
+**Description:**
 
-Starts capturing the image stream indicated by device.
+Starts capturing the image stream indicated by device.Invoke scStopStream() to stop capturing the image stream.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device on which to start capturing the image stream.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device:  The handle of the device on which to start capturing the image stream.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.10. VN_StopStream
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_StopStream(ScDeviceHandle device)
 ```
 
-**Description：**
+**Description:**
 
-Stops capturing the image stream on the device specified by device.
+Stops capturing the image stream on the device specified by device. that was started using scStartStream.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device on which to stop capturing the image stream.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device:  The handle of the device on which to stop capturing the image stream.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.11. VN_GetFrameReady
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetFrameReady(ScDeviceHandle device, uint16_t waitTime, ScFrameReady* pFrameReady)
 ```
 
-**Description：**
+**Description:**
 
-Captures the next image frame from the device specified by device. This API must be invoked before capturing frame data using VN_scGetFrame().
+Gets the image ready state. This function must be called before calling scGetFrame, otherwise the image cannot be retrieved.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device:  The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> waitTime：The unit is millisecond, the value is in the range (0,65535).You can change the value according to the frame rate. For example,the frame rate is 30, so the theoretical waittime interval is 33ms,but if set the time value is 20ms, it means the maximum wait time is 20 ms when capturing next frame, so when call the VN_GetFrameReady,it may return SC_GET_FRAME_READY_TIME_OUT(-11).So the recommended value is 2 \* 1000/ FPS.
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> waitTime: The unit is millisecond, the value is in the range (0,65535).You can change the value according to the frame rate. For example,the frame rate is 30, so the theoretical waittime interval is 33ms,but if set the time value is 20ms, it means the maximum wait time is 20 ms when capturing next frame, so when call the scGetFrameReady,it may return SC_GET_FRAME_READY_TIME_OUT(-11).So the recommended value is 2 \* 1000/ FPS.
 
-[**ScFrameReady**](#_32429-scframeready)\* pFrameReady：Pointer to a buffer in which to store the signal on which image is ready to be get.
+[**ScFrameReady**](#_2529-scframeready)\* pFrameReady: Pointer to a buffer in which to store the signal on which image is ready to be get.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 ### 3.2.4.3.12. VN_GetFrame
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetFrame(ScDeviceHandle device, ScFrameType frameType, ScFrame* pScFrame)
 ```
 
-**Description：**
+**Description:**
 
-Returns the image data for the current frame from the device specified by device.Before invoking this API, invoke VN_GetFrameReady() to capture one image frame from the device.
+Gets image data of the specified image type scGetFrameReady must be called before calling this function.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device:  The handle of the device to capture an image frame from.
 
-[**ScFrameType**](#_32411-scframetype) frameType：The image frame type.
+[**ScFrameType**](#_2511-scframetype) frameType: The image frame type.
 
-[**ScFrame**](#_32428-scframe)\* pScFrame：Pointer to a buffer in which to store the returned image data.
+[**ScFrame**](#_2528-scframe)\* pScFrame: Pointer to a buffer in which to store the returned image data.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.13. VN_SetWorkMode
+### 3.2.4.3.13. VN_GetDepthRangeValue
 
-**Prototype：**
-
-```csharp
-ScStatus VN_SetWorkMode(ScDeviceHandle device, ScWorkMode mode)
-```
-
-**Description：**
-
-Set the working mode of the camera.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-[**ScWorkMode**](#_32416-scworkmode) mode：he work mode of camera. For ActiveMode, set the Time filter default true, for SlaveMode, set the Time filter default false.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.14. VN_GetWorkMode
-
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_GetWorkMode(ScDeviceHandle device, ScWorkMode* pMode)
+ScStatus VN_GetDepthRangeValue(ScDeviceHandle device, int16_t* minValue, int16_t* maxValue)
 ```
 
-**Description：**
+**Description:**
 
-Get the working mode of the camera.
+Get the depth range in the current working mode of the device.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-[**ScWorkMode**](#_32416-scworkmode)\* pMode：The work mode of camera.
+<span style="color: #4ec9b0; font-weight: bold">int16_t</span> \* minValue: The min value of the depth.
 
-**Returns：**
+<span style="color: #4ec9b0; font-weight: bold">int16_t</span> \* maxValue: The max value of the depth.
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+**Returns:**
 
-### 3.2.4.3.15. VN_SoftwareTriggerOnce
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**Prototype：**
+### 3.2.4.3.14. VN_GetSensorIntrinsicParameters
 
-```csharp
-ScStatus VN_SoftwareTriggerOnce(ScDeviceHandle device)
-```
-
-**Description：**
-
-Triggering a frame of image is only useful if the camera is in SC_SOFTWARE_TRIGGER_MODE.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.16. VN_GetSensorIntrinsicParameters
-
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetSensorIntrinsicParameters(ScDeviceHandle device, ScSensorType sensorType, ScSensorIntrinsicParameters* pSensorIntrinsicParameters)
 ```
 
-**Description：**
+**Description:**
 
-Returns the internal intrinsic parameters from the device specified by device.
+Gets the internal intrinsic parameters from the sensor lens.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-[**ScSensorType**](#_32413-scsensortype) sensorType：The type of sensor (depth or color) from which to get parameter information.
+[**ScSensorType**](#_2513-scsensortype) sensorType: The type of sensor (depth or color) from which to get parameter information. Pass in the applicable value defined by ::ScSensorType.
 
-[**ScSensorIntrinsicParameters**](#_32426-scsensorintrinsicparameters)\* pSensorIntrinsicParameters：Pointer to a ScSensorIntrinsicParameters variable in which to store the parameter values.
+[**ScSensorIntrinsicParameters**](#_2526-scsensorintrinsicparameters)\* pSensorIntrinsicParameters:Pointer to a ScSensorIntrinsicParameters variable in which to store the parameter values.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.17. VN_GetSensorExtrinsicParameters
+### 3.2.4.3.15. VN_GetSensorExtrinsicParameters
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetSensorExtrinsicParameters(ScDeviceHandle device, ScSensorExtrinsicParameters* pSensorExtrinsicParameters)
 ```
 
-**Description：**
+**Description:**
 
-Returns the internal extrinsic parameters from the device specified by device.
+Gets the internal extrinsic parameters from the sensor lens.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-[**ScSensorExtrinsicParameters**](#_32427-scsensorextrinsicparameters)\* pSensorExtrinsicParameters：Pointer to a ::ScSensorExtrinsicParameters variable in which to store the parameters.
+[**ScSensorExtrinsicParameters**](#_2527-scsensorextrinsicparameters)\* pSensorExtrinsicParameters:Pointer to a ::ScSensorExtrinsicParameters variable in which to store the parameters.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.18. VN_GetFirmwareVersion
+### 3.2.4.3.16. VN_GetFirmwareVersion
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetFirmwareVersion(ScDeviceHandle device, char* pFirmwareVersion, int32_t length)
 ```
 
-**Description：**
+**Description:**
 
-Get the firmware version number.
+Obtain the firmware version of the device.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">char</span>\* pFirmwareVersion：Pointer to a variable in which to store the returned fw value.
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pFirmwareVersion: Pointer to a variable in which to store the returned fw value.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span> length：Byte length of the cache pointed to by FirmwareVersion.The maximum length is 64 bytes.
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> length: Byte length of the cache pointed to by FirmwareVersion.The maximum length is 64 bytes.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.19. VN_GetDeviceMACAddress
+### 3.2.4.3.17. VN_GetDeviceMACAddress
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetDeviceMACAddress(ScDeviceHandle device, char* pMACAddress)
 ```
 
-**Description：**
+**Description:**
 
-Get the MAC from the device specified by device.
+Obtain the MAC address of the device.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">char</span>\* pMACAddress：Pointer to a buffer in which to store the device MAC address. the buffer default size is 18, and the last buffer set '\0'.
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pMACAddress: Pointer to a buffer in which to store the device MAC address. the buffer default size is 18, and the last buffer set '\0'.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.20. VN_SetIRGMMGain
+### 3.2.4.3.18. VN_SetDeviceDHCPEnabled
 
-**Prototype：**
-
-```csharp
-ScStatus VN_SetIRGMMGain(ScDeviceHandle device, uint8_t gmmgain)
-```
-
-**Description：**
-
-Set the device GMM gain of the IR image on a device.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> gmmgain：The value of IRGMM Gain.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.21. VN_GetIRGMMGain
-
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_GetIRGMMGain(ScDeviceHandle device, uint8_t* pGmmgain)
+ScStatus VN_SetDeviceDHCPEnabled(ScDeviceHandle device, bool bEnabled)
 ```
 
-**Description：**
+**Description:**
 
-Returns the the device's GMM gain.
+Enables or disables the DHCP.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">uint8_t</span>\* pGmmgain：Pointer to a variable in which to store the returned GMM gain.
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled: Set to true to enable the feature or false to disable the feature.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.22. VN_SetIRGMMCorrection
+### 3.2.4.3.19. VN_GetDeviceDHCPEnabled
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_SetIRGMMCorrection(ScDeviceHandle device, const ScIRGMMCorrectionParams params)
+ScStatus VN_GetDeviceDHCPEnabled(ScDeviceHandle device, bool* bEnabled)
 ```
 
-**Description：**
+**Description:**
 
-Set the device IR GMM Correction on a device.
+Returns the Boolean value of whether the DHCP is enabled or disabled.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScIRGMMCorrectionParams**](#_324214-scirgmmcorrectionparams) params：The value of IR GMM Correction.
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* bEnabled: true is enable the feature or false is disable the feature.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.23. VN_GetIRGMMCorrection
+### 3.2.4.3.20. VN_SetDeviceIPAddr
 
-**Prototype：**
+Prototype:
 
 ```csharp
-ScStatus VN_GetIRGMMCorrection(ScDeviceHandle device, ScIRGMMCorrectionParams* params)
+ScStatus VN_SetDeviceIPAddr(ScDeviceHandle device, const char* ipAddr, int32_t length)
 ```
 
-**Description：**
+**Description:**
 
-Return the device IR GMM Correction on a device.
+Set the IP address of the device in non-DHCP mode. The call takes effect after the device is restarted.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-[**ScIRGMMCorrectionParams**](#_324214-scirgmmcorrectionparams)\* params：The value of IR GMM Correction.
+<span style="color: #4ec9b0; font-weight: bold">const char</span>\* ipAddr: Pointer to a buffer in which to store the device IP address. the buffer default size is 16, and the last buffer set '\0'.
 
-**Returns：**
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> length: The length of the buffer.
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+**Returns:**
 
-### 3.2.4.3.24. VN_SetColorPixelFormat
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**Prototype：**
+### 3.2.4.3.21. VN_GetDeviceIPAddr
+
+**Prototype:**
 
 ```csharp
-ScStatus VN_SetColorPixelFormat(ScDeviceHandle device,ScPixelFormat pixelFormat)
+ScStatus VN_GetDeviceIPAddr(ScDeviceHandle device, char* ipAddr)
 ```
 
-**Description：**
+**Description:**
 
-Set the color image pixel format on the device specified by device. Currently only RGB and BGR formats are supported.
+Get the IP address of the device in non-DHCP mode.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-[**ScPixelFormat**](#_32412-scpixelformat) pixelFormat：The color pixel format to use. Pass in one of the values defined by ::ScPixelFormat. Others cameras support only SC_PIXEL_FORMAT_RGB_888_JPEG and SC_PIXEL_FORMAT_BGR_888_JPEG.
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* ipAddr: Pointer to a buffer in which to store the device IP address. the buffer default size is 16, and the last buffer set '\0'.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.25. VN_SetColorGain
+### 3.2.4.3.22. VN_SetDeviceSubnetMask
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_SetColorGain(ScDeviceHandle device, float params)
+ScStatus VN_SetDeviceSubnetMask(ScDeviceHandle device, const char* pMask, int32_t length)
 ```
 
-**Description：**
+**Description:**
 
-Set the color Gain with the exposure mode of Color sensor in SC_EXPOSURE_CONTROL_MODE_MANUAL.
+Set the subnet mask of the device in non-DHCP mode. The call takes effect after the device is restarted.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">float</span> params：The value of color Gain.Different products have different maximum value. Please refer to the product specification.
+<span style="color: #4ec9b0; font-weight: bold">const char</span>\* pMask: Pointer to a buffer in which to store the subnet mask address. the buffer default size is 16, and the last buffer set '\0'.
 
-**Returns：**
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> length: The length of the buffer.
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+**Returns:**
 
-### 3.2.4.3.26. VN_GetColorGain
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**Prototype：**
+### 3.2.4.3.23. VN_GetDeviceSubnetMask
+
+**Prototype:**
 
 ```csharp
-ScStatus VN_GetColorGain(ScDeviceHandle device, float params)
+ScStatus VN_GetDeviceSubnetMask(ScDeviceHandle device, char* pMask)
 ```
 
-**Description：**
+**Description:**
 
-Get the color Gain.
+Get the subnet mask of the device in non-DHCP mode.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">float</span> params：The value of color Gain.
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pMask:  Pointer to a buffer in which to store the device subnet mask address. the buffer default size is 16, and the last buffer set '\0'.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.27. VN_SetColorResolution
+### 3.2.4.3.24. VN_SetRealTimeSyncConfig
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_SetColorResolution(ScDeviceHandle device, int32_t w, int32_t h)
+ScStatus VN_SetRealTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig params)
 ```
 
-**Description：**
+**Description:**
 
-Set the color frame Resolution.
+Set the parameters for time sync, such as enable the NTP/PTP
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span> w：The width of color image.
+[**ScTimeSyncConfig**](#_25217-sctimesyncconfig) params : The parameters defined by ::ScTimeSyncConfig.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span> h：The height of color image.
+**Returns:**
 
-**Returns：**
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+### 3.2.4.3.25. VN_GetRealTimeSyncConfig
 
-### 3.2.4.3.28. VN_GetColorResolution
-
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_GetColorResolution(ScDeviceHandle device, int32_t* pW, int32_t* pH)
+ScStatus VN_GetRealTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig* pParams)
 ```
 
-**Description：**
+**Description:**
 
-Returns the the color frame Resolution.
+ Get the parameters for time sync,such as the status of the NTP/PTP
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pW：Ruturns the width of color image.
+[**ScTimeSyncConfig**](#_25217-sctimesyncconfig)* pParams : Pointer to a variable in which to store the returned value.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pH：Ruturns the height of color image.
+**Returns:**
 
-**Returns：**
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+### 3.2.4.3.26. VN_SetFrameRate
 
-### 3.2.4.3.29. VN_GetSupportedResolutionList
-
-**Prototype：**
-
-```csharp
-ScStatus VN_GetSupportedResolutionList(ScDeviceHandle device, ScSensorType type, ScResolutionList* pList)
-```
-
-**Description：**
-
-Get a list of image resolutions supported by Sensor.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-[**ScSensorType**](#_32413-scsensortype) type：The sensor type.
-
-[**ScResolutionList**](#_32425-scresolutionlist)\* pList：List of supported resolutions.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.30. VN_SetFrameRate
-
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_SetFrameRate(ScDeviceHandle device, int32_t value)
 ```
 
-**Description：**
+**Description:**
 
-Set the ToF frame rate.The interface takes a long time, about 500 ms.
+Sets the device's image frame rate for both depth and color images. This interface is a synchronization interface, which takes about 500ms.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span> value：The rate value.
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> value: The rate value. Different products have different maximum values. Please refer to the product specification.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.31. VN_GetFrameRate
+### 3.2.4.3.27. VN_GetFrameRate
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetFrameRate(ScDeviceHandle device, int32_t* pValue)
 ```
 
-**Description：**
+**Description:**
 
-Get the ToF frame rate.
+Gets the image frame rate of the device.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pValue：Ruturns the rate value.
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pValue: Returns the frame rate of the device image.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.32. VN_SetExposureControlMode
+### 3.2.4.3.28. VN_SetWorkMode
 
-**Prototype：**
-
-```csharp
-ScStatus VN_SetExposureControlMode(ScDeviceHandle device, ScSensorType sensorType, ScExposureControlMode controlMode)
-```
-
-**Description：**
-
-Set the exposure mode of sensor.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-[**ScSensorType**](#_32413-scsensortype) sensorType：The type of sensor (depth or color) from which to get parameter information.
-
-[**ScExposureControlMode**](#_32417-scexposurecontrolmode) controlMode：The exposure control mode.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.33. VN_GetExposureControlMode
-
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_GetExposureControlMode(ScDeviceHandle device, ScSensorType sensorType, ScExposureControlMode* pControlMode)
+ScStatus VN_SetWorkMode(ScDeviceHandle device, ScWorkMode mode)
 ```
 
-**Description：**
+**Description:**
 
-Get the exposure mode of sensor.
+Set the working mode of the camera.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device:  The handle of the device.
 
-[**ScSensorType**](#_32413-scsensortype) sensorType：The type of sensor (depth or color) from which to get parameter information.
+[**ScWorkMode**](#_2516-scworkmode) mode: The work mode of camera. For ActiveMode, set the Time filter default true, for SlaveMode, set the Time filter default false.
 
-[**ScExposureControlMode**](#_32417-scexposurecontrolmode) controlMode：Returns the exposure control mode.
+**Returns:**
 
-**Returns：**
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+### 3.2.4.3.29. VN_GetWorkMode
 
-### 3.2.4.3.34. VN_SetExposureTime
-
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_SetExposureTime(ScDeviceHandle device, ScSensorType sensorType, int32_t exposureTime)
+ScStatus VN_GetWorkMode(ScDeviceHandle device, ScWorkMode* pMode)
 ```
 
-**Description：**
+**Description:**
 
-Set the exposure time of sensor.
+Get the working mode of the camera.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-[**ScSensorType**](#_32413-scsensortype) sensorType：The type of sensor (depth or color) from which to get parameter information.
+[**ScWorkMode**](#_2516-scworkmode)\* pMode: Indicates the working mode of the obtained device.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime：The exposure time. The value must be within the maximum exposure time of sensor.
+**Returns:**
 
-**Returns：**
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+### 3.2.4.3.30. VN_SetSoftwareTriggerParameter
 
-### 3.2.4.3.35. VN_GetExposureTime
-
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_GetExposureTime(ScDeviceHandle device, ScSensorType sensorType, int32_t* pExposureTime)
+ScStatus VN_SetSoftwareTriggerParameter(ScDeviceHandle device, uint8_t frameCount)
 ```
 
-**Description：**
+**Description:**
 
-Get the exposure time of sensor.
+ Set the count of frame in SC_SOFTWARE_TRIGGER_MODE. The more frames there are, the better frame's quality after algorithm processing
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-[**ScSensorType**](#_32413-scsensortype) sensorType：The type of sensor (depth or color) from which to get parameter information.
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameCount: The count of frame, in range [1,10].
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t\*</span> pExposureTime：Returns the exposure time.
+**Returns:**
 
-**Returns：**
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+### 3.2.4.3.31. VN_GetSoftwareTriggerParameter
 
-### 3.2.4.3.36. VN_SetColorAECMaxExposureTime
-
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_SetColorAECMaxExposureTime(ScDeviceHandle device, int32_t exposureTime);
+ScStatus VN_GetSoftwareTriggerParameter(ScDeviceHandle device, uint8_t* pframeCount)
 ```
 
-**Description：**
+**Description:**
 
-Get the maximum exposure time of color sensor in automatic mode. The interface is used in automatic mode.
+Get the count of framer in SC_SOFTWARE_TRIGGER_MODE.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime：The exposure time. The value must be within the maximum exposure time of sensor.
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span>* pframeCount: Pointer to a variable in which to store the count of frame, in range [1,10].
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.37. VN_GetColorAECMaxExposureTime
+### 3.2.4.3.32. VN_SoftwareTriggerOnce
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
-ScStatus VN_GetColorAECMaxExposureTime(ScDeviceHandle device, int32_t* pExposureTime)
+ScStatus VN_SoftwareTriggerOnce(ScDeviceHandle device)
 ```
 
-**Description：**
+**Description:**
 
-Get the maximum exposure time of color sensor in automatic mode. The interface is used in automatic mode.
+Performs a software trigger, valid only when the camera is in SC_SOFTWARE_TRIGGER_MODE.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t\*</span> pExposureTime：Returns the exposure time.
+**Returns:**
 
-**Returns：**
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+### 3.2.4.3.33. VN_SetInputSignalParamsForHWTrigger
 
-### 3.2.4.3.38. VN_GetMaxExposureTime
-
-**Prototype：**
-
-```csharp
-ScStatus VN_GetMaxExposureTime(ScDeviceHandle device, ScSensorType sensorType, int32_t* pMaxExposureTime);
-```
-
-**Description：**
-
-Get the maximum exposure time of sensor.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-[**ScSensorType**](#_32413-scsensortype) sensorType：The type of sensor (depth or color) from which to get parameter information.
-
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pMaxExposureTime：The maximum exposure time. The maximum exposure time is different at different frame rates.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.39. VN_SetTimeFilterParams
-
-**Prototype：**
-
-```csharp
-ScStatus VN_SetTimeFilterParams(ScDeviceHandle device, ScTimeFilterParams params)
-```
-
-**Description：**
-
-Set the parameters of the Time filter.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-[**ScTimeFilterParams**](#_324211-sctimefilterparams) params：Pointer to a variable in which to store the parameters.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.40. VN_GetTimeFilterParams
-
-**Prototype：**
-
-```csharp
-ScStatus VN_GetTimeFilterParams(ScDeviceHandle device, ScTimeFilterParams* pParams)
-```
-
-**Description：**
-
-Get the parameters of the Time Filter feature.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-[**ScTimeFilterParams**](#_324211-sctimefilterparams) params：Pointer to a variable in which to store the returned value.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.41. VN_SetConfidenceFilterParams
-
-**Prototype：**
-
-```csharp
-ScStatus VN_SetConfidenceFilterParams(ScDeviceHandle device,ScConfidenceFilterParams params)
-```
-
-**Description：**
-
-Set the parameters of the Confidence filter.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-[**ScConfidenceFilterParams**](#_324212-scconfidencefilterparams) params：Pointer to a variable in which to store the parameters.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.42. VN_GetConfidenceFilterParams
-
-**Prototype：**
-
-```csharp
-ScStatus VN_GetConfidenceFilterParams(ScDeviceHandle device, ScConfidenceFilterParams *pParams)
-```
-
-**Description：**
-
-Get the parameters of the ConfidenceFilter feature.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-[**ScConfidenceFilterParams**](#_324212-scconfidencefilterparams) params：Pointer to a variable in which to store the returned value.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.43. VN_SetFlyingPixelFilterParams
-
-**Prototype：**
-
-```csharp
-ScStatus VN_SetFlyingPixelFilterParams(ScDeviceHandle device, const ScFlyingPixelFilterParams params)
-```
-
-**Description：**
-
-Set the parameters of the FlyingPixel filter.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScFlyingPixelFilterParams**](#_324213-scflyingpixelfilterparams) params：Pointer to a variable in which to store the parameters.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.44. VN_GetFlyingPixelFilterParams
-
-**Prototype：**
-
-```csharp
-ScStatus VN_GetFlyingPixelFilterParams(ScDeviceHandle device, ScFlyingPixelFilterParams* params)
-```
-
-**Description：**
-
-Get the parameters of the FlyingPixel filter.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-[**ScFlyingPixelFilterParams**](#_324213-scflyingpixelfilterparams)\* params：Pointer to a variable in which to store the returned value.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.45. VN_SetFillHoleFilterEnabled
-
-**Prototype：**
-
-```csharp
-ScStatus VN_SetFillHoleFilterEnabled(ScDeviceHandle device, bool bEnabled);
-```
-
-**Description：**
-
-Enables or disables the FillHole filter.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：Set to true to enable the feature or false to disable the feature.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.46. VN_GetFillHoleFilterEnabled
-
-**Prototype：**
-
-```csharp
-ScStatus VN_GetFillHoleFilterEnabled(ScDeviceHandle device, bool* pEnabled);
-```
-
-**Description：**
-
-Returns the Boolean value of whether the FillHole Filter feature is enabled or disabled.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span>\* pEnabled：True on, false off.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.47. VN_SetSpatialFilterEnabled
-
-**Prototype：**
-
-```csharp
-ScStatus VN_SetSpatialFilterEnabled(ScDeviceHandle device, bool bEnabled)
-```
-
-**Description：**
-
-Enables or disables the Spatial filter.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：Set to true to enable the feature or false to disable the feature.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.48. VN_GetSpatialFilterEnabled
-
-**Prototype：**
-
-```csharp
-ScStatus VN_GetSpatialFilterEnabled(ScDeviceHandle device, bool* pEnabled)
-```
-
-**Description：**
-
-Returns the Boolean value of whether the Spatial Filter feature is enabled or disabled.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span>\* pEnabled：True on, false off.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.49. VN_SetTransformColorImgToDepthSensorEnabled
-
-**Prototype：**
-
-```csharp
-ScStatus VN_SetTransformColorImgToDepthSensorEnabled(ScDeviceHandle device, bool bEnabled)
-```
-
-**Description：**
-
-Enables or disables transforms a color image into the geometry of the depth sensor. When enabled, VN_GetFrame() can be invoked passing ::ScTransformedColorFrame as the frame type for get a color image which each pixel matches the corresponding pixel coordinates of the depth sensor. The resolution of the transformed color frame is the same as that of the depth image.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device：The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：Set to true to enable the feature or false to disable the feature.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.50. VN_GetTransformColorImgToDepthSensorEnabled
-
-**Prototype：**
-
-```csharp
-ScStatus VN_GetTransformColorImgToDepthSensorEnabled(ScDeviceHandle device, bool *bEnabled)
-```
-
-**Description：**
-
-Returns the Boolean value of whether the transformed of the color image to depth sensor space feature is enabled or disabled.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> \*bEnabled：Return to the switch status.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.51. VN_SetTransformDepthImgToColorSensorEnabled
-
-**Prototype：**
-
-```csharp
-ScStatus VN_SetTransformDepthImgToColorSensorEnabled(ScDeviceHandle device, bool bEnabled)
-```
-
-**Description：**
-
-Sets the depth image snap to color camera space toggle. This is only supported for devices with a color sensor. If the switch is on, the VN_GetFrameReady is invoked with a ScFrameReady.transformedDepth of 1. Then call scGetFrame to get a depth image of type ScTransformDepthImgToColorSensorFrame, which is the same size as the color image.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：Set to true to enable the feature or false to disable the feature.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.52. VN_GetTransformDepthImgToColorSensorEnabled
-
-**Prototype：**
-
-```csharp
-ScStatus VN_GetTransformDepthImgToColorSensorEnabled(ScDeviceHandle device, bool *bEnabled)
-```
-
-**Description：**
-
-Returns the Boolean value of whether the transformed of the depth image to color space feature is enabled or disabled.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> \*bEnabled：Return to the switch status.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.53. VN_TransformDepthPointToColorPoint
-
-**Prototype：**
-
-```csharp
-ScStatus VN_TransformDepthPointToColorPoint(const ScDeviceHandle device, const ScDepthVector3 depthPoint, const ScVector2u16 colorSize, ScVector2u16* pPointInColor)
-```
-
-**Description：**
-
-By aligning the points on the depth image to the color image space, the coordinates of the points on the color image corresponding to the incoming depth image coordinate points can be obtained.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScDepthVector3**](#_32423-scdepthvector3) depthPoint：The point in depth frame.
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScVector2u16**](#_32422-scvector2u16) colorSize：The size(x = w,y = h) of color frame.
-
-[**ScVector2u16**](#_32422-scvector2u16)\* pPointInColor：The point in the color frame.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.54. VN_ConvertDepthToPointCloud
-
-**Prototype：**
-
-```csharp
-ScStatus VN_ConvertDepthToPointCloud(ScDeviceHandle device, ScDepthVector3* pDepthVector, ScVector3f* pWorldVector, int32_t pointCount, ScSensorIntrinsicParameters* pSensorParam)
-```
-
-**Description：**
-
-Converts the input points from depth coordinate space to world coordinate space.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-[**ScDepthVector3**](#_32423-scdepthvector3)\* pDepthVector：Pointer to a buffer containing the x, y, and z values of the depth coordinates to be converted. x and y are measured in pixels, where 0, 0 is located at the top left corner of the image. z is measured in millimeters, based on the ::ScPixelFormat depth frame.
-
-[**ScVector3f**](#_32421-scvector3f)\* pWorldVector：Pointer to a buffer in which to output the converted x, y, and z values of the world coordinates, measured in millimeters.
-
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span> pointCount：The number of points to convert.
-
-[**ScSensorIntrinsicParameters**](#_32426-scsensorintrinsicparameters)\* pSensorParam：The intrinsic parameters for the depth sensor.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.55. VN_ConvertDepthFrameToPointCloudVector
-
-**Prototype：**
-
-```csharp
-ScStatus VN_ConvertDepthFrameToPointCloudVector(ScDeviceHandle device, const ScFrame* pDepthFrame, ScVector3f* pWorldVector)
-```
-
-**Description：**
-
-Converts the input Depth frame from depth coordinate space to world coordinate space on the device. Currently supported depth image types are SC_DEPTH_FRAME and SC_TRANSFORM_DEPTH_IMG_TO_COLOR_SENSOR_FRAME.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScFrame**](#_32428-scframe)\* pDepthFrame：The depth frame.
-
-[**ScVector3f**](#_32421-scvector3f)\* pWorldVector：Pointer to a buffer in which to output the converted x, y, and z values of the world coordinates,measured in millimeters. The length of pWorldVector must is (ScFrame.width \* ScFrame.height).
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.56. VN_SetHotPlugStatusCallback
-
-**Prototype：**
-
-```csharp
-ScStatus VN_SetHotPlugStatusCallback(PtrHotPlugStatusCallback pCallback, const void* pUserData)
-```
-
-**Description：**
-
-Set hotplug status callback function.
-
-**Parameters：**
-
-PtrHotPlugStatusCallback pCallback：Pointer to the callback function. See ::PtrHotPlugStatusCallback.
-
-<span style="color: #4ec9b0; font-weight: bold">const</span> <span style="color: #4ec9b0; font-weight: bold">void</span>\* pUserData：Pointer to the user data. See ::PtrHotPlugStatusCallback.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.57. VN_RebootDevie
-
-**Prototype：**
-
-```csharp
-ScStatus VN_RebootDevie(ScDeviceHandle device);
-```
-
-**Description：**
-
-Reboot the camera.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.58. VN_SetHDRModeEnabled
-
-**Prototype：**
-
-```csharp
-ScStatus VN_SetHDRModeEnabled(ScDeviceHandle device, bool bEnabled)
-```
-
-**Description：**
-
-Enables or disables the HDR Mode of the ToF sensor with SC_EXPOSURE_CONTROL_MODE_MANUAL. Default enabled,so if you want switch to the SC_EXPOSURE_CONTROL_MODE_AUTO, set HDR Mode disable firstly.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled：Set to true to enable the feature or false to disable the feature.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.59. VN_GetHDRModeEnabled
-
-**Prototype：**
-
-```csharp
-ScStatus VN_GetHDRModeEnabled(ScDeviceHandle device, bool* bEnabled)
-```
-
-**Description：**
-
-Returns the Boolean value of whether the HDRMode of ToF sensor feature is enabled or disabled.
-
-**Parameters：**
-
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
-
-<span style="color: #4ec9b0; font-weight: bold">bool</span>\* bEnabled：Set to true to enable the feature or false to disable the feature.
-
-**Returns：**
-
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.2.4.3.60. VN_SetInputSignalParamsForHWTrigger
-
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_SetInputSignalParamsForHWTrigger(ScDeviceHandle device, ScInputSignalParamsForHWTrigger params);
 ```
 
-**Description：**
+**Description:**
 
 Set the input signal parameters for Hardware Trigger.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-[**ScInputSignalParamsForHWTrigger**](#_324215-scinputsignalparamsforhwtrigger) params：Pointer to a variable in which to store the parameters.
+[**ScInputSignalParamsForHWTrigger**](#_25215-scinputsignalparamsforhwtrigger) params: Pointer to a variable in which to store the parameters.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.61. VN_GetInputSignalParamsForHWTrigger
+### 3.2.4.3.34. VN_GetInputSignalParamsForHWTrigger
 
-**Prototype：**
+**Prototype:**
 
 ```csharp
 ScStatus VN_GetInputSignalParamsForHWTrigger(ScDeviceHandle device, ScInputSignalParamsForHWTrigger* pParams);
 ```
 
-**Description：**
+**Description:**
 
 Get the Input signal parameters for Hardware Trigger.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-[**ScInputSignalParamsForHWTrigger**](#_324215-scinputsignalparamsforhwtrigger)\* pParams：Pointer to a variable in which to store the returned value.
+[**ScInputSignalParamsForHWTrigger**](#_25215-scinputsignalparamsforhwtrigger)\* pParams: Pointer to a variable in which to store the returned value.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.2.4.3.62. VN_SetParamsByJson
+### 3.2.4.3.35. VN_SetIRGMMGain
 
-**Prototype：**
+**Prototype:**
+
+```csharp
+ScStatus VN_SetIRGMMGain(ScDeviceHandle device, uint8_t gmmgain)
+```
+
+**Description:**
+
+Sets the digital gain of the IR image.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> gmmgain: The value of IRGMM Gain. Different products have different maximum value. Please refer to the product specification.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.36. VN_GetIRGMMGain
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetIRGMMGain(ScDeviceHandle device, uint8_t* pGmmgain)
+```
+
+**Description:**
+
+Obtaines the digital gain of the IR image.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span>\* pGmmgain: Pointer to a variable in which to store the returned GMM gain.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.37. VN_SetIRGMMCorrection
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetIRGMMCorrection(ScDeviceHandle device, const ScIRGMMCorrectionParams params)
+```
+
+**Description:**
+
+Set the device IR GMM Correction on a device.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScIRGMMCorrectionParams**](#_25214-scirgmmcorrectionparams) params: The value of IR GMM Correction.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.38. VN_GetIRGMMCorrection
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetIRGMMCorrection(ScDeviceHandle device, ScIRGMMCorrectionParams* params)
+```
+
+**Description:**
+
+Obtaines the device IR GMM Correction on a device.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScIRGMMCorrectionParams**](#_25214-scirgmmcorrectionparams)\* params: The value of IR GMM Correction.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.39. VN_SetColorPixelFormat
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetColorPixelFormat(ScDeviceHandle device,ScPixelFormat pixelFormat)
+```
+
+**Description:**
+
+Set the color image pixel format on the device specified by device. Currently only RGB and BGR formats are supported.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScPixelFormat**](#_2512-scpixelformat) pixelFormat: The color pixel format to use. Pass in one of the values defined by ::ScPixelFormat. Others cameras support only SC_PIXEL_FORMAT_RGB_888_JPEG and SC_PIXEL_FORMAT_BGR_888_JPEG.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.40. VN_SetColorGain
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetColorGain(ScDeviceHandle device, float params)
+```
+
+**Description:**
+
+Set the color Gain with the exposure mode of Color sensor in SC_EXPOSURE_CONTROL_MODE_MANUAL.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">float</span> params: The value of color Gain.Different products have different maximum value. Please refer to the product specification.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.41. VN_GetColorGain
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetColorGain(ScDeviceHandle device, float params)
+```
+
+**Description:**
+
+Get the color Gain.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">float</span> params: The value of color Gain.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.42. VN_GetSupportedResolutionList
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetSupportedResolutionList(ScDeviceHandle device, ScSensorType type, ScResolutionList* pList)
+```
+
+**Description:**
+
+Get a list of image resolutions supported by Sensor.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScSensorType**](#_2513-scsensortype) type: The sensor type.
+
+[**ScResolutionList**](#_2525-scresolutionlist)\* pList: List of supported resolutions.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.43. VN_SetColorResolution
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetColorResolution(ScDeviceHandle device, int32_t w, int32_t h)
+```
+
+**Description:**
+
+Set the color frame Resolution.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> w: The width of color image.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> h: The height of color image.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.44. VN_GetColorResolution
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetColorResolution(ScDeviceHandle device, int32_t* pW, int32_t* pH)
+```
+
+**Description:**
+
+Obtaines the the color frame Resolution.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pW: Ruturns the width of color image.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pH: Ruturns the height of color image.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.45. VN_SetExposureControlMode
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetExposureControlMode(ScDeviceHandle device, ScSensorType sensorType, ScExposureControlMode controlMode)
+```
+
+**Description:**
+
+Set the exposure mode of sensor.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScSensorType**](#_2513-scsensortype) sensorType: The type of sensor (depth or color) from which to get parameter information. Pass in the applicable value defined by ::ScSensorType.
+
+[**ScExposureControlMode**](#_2517-scexposurecontrolmode) controlMode: The exposure control mode.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.46. VN_GetExposureControlMode
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetExposureControlMode(ScDeviceHandle device, ScSensorType sensorType, ScExposureControlMode* pControlMode)
+```
+
+**Description:**
+
+Get the exposure mode of sensor.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScSensorType**](#_2513-scsensortype) sensorType: The type of sensor (depth or color) from which to get parameter information. Pass in the applicable value defined by ::ScSensorType.
+
+[**ScExposureControlMode**](#_2517-scexposurecontrolmode) controlMode: Returns the exposure control mode.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.47. VN_SetExposureTime
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetExposureTime(ScDeviceHandle device, ScSensorType sensorType, int32_t exposureTime)
+```
+
+**Description:**
+
+Set the exposure time of sensor.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScSensorType**](#_2513-scsensortype) sensorType: The type of sensor (depth or color) from which to get parameter information. Pass in the applicable value defined by ::ScSensorType.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime: The exposure time. The value must be within the maximum exposure time of sensor.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.48. VN_GetExposureTime
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetExposureTime(ScDeviceHandle device, ScSensorType sensorType, int32_t* pExposureTime)
+```
+
+**Description:**
+
+Get the exposure time of sensor.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScSensorType**](#_2513-scsensortype) sensorType: The type of sensor (depth or color) from which to get parameter information. Pass in the applicable value defined by ::ScSensorType.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t\*</span> pExposureTime: Returns the exposure time.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.49. VN_SetColorAECMaxExposureTime
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetColorAECMaxExposureTime(ScDeviceHandle device, int32_t exposureTime);
+```
+
+**Description:**
+
+Set the maximum exposure time of color sensor in automatic mode. The interface is used in automatic mode.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime: The exposure time. The value must be within the maximum exposure time of sensor.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.50. VN_GetColorAECMaxExposureTime
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetColorAECMaxExposureTime(ScDeviceHandle device, int32_t* pExposureTime)
+```
+
+**Description:**
+
+Get the maximum exposure time of color sensor in automatic mode. The interface is used in automatic mode.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t\*</span> pExposureTime: Returns the exposure time.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.51. VN_GetMaxExposureTime
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetMaxExposureTime(ScDeviceHandle device, ScSensorType sensorType, int32_t* pMaxExposureTime);
+```
+
+**Description:**
+
+Get the maximum exposure time of sensor.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScSensorType**](#_2513-scsensortype) sensorType: The type of sensor (depth or color) from which to get parameter information. Pass in the applicable value defined by ::ScSensorType.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pMaxExposureTime: The maximum exposure time. The maximum exposure time is different at different frame rates.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.52. VN_SetHDRModeEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetHDRModeEnabled(ScDeviceHandle device, bool bEnabled)
+```
+
+**Description:**
+
+Enables or disables the HDR Mode of the ToF sensor with SC_EXPOSURE_CONTROL_MODE_MANUAL. Default enabled,so if you want switch to the SC_EXPOSURE_CONTROL_MODE_AUTO, set HDR Mode disable firstly.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled: Set to true to enable the feature or false to disable the feature.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.53. VN_GetHDRModeEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetHDRModeEnabled(ScDeviceHandle device, bool* bEnabled)
+```
+
+**Description:**
+
+Returns the Boolean value of whether the HDR Mode of ToF sensor feature is enabled or disabled.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* bEnabled: Set to true to enable the feature or false to disable the feature.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.54. VN_GetFrameCountOfHDRMode
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetFrameCountOfHDRMode(ScDeviceHandle device, int32_t* pCount)
+```
+
+**Description:**
+
+Get the count of frame in HDR mode.
+
+ **Parameters:**
+
+ <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+ <span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pCount:  The frame count.
+
+ **Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.55. VN_SetExposureTimeOfHDR
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32_t exposureTime)
+```
+
+**Description:**
+
+Set the exposure time of depth sensor with the frameIndex in HDR mode.
+
+ **Parameters:**
+
+ <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+ <span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: The frameIndex from 0 to the count (get by scGetFrameCountOfHDRMode).
+
+ <span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime: The exposure time. The value must be within the maximum exposure time of sensor.
+
+ **Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.56. VN_GetExposureTimeOfHDR
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pExposureTime)
+```
+
+**Description:**
+
+Get the exposure time of depth sensor with the frameIndex in HDR mode.
+
+ **Parameters:**
+
+ <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+ <span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: The frameIndex from 0 to the count (get by scGetFrameCountOfHDRMode).
+
+ <span style="color: #4ec9b0; font-weight: bold">int32_t</span> pExposureTime: The exposure time.
+
+ **Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+
+### 3.2.4.3.57. VN_GetMaxExposureTimeOfHDR
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetMaxExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pMaxExposureTime)
+```
+
+**Description:**
+
+Get the maximum exposure time of depth sensor with the frameIndex in HDR mode.
+
+ **Parameters:**
+
+ <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+ <span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: The frameIndex from 0 to the count (get by scGetFrameCountOfHDRMode).
+
+ <span style="color: #4ec9b0; font-weight: bold">int32_t</span> pExposureTime: The exposure time.
+
+ **Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.58. VN_SetWDRModeEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetWDRModeEnabled(ScDeviceHandle device, bool bEnabled)
+```
+
+**Description:**
+
+Enables or disables the WDR Mode of the ToF sensor with SC_EXPOSURE_CONTROL_MODE_MANUAL. Default enabled,so if you want switch to the SC_EXPOSURE_CONTROL_MODE_AUTO, set HDR Mode disable firstly.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled: Set to true to enable the feature or false to disable the feature.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.59. VN_GetWDRModeEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetWDRModeEnabled(ScDeviceHandle device, bool* bEnabled)
+```
+
+**Description:**
+
+Returns the Boolean value of whether the WDR Mode of ToF sensor feature is enabled or disabled.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* bEnabled: Set to true to enable the feature or false to disable the feature.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.60. VN_GetFrameCountOfWDRMode
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetFrameCountOfWDRMode(ScDeviceHandle device, int32_t* pCount)
+```
+
+**Description:**
+
+Get the count of frame in WDR mode.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pCount: The frame count.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.61. VN_SetExposureTimeOfWDR
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32_t exposureTime)
+```
+
+**Description:**
+
+Set the exposure time of depth sensor with the frameIndex in WDR mode.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: The frameIndex from 0 to the count (get by scGetFrameCountOfWDRMode).
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> exposureTime: The exposure time. The value must be within the maximum exposure time of sensor.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.62. VN_GetExposureTimeOfWDR
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pExposureTime)
+```
+
+**Description:**
+
+Get the exposure time of depth sensor with the frameIndex in WDR mode.
+
+ **Parameters:**
+
+ <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+ <span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: The frameIndex from 0 to the count (get by scGetFrameCountOfWDRMode).
+
+ <span style="color: #4ec9b0; font-weight: bold">int32_t</span> pExposureTime: The exposure time.
+
+ **Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+
+### 3.2.4.3.63. VN_GetMaxExposureTimeOfWDR
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetMaxExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pMaxExposureTime)
+```
+
+**Description:**
+
+Get the maximum exposure time of depth sensor with the frameIndex in WDR mode.
+
+ **Parameters:**
+
+ <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+ <span style="color: #4ec9b0; font-weight: bold">uint8_t</span> frameIndex: The frameIndex from 0 to the count (get by scGetFrameCountOfWDRMode).
+
+ <span style="color: #4ec9b0; font-weight: bold">int32_t</span> pExposureTime: The exposure time.
+
+ **Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.64. VN_SetTimeFilterParams
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetTimeFilterParams(ScDeviceHandle device, ScTimeFilterParams params)
+```
+
+**Description:**
+
+Set the parameters of the Time filter.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScTimeFilterParams**](#_25211-sctimefilterparams) params: Pointer to a variable in which to store the parameters.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.65. VN_GetTimeFilterParams
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetTimeFilterParams(ScDeviceHandle device, ScTimeFilterParams* pParams)
+```
+
+**Description:**
+
+Get the parameters of the Time Filter feature.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScTimeFilterParams**](#_25211-sctimefilterparams) params: Pointer to a variable in which to store the returned value.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.66. VN_SetConfidenceFilterParams
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetConfidenceFilterParams(ScDeviceHandle device,ScConfidenceFilterParams params)
+```
+
+**Description:**
+
+Set the parameters of the Confidence filter.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScConfidenceFilterParams**](#_25212-scconfidencefilterparams) params: Pointer to a variable in which to store the parameters.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.67. VN_GetConfidenceFilterParams
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetConfidenceFilterParams(ScDeviceHandle device, ScConfidenceFilterParams *pParams)
+```
+
+**Description:**
+
+Get the parameters of the ConfidenceFilter feature.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScConfidenceFilterParams**](#_25212-scconfidencefilterparams) *pParams: Pointer to a variable in which to store the returned value.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.68. VN_SetFlyingPixelFilterParams
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetFlyingPixelFilterParams(ScDeviceHandle device, const ScFlyingPixelFilterParams params)
+```
+
+**Description:**
+
+Set the parameters of the FlyingPixel filter.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScFlyingPixelFilterParams**](#_25213-scflyingpixelfilterparams) params: Pointer to a variable in which to store the parameters.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.69. VN_GetFlyingPixelFilterParams
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetFlyingPixelFilterParams(ScDeviceHandle device, ScFlyingPixelFilterParams* params)
+```
+
+**Description:**
+
+Get the parameters of the FlyingPixel filter.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScFlyingPixelFilterParams**](#_25213-scflyingpixelfilterparams)\* params: Pointer to a variable in which to store the returned value.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.70. VN_SetFillHoleFilterEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetFillHoleFilterEnabled(ScDeviceHandle device, bool bEnabled);
+```
+
+**Description:**
+
+Enables or disables the FillHole filter.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled: Set to true to enable the feature or false to disable the feature.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.71. VN_GetFillHoleFilterEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetFillHoleFilterEnabled(ScDeviceHandle device, bool* pEnabled);
+```
+
+**Description:**
+
+Obtaines the Boolean value of whether the FillHole Filter feature is enabled or disabled.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* pEnabled: True on, false off.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.72. VN_SetSpatialFilterEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetSpatialFilterEnabled(ScDeviceHandle device, bool bEnabled)
+```
+
+**Description:**
+
+Enables or disables the Spatial filter.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled:  Set to true to enable the feature or false to disable the feature.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.73. VN_GetSpatialFilterEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetSpatialFilterEnabled(ScDeviceHandle device, bool* pEnabled)
+```
+
+**Description:**
+
+Obtaines the Boolean value of whether the Spatial Filter feature is enabled or disabled.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span>\* pEnabled: True on, false off.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.74. VN_SetTransformColorImgToDepthSensorEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetTransformColorImgToDepthSensorEnabled(ScDeviceHandle device, bool bEnabled)
+```
+
+**Description:**
+
+Enables or disables transforms a color image into the geometry of the depth sensor. When enabled, scGetFrame() can be invoked passing ::ScTransformedColorFrame as the frame type for get a color image which each pixel matches the corresponding pixel coordinates of the depth sensor. The resolution of the transformed color frame is the same as that of the depth image.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled: Set to true to enable the feature or false to disable the feature.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.75. VN_GetTransformColorImgToDepthSensorEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetTransformColorImgToDepthSensorEnabled(ScDeviceHandle device, bool *bEnabled)
+```
+
+**Description:**
+
+Obtaines the Boolean value of whether the transformed of the color image to depth sensor space feature is enabled or disabled.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> \*bEnabled: Pointer to a variable in which to store the returned Boolean value.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.76. VN_SetTransformDepthImgToColorSensorEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetTransformDepthImgToColorSensorEnabled(ScDeviceHandle device, bool bEnabled)
+```
+
+**Description:**
+
+Enables or disables transforms the depth map into the geometry of the color sensor. When enabled, scGetFrame() can
+be invoked passing ::ScTransformedDepthFrame as the frame type for get a depth image which each pixel matches the
+corresponding pixel coordinates of the color sensor. The resolution of the transformed depth frame is the same as that
+of the color image.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> bEnabled: Set to true to enable the feature or false to disable the feature.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.77. VN_GetTransformDepthImgToColorSensorEnabled
+
+**Prototype:**
+
+```csharp
+ScStatus VN_GetTransformDepthImgToColorSensorEnabled(ScDeviceHandle device, bool *bEnabled)
+```
+
+**Description:**
+
+Obtaines the Boolean value of whether the transformed of the depth image to color space feature is enabled or disabled.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">bool</span> \*bEnabled: Pointer to a variable in which to store the returned Boolean value.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.78. VN_TransformDepthPointToColorPoint
+
+**Prototype:**
+
+```csharp
+ScStatus VN_TransformDepthPointToColorPoint(const ScDeviceHandle device, const ScDepthVector3 depthPoint, const ScVector2u16 colorSize, ScVector2u16* pPointInColor)
+```
+
+**Description:**
+
+Returns the point value of the frame that the mapping of the depth image to Color space.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScDepthVector3**](#_2523-scdepthvector3) depthPoint: The point in depth frame.
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScVector2u16**](#_2522-scvector2u16) colorSize: The size(x = w,y = h) of color frame.
+
+[**ScVector2u16**](#_2522-scvector2u16)\* pPointInColor: The point in the color frame.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.79. VN_ConvertDepthToPointCloud
+
+**Prototype:**
+
+```csharp
+ScStatus VN_ConvertDepthToPointCloud(ScDeviceHandle device, ScDepthVector3* pDepthVector, ScVector3f* pWorldVector, int32_t pointCount, ScSensorIntrinsicParameters* pSensorParam)
+```
+
+**Description:**
+
+Converts the input points from depth coordinate space to world coordinate space.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+[**ScDepthVector3**](#_2523-scdepthvector3)\* pDepthVector: Pointer to a buffer containing the x, y, and z values of the depth coordinates to be converted. x and y are measured in pixels, where 0, 0 is located at the top left corner of the image. z is measured in millimeters, based on the ::ScPixelFormat depth frame.
+
+[**ScVector3f**](#_2521-scvector3f)\* pWorldVector:  Pointer to a buffer in which to output the converted x, y, and z values of the world coordinates, measured in millimeters.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> pointCount: The number of points to convert.
+
+[**ScSensorIntrinsicParameters**](#_2526-scsensorintrinsicparameters)\* pSensorParam: The intrinsic parameters for the depth sensor. See ::ScSensorIntrinsicParameters.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.80. VN_ConvertDepthFrameToPointCloudVector
+
+**Prototype:**
+
+```csharp
+ScStatus VN_ConvertDepthFrameToPointCloudVector(ScDeviceHandle device, const ScFrame* pDepthFrame, ScVector3f* pWorldVector)
+```
+
+**Description:**
+
+Converts the input Depth frame from depth coordinate space to world coordinate space on the device. Currently supported depth image types are SC_DEPTH_FRAME and SC_TRANSFORM_DEPTH_IMG_TO_COLOR_SENSOR_FRAME.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> [**ScFrame**](#_2528-scframe)\* pDepthFrame: The depth frame.
+
+[**ScVector3f**](#_2521-scvector3f)\* pWorldVector:  Pointer to a buffer in which to output the converted x, y, and z values of the world coordinates,measured in millimeters. The length of pWorldVector must is (ScFrame.width \* ScFrame.height).
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.81. VN_SetParamsByJson
+
+**Prototype:**
 
 ```csharp
 ScStatus VN_SetParamsByJson(ScDeviceHandle device, char* pfilePath)
 ```
 
-**Description：**
+**Description:**
 
 Set the parameters by Json file that can be saved by ScepterGUITool.
 
-**Parameters：**
+**Parameters:**
 
-<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： The handle of the device.
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">char</span>\* pfilePath：Pointer to the path of Json file.
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pfilePath: Pointer to the path of Json file.
 
-**Returns：**
+**Returns:**
 
-[**ScStatus**](#_32414-scstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.82. VN_ExportParamInitFile
+
+**Prototype:**
+
+```csharp
+ScStatus VN_ExportParamInitFile(ScDeviceHandle device, char* pfilePath)
+```
+
+**Description:**
+
+Export the parameter initialization file from the device.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pfilePath: Pointer to the path of parameter initialization file.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.83. VN_ImportParamInitFile
+
+**Prototype:**
+
+```csharp
+ScStatus VN_ImportParamInitFile(ScDeviceHandle device, char* pfilePath)
+```
+
+**Description:**
+
+Import the parameter initialization file into the device and take effect after reboot the device.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pfilePath: Pointer to the path of parameter initialization file.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.84. VN_RestoreParamInitFile
+
+**Prototype:**
+
+```csharp
+ScStatus VN_RestoreParamInitFile(ScDeviceHandle device)
+```
+
+**Description:**
+
+Restore the parameter initialization file of the device.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.85. VN_RebootDevie
+
+**Prototype:**
+
+```csharp
+ScStatus VN_RebootDevie(ScDeviceHandle device);
+```
+
+**Description:**
+
+Reboot the device.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.86. VN_SetHotPlugStatusCallback
+
+**Prototype:**
+
+```csharp
+ScStatus VN_SetHotPlugStatusCallback(PtrHotPlugStatusCallback pCallback, const void* pUserData)
+```
+
+**Description:**
+
+Set hotplug status callback function.
+
+**Parameters:**
+
+PtrHotPlugStatusCallback pCallback:  Pointer to the callback function. See ::PtrHotPlugStatusCallback.
+
+<span style="color: #4ec9b0; font-weight: bold">const</span> <span style="color: #4ec9b0; font-weight: bold">void</span>\* pUserData: Pointer to the user data. See ::PtrHotPlugStatusCallback.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.87. VN_StartUpgradeFirmWare
+
+**Prototype:**
+
+```csharp
+ScStatus VN_StartUpgradeFirmWare(ScDeviceHandle device, char* pImgPath)
+```
+
+**Description:**
+
+Input the firmware file path and start upgrading device firmware.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">char</span>\* pImgPath: Pointer to the path of firmware file. The firmware upgrade file is in .img format.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.88. VN_GetUpgradeStatus
+
+ **Prototype:**
+
+```csharp
+ScStatus VN_GetUpgradeStatus(ScDeviceHandle device, int32_t* pStatus, int32_t* pProcess)
+```
+
+**Description:**
+
+Get firmware upgrade status and progress.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pStatus:  Pointer to the status of firmware upgrade. 0 indicates normal, other values indicate anomalies.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pProcess: Pointer to the process of firmware upgrade, in range [0, 100]. Under normal circumstances, 100 indicates a successful upgrade.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
 <!-- tabs:end -->

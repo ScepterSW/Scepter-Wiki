@@ -280,7 +280,7 @@ class ScReturnStatus(Enum):
     SC_GET_OVER_STAY_FRAME          = -23,    # The time from frame ready to get frame is out of 1s.
     SC_CREATE_LOG_DIR_ERROR         = -24,    # Create log directory error.
     SC_CREATE_LOG_FILE_ERROR        = -25,    # Create log file error.
-    SC_NO_ADAPTER_CONNECTED         = -100,   # There is no. adapter connected.
+    SC_NO_ADAPTER_CONNECTED         = -100,   # There is no adapter connected.
     SC_REINITIALIZED                = -101,   # The SDK has been Initialized.
     SC_NO_INITIALIZED               = -102,   # The SDK has not been Initialized.
     SC_CAMERA_OPENED                = -103,   # The camera has been opened.
@@ -633,17 +633,95 @@ class ScIRGMMCorrectionParams(Structure):
                 ("enable", c_bool)]          #Indicates whether filtering is enabled. True indicates that filtering is enabled. False indicates that filtering is disabled.
 ```
 
+### 3.1.5.2.18. ScInputSignalParamsForHWTrigger
+
+**Function：**
+
+Input signal parameters for Hardware Trigger.
+
+**Members：**
+
+```python
+class ScInputSignalParamsForHWTrigger(Structure):
+    _pack_ = 1
+    _fields_ = [("width", c_uint16),        #Range in [1,65535]. The width of input signal.
+                ("interval", c_uint16),     #Range in [34000,65535]. The interval of input signal.65535]
+                ("polarity", c_uint8)]		#Range in [0,1]. 0 for active low; 1 for active high.
+```
+
+### 3.1.5.2.19. ScTimeSyncConfig
+
+**Function：**
+
+Time Sync parameters.
+
+**Members：**
+
+```python
+class ScTimeSyncConfig(Structure):
+    _pack_ = 1
+    _fields_ = [("flag", c_uint8),			#0: disable, 1: NTP, 2: PTP, only NTP needs the ip.
+                ("ip", c_uint8 * 16)]       #just for NTP.
+```
+
 #### **API**
 
-### 3.1.5.3.1. scGetSDKVersion
+class ScepterTofCam change the BaseSDK API to Python.
+
+### 3.1.5.3.1. scInitialize
+
+**Prototype：**
+
+```python
+def scInitialize(self):
+    return self.sc_cam_lib.scInitialize()
+```
+
+**Description：**
+
+Initializes the API on the device. This function must be invoked before any other Scepter APIs.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+
+> scInitialize has been called in def __init__(self) ，so the Samples do not call it again
+### 3.1.5.3.2. scShutdown
+
+**Prototype：**
+
+```python
+def scShutdown(self):
+    return self.sc_cam_lib.scShutdown()
+```
+
+**Description：**
+
+Shuts down the API on the device and clears all resources allocated by the API. After invoking this function, no other Scepter APIs can be invoked.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+> scInitialize has been called in def __del__(self) ，so the Samples do not call it again
+### 3.1.5.3.3. scGetSDKVersion
 
 **Prototype：**
 
 ```python
 def scGetSDKVersion(self):
-   tmp = c_char * 64
-   version = tmp()
-   return self.sc_cam_lib.scGetSDKVersion(version, 63),version.value
+    tmp = c_char * 64
+    version = tmp()
+    return self.sc_cam_lib.scGetSDKVersion(version, 63),version.value
 ```
 
 **Description：**
@@ -656,17 +734,17 @@ There is no.
 
 **Returns：**
 
-**version.value**：Returns The SDK version number.
+version.value：Returns The SDK version number.
 
-### 3.1.5.3.2. scGetDeviceCount
+### 3.1.5.3.4. scGetDeviceCount
 
 **Prototype：**
 
 ```python
 def scGetDeviceCount(self, scanTime = c_uint32(33)):
-   count = c_int()
-   self.sc_cam_lib.scGetDeviceCount(byref(count), scanTime)
-   return count.value
+    count = c_int()
+    self.sc_cam_lib.scGetDeviceCount(byref(count), scanTime)
+    return count.value
 ```
 
 **Description：**
@@ -675,25 +753,23 @@ Get the number of connected devices.
 
 **Parameters：**
 
-byref(count)：Returns the number of devices in this variable.
-
 scanTime：The unit is millisecond, and the numeric range is (0, 65535).
 The API returns immediately when the device count is not 0.
 When the device count is 0, the API waits up to the wait time (ms) unless the device count is not 0.
 
 **Returns：**
 
-**count.value**：Count of devices.
+count.value：Count of devices.
 
-### 3.1.5.3.3. GetDeviceInfoList
+### 3.1.5.3.5. GetDeviceInfoList
 
 **Prototype：**
 
 ```python
 def scGetDeviceInfoList(self, cam_count = 1):
-   tmp  = ScDeviceInfo* cam_count
-   device_infolist = tmp()
-   return self.sc_cam_lib.scGetDeviceInfoList(cam_count, device_infolist),device_infolist
+    tmp  = ScDeviceInfo* cam_count
+    device_infolist = tmp()
+    return self.sc_cam_lib.scGetDeviceInfoList(cam_count, device_infolist),device_infolist
 ```
 
 **Description：**
@@ -704,24 +780,22 @@ Obtain the device list of the number of Devicecounts.
 
 cam_count：The number of camera devices.
 
-[device_infolist](#_315213-scdeviceinfo)：Returns a list of device information that should point to a cache of size sizeof(ScDeviceInfo)\*deviceCount.
-
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**device_infolist**](#_315213-scdeviceinfo)：Returns a list of device information that should point to a cache of size sizeof(ScDeviceInfo)\*deviceCount.
+[device_infolist](#_315213-scdeviceinfo)：Returns a list of device information that should point to a cache of size sizeof(ScDeviceInfo)\*deviceCount.
 
-### 3.1.5.3.4. scOpenDeviceBySN
+### 3.1.5.3.6. scOpenDeviceBySN
 
 **Prototype：**
 
 ```python
 def scOpenDeviceBySN(self,  SN=c_char_p()):
-   if SN:
-      return self.sc_cam_lib.scOpenDeviceBySN(SN, byref(self.device_handle))
-   else:
-      return ScReturnStatus.SC_INPUT_POINTER_IS_NULL
+    if SN:
+        return self.sc_cam_lib.scOpenDeviceBySN(SN, byref(self.device_handle))
+    else:
+        return ScReturnStatus.SC_INPUT_POINTER_IS_NULL
 ```
 
 **Description：**
@@ -732,22 +806,20 @@ Opens the device using the device SerialNumber.
 
 SN：The SerialNumber of the device.
 
-byref(self.device_handle)： The handle of the device on which to open.
-
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.5. scOpenDeviceByIP
+### 3.1.5.3.7. scOpenDeviceByIP
 
 **Prototype：**
 
 ```python
 def scOpenDeviceByIP(self,  ip=c_char_p()):
-   if ip:
-      return self.sc_cam_lib.scOpenDeviceByIP(ip, byref(self.device_handle))
-   else:
-      return ScReturnStatus.SC_INPUT_POINTER_IS_NULL, 0
+    if ip:
+        return self.sc_cam_lib.scOpenDeviceByIP(ip, byref(self.device_handle))
+    else:
+        return ScReturnStatus.SC_INPUT_POINTER_IS_NULL, 0
 ```
 
 **Description：**
@@ -758,19 +830,17 @@ Use the device IP address to open the device.
 
 ip：The IP adress of the device.
 
-byref(self.device_handle)： The handle of the device on which to open.
-
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.6. scCloseDevice
+### 3.1.5.3.8. scCloseDevice
 
 **Prototype：**
 
 ```python
 def scCloseDevice(self):
-   return self.sc_cam_lib.scCloseDevice(byref(self.device_handle))
+    return self.sc_cam_lib.scCloseDevice(byref(self.device_handle))
 ```
 
 **Description：**
@@ -779,19 +849,19 @@ Closes the device.
 
 **Parameters：**
 
-byref(self.device_handle)： The handle of the device to close.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.7. scStartStream
+### 3.1.5.3.9. scStartStream
 
 **Prototype：**
 
 ```python
 def scStartStream(self):
-   return self.sc_cam_lib.scStartStream(self.device_handle)
+    return self.sc_cam_lib.scStartStream(self.device_handle)
 ```
 
 **Description：**
@@ -800,19 +870,19 @@ Open data Stream.
 
 **Parameters：**
 
-self.device_handle：Handle to the device on which the data stream is to be closed.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.8. scStopStream
+### 3.1.5.3.10. scStopStream
 
 **Prototype：**
 
 ```python
 def scStopStream(self):
-   return self.sc_cam_lib.scStopStream(self.device_handle)
+    return self.sc_cam_lib.scStopStream(self.device_handle)
 ```
 
 **Description：**
@@ -821,22 +891,22 @@ Close the data stream.
 
 **Parameters：**
 
-self.device_handle：Handle to the device on which the data stream is to be closed.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.9. scGetFrameReady
+### 3.1.5.3.11. scGetFrameReady
 
 **Prototype：**
 
 ```python
 def scGetFrameReady(self,waitTime = c_uint16(33)):
-   frameready = ScFrameReady()
-   if not self.device_handle:
-      return -3, frameready
-   return self.sc_cam_lib.scGetFrameReady(self.device_handle, waitTime, byref(frameready)), frameready
+    frameready = ScFrameReady()
+    if not self.device_handle:
+        return -3, frameready
+    return self.sc_cam_lib.scGetFrameReady(self.device_handle, waitTime, byref(frameready)), frameready
 ```
 
 **Description：**
@@ -845,26 +915,22 @@ Gets the image ready state. This function must be called before calling scGetFra
 
 **Parameters：**
 
-self.device_handle： The handle of the device.
-
 waitTime：The unit is millisecond, the value is in the range (0,65535).You can change the value according to the frame rate. For example,the frame rate is 30, so the theoretical waittime interval is 33ms,but if set the time value is 20ms, it means the maximum wait time is 20 ms when capturing next frame, so when call the scGetFrameReady,it may return SC_GET_FRAME_READY_TIME_OUT(-11).So the recommended value is 2 \* 1000/ FPS.
-
-[byref(frameready)](#_315212-scframeready)：Returns the ready state of the image.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**frameready**](#_315212-scframeready)：Returns the ready state of the image.
+[frameready](#_315212-scframeready)：Returns the ready state of the image.
 
-### 3.1.5.3.10. scGetFrame
+### 3.1.5.3.12. scGetFrame
 
 **Prototype：**
 
 ```python
 def scGetFrame(self,  frametype = ScFrameType.SC_DEPTH_FRAME):
-   Scframe = ScFrame()
-   return self.sc_cam_lib.scGetFrame(self.device_handle, frametype.value, byref(Scframe)), Scframe
+    Scframe = ScFrame()
+    return self.sc_cam_lib.scGetFrame(self.device_handle, frametype.value, byref(Scframe)), Scframe
 ```
 
 **Description：**
@@ -873,118 +939,50 @@ Gets image data of the specified image type scGetFrameReady must be called befor
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
 [frametype.value](#_31511-scframetype)：Specifies the type of the image to be obtained.
 
-[byref(Scframe)](#_315211-scframe)：The returned image data.
-
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**Scframe**](#_315211-scframe)：The returned image data.
+[Scframe](#_315211-scframe)：The returned image data.
 
-### 3.1.5.3.11. scSetWorkMode
+### 3.1.5.3.13.scGetDepthRangeValue
 
 **Prototype：**
 
 ```python
-def scSetWorkMode(self,  mode = ScWorkMode.SC_ACTIVE_MODE):
-   return self.sc_cam_lib.scSetWorkMode(self.device_handle, mode.value)
+def scGetDepthRangeValue(self):
+    minValue = c_int16(0)
+    maxValue = c_int16(0)
+    return self.sc_cam_lib.scGetDepthRangeValue(self.device_handle, byref(minValue), byref(maxValue)), minValue, maxValue
+ 
 ```
 
 **Description：**
 
-Set the working mode of the camera.
+Get the depth range in the current working mode of the device.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-[mode.value](#_31516-scworkmode)：The work mode of camera. For ActiveMode, set the Time filter default true, for SlaveMode, set the Time filter default false.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.12. scGetWorkMode
+minValue：The min value of the depth.
 
-**Prototype：**
+minValue：The max value of the depth.
 
-```python
-def scGetWorkMode(self):
-   mode = ScWorkMode(0)
-   return self.sc_cam_lib.scGetWorkMode(self.device_handle, byref(mode)), mode
-```
-
-**Description：**
-
-Get the working mode of the camera.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-[byref(mode)](#_31516-scworkmode)：Indicates the working mode of the obtained device.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-[**mode**](#_31516-scworkmode)：Indicates the working mode of the obtained device.
-
-### 3.1.5.3.13. scSoftwareTriggerOnce
-
-**Prototype：**
-
-```python
-def scSoftwareTriggerOnce(self):
-   return self.sc_cam_lib.scSoftwareTriggerOnce(self.device_handle)
-```
-
-**Description：**
-
-Performs a software trigger, valid only when the camera is in
-SC_SOFTWARE_TRIGGER_MODE.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.1.5.3.14. scRebootDevie
-
-**Prototype：**
-
-```python
-def scRebootDevie(self):
-   return self.sc_cam_lib.scRebootDevie(self.device_handle)
-```
-
-**Description：**
-
-Reboot the device.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.1.5.3.15. scGetSensorIntrinsicParameters
+### 3.1.5.3.14. scGetSensorIntrinsicParameters
 
 **Prototype：**
 
 ```python
 def scGetSensorIntrinsicParameters(self, sensorType = ScSensorType.SC_TOF_SENSOR):
-   CameraParameters = ScSensorIntrinsicParameters()
-   return self.sc_cam_lib.scGetSensorIntrinsicParameters(self.device_handle, sensorType.value, byref(CameraParameters)), CameraParameters
+    CameraParameters = ScSensorIntrinsicParameters()
+    return self.sc_cam_lib.scGetSensorIntrinsicParameters(self.device_handle, sensorType.value, byref(CameraParameters)), CameraParameters
 ```
 
 **Description：**
@@ -993,26 +991,22 @@ Gets the internal intrinsic parameters from the sensor lens.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-[sensorType.value](#_31512-scsensortype)：Indicates the sensor type.
-
-[byref(CameraParameters)](#_31528-scsensorintrinsicparameters)：Returns the internal intrinsic parameters from the sensor lens.
+[sensorType](#_31512-scsensortype)：Indicates the sensor type.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**CameraParameters**](#_31528-scsensorintrinsicparameters)：Returns the internal intrinsic parameters from the sensor lens.
+[CameraParameters](#_31528-scsensorintrinsicparameters)：Returns the internal intrinsic parameters from the sensor lens.
 
-### 3.1.5.3.16. scGetSensorExtrinsicParameters
+### 3.1.5.3.15. scGetSensorExtrinsicParameters
 
 **Prototype：**
 
 ```python
 def scGetSensorExtrinsicParameters(self):
-   CameraExtrinsicParameters = ScSensorExtrinsicParameters()
-   return self.sc_cam_lib.scGetSensorExtrinsicParameters(self.device_handle, byref(CameraExtrinsicParameters)), CameraExtrinsicParameters
+    CameraExtrinsicParameters = ScSensorExtrinsicParameters()
+    return self.sc_cam_lib.scGetSensorExtrinsicParameters(self.device_handle, byref(CameraExtrinsicParameters)), CameraExtrinsicParameters
 ```
 
 **Description：**
@@ -1021,25 +1015,23 @@ Gets the internal extrinsic parameters from the sensor lens.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-[byref(CameraExtrinsicParameters)](#_31529-scsensorextrinsicparameters)：Returns the internal extrinsic parameters from the sensor lens.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**CameraExtrinsicParameters**](#_31529-scsensorextrinsicparameters)：Returns the internal extrinsic parameters from the sensor lens.
+[CameraExtrinsicParameters](#_31529-scsensorextrinsicparameters)：Returns the internal extrinsic parameters from the sensor lens.
 
-### 3.1.5.3.17. scGetFirmwareVersion
+### 3.1.5.3.16. scGetFirmwareVersion
 
 **Prototype：**
 
 ```python
 def scGetFirmwareVersion(self):
-   tmp = c_char * 64
-   fw = tmp()
-   return self.sc_cam_lib.scGetFirmwareVersion(self.device_handle, fw, 63),fw.value
+    tmp = c_char * 64
+    fw = tmp()
+    return self.sc_cam_lib.scGetFirmwareVersion(self.device_handle, fw, 63),fw.value
 ```
 
 **Description：**
@@ -1048,15 +1040,199 @@ Obtain the firmware version of the device.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-fw：: Indicates the firmware version of the device.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**fw.value**：Indicates the firmware version of the device.
+fw.value：Indicates the firmware version of the device.
+
+### 3.1.5.3.18. scSetDeviceDHCPEnabled
+
+**Prototype：**
+
+```python
+def scSetDeviceDHCPEnabled(self, enable = c_bool(True)):
+    return self.sc_cam_lib.scSetDeviceDHCPEnabled(self.device_handle, enable)
+```
+
+**Description：**
+
+Enables or disables the DHCP.
+
+**Parameters：**
+
+enable：Set to true to enable the feature or false to disable the feature.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+### 3.1.5.3.19. scGetDeviceDHCPEnabled
+
+**Prototype：**
+
+```python
+def scGetDeviceDHCPEnabled(self):
+    enable = c_bool(True)
+    return self.sc_cam_lib.scGetDeviceDHCPEnabled(self.device_handle, byref(enable)), enable.value
+```
+
+**Description：**
+
+Returns the Boolean value of whether the DHCP is enabled or disabled.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+enable.value：true is enable the feature or false is disable the feature.
+
+### 3.1.5.3.20. scSetDeviceIPAddr
+
+**Prototype：**
+
+```python
+def scSetDeviceIPAddr(self, IPAddr=c_char_p(), length=c_int32(0)):
+    return self.sc_cam_lib.scSetDeviceIPAddr(self.device_handle, IPAddr, length)
+```
+
+**Description：**
+
+Set the IP address of the device in non-DHCP mode. The call takes effect after the device is restarted.
+
+**Parameters：**
+
+IPAddr：Pointer to a buffer in which to store the device IP address. the buffer default size is 16, and the last buffer set '\0'.
+
+length：The length of the buffer.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+### 3.1.5.3.21. scGetDeviceIPAddr
+
+**Prototype：**
+
+```python
+def scGetDeviceIPAddr(self):
+    tmp = c_char * 16
+    IPAddr = tmp()
+    return self.sc_cam_lib.scGetDeviceIPAddr(self.device_handle, IPAddr), IPAddr.value
+```
+
+**Description：**
+
+Get the IP address of the device in non-DHCP mode.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+IPAddr.value：Pointer to a buffer in which to store the device IP address. the buffer default size is 16, and the last buffer set '\0'.
+
+### 3.1.5.3.22. scSetDeviceSubnetMask
+
+**Prototype：**
+
+```python
+def scSetDeviceSubnetMask(self, subnetMask=c_char_p(), length=c_int32(0)):
+    return self.sc_cam_lib.scSetDeviceSubnetMask(self.device_handle, subnetMask, length)
+```
+
+**Description：**
+
+Set the subnet mask of the device in non-DHCP mode. The call takes effect after the device is restarted.
+
+**Parameters：**
+
+subnetMask：Pointer to a buffer in which to store the subnet mask address. the buffer default size is 16, and the last buffer set '\0'.
+
+length：The length of the buffer.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+### 3.1.5.3.23. scGetDeviceSubnetMask
+
+**Prototype：**
+
+```python
+def scGetDeviceSubnetMask(self):
+    tmp = c_char * 16
+    subnetMask = tmp()
+    return self.sc_cam_lib.scGetDeviceSubnetMask(self.device_handle, subnetMask), subnetMask.value
+```
+
+**Description：**
+
+Get the subnet mask of the device in non-DHCP mode.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+subnetMask.value：Pointer to a buffer in which to store the device subnet mask address. the buffer default size is 16, and the last buffer set '\0'.
+
+### 3.1.5.3.24. scSetRealTimeSyncConfig
+
+**Prototype：**
+
+```python
+def scSetRealTimeSyncConfig(self, params = ScTimeSyncConfig()):
+    return self.sc_cam_lib.scSetRealTimeSyncConfig(self.device_handle, params)
+```
+
+**Description：**
+
+Set the parameters for time sync, such as enable the NTP/PTP
+
+**Parameters：**
+
+[params](#_315219-sctimesyncconfig)：The parameters defined by ::ScTimeSyncConfig.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+### 3.1.5.3.25. scGetRealTimeSyncConfig
+
+**Prototype：**
+
+```python
+def scGetRealTimeSyncConfig(self):
+    pParams = ScTimeSyncConfig()
+    return self.sc_cam_lib.scGetRealTimeSyncConfig(self.device_handle, byref(pParams)),pParams
+```
+
+**Description：**
+
+Get the parameters for time sync,such as the status of the NTP/PTP
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+[pParams](#_315219-sctimesyncconfig)：The parameters defined by ::ScTimeSyncConfig.
 
 ### 3.1.5.3.18. scGetDeviceMACAddress
 
@@ -1075,192 +1251,13 @@ Obtain the MAC address of the device.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-mac：Returns the device MAC address. the buffer default size is 18, and the last buffer set '\0'.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**mac.value**：Returns the device MAC address. the buffer default size is 18, and the last buffer set '\0'.
-
-### 3.1.5.3.19. scSetIRGMMGain
-
-**Prototype：**
-
-```python
-def scSetIRGMMGain(self, gmmgain = c_uint8(20)):
-   return self.sc_cam_lib.scSetIRGMMGain(self.device_handle, gmmgain)
-```
-
-**Description：**
-
-Sets the digital gain of the IR image.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-gmmgain：The value of IRGMM Gain.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.1.5.3.20. scGetIRGMMGain
-
-**Prototype：**
-
-```python
-def scGetIRGMMGain(self):
-   gmmgain = c_uint8(1)
-   return self.sc_cam_lib.scGetIRGMMGain(self.device_handle, byref(gmmgain)), gmmgain.value
-```
-
-**Description：**
-
-Obtaines the digital gain of the IR image.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-byref(gmmgain)：Returns the IR gain value of the device.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-**gmmgain.value**：Returns the IR gain value of the device.
-
-### 3.1.5.3.21. scSetIRGMMCorrection
-
-**Prototype：**
-
-```python
-def scSetIRGMMCorrection(self, params = ScIRGMMCorrectionParams()):
-   return self.sc_cam_lib.scSetIRGMMCorrection(self.device_handle, params)
-```
-
-**Description：**
-
-Set the device IR GMM Correction on a device.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-[params](#_315217-scirgmmcorrectionparams)：The value of IR GMM Correction.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.1.5.3.22. scGetIRGMMCorrection
-
-**Prototype：**
-
-```python
-def scGetIRGMMCorrection(self):
-   params = ScIRGMMCorrectionParams()
-   return self.sc_cam_lib.scGetIRGMMCorrection(self.device_handle, byref(params)), params
-```
-
-**Description：**
-
-Obtaines the device IR GMM Correction on a device.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-[byref(params)](#_315217-scirgmmcorrectionparams)：The value of IR GMM Correction.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-[**params**](#_315217-scirgmmcorrectionparams)：The value of IR GMM Correction.
-
-### 3.1.5.3.23. scSetColorPixelFormat
-
-**Prototype：**
-
-```python
-def scSetColorPixelFormat(self,pixelFormat=ScPixelFormat.SC_PIXEL_FORMAT_BGR_888_JPEG):
-   return self.sc_cam_lib.scSetColorPixelFormat(self.device_handle, pixelFormat)
-```
-
-**Description：**
-
-Set the color image pixel format on the device specified by device. Currently only RGB and BGR formats are supported.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-[pixelFormat](#_31513-scpixelformat)：The color pixel format to use.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.1.5.3.24. scSetColorResolution
-
-**Prototype：**
-
-```python
-def scSetColorResolution(self, w = c_int32(1600), h = c_int32(1200)):
-   return self.sc_cam_lib.scSetColorResolution(self.device_handle, w, h)
-```
-
-**Description：**
-
-Set the color frame Resolution.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-w：The width of color image.
-
-h：The height of color image.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.1.5.3.25. scGetColorResolution
-
-**Prototype：**
-
-```python
-def scGetColorResolution(self):
-   w = c_int32(1600)
-   h = c_int32(1200)
-   return self.sc_cam_lib.scGetColorResolution(self.device_handle, byref(w), byref(h)), w, h
-```
-
-**Description：**
-
-Obtaines the the color frame Resolution.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-byref(w)：Ruturns the width of color image.
-
-byref(h)：Ruturns the height of color image.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-**w**：Ruturns the width of color image.
-
-**h**：Ruturns the height of color image.
+mac.value：Returns the device MAC address. the buffer default size is 18, and the last buffer set '\0'.
 
 ### 3.1.5.3.26. scSetFrameRate
 
@@ -1268,7 +1265,7 @@ byref(h)：Ruturns the height of color image.
 
 ```python
 def scSetFrameRate(self, value = c_uint8(30)):
-   return self.sc_cam_lib.scSetFrameRate(self.device_handle, value)
+    return self.sc_cam_lib.scSetFrameRate(self.device_handle, value)
 ```
 
 **Description：**
@@ -1276,8 +1273,6 @@ def scSetFrameRate(self, value = c_uint8(30)):
 Sets the device's image frame rate for both depth and color images. This interface is a synchronization interface, which takes about 500ms.
 
 **Parameters：**
-
-self.device_handle：The handle of the device.
 
 value：The rate value. Different products have different maximum values. Please refer to the product specification.
 
@@ -1301,23 +1296,409 @@ Gets the image frame rate of the device.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-byref(value)：Returns the frame rate of the device image.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**value.value**：Returns the frame rate of the device image.
+value.value：Returns the frame rate of the device image.
 
-### 3.1.5.3.28. scSetExposureControlMode
+### 3.1.5.3.28. scSetWorkMode
+
+**Prototype：**
+
+```python
+def scSetWorkMode(self,  mode = ScWorkMode.SC_ACTIVE_MODE):
+    return self.sc_cam_lib.scSetWorkMode(self.device_handle, mode.value)
+```
+
+**Description：**
+
+Set the working mode of the camera.
+
+**Parameters：**
+
+[mode](#_31516-scworkmode)：The work mode of camera. For ActiveMode, set the Time filter default true, for SlaveMode, set the Time filter default false.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.29. scGetWorkMode
+
+**Prototype：**
+
+```python
+def scGetWorkMode(self):
+    mode = ScWorkMode(0)
+    return self.sc_cam_lib.scGetWorkMode(self.device_handle, byref(mode)), mode
+```
+
+**Description：**
+
+Get the working mode of the camera.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+[mod*](#_31516-scworkmode)：Indicates the working mode of the obtained device.
+
+### 3.1.5.3.30. scSetSoftwareTriggerParameter
+
+**Prototype：**
+
+```python
+def scSetSoftwareTriggerParameter(self, param = c_uint8(0)):
+    return self.sc_cam_lib.scSetSoftwareTriggerParameter(self.device_handle, param)
+```
+
+**Description：**
+
+Set the count of frame in SC_SOFTWARE_TRIGGER_MODE. The more frames there are, the better frame's quality after algorithm processing
+
+**Parameters：**
+
+param：The count of frame, in range [1,10].
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.31. scGetSoftwareTriggerParameter
+
+**Prototype：**
+
+```python
+def scGetSoftwareTriggerParameter(self):
+    param = c_uint8(0)
+    return self.sc_cam_lib.scGetSoftwareTriggerParameter(self.device_handle, byref(param)), param
+```
+
+**Description：**
+
+Get the count of framer in SC_SOFTWARE_TRIGGER_MODE.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+param：The count of frame, in range [1,10].
+
+### 3.1.5.3.32. scSoftwareTriggerOnce
+
+**Prototype：**
+
+```python
+def scSoftwareTriggerOnce(self):
+    return self.sc_cam_lib.scSoftwareTriggerOnce(self.device_handle)
+```
+
+**Description：**
+
+Performs a software trigger, valid only when the camera is in
+SC_SOFTWARE_TRIGGER_MODE.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.33. scSetInputSignalParamsForHWTrigger
+
+**Prototype：**
+
+```python
+def scSetInputSignalParamsForHWTrigger(self, params = ScInputSignalParamsForHWTrigger()):
+    return self.sc_cam_lib.scSetInputSignalParamsForHWTrigger(self.device_handle, params)
+```
+
+**Description：**
+
+Set the input signal parameters for Hardware Trigger.
+
+**Parameters：**
+
+[params](#_315218-scinputsignalparamsforhwtrigger)：Pointer to a variable in which to store the parameters.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.34. scGetInputSignalParamsForHWTrigger
+
+**Prototype：**
+
+```python
+def scSetInputSignalParamsForHWTrigger(self, params = ScInputSignalParamsForHWTrigger()):
+    return self.sc_cam_lib.scSetInputSignalParamsForHWTrigger(self.device_handle, params)
+```
+
+**Description：**
+
+Get the Input signal parameters for Hardware Trigger.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+[params](#_315218-scinputsignalparamsforhwtrigger)：Pointer to a variable in which to store the returned value.
+
+### 3.1.5.3.35. scSetIRGMMGain
+
+**Prototype：**
+
+```python
+def scSetIRGMMGain(self, gmmgain = c_uint8(20)):
+    return self.sc_cam_lib.scSetIRGMMGain(self.device_handle, gmmgain)
+```
+
+**Description：**
+
+Sets the digital gain of the IR image.
+
+**Parameters：**
+
+gmmgain：The value of IRGMM Gain.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.36. scGetIRGMMGain
+
+**Prototype：**
+
+```python
+def scGetIRGMMGain(self):
+    gmmgain = c_uint8(1)
+    return self.sc_cam_lib.scGetIRGMMGain(self.device_handle, byref(gmmgain)), gmmgain.value
+```
+
+**Description：**
+
+Obtaines the digital gain of the IR image.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+gmmgain.value：Returns the IR gain value of the device.
+
+### 3.1.5.3.37. scSetIRGMMCorrection
+
+**Prototype：**
+
+```python
+def scSetIRGMMCorrection(self, params = ScIRGMMCorrectionParams()):
+    return self.sc_cam_lib.scSetIRGMMCorrection(self.device_handle, params)
+```
+
+**Description：**
+
+Set the device IR GMM Correction on a device.
+
+**Parameters：**
+
+[params](#_315217-scirgmmcorrectionparams)：The value of IR GMM Correction.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.38. scGetIRGMMCorrection
+
+**Prototype：**
+
+```python
+def scGetIRGMMCorrection(self):
+   params = ScIRGMMCorrectionParams()
+   return self.sc_cam_lib.scGetIRGMMCorrection(self.device_handle, byref(params)), params
+```
+
+**Description：**
+
+Obtaines the device IR GMM Correction on a device.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+[params](#_315217-scirgmmcorrectionparams)：The value of IR GMM Correction.
+
+### 3.1.5.3.39. scSetColorPixelFormat
+
+**Prototype：**
+
+```python
+def scSetColorPixelFormat(self,pixelFormat=ScPixelFormat.SC_PIXEL_FORMAT_BGR_888_JPEG):
+    return self.sc_cam_lib.scSetColorPixelFormat(self.device_handle, pixelFormat)
+```
+
+**Description：**
+
+Set the color image pixel format on the device specified by device. Currently only RGB and BGR formats are supported.
+
+**Parameters：**
+
+[pixelFormat](#_31513-scpixelformat)：The color pixel format to use.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.40. scSetColorGain
+
+**Prototype：**
+
+```python
+def scSetColorGain(self, params = c_float(1.0)):
+   return self.sc_cam_lib.scSetColorGain(self.device_handle,  params)
+```
+
+**Description：**
+
+Set the color Gain with the exposure mode of Color sensor in SC_EXPOSURE_CONTROL_MODE_MANUAL.
+
+**Parameters：**
+
+params：The value of color Gain.Different products have different maximum value. Please refer to the product specification.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.41. scGetColorGain
+
+**Prototype：**
+
+```python
+def scGetColorGain(self):
+    tmp = c_float*1
+    params = tmp()
+    return self.sc_cam_lib.scGetColorGain(self.device_handle,  params), params
+```
+
+**Description：**
+
+Get the color Gain.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+params：The value of color Gain.
+
+### 3.1.5.3.42. scGetSupportedResolutionList
+
+**Prototype：**
+
+```python
+def scGetSupportedResolutionList(self, type = ScSensorType.SC_TOF_SENSOR, cam_count=1):
+    tmp = ScResolutionList * cam_count
+    pList = tmp()
+    return self.sc_cam_lib.scGetSupportedResolutionList(self.device_handle, type.value, byref(pList)), pList
+```
+
+**Description：**
+
+Get a list of image resolutions supported by Sensor.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+pList：List of supported resolutions.
+
+### 3.1.5.3.43. scSetColorResolution
+
+**Prototype：**
+
+```python
+def scSetColorResolution(self, w = c_int32(1600), h = c_int32(1200)):
+    return self.sc_cam_lib.scSetColorResolution(self.device_handle, w, h)
+```
+
+**Description：**
+
+Set the color frame Resolution.
+
+**Parameters：**
+
+w：The width of color image.
+
+h：The height of color image.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.44. scGetColorResolution
+
+**Prototype：**
+
+```python
+def scGetColorResolution(self):
+    w = c_int32(1600)
+    h = c_int32(1200)
+    return self.sc_cam_lib.scGetColorResolution(self.device_handle, byref(w), byref(h)), w, h
+```
+
+**Description：**
+
+Obtaines the the color frame Resolution.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+w：Ruturns the width of color image.
+
+h：Ruturns the height of color image.
+
+### 3.1.5.3.45. scSetExposureControlMode
 
 **Prototype：**
 
 ```python
 def scSetExposureControlMode(self, sensorType = ScSensorType.SC_TOF_SENSOR, mode = ScExposureControlMode.SC_EXPOSURE_CONTROL_MODE_MANUAL):
-   return self.sc_cam_lib.scSetExposureControlMode(self.device_handle, sensorType.value, mode.value)
+    return self.sc_cam_lib.scSetExposureControlMode(self.device_handle, sensorType.value, mode.value)
 ```
 
 **Description：**
@@ -1326,23 +1707,45 @@ Set the exposure mode of sensor.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
+[sensorType](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
 
-[sensorType.value](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
-
-[mode.value](#_31517-scexposurecontrolmode)：The exposure control mode.
+[mode](#_31517-scexposurecontrolmode)：The exposure control mode.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.29. scSetExposureTime
+### 3.1.5.3.46. scGetExposureControlMode
+
+**Prototype：**
+
+```python
+def scGetExposureControlMode(self, sensorType = ScSensorType.SC_TOF_SENSOR):
+    mode = ScCameraExposureControlMode(1)
+    return self.sc_cam_lib.scGetExposureControlMode(self.device_handle, sensorType.value, byref(mode)), mode
+```
+
+**Description：**
+
+Get the exposure mode of sensor.
+
+**Parameters：**
+
+[sensorType](#_31512-scsensortype)：he type of sensor (depth or color) from which to get parameter information. Pass in the applicable value defined by ::ScSensorType.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+[mode](#_31514-screturnstatus)：Returns the exposure control mode.
+
+### 3.1.5.3.47. scSetExposureTime
 
 **Prototype：**
 
 ```python
 def scSetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR, params = c_int32(0)):
-   return self.sc_cam_lib.scSetExposureTime(self.device_handle, sensorType.value, params)
+    return self.sc_cam_lib.scSetExposureTime(self.device_handle, sensorType.value, params)
 ```
 
 **Description：**
@@ -1353,9 +1756,7 @@ Color sensor, support in automatic exposure mode, set the maximum exposure time;
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-[sensorType.value](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
+[sensorType](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
 
 params：The exposure time. The value must be within the maximum exposure time of sensor.
 
@@ -1363,14 +1764,14 @@ params：The exposure time. The value must be within the maximum exposure time o
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.30. scGetExposureTime
+### 3.1.5.3.48. scGetExposureTime
 
 **Prototype：**
 
 ```python
 def scGetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR):
-   params = c_int32(0)
-   return self.sc_cam_lib.scGetExposureTime(self.device_handle, sensorType.value, byref(params)), params
+    params = c_int32(0)
+    return self.sc_cam_lib.scGetExposureTime(self.device_handle, sensorType.value, byref(params)), params
 ```
 
 **Description：**
@@ -1379,25 +1780,370 @@ Get the exposure time of sensor.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-[sensorType.value](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
-
-byref(params)：Returns the exposure time.
+[sensorType](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**params**：Returns the exposure time.
+params：Returns the exposure time.
 
-### 3.1.5.3.31. scSetTimeFilterParams
+### 3.1.5.3.49. scSetColorAECMaxExposureTime
+
+**Prototype：**
+
+```python
+def scSetColorAECMaxExposureTime(self, params = c_int32(0)):
+    return self.sc_cam_lib.scSetColorAECMaxExposureTime(self.device_handle, params)
+```
+
+**Description：**
+
+Set the maximum exposure time of color sensor in automatic mode. The interface is used in automatic mode.
+
+**Parameters：**
+
+params：The exposure time. The value must be within the maximum exposure time of sensor.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.50. scGetColorAECMaxExposureTime
+
+**Prototype：**
+
+```python
+def scGetColorAECMaxExposureTime(self):
+   params = c_int32(0)
+   return self.sc_cam_lib.scGetColorAECMaxExposureTime(self.device_handle, byref(params)), params
+```
+
+**Description：**
+
+Get the maximum exposure time of color sensor in automatic mode. The interface is used in automatic mode.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+params：Returns the exposure time.
+
+### 3.1.5.3.51. scGetMaxExposureTime
+
+**Prototype：**
+
+```python
+def scGetMaxExposureTime(self, sensorType = ScSensorType.SC_COLOR_SENSOR):
+    tmp = c_int32(1000)
+    return self.sc_cam_lib.scGetMaxExposureTime(self.device_handle, sensorType.value, byref(tmp)), tmp
+```
+
+**Description：**
+
+Get the maximum exposure time of sensor.
+
+**Parameters：**
+
+[sensorType](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+tmp：The maximum exposure time. The maximum exposure time is different at different frame rates.
+
+### 3.1.5.3.52. scSetHDRModeEnabled
+
+**Prototype：**
+
+```python
+def scSetHDRModeEnabled(self, enable =  c_bool(True)):
+    return self.sc_cam_lib.scSetHDRModeEnabled(self.device_handle, enable)
+```
+
+**Description：**
+
+Enables or disables the HDR Mode of the ToF sensor with SC_EXPOSURE_CONTROL_MODE_MANUAL. Default enabled,so if you want switch to the SC_EXPOSURE_CONTROL_MODE_AUTO, set HDR Mode disable firstly.
+
+**Parameters：**
+
+enable：Set to true to enable the feature or false to disable the feature.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+### 3.1.5.3.53. scGetHDRModeEnabled
+
+**Prototype：**
+
+```python
+def scGetHDRModeEnabled(self):
+    enable = c_bool(True)
+    return self.sc_cam_lib.scGetHDRModeEnabled(self.device_handle, byref(enable)), enable.value
+```
+
+**Description：**
+
+Returns the Boolean value of whether the HDR Mode of ToF sensor feature is enabled or disabled.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+enable：true is enable the feature or false is disable the feature.
+
+### 3.1.5.3.54. scGetFrameCountOfHDRMode
+
+**Prototype：**
+
+```python
+def scGetFrameCountOfHDRMode(self):
+    pCount = c_int32(0)
+    return self.sc_cam_lib.scGetFrameCountOfHDRMode(self.device_handle, byref(pCount)), pCount.value
+```
+
+**Description：**
+
+Get the count of frame in HDR mode.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+pCount.value：The frame count.
+
+### 3.1.5.3.55. scSetExposureTimeOfHDR
+
+**Prototype：**
+
+```python
+def scSetExposureTimeOfHDR(self, frameIndex = c_uint8(0), exposureTime = c_int32(0)):
+    return self.sc_cam_lib.scSetExposureTimeOfHDR(self.device_handle, frameIndex, exposureTime)
+```
+
+**Description：**
+
+Set the exposure time of depth sensor with the frameIndex in HDR mode.
+
+**Parameters：**
+
+frameIndex：The frameIndex from 0 to the count (get by scGetFrameCountOfHDRMode).
+
+exposureTime：The exposure time. The value must be within the maximum exposure time of sensor.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+### 3.1.5.3.56. scGetExposureTimeOfHDR
+
+**Prototype：**
+
+```python
+def scGetExposureTimeOfHDR(self, frameIndex = c_uint8(0)):
+    exposureTime = c_int32(0)
+    return self.sc_cam_lib.scGetExposureTimeOfHDR(self.device_handle, frameIndex, byref(exposureTime)), exposureTime.value
+```
+
+**Description：**
+
+Get the exposure time of depth sensor with the frameIndex in HDR mode.
+
+**Parameters：**
+
+frameIndex：The frameIndex from 0 to the count (get by scGetFrameCountOfHDRMode).
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+exposureTime.value：The exposure time. 
+
+### 3.1.5.3.57. scGetMaxExposureTimeOfHDR
+
+**Prototype：**
+
+```python
+def scGetMaxExposureTimeOfHDR(self, frameIndex = c_uint8(0)):
+    exposureTime = c_int32(0)
+    return self.sc_cam_lib.scGetMaxExposureTimeOfHDR(self.device_handle, frameIndex, byref(exposureTime)), exposureTime.value
+```
+
+**Description：**
+
+Get the maximum exposure time of depth sensor with the frameIndex in HDR mode.
+
+**Parameters：**
+
+frameIndex：The frameIndex from 0 to the count (get by scGetFrameCountOfHDRMode).
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+exposureTime.value：The exposure time.
+
+### 3.1.5.3.58. scSetWDRModeEnabled
+
+**Prototype：**
+
+```python
+def scSetWDRModeEnabled(self, enable =  c_bool(True)):
+    return self.sc_cam_lib.scSetWDRModeEnabled(self.device_handle, enable)
+```
+
+**Description：**
+
+Enables or disables the WDR Mode of the ToF sensor with SC_EXPOSURE_CONTROL_MODE_MANUAL. Default enabled,so if you want switch to the SC_EXPOSURE_CONTROL_MODE_AUTO, set WDR Mode disable firstly.
+
+**Parameters：**
+
+enable：Set to true to enable the feature or false to disable the feature.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+### 3.1.5.3.59. scGetWDRModeEnabled
+
+**Prototype：**
+
+```python
+def scGetWDRModeEnabled(self):
+    enable = c_bool(True)
+    return self.sc_cam_lib.scGetWDRModeEnabled(self.device_handle, byref(enable)), enable.value
+```
+
+**Description：**
+
+Returns the Boolean value of whether the WDR Mode of ToF sensor feature is enabled or disabled.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+enable：true is enable the feature or false is disable the feature.
+
+### 3.1.5.3.60. scGetFrameCountOfWDRMode
+
+**Prototype：**
+
+```python
+def scGetFrameCountOfWDRMode(self):
+    pCount = c_int32(0)
+    return self.sc_cam_lib.scGetFrameCountOfWDRMode(self.device_handle, byref(pCount)), pCount.value
+```
+
+**Description：**
+
+Get the count of frame in WDR mode.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+pCount.value：The frame count.
+
+### 3.1.5.3.61. scSetExposureTimeOfWDR
+
+**Prototype：**
+
+```python
+def scSetExposureTimeOfWDR(self, frameIndex = c_uint8(0), exposureTime = c_int32(0)):
+    return self.sc_cam_lib.scSetExposureTimeOfWDR(self.device_handle, frameIndex, exposureTime)
+```
+
+**Description：**
+
+Set the exposure time of depth sensor with the frameIndex in WDR mode.
+
+**Parameters：**
+
+frameIndex：The frameIndex from 0 to the count (get by scGetFrameCountOfWDRMode).
+
+exposureTime：The exposure time. The value must be within the maximum exposure time of sensor.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+### 3.1.5.3.62. scGetExposureTimeOfWDR
+
+**Prototype：**
+
+```python
+def scGetExposureTimeOfWDR(self, frameIndex = c_uint8(0)):
+    exposureTime = c_int32(0)
+    return self.sc_cam_lib.scGetExposureTimeOfWDR(self.device_handle, frameIndex, byref(exposureTime)), exposureTime.value
+```
+
+**Description：**
+
+Get the exposure time of depth sensor with the frameIndex in WDR mode.
+
+**Parameters：**
+
+frameIndex：The frameIndex from 0 to the count (get by scGetFrameCountOfWDRMode).
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+exposureTime.value：The exposure time. 
+
+### 3.1.5.3.63. scGetMaxExposureTimeOfWDR
+
+**Prototype：**
+
+```python
+def scGetMaxExposureTimeOfWDR(self, frameIndex = c_uint8(0)):
+    exposureTime = c_int32(0)
+    return self.sc_cam_lib.scGetMaxExposureTimeOfWDR(self.device_handle, frameIndex, byref(exposureTime)), exposureTime.value
+```
+
+**Description：**
+
+Get the maximum exposure time of depth sensor with the frameIndex in WDR mode.
+
+**Parameters：**
+
+frameIndex：The frameIndex from 0 to the count (get by scGetFrameCountOfWDRMode).
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
+
+exposureTime.value：The exposure time.
+
+### 3.1.5.3.64. scSetTimeFilterParams
 
 **Prototype：**
 
 ```python
 def scSetTimeFilterParams(self, params = ScTimeFilterParams()):
-   return self.sc_cam_lib.scSetTimeFilterParams(self.device_handle, params)
+    return self.sc_cam_lib.scSetTimeFilterParams(self.device_handle, params)
 ```
 
 **Description：**
@@ -1406,21 +2152,20 @@ Set the parameters of the Time filter.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
 [params](#_315216-sctimefilterparams)：Pointer to a variable in which to store the parameters.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.32. scGetTimeFilterParams
+### 3.1.5.3.65. scGetTimeFilterParams
 
 **Prototype：**
 
 ```python
-def scSetTimeFilterParams(self, params = ScTimeFilterParams()):
-   return self.sc_cam_lib.scSetTimeFilterParams(self.device_handle, params)
+def scGetTimeFilterParams(self): 
+    params = ScTimeFilterParams()
+    return self.sc_cam_lib.scGetTimeFilterParams(self.device_handle, byref(params)),params
 ```
 
 **Description：**
@@ -1429,21 +2174,21 @@ Get the parameters of the Time Filter feature.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-[params](#_315216-sctimefilterparams)：Pointer to a variable in which to store the returned value.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.33. scSetConfidenceFilterParams
+[params](#_315216-sctimefilterparams)：Pointer to a variable in which to store the returned value.
+
+### 3.1.5.3.66. scSetConfidenceFilterParams
 
 **Prototype：**
 
 ```python
 def scSetConfidenceFilterParams(self, params = ScConfidenceFilterParams()):
-   return self.sc_cam_lib.scSetConfidenceFilterParams(self.device_handle, params)
+    return self.sc_cam_lib.scSetConfidenceFilterParams(self.device_handle, params)
 ```
 
 **Description：**
@@ -1452,15 +2197,13 @@ Set the parameters of the Confidence filter.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
 [params](#_315214-scconfidencefilterparams)：Pointer to a variable in which to store the parameters.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.34. scGetConfidenceFilterParams
+### 3.1.5.3.67. scGetConfidenceFilterParams
 
 **Prototype：**
 
@@ -1476,17 +2219,15 @@ Get the parameters of the ConfidenceFilter feature.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-[byref(params)](#_315214-scconfidencefilterparams)：Pointer to a variable in which to store the returned value.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**params**](#_315214-scconfidencefilterparams)：Pointer to a variable in which to store the returned value.
+[params](#_315214-scconfidencefilterparams)：Pointer to a variable in which to store the returned value.
 
-### 3.1.5.3.35. scSetFlyingPixelFilterParams
+### 3.1.5.3.68. scSetFlyingPixelFilterParams
 
 **Prototype：**
 
@@ -1501,15 +2242,13 @@ Set the parameters of the FlyingPixel filter.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
 [params](#_315215-scflyingpixelfilterparams)：Filter parameters.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.36. scGetFlyingPixelFilterParams
+### 3.1.5.3.69. scGetFlyingPixelFilterParams
 
 **Prototype：**
 
@@ -1525,23 +2264,21 @@ Get the parameters of the FlyingPixel filter.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-[byref(params)](#_315215-scflyingpixelfilterparams)：Filter parameters.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**params**](#_315215-scflyingpixelfilterparams)：Filter parameters.
+[params](#_315215-scflyingpixelfilterparams)：Filter parameters.
 
-### 3.1.5.3.37. scSetFillHoleFilterEnabled
+### 3.1.5.3.70. scSetFillHoleFilterEnabled
 
 **Prototype：**
 
 ```python
 def scSetFillHoleFilterEnabled(self, enable = c_bool(True)):
-   return self.sc_cam_lib.scSetFillHoleFilterEnabled(self.device_handle, enable)
+    return self.sc_cam_lib.scSetFillHoleFilterEnabled(self.device_handle, enable)
 ```
 
 **Description：**
@@ -1550,22 +2287,20 @@ Enables or disables the FillHole filter.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
 enable：Set to true to enable the feature or false to disable the feature.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.38. scGetFillHoleFilterEnabled
+### 3.1.5.3.71. scGetFillHoleFilterEnabled
 
 **Prototype：**
 
 ```python
-    def scGetFillHoleFilterEnabled(self):
-        enable = c_bool(True)
-        return self.sc_cam_lib.scGetFillHoleFilterEnabled(self.device_handle, byref(enable)),enable.value
+def scGetFillHoleFilterEnabled(self):
+    enable = c_bool(True)
+    return self.sc_cam_lib.scGetFillHoleFilterEnabled(self.device_handle, byref(enable)),enable.value
 ```
 
 **Description：**
@@ -1574,23 +2309,21 @@ Obtaines the Boolean value of whether the FillHole Filter feature is enabled or 
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-byref(enable)：True on, false off.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**enable.value**：True on, false off.
+enable.value：True on, false off.
 
-### 3.1.5.3.39. scSetSpatialFilterEnabled
+### 3.1.5.3.72. scSetSpatialFilterEnabled
 
 **Prototype：**
 
 ```python
 def scSetSpatialFilterEnabled(self, enable = c_bool(True)):
-   return self.sc_cam_lib.scSetSpatialFilterEnabled(self.device_handle, enable)
+    return self.sc_cam_lib.scSetSpatialFilterEnabled(self.device_handle, enable)
 ```
 
 **Description：**
@@ -1599,22 +2332,20 @@ Enables or disables the Spatial filter.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
 enable：Set to true to enable the feature or false to disable the feature.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.40. scGetSpatialFilterEnabled
+### 3.1.5.3.73. scGetSpatialFilterEnabled
 
 **Prototype：**
 
 ```python
 def scGetSpatialFilterEnabled(self):
-   enable = c_bool(True)
-   return self.sc_cam_lib.scGetSpatialFilterEnabled(self.device_handle, byref(enable)),enable.value
+    enable = c_bool(True)
+    return self.sc_cam_lib.scGetSpatialFilterEnabled(self.device_handle, byref(enable)),enable.value
 ```
 
 **Description：**
@@ -1623,23 +2354,21 @@ Obtaines the Boolean value of whether the Spatial Filter feature is enabled or d
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-byref(enable)：True on, false off.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**enable.value**：True on, false off.
+enable.value：True is on, false is off.
 
-### 3.1.5.3.41. scSetTransformColorImgToDepthSensorEnabled
+### 3.1.5.3.74. scSetTransformColorImgToDepthSensorEnabled
 
 **Prototype：**
 
 ```python
 def scSetTransformColorImgToDepthSensorEnabled(self, enabled = c_bool(True)):
-   return self.sc_cam_lib.scSetTransformColorImgToDepthSensorEnabled(self.device_handle,  enabled)
+    return self.sc_cam_lib.scSetTransformColorImgToDepthSensorEnabled(self.device_handle,  enabled)
 ```
 
 **Description：**
@@ -1648,22 +2377,20 @@ Enables or disables transforms a color image into the geometry of the depth sens
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-Set to true to enable the feature or false to disable the feature.
+enabled：Set to true to enable the feature or false to disable the feature.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.42. scGetTransformColorImgToDepthSensorEnabled
+### 3.1.5.3.75. scGetTransformColorImgToDepthSensorEnabled
 
 **Prototype：**
 
 ```python
 def scGetTransformColorImgToDepthSensorEnabled(self):
-   enabled = c_bool(True)
-   return self.sc_cam_lib.scGetTransformColorImgToDepthSensorEnabled(self.device_handle,  byref(enabled)),enabled
+    enabled = c_bool(True)
+    return self.sc_cam_lib.scGetTransformColorImgToDepthSensorEnabled(self.device_handle,  byref(enabled)),enabled
 ```
 
 **Description：**
@@ -1672,23 +2399,21 @@ Obtaines the Boolean value of whether the transformed of the color image to dept
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-byref(enabled)：Pointer to a variable in which to store the returned Boolean value.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**enabled**：Pointer to a variable in which to store the returned Boolean value.
+enabled：Pointer to a variable in which to store the returned Boolean value.
 
-### 3.1.5.3.43. scSetTransformDepthImgToColorSensorEnabled
+### 3.1.5.3.76. scSetTransformDepthImgToColorSensorEnabled
 
 **Prototype：**
 
 ```python
 def scSetTransformDepthImgToColorSensorEnabled(self, enabled = c_bool(True)):
-   return self.sc_cam_lib.scSetTransformDepthImgToColorSensorEnabled(self.device_handle,  enabled)
+    return self.sc_cam_lib.scSetTransformDepthImgToColorSensorEnabled(self.device_handle,  enabled)
 ```
 
 **Description：**
@@ -1700,22 +2425,20 @@ of the color image.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
 enabled：Set to true to enable the feature or false to disable the feature.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.44. scGetTransformDepthImgToColorSensorEnabled
+### 3.1.5.3.77. scGetTransformDepthImgToColorSensorEnabled
 
 **Prototype：**
 
 ```python
 def scGetTransformDepthImgToColorSensorEnabled(self):
-   enabled = c_bool(True)
-   return self.sc_cam_lib.scGetTransformDepthImgToColorSensorEnabled(self.device_handle,  byref(enabled)),enabled
+    enabled = c_bool(True)
+    return self.sc_cam_lib.scGetTransformDepthImgToColorSensorEnabled(self.device_handle,  byref(enabled)),enabled
 ```
 
 **Description：**
@@ -1724,26 +2447,79 @@ Obtaines the Boolean value of whether the transformed of the depth image to colo
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-byref(enabled)：Pointer to a variable in which to store the returned Boolean value.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**enabled**：Pointer to a variable in which to store the returned Boolean value.
+enabled：Pointer to a variable in which to store the returned Boolean value.
 
-### 3.1.5.3.45. scConvertDepthFrameToPointCloudVector
+### 3.1.5.3.78. scTransformDepthPointToColorPoint
+
+**Prototype：**
+
+```python
+def scTransformDepthPointToColorPoint(self, depthPoint = ScDepthVector3(), colorSize = ScVector2u16()):
+    pPointInColor = ScVector2u16()
+    return self.sc_cam_lib.scTransformDepthPointToColorPoint(self.device_handle, depthPoint, colorSize, byref(pPointInColor)), pPointInColor
+```
+
+**Description：**
+
+Returns the point value of the frame that the mapping of the depth image to Color space.
+
+**Parameters：**
+
+[depthPoint](#_31525-scdepthvector3)：The point in depth frame.
+
+[colorSize](#_31524-scvector2u16)：The size(x = w,y = h) of color frame.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+[pPointInColor](#_31524-scvector2u16)：The point in the color frame.
+
+### 3.1.5.3.79. scConvertDepthToPointCloud
+
+**Prototype：**
+
+```python
+def scConvertDepthToPointCloud(self, pDepthVector = ScDepthVector3(), pointCount = c_int32(0), pSensorParam = ScSensorIntrinsicParameters()):
+    tmp = ScVector3f * pointCount
+    pWorldVector = tmp()
+    return self.sc_cam_lib.scConvertDepthToPointCloud(self.device_handle, byref(pDepthVector), byref(pWorldVector), byref(pSensorParam)),pWorldVector
+```
+
+**Description：**
+
+Converts the input points from depth coordinate space to world coordinate space.
+
+**Parameters：**
+
+[pDepthVector](#_31525-scdepthvector3)：Pointer to a buffer containing the x, y, and z values of the depth coordinates to be converted. x and y are measured in pixels, where 0, 0 is located at the top left corner of the image. z is measured in millimeters, based on the ::ScPixelFormat depth frame.
+
+pointCount：The number of points to convert.
+
+[pSensorParam](#_31528-scsensorintrinsicparameters)：The intrinsic parameters for the depth sensor. See ::ScSensorIntrinsicParameters.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+[pWorldVector](#_31523-scvector3f)： Pointer to a buffer in which to output the converted x, y, and z values of the world coordinates, measured in millimeters.
+
+### 3.1.5.3.80. scConvertDepthFrameToPointCloudVector
 
 **Prototype：**
 
 ```python
 def scConvertDepthFrameToPointCloudVector(self, depthFrame = ScFrame()):
-   len = depthFrame.width*depthFrame.height
-   tmp =ScVector3f*len
-   pointlist = tmp()
-   return self.sc_cam_lib.scConvertDepthFrameToPointCloudVector(self.device_handle, byref(depthFrame) ,pointlist),pointlist
+    len = depthFrame.width*depthFrame.height
+    tmp =ScVector3f*len
+    pointlist = tmp()
+    return self.sc_cam_lib.scConvertDepthFrameToPointCloudVector(self.device_handle, byref(depthFrame) ,pointlist),pointlist
 ```
 
 **Description：**
@@ -1752,27 +2528,131 @@ Converts the input Depth frame from depth coordinate space to world coordinate s
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-[byref(depthFrame)](#_315211-scframe)：The depth frame.
-
-[pointlist](#_31523-scvector3f)： Pointer to a buffer in which to output the converted x, y, and z values of the world coordinates,measured in millimeters. The length of pWorldVector must is (ScFrame.width \* ScFrame.height).
+[depthFrame](#_315211-scframe)：The depth frame.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[**pointlist**](#_31523-scvector3f)：Pointer to a buffer in which to output the converted x, y, and z values of the world coordinates,measured in millimeters. The length of pWorldVector must is (ScFrame.width \* ScFrame.height).
+[pointlist](#_31523-scvector3f)：Pointer to a buffer in which to output the converted x, y, and z values of the world coordinates,measured in millimeters. The length of pWorldVector must is (ScFrame.width \* ScFrame.height).
 
-### 3.1.5.3.46. scSetHotPlugStatusCallback
+### 3.1.5.3.81. scSetParamsByJson
+
+**Prototype：**
+
+```python
+def scSetParamsByJson(self, pfilePath):
+   path = (c_char * 1000)(*bytes(pfilePath, 'utf-8'))
+   return self.sc_cam_lib.scSetParamsByJson(self.device_handle,  byref(path))
+```
+
+**Description：**
+
+Set the parameters by Json file that can be saved by ScepterGUITool.
+
+**Parameters：**
+
+pfilePath：Pointer to the path of Json file.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.82. scExportParamInitFile
+
+**Prototype：**
+
+```python
+def scExportParamInitFile(self, pfilePath):
+    path = (c_char * 1000)(*bytes(pfilePath, 'utf-8'))
+    return self.sc_cam_lib.scExportParamInitFile(self.device_handle, byref(path))
+```
+
+**Description：**
+
+Export the parameter initialization file from the device.
+
+**Parameters：**
+
+pfilePath: Pointer to the path of parameter initialization file.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.83. scImportParamInitFile
+
+**Prototype：**
+
+```python
+def scImportParamInitFile(self, pfilePath):
+    path = (c_char * 1000)(*bytes(pfilePath, 'utf-8'))
+    return self.sc_cam_lib.scImportParamInitFile(self.device_handle, byref(path))
+```
+
+**Description：**
+
+Import the parameter initialization file into the device and take effect after reboot the device.
+
+**Parameters：**
+
+pfilePath: Pointer to the path of parameter initialization file.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.84. scRestoreParamInitFile
+
+**Prototype：**
+
+```python
+def scRestoreParamInitFile(self):
+    return self.sc_cam_lib.scRestoreParamInitFile(self.device_handle)
+```
+
+**Description：**
+
+Restore the parameter initialization file of the device.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.85. scRebootDevie
+
+**Prototype：**
+
+```python
+def scRebootDevie(self):
+    return self.sc_cam_lib.scRebootDevie(self.device_handle)
+```
+
+**Description：**
+
+Reboot the device.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.86. scSetHotPlugStatusCallback
 
 **Prototype：**
 
 ```python
 def scSetHotPlugStatusCallback(self,callbackfunc= c_void_p):
-   callbackFunc_= ctypes.CFUNCTYPE(c_void_p,POINTER(ScDeviceInfo),c_int32)(callbackfunc)
-   gCallbackFuncList.append(callbackFunc_)
-   return self.sc_cam_lib.scSetHotPlugStatusCallback(callbackFunc_)
+    callbackFunc_= ctypes.CFUNCTYPE(c_void_p,POINTER(ScDeviceInfo),c_int32)(callbackfunc)
+    gCallbackFuncList.append(callbackFunc_)
+    return self.sc_cam_lib.scSetHotPlugStatusCallback(callbackFunc_)
 ```
 
 **Description：**
@@ -1787,154 +2667,53 @@ callbackFunc\_：Pointer to the callback function.
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.47. scGetMaxExposureTime
+### 3.1.5.3.87. scStartUpgradeFirmWare
 
 **Prototype：**
 
 ```python
-def scGetMaxExposureTime(self, sensorType = ScSensorType.SC_COLOR_SENSOR):
-   tmp = c_int32(1000)
-   return self.sc_cam_lib.scGetMaxExposureTime(self.device_handle, sensorType.value, byref(tmp)), tmp
+def scStartUpgradeFirmWare(self, pfilePath):
+    path = (c_char * 1000)(*bytes(pfilePath, 'utf-8'))
+    return self.sc_cam_lib.scStartUpgradeFirmWare(self.device_handle,  byref(path))
 ```
 
 **Description：**
 
-Get the maximum exposure time of sensor.
+Input the firmware file path and start upgrading device firmware.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-[sensorType.value](#_31512-scsensortype)：The type of sensor (depth or color) from which to get parameter information.
-
-byref(tmp)：The maximum exposure time. The maximum exposure time is different at different frame rates.
+pfilePath：Pointer to the path of firmware file. The firmware upgrade file is in .img format.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-**tmp**：The maximum exposure time. The maximum exposure time is different at different frame rates.
-
-### 3.1.5.3.48. scSetParamsByJson
+### 3.1.5.3.88. scGetUpgradeStatus
 
 **Prototype：**
 
 ```python
-def scSetParamsByJson(self, imgpath):
-   pimgpath = (c_char * 1000)(*bytes(imgpath, 'utf-8'))
-   return self.sc_cam_lib.scSetParamsByJson(self.device_handle,  byref(pimgpath))
+def scGetUpgradeStatus(self):
+    pStatus = c_int32(0)
+    pUpgradeStatus = c_int32(0)
+    return self.sc_cam_lib.scGetUpgradeStatus(self.device_handle, byref(pStatus), byref(pUpgradeStatus)), pStatus.value, pUpgradeStatus.value
 ```
 
 **Description：**
 
-Set the parameters by Json file that can be saved by ScepterGUITool.
+Get firmware upgrade status and progress.
 
 **Parameters：**
 
-self.device_handle：The handle of the device.
-
-byref(pimgpath)：Pointer to the path of Json file.
+There is no.
 
 **Returns：**
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-### 3.1.5.3.49. scSetColorGain
+pStatus.value： Pointer to the status of firmware upgrade. 0 indicates normal, other values indicate anomalies.
 
-**Prototype：**
-
-```python
-def scSetColorGain(self, params = c_float(1.0)):
-   return self.sc_cam_lib.scSetColorGain(self.device_handle,  params)
-```
-
-**Description：**
-
-Set the color Gain with the exposure mode of Color sensor in SC_EXPOSURE_CONTROL_MODE_MANUAL.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-params：The value of color Gain.Different products have different maximum value. Please refer to the product specification.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.1.5.3.50. scGetColorGain
-
-**Prototype：**
-
-```python
-def scGetColorGain(self):
-   tmp = c_float*1
-   params = tmp()
-   return self.sc_cam_lib.scGetColorGain(self.device_handle,  params), params
-```
-
-**Description：**
-
-Get the color Gain.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-params：The value of color Gain.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-**params**：The value of color Gain.
-
-### 3.1.5.3.51. scSetAutoExposureTime
-
-**Prototype：**
-
-```python
-def scSetAutoExposureTime(self, params = c_int32(0)):
-   return self.sc_cam_lib.scSetColorAECMaxExposureTime(self.device_handle, params)
-```
-
-**Description：**
-
-Set the maximum exposure time of color sensor in automatic mode. The interface is used in automatic mode.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-params：The exposure time. The value must be within the maximum exposure time of sensor.
-
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-### 3.1.5.3.52. scGetAutoExposureTime
-
-**Prototype：**
-
-```python
-def scGetAutoExposureTime(self):
-   params = c_int32(0)
-   return self.sc_cam_lib.scGetColorAECMaxExposureTime(self.device_handle, byref(params)), params
-```
-
-**Description：**
-
-Get the maximum exposure time of color sensor in automatic mode. The interface is used in automatic mode.
-
-**Parameters：**
-
-self.device_handle：The handle of the device.
-
-byref(params)：Returns the exposure time.
-**Returns：**
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
-
-**params**：Returns the exposure time.
+pUpgradeStatus.value：Pointer to the process of firmware upgrade, in range [0, 100]. Under normal circumstances, 100 indicates a successful upgrade.
 
 <!-- tabs:end -->

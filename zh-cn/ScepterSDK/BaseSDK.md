@@ -1115,7 +1115,7 @@ ScStatus scGetFrame(ScDeviceHandle device, ScFrameType frameType, ScFrame* pScFr
 
 **函数原型：**
 
-``` cpp
+```cpp
 cStatus scGetDepthRangeValue(ScDeviceHandle device, int16_t* minValue, int16_t* maxValue)
 ```
 
@@ -1367,7 +1367,7 @@ ScStatus scGetDeviceSubnetMask(ScDeviceHandle device, char* pMask)
 
 **函数原型：**
 
-``` cpp
+```cpp
 ScStatus scSetRealTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig params)
 ```
 
@@ -1389,7 +1389,7 @@ ScStatus scSetRealTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig params)
 
 **函数原型：**
 
-``` cpp
+```cpp
 ScStatus scGetRealTimeSyncConfig(ScDeviceHandle device, ScTimeSyncConfig* pParams);
 ```
 
@@ -2045,7 +2045,7 @@ ScStatus scGetHDRModeEnabled(ScDeviceHandle device, bool* bEnabled)
 
 **函数原型：**
 
-``` cpp
+```cpp
 ScStatus scGetFrameCountOfHDRMode(ScDeviceHandle device, int32_t* pCount);
 ```
 
@@ -2067,7 +2067,7 @@ ScStatus scGetFrameCountOfHDRMode(ScDeviceHandle device, int32_t* pCount);
 
 **函数原型：**
 
-``` cpp
+```cpp
 ScStatus scSetExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32_t exposureTime)
 ```
 
@@ -2091,7 +2091,7 @@ ScStatus scSetExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32
 
 **函数原型：**
 
-``` cpp
+```cpp
 ScStatus scGetExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pExposureTime)
 ```
 
@@ -2115,7 +2115,7 @@ ScStatus scGetExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32
 
 **函数原型：**
 
-``` cpp
+```cpp
 ScStatus scGetMaxExposureTimeOfHDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pMaxExposureTime)
 ```
 
@@ -2183,7 +2183,7 @@ ScStatus scGetWDRModeEnabled(ScDeviceHandle device, bool* bEnabled)
 
 **函数原型：**
 
-``` cpp
+```cpp
 ScStatus scGetFrameCountOfWDRMode(ScDeviceHandle device, int32_t* pCount);
 ```
 
@@ -2205,7 +2205,7 @@ ScStatus scGetFrameCountOfWDRMode(ScDeviceHandle device, int32_t* pCount);
 
 **函数原型：**
 
-``` cpp
+```cpp
 ScStatus scSetExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32_t exposureTime)
 ```
 
@@ -2229,7 +2229,7 @@ ScStatus scSetExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32
 
 **函数原型：**
 
-``` cpp
+```cpp
 ScStatus scGetExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pExposureTime)
 ```
 
@@ -2253,7 +2253,7 @@ ScStatus scGetExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32
 
 **函数原型：**
 
-``` cpp
+```cpp
 ScStatus scGetMaxExposureTimeOfWDR(ScDeviceHandle device, uint8_t frameIndex, int32_t* pMaxExposureTime)
 ```
 
