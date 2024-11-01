@@ -6,7 +6,7 @@ ScepterSDK is a software development kit based on 3D ToF camera, which is curren
 
 Based on the development kit, users can obtain high-precision depth data information, gray image information and color image information, which is convenient for users to develop 3D applications such as face brushing payment, gesture recognition, projection touch control, face recognition, fatigue detection, 3D reconstruction, navigation ,obstacle avoidance and so on.
 
-The ScepterSDK version mentioned in the text is **v24.10.1**
+The ScepterSDK version mentioned in the text is **v24.10.3**
 
 ![ScepterSDK](../../zh-cn/ScepterSDK/Overview-asserts/01.png)
 

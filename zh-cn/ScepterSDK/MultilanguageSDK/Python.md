@@ -80,21 +80,34 @@ DevHotPlugCallback                              #设置设备热插拔回调
 DeviceConnectByIP                               #设置设备通过 IP 地址链接
 DeviceConnectBySN                               #设置设备通过设备 SN 连接
 DeviceHWTriggerMode                             #设置设备为硬触发模式
+DeviceImportParamInitFile                       #初始化参数文件导入到相机中
 DeviceInfoGet                                   #获取设备 SN、IP 地址、固件版本信息
-DeviceParamSetGet                               #获取设备内外参、畸变参数，设置、获取设备 GammaGain 值
+DeviceIPAndSubnetMaskSet						#设置设备静态IP、子网掩码（非DHCP）
+DeviceParamSetGet                               #获取设备内外参、畸变参数，设置、获取设备 GmmaGian 值
 DeviceSearchAndConnect                          #搜索并连接设备
+DeviceSetFrameRate                              #设置设备帧率
+DeviceSetNTP									#设置NTP对时
 DeviceSetParamsByJson                           #通过 Json 设置设备参数
+DeviceSetPTP								    #设置PTP对时
+DeviceSetSoftwareTriggerParameter               #设置软触发融合图像帧数
 DeviceStartStopStreaming                        #开始与停止设备数据流
 DeviceSWTriggerMode                             #设置设备为软触发模式
+DeviceUpgradeFirmWare                           #升级设备固件
 FrameCaptureAndSave                             #捕获与保存设备图像
-FrameViewer                                     #设备的OpenCV例程
-MultiConnection                                 #多设备连接
 IRGMMCorrectionSetGet                           #设置获取设备 ToF IR校正参数
+MultiConnection                                 #多设备连接
 PointCloudCaptureAndSave                        #捕获与保存点云
+PointCloudCaptureAndSaveDepthImgToColorSensor   #捕获点云并且将其保存到彩色图像传感器
+PointCloudVectorAndSave                         #捕获与保存 ROI 区域中的点云
+PointCloudVectorAndSaveDepthImgToColorSensor    #捕获 ROI 区域中的点云并且将其保存到彩色图像传感器
+SingleFrameDelayTest							#触发模式下获取单帧图像耗时测试
+ToFExposureTimeOfHDRSetGet                      #使能HDR设置获取设备 ToF 曝光时间
+ToFExposureTimeOfWDRSetGet                      #使能WDR设置获取设备 ToF 曝光时间
 ToFExposureTimeSetGet                           #设置获取设备 ToF 曝光时间
 ToFFiltersSetGet                                #设置获取设备 ToF 滤波开关
 TransformColorImgToDepthSensorFrame             #将彩色图像对齐到设备的深度图像空间
 TransformDepthImgToColorSensorFrame             #将深度图像对齐到设备的彩色图像空间
+FrameViewer                                     #设备的OpenCV例程 
 ```
 
 下面，我们以单个产品的单独例程为例，演示其编译运行的过程：

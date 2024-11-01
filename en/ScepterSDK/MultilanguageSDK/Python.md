@@ -94,30 +94,38 @@ Next, we will detail the Function for each sample.
 ```python
 ColorExposureTimeSetGet                         #Set and get the exposure time of color sensor.
 ColorResolutionChange                           #Change device color sensor resolution.
-DevHotPlugCallbackC                             #Set the callback function for hotplug status by C.
-DevHotPlugCallbackCpp                           #Set the callback function for hotPlug status by C++.
+DevHotPlugCallback                              #Set the callback function for hotplug status.
 DeviceConnectByIP                               #Use the device IP address to connect the device.
 DeviceConnectBySN                               #Use the serial number to connect the device.
 DeviceHWTriggerMode                             #Set device to Hardware Trigger Mode.
-DeviceInfoGet                                   #Get Device SN, IP address and firmware version information.
+DeviceImportParamInitFile					   #Import the init file of parameters into device.
+DeviceInfoGet                                   #Get Device SN, IP address and firmware version. information.
+DeviceIPAndSubnetMaskSet					    #Set the IP and the SubnetMask with DHCP disabled.
 DeviceParamSetGet                               #Get intrinsic parameters and extrinsic parameters of the device, and set and get the GmmaGian value of the Device.
 DeviceSearchAndConnect                          #Search and connect the Device.
 DeviceSetFrameRate                              #Set Device Rrame Rate.
+DeviceSetNTP				                    #Set NTP enabled.
 DeviceSetParamsByJson                           #Set device parameters by Json.
-DeviceStartStopStreaming                        #Start and stop device streaming
+DeviceSetPTP				                    #Set PTP enabled.
+DeviceSetSoftwareTriggerParameter               #Set the framecount to merge in Software Trigger Mode.
+DeviceStartStopStreaming                        #Start and stop device streaming.
 DeviceSWTriggerMode                             #Set device to Software Trigger Mode.
+DeviceUpgradeFirmWare                           #Upgrade the firmWare.
 FrameCaptureAndSave                             #Capture and save device frame.
 IRGMMCorrectionSetGet                           #Set and get the IRGMMCorrection parameters of device.
 MultiConnection                                 #Multiple device connection.
-MultiConnectionInMultiThread                    #Multiple device connections in multiple threads.
 PointCloudCaptureAndSave                        #Capture and save point cloud.
 PointCloudCaptureAndSaveDepthImgToColorSensor   #Capture the point cloud and save the depth image to the color sensor.
 PointCloudVectorAndSave                         #Capture and save point clouds in the ROI.
 PointCloudVectorAndSaveDepthImgToColorSensor    #Capture the point cloud in the ROI and save the depth image to the color sensor.
+SingleFrameDelayTest                            #Get the delay for trigger to get frame in APP.
+ToFExposureTimeOfHDRSetGet                      #Set and get ToF exposure time of the device,in HDR enabled.
+ToFExposureTimeOfWDRSetGet                      #Set and get ToF exposure time of the device,in WDR enabled.
 ToFExposureTimeSetGet                           #Set and get ToF exposure time of the device.
 ToFFiltersSetGet                                #Set and get ToF Filters switch of the device.
 TransformColorImgToDepthSensorFrame             #Color image is transformed to depth sensor space where the resolution is the same as the depth frame's resolution.
 TransformDepthImgToColorSensorFrame             #Depth image is transformed to color sensor space where the resolution is the same as the color frame's resolution.
+FrameViewer                                     #OpenCV sample
 ```
 
 <!-- 下面，我们以单个产品的单独例程为例，演示其编译运行的过程： -->

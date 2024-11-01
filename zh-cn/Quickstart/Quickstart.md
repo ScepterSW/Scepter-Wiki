@@ -128,25 +128,55 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 #### **方式二**
 
-打开下载链接，点击 Code，再点击 Download ZIP，即可将 ScepterGUITool 工具压缩包下载到本地。
+打开下载链接，点击 Code，再点击 Download ZIP。
 
 ![GitHubGUITool](<Quickstart-asserts/12.png>)
 
-#### **方式三**
-
-打开发行版下载链接，点击 xxx_install.run/exe，即可将 ScepterGUITool安装包载到本地。
+或通过发行版，下载最新版本。
 
 ![GitHubGUITool](<Quickstart-asserts/12-1.png>)
 
+下载链接
 
+<https://github.com/ScepterSW/ScepterGUITool/releases> 
+
+或
+
+<https://gitee.com/ScepterSW/ScepterGUITool/releases>
+
+以v24.9.2为例，点击Source code，即可下载。
+
+
+
+![GitHubGUITool](<Quickstart-asserts/12-1-1.png>)
+
+#### **方式三**
+
+通过发行版，下载最新版本。
+
+![GitHubGUITool](<Quickstart-asserts/12-1.png>)
+
+下载链接
+
+<https://github.com/ScepterSW/ScepterGUITool/releases> 
+
+或
+
+<https://gitee.com/ScepterSW/ScepterGUITool/releases>
 
 <!-- tabs:start -->
 
 #### **Windows**
 
+**下载：**
+
+以v24.9.2为例，点击 点击 ScepterGUITool_v24.9.2_windows_install.exe，即可将 ScepterGUITool安装包到本地。
+
 ![GitHubGUITool](<Quickstart-asserts/12-2.png>)
 
-下载完成后，双击xxx_install.exe，默认安装路径是**C:\Users\user.name\AppData\Roaming\ScepterGUITool**。
+**安装：**
+
+双击xxx_install.exe进行安装，默认安装路径是**C:\Users\user.name\AppData\Roaming\ScepterGUITool**。
 
 ![GitHubGUITool](<Quickstart-asserts/12-2-1.png>)
 
@@ -172,15 +202,21 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 ![GitHubGUITool](<Quickstart-asserts/12-2-6.png>)
 
-安装完成点击Finish，桌面已有快捷方式。
+点击Finish，可通过桌面快捷方式或是到安装目录下运行ScepterGUITool。
 
 ![GitHubGUITool](<Quickstart-asserts/12-2-7.png>)
 
 #### **Ubuntu**
 
+**下载：**
+
+以v24.9.2为例，点击 ScepterGUITool_v24.9.2_ubuntu_install.run，即可将 ScepterGUITool安装包到本地。
+
 ![GitHubGUITool](<Quickstart-asserts/12-3.png>)
 
-下载xxx_install.run，打开终端，进入下载目录，给run文件增加执行权限
+**安装：**
+
+打开终端，进入下载目录，给run文件增加执行权限
 
 ```
 > sudo chmod +x ScepterGUITool_vXX.XX.XX_ubuntu_install.run
@@ -198,15 +234,9 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 ![GitHubGUITool](<Quickstart-asserts/12-3-3.png>)
 
-运行软件，点击ScepterGUITool图标，或搜索栏中输入ScepterGUITool
+运行ScepterGUITool，可以点击ScepterGUITool图标，或搜索栏中输入ScepterGUITool然后点击，或在安装目录下运行。
 
 ![GitHubGUITool](<Quickstart-asserts/12-3-4.png>)
-
-卸载软件可以通过ScepterGUITool文件夹下的uninstall.sh，在终端执行脚本即可。
-
-![GitHubGUITool](<Quickstart-asserts/12-3-5.png>)
-
-![GitHubGUITool](<Quickstart-asserts/12-3-6.png>)
 
 <!-- tabs:end -->
 
