@@ -1106,7 +1106,7 @@ enable.value：true is enable the feature or false is disable the feature.
 **Prototype：**
 
 ```python
-def scSetDeviceIPAddr(self, IPAddr=c_char_p(), length=c_int32(0)):
+def scSetDeviceIPAddr(self, IPAddr=c_char_p(), length=c_int32(16)):
     return self.sc_cam_lib.scSetDeviceIPAddr(self.device_handle, IPAddr, length)
 ```
 
@@ -1154,7 +1154,7 @@ IPAddr.value：Pointer to a buffer in which to store the device IP address. the 
 **Prototype：**
 
 ```python
-def scSetDeviceSubnetMask(self, subnetMask=c_char_p(), length=c_int32(0)):
+def scSetDeviceSubnetMask(self, subnetMask=c_char_p(), length=c_int32(16)):
     return self.sc_cam_lib.scSetDeviceSubnetMask(self.device_handle, subnetMask, length)
 ```
 
@@ -1339,8 +1339,8 @@ Set the working mode of the camera.
 
 ```python
 def scGetWorkMode(self):
-    mode = ScWorkMode(0)
-    return self.sc_cam_lib.scGetWorkMode(self.device_handle, byref(mode)), mode
+    mode = c_uint8(0)
+    return self.sc_cam_lib.scGetWorkMode(self.device_handle, byref(mode)), mode.value
 ```
 
 **Description：**
@@ -1355,7 +1355,7 @@ There is no.
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-[mod*](#_31516-scworkmode)：Indicates the working mode of the obtained device.
+[mod.value](#_31516-scworkmode)：Indicates the working mode of the obtained device.
 
 ### 3.1.5.3.30. scSetSoftwareTriggerParameter
 
@@ -1908,7 +1908,7 @@ There is no.
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
 
-enable：true is enable the feature or false is disable the feature.
+enable.value：true is enable the feature or false is disable the feature.
 
 ### 3.1.5.3.54. scGetFrameCountOfHDRMode
 
@@ -2048,7 +2048,7 @@ There is no.
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus. 
 
-enable：true is enable the feature or false is disable the feature.
+enable.value：true is enable the feature or false is disable the feature.
 
 ### 3.1.5.3.60. scGetFrameCountOfWDRMode
 
@@ -2497,7 +2497,7 @@ Returns the point value of the frame that the mapping of the depth image to Colo
 def scConvertDepthToPointCloud(self, pDepthVector = ScDepthVector3(), pointCount = c_int32(0), pSensorParam = ScSensorIntrinsicParameters()):
     tmp = ScVector3f * pointCount
     pWorldVector = tmp()
-    return self.sc_cam_lib.scConvertDepthToPointCloud(self.device_handle, byref(pDepthVector), byref(pWorldVector), byref(pSensorParam)),pWorldVector
+    return self.sc_cam_lib.scConvertDepthToPointCloud(self.device_handle, byref(pDepthVector), byref(pWorldVector), pointCount, byref(pSensorParam)), pWorldVector
 ```
 
 **Description：**
@@ -2523,11 +2523,11 @@ pointCount：The number of points to convert.
 **Prototype：**
 
 ```python
-def scConvertDepthFrameToPointCloudVector(self, depthFrame = ScFrame()):
+def scConvertDepthFrameToPointCloudVector(self, depthFrame = ScFrame()): 
     len = depthFrame.width*depthFrame.height
     tmp =ScVector3f*len
     pointlist = tmp()
-    return self.sc_cam_lib.scConvertDepthFrameToPointCloudVector(self.device_handle, byref(depthFrame) ,pointlist),pointlist
+    return self.sc_cam_lib.scConvertDepthFrameToPointCloudVector(self.device_handle, byref(depthFrame), byref(pointlist)), pointlist
 ```
 
 **Description：**

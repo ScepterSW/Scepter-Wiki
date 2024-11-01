@@ -1090,7 +1090,7 @@ enable.value：true 开启，false 关闭
 **函数原型：**
 
 ```python
-def scSetDeviceIPAddr(self, IPAddr=c_char_p(), length=c_int32(0)):
+def scSetDeviceIPAddr(self, IPAddr=c_char_p(), length=c_int32(16)):
     return self.sc_cam_lib.scSetDeviceIPAddr(self.device_handle, IPAddr, length)
 ```
 
@@ -1138,7 +1138,7 @@ IPAddr.value：IP地址
 **函数原型：**
 
 ```python
-def scSetDeviceSubnetMask(self, subnetMask=c_char_p(), length=c_int32(0)):
+def scSetDeviceSubnetMask(self, subnetMask=c_char_p(), length=c_int32(16)):
     return self.sc_cam_lib.scSetDeviceSubnetMask(self.device_handle, subnetMask, length)
 ```
 
@@ -1302,8 +1302,8 @@ def scSetWorkMode(self,  mode = ScWorkMode.SC_ACTIVE_MODE):
 
 ```python
 def scGetWorkMode(self):
-    mode = ScWorkMode(0)
-    return self.sc_cam_lib.scGetWorkMode(self.device_handle, byref(mode)), mode
+    mode = c_uint8(0)
+    return self.sc_cam_lib.scGetWorkMode(self.device_handle, byref(mode)), mode.value
 ```
 
 **函数功能：**
@@ -1318,11 +1318,7 @@ def scGetWorkMode(self):
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-[**mode**](#_31516-scworkmode)：获取到的设备的工作模式
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-[**mode**](#_31516-scworkmode)：获取到的设备的工作模式
+[mode.value](#_31516-scworkmode)：获取到的设备的工作模式
 
 ### 3.1.5.3.30. scSetSoftwareTriggerParameter
 
@@ -1522,11 +1518,7 @@ def scGetIRGMMCorrection(self):
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
 
-[**params**](#_31514-screturnstatus)：IR Gamma 校正的值
-
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-[**params**](#_315217-scirgmmcorrectionparams)：IR Gamma 校正的值
+[params](#_31514-screturnstatus)：IR Gamma 校正的值
 
 ### 3.1.5.3.39. scSetColorPixelFormat
 
@@ -1880,7 +1872,7 @@ def scGetHDRModeEnabled(self):
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败 
 
-enable：true 开启，false 关闭
+enable.value：true 开启，false 关闭
 
 ### 3.1.5.3.54. scGetFrameCountOfHDRMode
 
@@ -2207,10 +2199,6 @@ def scGetConfidenceFilterParams(self):
 
 [params](#_315214-scconfidencefilterparams)：滤波参数值
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-[**params**](#_315214-scconfidencefilterparams)：指向存储返回值的变量的指针
-
 ### 3.1.5.3.68. scSetFlyingPixelFilterParams
 
 **函数原型：**
@@ -2391,10 +2379,6 @@ def scGetTransformColorImgToDepthSensorEnabled(self):
 
 enabled：true 打开对齐，false 关闭对齐
 
-[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
-
-**enabled**：返回开关状态
-
 ### 3.1.5.3.76. scSetTransformDepthImgToColorSensorEnabled
 
 **函数原型：**
@@ -2474,7 +2458,7 @@ def scTransformDepthPointToColorPoint(self, depthPoint = ScDepthVector3(), color
 def scConvertDepthToPointCloud(self, pDepthVector = ScDepthVector3(), pointCount = c_int32(0), pSensorParam = ScSensorIntrinsicParameters()):
     tmp = ScVector3f * pointCount
     pWorldVector = tmp()
-    return self.sc_cam_lib.scConvertDepthToPointCloud(self.device_handle, byref(pDepthVector), byref(pWorldVector), byref(pSensorParam)),pWorldVector
+    return self.sc_cam_lib.scConvertDepthToPointCloud(self.device_handle, byref(pDepthVector), byref(pWorldVector), pointCount, byref(pSensorParam)), pWorldVector
 ```
 
 **函数功能：**
@@ -2500,11 +2484,11 @@ pointCount：坐标点的数目
 **函数原型：**
 
 ```python
-def scConvertDepthFrameToPointCloudVector(self, depthFrame = ScFrame()):
+def scConvertDepthFrameToPointCloudVector(self, depthFrame = ScFrame()): 
     len = depthFrame.width*depthFrame.height
     tmp =ScVector3f*len
     pointlist = tmp()
-    return self.sc_cam_lib.scConvertDepthFrameToPointCloudVector(self.device_handle, byref(depthFrame) ,pointlist),pointlist
+    return self.sc_cam_lib.scConvertDepthFrameToPointCloudVector(self.device_handle, byref(depthFrame), byref(pointlist)), pointlist
 ```
 
 **函数功能：**
