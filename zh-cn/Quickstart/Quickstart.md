@@ -128,13 +128,7 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 #### **方式二**
 
-打开下载链接，点击 Code，再点击 Download ZIP。
-
-![GitHubGUITool](<Quickstart-asserts/12.png>)
-
-或通过发行版，下载最新版本。
-
-![GitHubGUITool](<Quickstart-asserts/12-1.png>)
+通过发行版，下载最新版本。
 
 下载链接
 
@@ -146,6 +140,8 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 以v24.9.2为例，点击Source code，即可下载。
 
+![GitHubGUITool](<Quickstart-asserts/12-1.png>)
+
 
 
 ![GitHubGUITool](<Quickstart-asserts/12-1-1.png>)
@@ -154,8 +150,6 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 通过发行版，下载最新版本。
 
-![GitHubGUITool](<Quickstart-asserts/12-1.png>)
-
 下载链接
 
 <https://github.com/ScepterSW/ScepterGUITool/releases> 
@@ -163,6 +157,8 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 或
 
 <https://gitee.com/ScepterSW/ScepterGUITool/releases>
+
+![GitHubGUITool](<Quickstart-asserts/12-1.png>)
 
 <!-- tabs:start -->
 

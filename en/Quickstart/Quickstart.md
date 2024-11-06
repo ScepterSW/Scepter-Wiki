@@ -122,13 +122,7 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 #### **Method 2**
 
-Open the download link, click Code, and then click Download ZIP.
-
-![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12.png>)
-
-Or open the **Releases** link, download the lastest version
-
-![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-1.png>)
+open the **Releases** link, download the lastest version
 
 Download link:
 
@@ -140,15 +134,13 @@ or
 
 Taking v24.9.2 as an example, click Source code.
 
-
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-1.png>)
 
 ![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-1-1.png>)
 
 #### **Method 3**
 
 Open the **Releases** link，download the lastest version.
-
-![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-1.png>)
 
 Download link:
 
@@ -157,6 +149,8 @@ Download link:
 or
 
 <https://gitee.com/ScepterSW/ScepterGUITool/releases>
+
+![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-1.png>)
 
 <!-- tabs:start -->
 
