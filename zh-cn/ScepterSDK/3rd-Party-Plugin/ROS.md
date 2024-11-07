@@ -24,7 +24,7 @@
 
 **1. 下载 Scepter ROS 包**
 
-```console
+```shell
 > git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
@@ -36,7 +36,7 @@
 
 **2. 安装 Scepter ROS SDK**
 
-```console
+```shell
 > cd 3rd-PartyPlugin/ROS/src
 > catkin_init_workspace
 ```
@@ -53,13 +53,13 @@
 
 #### **ROS**
 
-```console
+```shell
 > cd ScepterROS
 ```
 
 #### **ROS_MultiCameras**
 
-```console
+```shell
 > cd ScepterROS_MultiCameras
 ```
 
@@ -73,7 +73,7 @@
 
 通过命令"**python install.py [您的操作系统]**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中, 这里我们以**Ubuntu18.04**为例：
 
-```console
+```shell
 > python install.py Ubuntu18.04
 ```
 
@@ -103,7 +103,7 @@
 
 #### **ROS**
 
-```console
+```shell
 > cd ../../
 > catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS"
 ```
@@ -116,7 +116,7 @@
 
 #### **ROS_MultiCameras**
 
-```console
+```shell
 > cd ../../
 > catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS_MultiCameras"
 ```
@@ -129,7 +129,7 @@
 
 <!-- tabs:end -->
 
-```console
+```shell
 > source devel/setup.bash
 ```
 
@@ -141,7 +141,7 @@
 
 **1. 启动相机节点**
 
-```console
+```shell
 > cd src/ScepterROS/launch
 > roslaunch ScepterROS scepter_camera.launch
 ```
@@ -154,7 +154,7 @@
 
 **2. 启动 Rviz 界面**
 
-```console
+```shell
 > rviz
 ```
 
@@ -172,7 +172,7 @@
 
 **3. 使用 RQT 动态调整配置**
 
-```console
+```shell
 > rosrun rqt_reconfigure rqt_reconfigure
 ```
 
@@ -193,7 +193,7 @@
 
 打开一个新终端
 
-```console
+```shell
 > cd 3rd-PartyPlugin/ROS
 > source devel/setup.bash
 > cd src/ScepterROS/launch
@@ -214,7 +214,7 @@
 
 **5. 显示彩色点云**
 
-```console
+```shell
 > roslaunch ScepterROS scepter_pointCloudxyzcolor.launch
 ```
 
@@ -250,7 +250,7 @@
 
 **2. 启动相机节点**
 
-```console
+```shell
 cd src/ScepterROS_MultiCameras/launch
 roslaunch ScepterROS_MultiCameras scepter_camera.launch
 ```
@@ -265,7 +265,7 @@ roslaunch ScepterROS_MultiCameras scepter_camera.launch
 
 Rviz 可以显示多个话题的界面
 
-```console
+```shell
 > rviz
 ```
 
@@ -289,7 +289,7 @@ Rviz 可以显示多个话题的界面
 
 **4. 使用 RQT 动态调整配置**
 
-```console
+```shell
 > rosrun rqt_reconfigure rqt_reconfigure
 ```
 
@@ -310,7 +310,7 @@ Rviz 可以显示多个话题的界面
 
 打开一个新终端，Rviz 只能显示一个话题
 
-```console
+```shell
 > cd 3rd-PartyPlugin/ROS
 > source devel/setup.bash
 > cd src/ScepterROS_MultiCameras/launch
@@ -339,8 +339,8 @@ Rviz 可以显示多个话题的界面
 
 Rviz 只能显示一个话题
 
-```console
-roslaunch ScepterROS_MultiCameras scepter_pointCloudxyzcolor.launch
+```shell
+> roslaunch ScepterROS_MultiCameras scepter_pointCloudxyzcolor.launch
 ```
 
 <div class="center">

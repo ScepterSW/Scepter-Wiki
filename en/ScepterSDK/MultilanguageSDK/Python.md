@@ -26,8 +26,8 @@ The Python SDK directory structure is as follows:
 
 Before running the ScepterSDK, make sure that your Python version is 3.7.x or higher and that you have the ctypes, numpy modules installed. In most Python distributions, ctypes exists as a built-in module, so we don't need to install it.
 
-```console
-pip install numpy
+```shell
+> pip install numpy
 ```
 
 <!-- 使用 ScepterSDK 开发新的项目，需要使用英文路径。针对不同的操作系统，需要同时复制 SDK 中的 Python 文件夹和对应系统的文件夹。API 文件夹中的 Scepter_api.py 会自动读取相机的 libScepter_api.so 或 Scepter_api.dll 库文件。 -->
@@ -163,8 +163,8 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 1. Install the opencv-python module.
 
-   ```console
-   pip install opencv-python
+   ```shell
+   > pip install opencv-python
    ```
 
 <!-- 2. 根据实际产品选择对应的 sample，以 NYX650 为例 -->

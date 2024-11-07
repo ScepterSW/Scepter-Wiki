@@ -312,13 +312,47 @@ Confidence Filter：Confidence filter eliminate points with poor signal quality.
 | :--------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
 |                                   Confidence Filter value 15                                   |                                   Confidence Filter value 50                                   |
 
-⑧ **HDR Mode**
+#### 3.4.3.4 HDR Mode
 
 | ![Exposure58](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/76.png) |   ![Exposure1000](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/77.png) |   ![HDR](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/78.png) |
 | :----------------------------------------------------------: | :----------------------------------------------------------------: | :----------------------------------------------: |
 |                      Exposuretime 58us                       |                        Exposuretime 1000us                         |                     HDR Mode                     |
 
-The HDR (High Dynamic Range) function synthesizes multiple captured images into one frame by setting multiple different exposure times to complete the imaging of the entire complex scene **(refer to the product introduction for support)**.
+The HDR (High Dynamic Range) function synthesizes multiple captured images into one frame by setting multiple different exposure times to complete the imaging of the entire complex scene. **(refer to the product introduction for support)**.
+
+
+
+![Flying Pixel Filter](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-3-3-01.png)
+
+Enable HDR, show the Settings button
+
+![Flying Pixel Filter](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-3-3-02.png)
+
+Click the Settings button, show the HDRConfig UI,  set  the frame 0's  exposure time should smaller than the frame 1's   current exposure time
+
+![Flying Pixel Filter](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-3-3-03.png)
+
+> HDR and WDR only support a single function and cannot work simultaneously.
+
+#### 3.4.3.5. WDR
+
+| ![Exposure58](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-3-4-04.png) | ![Exposure1000](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-3-4-05.png) | ![WDR](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-3-4-06.png) |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|                         Near 0-4.5m                          |                          Far 3.5-8m                          |                           WDR Mode                           |
+
+WDR(Wide Dynamic Range)  function synthesizes multiple captured images with different distance sto complete the imaging of the entire complex scene. **(refer to the product introduction for support)**.
+
+![Flying Pixel Filter](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-3-4-01.png)
+
+Enable WDR, show the Settings button
+
+![Flying Pixel Filter](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-3-4-02.png)
+
+Click the Settings button, show the WDRConfig UI
+
+![Flying Pixel Filter](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-3-4-03.png)
+
+> HDR and WDR only support a single function and cannot work simultaneously.
 
 ### 3.4.4 IR Image Configuration
 
@@ -404,15 +438,17 @@ The PointCloud data is saved in txt format, and each row of data represents thec
 
 > ScepterGUITooll's saved depth map is a 16bit single-channel PNG image, witheachpixel represented by two bytes. Windows' default image display tool can only display 8bit single-channel images, so they look black. User can use Image J todisplay and view pixel distance values.
 
-<!-- ### 3.4.7. 导出、导入参数
+### 3.4.7.Parameter initialization file
 
-![DeviceParams](../../zh-cn/ScepterGUITool/pic/DeviceParams.png)
+![DeviceParams](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-7-1.png)
 
-Export：导出通过 ScepterGUITool 设置的参数
+**Generate**:  Create JsonConfig directory and save JSON file.
 
-Import：导入参数到 ScepterGUITool 中
+**ApplyByApp**：Process the JSON file in SDK, then call the api to set parameters.
 
-导出的参数可以通过调用 API 函数在自编写的程序中直接使用。 -->
+**ImportToDevice**：Import the JSON file to device and take effect by reboot.
+
+**RestoreDevice**：Restore the device.
 
 ## 3.5. Device Network Settings
 

@@ -223,12 +223,12 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
 
 1. 根据实际产品选择对应的 sample，以 NYX650 产品编译 DeviceConnectBySN 为例
 
-   ```consle
-   cd ScepterSDK/Ubuntu18.04/Samples/Base/NYX650
-   mkdir build
-   cd build/
-   cmake ../
-   make
+   ```shell
+   > cd ScepterSDK/Ubuntu18.04/Samples/Base/NYX650
+   > mkdir build
+   > cd build/
+   > cmake ../
+   > make
    ```
 
    ![Compilation](BaseSDK-asserts/14.png)
@@ -236,7 +236,7 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
 
 2. 编译完成，输出路径为 PrecompiledSamples，进入目录后运行。
 
-   ```consle
+   ```shell
    cd ScepterSDK/Ubuntu/PrecompiledSamples/NYX650_Samples/
    ./DeviceConnectBySN
    ```
@@ -247,12 +247,12 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
 
 1. 根据实际产品选择对应的 sample，以 NYX650 产品编译 DeviceConnectBySN 为例
 
-   ```consle
-   cd ScepterSDK/AArch64/Samples/Base/NYX650/
-   mkdir build
-   cd build/
-   cmake ../
-   make
+   ```shell
+   > cd ScepterSDK/AArch64/Samples/Base/NYX650/
+   > mkdir build
+   > cd build/
+   > cmake ../
+   > make
    ```
 
    ![Compilation](BaseSDK-asserts/17.png)
@@ -260,9 +260,9 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
 
 2. 编译完成，输出路径为 PrecompiledSamples，进入目录后运行。
 
-   ```consle
-   cd ScepterSDK/AArch64/PrecompiledSamples/NYX650_Samples/
-   ./DeviceConnectBySN
+   ```shell
+   > cd ScepterSDK/AArch64/PrecompiledSamples/NYX650_Samples/
+   > ./DeviceConnectBySN
    ```
 
    ![Execution](BaseSDK-asserts/19.png)
@@ -317,21 +317,21 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
 
 2. 根据实际产品选择对应的 sample，以 NYX650 为例编译 OpenCV 显示例程
 
-   ```consle
-   cd ScepterSDK/Ubuntu/Samples/OpenCV/NYX650
-   mkdir build
-   cd build/
-   cmake ../
-   make
+   ```shell
+   > cd ScepterSDK/Ubuntu/Samples/OpenCV/NYX650
+   > mkdir build
+   > cd build/
+   > cmake ../
+   > make
    ```
 
    ![CompilationOpencv](BaseSDK-asserts/26.png)
 
 3. 运行编译成功后的 Demo
 
-   ```consle
-   cd ScepterSDK/Ubuntu/PrecompiledSamples/
-   ./NYX650_OpenCVSample
+   ```shell
+   > cd ScepterSDK/Ubuntu/PrecompiledSamples/
+   > ./NYX650_OpenCVSample
    ```
 
    ![ExecutionOpencv](BaseSDK-asserts/27.png)
@@ -348,21 +348,21 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
 
 2. 根据实际产品选择对应的 sample，以 NYX650 为例编译 OpenCV 显示例程
 
-   ```consle
-   cd ScepterSDK/AArch64/Samples/OpenCV/NYX650
-   mkdir build
-   cd build/
-   cmake ../
-   make
+   ```shell
+   > cd ScepterSDK/AArch64/Samples/OpenCV/NYX650
+   > mkdir build
+   > cd build/
+   > cmake ../
+   > make
    ```
 
    ![AArch64CompilationOpenCV](BaseSDK-asserts/29.png)
 
 3. 运行编译成功后的 Demo
 
-   ```consle
-   cd ScepterSDK/AArch64/PrecompiledSamples/
-   ./NYX650_OpenCVSample
+   ```shell
+   > cd ScepterSDK/AArch64/PrecompiledSamples/
+   > ./NYX650_OpenCVSample
    ```
 
    ![AArch64ExecutionOpenCV](BaseSDK-asserts/30.png)

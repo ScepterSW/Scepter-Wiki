@@ -34,7 +34,7 @@
 
 - 安装 pcl，仅**Jazzy Jalisco**需要
 
-  ```console
+  ```shell
   > sudo apt install libpcl-dev
   ```
 
@@ -45,7 +45,7 @@
 
 **1. 下载 Scepter ROS 包**
 
-```console
+```shell
 > git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
@@ -57,7 +57,7 @@
 
 **2. 安装 Scepter ROS SDK**
 
-```console
+```shell
 > cd ROS2/src/ScepterROS
 ```
 
@@ -69,7 +69,7 @@
 
 通过命令"**python install.py [您的操作系统]**"，可以将与您操作系统匹配的**ScepterSDK**拷贝到**dependencies**文件夹中，这里我们以**Ubuntu20.04**为例：
 
-```console
+```shell
 > python install.py Ubuntu20.04
 /home/vzense/work/ScepterSDK-master/BaseSDK
 /home/vzense/work/ScepterSDK-master/3rd-PartyPlugin/ROS2/src/ScepterROS
@@ -98,7 +98,7 @@ pull SDK success
 
 #### **ROS_MultiCameras**
 
-```console
+```shell
 > cd ../../
 > colcon build --packages-select ScepterROS_MultiCameras
 ```
@@ -111,7 +111,7 @@ pull SDK success
 
 <!-- tabs:end -->
 
-```console
+```shell
 > source install/setup.bash
 ```
 
@@ -123,7 +123,7 @@ pull SDK success
 
 **1. 启动相机节点**
 
-```console
+```shell
 > ros2 run ScepterROS scepter_camera
 ```
 
@@ -135,7 +135,7 @@ pull SDK success
 
 **2. 启动 Rviz 界面**
 
-```console
+```shell
 > ros2 run rviz2 rviz2
 ```
 
@@ -169,13 +169,13 @@ pull SDK success
 
 **1. 启动相机节点**
 
-```console
+```shell
 > ros2 run ScepterROS_MultiCameras scepter_multicameras <nodename> <ip>
 ```
 
 例如：
 
-```console
+```shell
 > ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
 ```
 
@@ -189,7 +189,7 @@ pull SDK success
 
 一次只能显示一个话题
 
-```console
+```shell
 > ros2 run rviz2 rviz2
 ```
 

@@ -320,12 +320,12 @@ Take a single routine of a single product as an example to demonstrate the proce
 
 1. Select the corresponding sample according to the actual product. Take the NYX650 product to compile DeviceConnectBySN as an example:
 
-   ```consle
-   cd ScepterSDK/Ubuntu18.04/Samples/Base/NYX650
-   mkdir build
-   cd build/
-   cmake ../
-   make
+   ```shell
+   > cd ScepterSDK/Ubuntu18.04/Samples/Base/NYX650
+   > mkdir build
+   > cd build/
+   > cmake ../
+   > make
    ```
 
    ![Compilation](../../zh-cn/ScepterSDK/BaseSDK-asserts/14.png)
@@ -336,9 +336,9 @@ Take a single routine of a single product as an example to demonstrate the proce
 
 2. After compiling, the output path is PrecompiledSamples. Enter the directory and run.
 
-   ```consle
-   cd ScepterSDK/Ubuntu/PrecompiledSamples/NYX650_Samples/
-   ./DeviceConnectBySN
+   ```shell
+   > cd ScepterSDK/Ubuntu/PrecompiledSamples/NYX650_Samples/
+   > ./DeviceConnectBySN
    ```
 
    ![Execution](../../zh-cn/ScepterSDK/BaseSDK-asserts/16.png)
@@ -349,12 +349,12 @@ Take a single routine of a single product as an example to demonstrate the proce
 
 1. Select the corresponding sample according to the actual product. Take the NYX650 product to compile DeviceConnectBySN as an example:
 
-   ```consle
-   cd ScepterSDK/AArch64/Samples/Base/NYX650/
-   mkdir build
-   cd build/
-   cmake ../
-   make
+   ```shell
+   > cd ScepterSDK/AArch64/Samples/Base/NYX650/
+   > mkdir build
+   > cd build/
+   > cmake ../
+   > make
    ```
 
    ![Compilation](../../zh-cn/ScepterSDK/BaseSDK-asserts/17.png)
@@ -365,9 +365,9 @@ Take a single routine of a single product as an example to demonstrate the proce
 
 2. After compiling, the output path is PrecompiledSamples. Enter the directory and run.
 
-   ```consle
-   cd ScepterSDK/AArch64/PrecompiledSamples/NYX650_Samples/
-   ./DeviceConnectBySN
+   ```shell
+   > cd ScepterSDK/AArch64/PrecompiledSamples/NYX650_Samples/
+   > ./DeviceConnectBySN
    ```
 
    ![Execution](../../zh-cn/ScepterSDK/BaseSDK-asserts/19.png)
@@ -451,12 +451,12 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 2. Select the corresponding sample according to the actual product, and compile the OpenCV display routine with NYX650 as an example.
 
-   ```consle
-   cd ScepterSDK/Ubuntu/Samples/OpenCV/NYX650
-   mkdir build
-   cd build/
-   cmake ../
-   make
+   ```shell
+   > cd ScepterSDK/Ubuntu/Samples/OpenCV/NYX650
+   > mkdir build
+   > cd build/
+   > cmake ../
+   > make
    ```
 
    ![CompilationOpencv](../../zh-cn/ScepterSDK/BaseSDK-asserts/26.png)
@@ -465,9 +465,9 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 3. Run the successfully compiled Demo
 
-   ```consle
-   cd ScepterSDK/Ubuntu/PrecompiledSamples/
-   ./NYX650_OpenCVSample
+   ```shell
+   > cd ScepterSDK/Ubuntu/PrecompiledSamples/
+   > ./NYX650_OpenCVSample
    ```
 
    ![ExecutionOpencv](../../zh-cn/ScepterSDK/BaseSDK-asserts/27.png)
@@ -492,12 +492,12 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 2. Select the corresponding sample according to the actual product, and compile the OpenCV display routine with NYX650 as an example.
 
-   ```consle
-   cd ScepterSDK/AArch64/Samples/OpenCV/NYX650
-   mkdir build
-   cd build/
-   cmake ../
-   make
+   ```shell
+   > cd ScepterSDK/AArch64/Samples/OpenCV/NYX650
+   > mkdir build
+   > cd build/
+   > cmake ../
+   > make
    ```
 
    ![AArch64CompilationOpenCV](../../zh-cn/ScepterSDK/BaseSDK-asserts/29.png)
@@ -506,9 +506,9 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 3. Run the successfully compiled Demo
 
-   ```consle
-   cd ScepterSDK/AArch64/PrecompiledSamples/
-   ./NYX650_OpenCVSample
+   ```shell
+   > cd ScepterSDK/AArch64/PrecompiledSamples/
+   > ./NYX650_OpenCVSample
    ```
 
    ![AArch64ExecutionOpenCV](../../zh-cn/ScepterSDK/BaseSDK-asserts/30.png)

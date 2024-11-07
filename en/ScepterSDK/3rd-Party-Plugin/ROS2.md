@@ -47,7 +47,7 @@ In the ScepterSDK, ScepterROS can be used to connect to a single device, while S
 
 **1. Download the Scepter ROS2 package**
 
-```console
+```shell
 > git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
@@ -59,7 +59,7 @@ In the ScepterSDK, ScepterROS can be used to connect to a single device, while S
 
 **2. Install the Scepter ROS SDK**
 
-```console
+```shell
 > cd ROS2/src/ScepterROS
 ```
 
@@ -73,7 +73,7 @@ In the ScepterSDK, ScepterROS can be used to connect to a single device, while S
 
 Run the cmd "**python install.py [your operating system]**", take **Ubuntu20.04** as an example：
 
-```console
+```shell
 > python install.py Ubuntu20.04
 /home/vzense/work/ScepterSDK-master/BaseSDK
 /home/vzense/work/ScepterSDK-master/3rd-PartyPlugin/ROS/src/ScepterROS
@@ -89,7 +89,7 @@ pull SDK success
 
 #### **ROS2**
 
-```console
+```shell
 > cd ../../
 > colcon build --packages-select ScepterROS
 ```
@@ -102,7 +102,7 @@ pull SDK success
 
 #### **ROS_MultiCameras**
 
-```console
+```shell
 > cd ../../
 > colcon build --packages-select ScepterROS_MultiCameras
 ```
@@ -115,7 +115,7 @@ pull SDK success
 
 <!-- tabs:end -->
 
-```console
+```shell
 > source install/setup.bash
 ```
 
@@ -127,7 +127,7 @@ pull SDK success
 
 **1. Starting camera node**
 
-```console
+```shell
 > ros2 run ScepterROS scepter_camera
 ```
 
@@ -139,7 +139,7 @@ pull SDK success
 
 **2. With Rviz show frame**
 
-```console
+```shell
 > ros2 run rviz2 rviz2
 ```
 
@@ -173,13 +173,13 @@ pull SDK success
 
 **1. Starting camera node**
 
-```console
+```shell
 > ros2 run ScepterROS_MultiCameras scepter_multicameras <nodename> <ip>
 ```
 
 such as:
 
-```console
+```shell
 > ros2 run ScepterROS_MultiCameras scepter_multicameras cam1 192.168.1.102
 ```
 
@@ -193,7 +193,7 @@ such as:
 
 Only one topic can be displayed at a time
 
-```console
+```shell
 > ros2 run rviz2 rviz2
 ```
 

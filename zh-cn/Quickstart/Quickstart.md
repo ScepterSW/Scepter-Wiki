@@ -166,7 +166,7 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 **下载：**
 
-以v24.9.2为例，点击 点击 ScepterGUITool_v24.9.2_windows_install.exe，即可将 ScepterGUITool安装包到本地。
+以v24.9.2为例，点击 ScepterGUITool_v24.9.2_windows_install.exe，即可将 ScepterGUITool安装包到本地。
 
 ![GitHubGUITool](<Quickstart-asserts/12-2.png>)
 

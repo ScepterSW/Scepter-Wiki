@@ -26,7 +26,7 @@ In the ScepterSDK, ScepterROS can be used to connect to a single device, while S
 
 **1. Download the Scepter ROS package**
 
-```console
+```shell
 > git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
@@ -38,7 +38,7 @@ In the ScepterSDK, ScepterROS can be used to connect to a single device, while S
 
 **2. Install the Scepter ROS SDK**
 
-```console
+```shell
 > cd 3rd-PartyPlugin/ROS/src
 > catkin_init_workspace
 ```
@@ -57,13 +57,13 @@ After run **catkin_init_workspace**, it will generate the **CmakeLists.txt** in 
 
 #### **ROS**
 
-```console
+```shell
 > cd ScepterROS
 ```
 
 #### **ROS_MultiCameras**
 
-```console
+```shell
 > cd ScepterROS_MultiCameras
 ```
 
@@ -79,7 +79,7 @@ After run **catkin_init_workspace**, it will generate the **CmakeLists.txt** in 
 
 Run the cmd "**python install.py [your operating system]", take **Ubuntu18.04** as an example：
 
-```console
+```shell
 > python install.py Ubuntu18.04
 ```
 
@@ -109,7 +109,7 @@ Run the cmd "**python install.py [your operating system]", take **Ubuntu18.04** 
 
 #### **ROS**
 
-```console
+```shell
 > cd ../../
 > catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS"
 ```
@@ -122,7 +122,7 @@ Run the cmd "**python install.py [your operating system]", take **Ubuntu18.04** 
 
 #### **ROS_MultiCameras**
 
-```console
+```shell
 > cd ../../
 > catkin_make -DCATKIN_WHITELIST_PACKAGES="ScepterROS_MultiCameras"
 ```
@@ -135,7 +135,7 @@ Run the cmd "**python install.py [your operating system]", take **Ubuntu18.04** 
 
 <!-- tabs:end -->
 
-```console
+```shell
 > source devel/setup.bash
 ```
 
@@ -147,7 +147,7 @@ Run the cmd "**python install.py [your operating system]", take **Ubuntu18.04** 
 
 **1. Starting camera node**
 
-```console
+```shell
 > cd src/ScepterROS/launch
 > roslaunch ScepterROS scepter_camera.launch
 ```
@@ -160,7 +160,7 @@ Run the cmd "**python install.py [your operating system]", take **Ubuntu18.04** 
 
 **2. With Rviz show frame**
 
-```console
+```shell
 > rviz
 ```
 
@@ -178,7 +178,7 @@ Run the cmd "**python install.py [your operating system]", take **Ubuntu18.04** 
 
 **3. With RQT dynamic reconfigure**
 
-```console
+```shell
 > rosrun rqt_reconfigure rqt_reconfigure
 ```
 
@@ -208,7 +208,7 @@ Run the cmd "**python install.py [your operating system]", take **Ubuntu18.04** 
 
 Open a new terminal
 
-```console
+```shell
 > cd 3rd-PartyPlugin/ROS
 > source devel/setup.bash
 > cd src/ScepterROS/launch
@@ -229,7 +229,7 @@ Open a new terminal
 
 **5. Show PointCloud with color**
 
-```console
+```shell
 > roslaunch ScepterROS scepter_pointCloudxyzcolor.launch
 ```
 
@@ -267,7 +267,7 @@ The **scepter_xxx.launch** support 2 cameras. Modiy the ip in **camera1.lauch** 
 
 **2. Starting camera node**
 
-```console
+```shell
 > cd src/ScepterROS_MultiCameras/launch
 > roslaunch ScepterROS_MultiCameras scepter_camera.launch
 ```
@@ -282,7 +282,7 @@ The **scepter_xxx.launch** support 2 cameras. Modiy the ip in **camera1.lauch** 
 
 Rviz can show frames of multi topics
 
-```console
+```shell
 > rviz
 ```
 
@@ -306,7 +306,7 @@ Rviz can show frames of multi topics
 
 **4. With RQT dynamic reconfigure**
 
-```console
+```shell
 > rosrun rqt_reconfigure rqt_reconfigure
 ```
 
@@ -327,7 +327,7 @@ Rviz can show frames of multi topics
 
 Open a new terminal and rviz can only show one topic
 
-```console
+```shell
 > cd 3rd-PartyPlugin/ROS
 > source devel/setup.bash
 > cd src/ScepterROS_MultiCameras/launch
@@ -356,7 +356,7 @@ Open a new terminal and rviz can only show one topic
 
 Rviz can only show one topic
 
-```console
+```shell
 > roslaunch ScepterROS_MultiCameras scepter_pointCloudxyzcolor.launch
 ```
 

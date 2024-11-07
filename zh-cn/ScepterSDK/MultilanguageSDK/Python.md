@@ -16,8 +16,8 @@ Python SDK 目录结构如下：
 
 在运行 ScepterSDK 之前，请确保您的 Python 版本为 3.7.x 或更高版本，并已安装 ctypes、numpy 模块。在大多数 Python 发行版中，ctypes 都是作为内置模块存在的，因此我们无需额外安装。
 
-```console
-pip install numpy
+```shell
+> pip install numpy
 ```
 
 使用 ScepterSDK 开发新的项目，需要使用英文路径。针对不同的操作系统，需要同时复制 SDK 中的 Python 文件夹和对应系统的文件夹。API 文件夹中的 Scepter_api.py 会自动读取相机的 libScepter_api.so 或 Scepter_api.dll 库文件。
@@ -133,8 +133,8 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
 
 1. 安装 opencv-python 模块。
 
-   ```console
-   pip install opencv-python
+   ```shell
+   > pip install opencv-python
    ```
 
 2. 根据实际产品选择对应的 sample，以 NYX650 为例

@@ -54,8 +54,8 @@ The second method is to manually copy the specified file.
 
 Run the **ScepterSDK/C#/install.py**.
 
-```console
-python install.py x64
+```shell
+> python install.py x64
 ```
 
 ![CSharpInstall](../../../zh-cn/ScepterSDK/MultilanguageSDK/CSharp-asserts/02.png)

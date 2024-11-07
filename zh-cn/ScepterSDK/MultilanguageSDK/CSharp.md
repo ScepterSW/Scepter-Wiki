@@ -32,8 +32,8 @@ Windows 下使用 Visual Studio 2017 开发，需要.NET Framework 为 4.6.x 版
 
 运行**ScepterSDK/C#/install.py** , install.py 用于从指定的路径中提取并移动 Scepter_CSharp.dll 文件的脚本文件。
 
-```console
-python install.py x64
+```shell
+> python install.py x64
 ```
 
 ![CSharpInstall](CSharp-asserts/02.png)
