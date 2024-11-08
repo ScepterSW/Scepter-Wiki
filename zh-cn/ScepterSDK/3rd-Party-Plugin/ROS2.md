@@ -22,13 +22,13 @@
 
 - 安装 python 
 
-  ```
+  ```shell
   > sudo apt install python3
   ```
 
 - 安装 colcon
 
-  ```
+  ```shell
   > sudo apt install python3-colcon-common-extensions
   ```
 
@@ -85,7 +85,7 @@ pull SDK success
 
 #### **ROS**
 
-```
+```shell
 > cd ../../
 > colcon build --packages-select ScepterROS
 ```

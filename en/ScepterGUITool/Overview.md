@@ -38,8 +38,8 @@ Method 3: Download the installer.
 
 ① Open the download link, click Code, and copy the link;
 
-```
-git clone https://github.com/ScepterSW/ScepterGUITool
+```shell
+> git clone https://github.com/ScepterSW/ScepterGUITool
 ```
 
 ![git clone http](<../../zh-cn/Quickstart/Quickstart-asserts/10.png>)
@@ -134,13 +134,13 @@ Taking v24.9.2 as an example, click ScepterGUITool_v24.9.2_ubuntu_install.run.
 
 Open the terminal and add the execution permission to xxx_install.run.
 
-```
+```shell
 > sudo chmod +x ScepterGUITool_vXX.XX.XX_ubuntu_install.run
 ```
 
 ![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3-1.png>)
 
-```
+```shell
 > ./ScepterGUITool_vXX.XX.XX_ubuntu_install.run
 ```
 

@@ -38,8 +38,8 @@ The second way is to download the compressed package to the local.
 
 ① Open the download link, click Code, and copy the link;
 
-```
-git clone https://github.com/ScepterSW/ScepterSDK
+```shell
+> git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
 ![git clone SDK http](<../../zh-cn/ScepterSDK/Overview-asserts/02.png>)

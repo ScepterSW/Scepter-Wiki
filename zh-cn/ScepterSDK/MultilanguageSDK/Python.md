@@ -118,9 +118,9 @@ FrameViewer                                     #设备的OpenCV例程
 
 2. 编译完成，调试运行。
 
-   ```consle
-   cd ScepterSDK\Python\Samples\NYX650\DeviceConnectBySN
-   python DeviceConnectBySN.py
+   ```shell
+   > cd ScepterSDK\Python\Samples\NYX650\DeviceConnectBySN
+   > python DeviceConnectBySN.py
    ```
 
    结果如下图：
@@ -143,9 +143,9 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
 
 3. 运行 OpenCV 显示例程
 
-   ```consle
-   cd ScepterSDK\Python\Samples\NYX650\FrameViewer
-   python FrameViewer.py
+   ```shell
+   > cd ScepterSDK\Python\Samples\NYX650\FrameViewer
+   > python FrameViewer.py
    ```
 
    ![PythonOpenCVResult](Python-asserts/06.png)

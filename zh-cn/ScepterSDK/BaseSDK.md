@@ -119,13 +119,13 @@ Windows 下使用 Visual Studio 2017 开发，可以选择以下两种方式新�
 
 使用 ScepterSDK 开发新的项目，需要在 CMakeList 中将 SDK 中的 Include 目录加入到包含路径:
 
-```consle
+```shell
 include_directories("../../../Include")
 ```
 
 将 Lib 目录加入到链接搜索路径，并链接 libScepter_api.so。
 
-```consle
+```shell
 LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 ```
 
@@ -137,13 +137,13 @@ LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 
 使用 ScepterSDK 开发新的项目，需要在 CMakeList 中将 SDK 中的 Include 目录加入到包含路径:
 
-```consle
+```shell
 include_directories("../../../Include")
 ```
 
 将 Lib 目录加入到链接搜索路径，并链接 libScepter_api.so。
 
-```consle
+```shell
 LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 ```
 
@@ -237,8 +237,8 @@ TransformDepthImgToColorSensorFrame             //将深度图像对齐到设备
 2. 编译完成，输出路径为 PrecompiledSamples，进入目录后运行。
 
    ```shell
-   cd ScepterSDK/Ubuntu/PrecompiledSamples/NYX650_Samples/
-   ./DeviceConnectBySN
+   > cd ScepterSDK/Ubuntu/PrecompiledSamples/NYX650_Samples/
+   > ./DeviceConnectBySN
    ```
 
    ![Execution](BaseSDK-asserts/16.png)

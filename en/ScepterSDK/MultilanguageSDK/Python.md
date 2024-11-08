@@ -142,9 +142,9 @@ Take a single routine of a single product as an example to demonstrate the proce
 
 2. After compilation is complete, debug and run.
 
-   ```consle
-   cd ScepterSDK\Python\Samples\NYX650\DeviceConnectBySN
-   python DeviceConnectBySN.py
+   ```shell
+   > cd ScepterSDK\Python\Samples\NYX650\DeviceConnectBySN
+   > python DeviceConnectBySN.py
    ```
 
    <!-- 结果如下图： -->
@@ -177,9 +177,9 @@ The OpenCV samples show how to use ScepterSDK with third-party libraries. The ex
 
 3. Run the OpenCV display sample
 
-   ```consle
-   cd ScepterSDK\Python\Samples\NYX650\FrameViewer
-   python FrameViewer.py
+   ```shell
+   > cd ScepterSDK\Python\Samples\NYX650\FrameViewer
+   > python FrameViewer.py
    ```
 
    ![PythonOpenCVResult](../../../zh-cn/ScepterSDK/MultilanguageSDK/Python-asserts/06.png)

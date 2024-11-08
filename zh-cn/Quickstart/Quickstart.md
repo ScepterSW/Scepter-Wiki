@@ -68,8 +68,8 @@
 
 设置 ARM-Linux 端的本地连接，子网掩码设为 255.255.255.0，IP 地址设为同一网段（如 192.168.1.100）。可选用 numtui 进行设置。
 
-```consle
-sudo nmtui
+```shell
+> sudo nmtui
 ```
 
    <div class="center">
@@ -116,8 +116,8 @@ ScepterGUITool 下载链接：
 
 ① 打开下载链接，点击 Code，复制链接；
 
-```
-git clone https://github.com/ScepterSW/ScepterGUITool
+```shell
+> git clone https://github.com/ScepterSW/ScepterGUITool
 ```
 
 ![git clone http](<Quickstart-asserts/10.png>)
@@ -214,13 +214,13 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 打开终端，进入下载目录，给run文件增加执行权限
 
-```
+```shell
 > sudo chmod +x ScepterGUITool_vXX.XX.XX_ubuntu_install.run
 ```
 
 ![GitHubGUITool](<Quickstart-asserts/12-3-1.png>)
 
-```
+```shell
 > ./ScepterGUITool_vXX.XX.XX_ubuntu_install.run
 ```
 
@@ -310,8 +310,8 @@ ScepterSDK 下载链接：
 
 ① 打开下载链接，点击 Code，复制链接；
 
-```
-git clone https://github.com/ScepterSW/ScepterSDK
+```shell
+> git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
 ![git clone SDK http](<Quickstart-asserts/22.png>)
@@ -336,9 +336,9 @@ ScepterSDK 包含一系列友好的 API ，应用示例程序及相关动态链�
 
 进入 AArch64/PrecompiledSamples 文件夹，使用终端打开对应相机的预编译好的程序：
 
-```consle
-cd PrecompiledSamples
-./XXXX_OpenCVSample
+```shell
+> cd PrecompiledSamples
+> ./XXXX_OpenCVSample
 ```
 
 ![设备连接](Quickstart-asserts/26.png)

@@ -22,19 +22,19 @@ This ROS2 package facilitates depth IR and color data acquisition and processing
 
 - install python
 
-  ```
+  ```shell
   > sudo apt install python3
   ```
 
 - install colcon
 
-  ```
+  ```shell
   > sudo apt install python3-colcon-common-extensions
   ```
 
 - install pcl, just for **Jazzy Jalisco** 
 
-  ```
+  ```shell
   > sudo apt install libpcl-dev
   ```
 

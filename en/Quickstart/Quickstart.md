@@ -62,8 +62,8 @@ Set the local connection on Linux, set the subnet mask to 255.255.255.0, and set
 
 Set the local connection on ARM-Linux, set the subnet mask to 255.255.255.0, and set the IP address to the same network segment (such as 192.168.1.100). You can use nmtui to set it.
 
-```consle
-sudo nmtui
+```shell
+> sudo nmtui
 ```
 
    <div class="center">
@@ -110,8 +110,8 @@ Method 3: Download the installer.
 
 ① Open the download link, click Code, and copy the link;
 
-```
-git clone https://github.com/ScepterSW/ScepterGUITool
+```shell
+> git clone https://github.com/ScepterSW/ScepterGUITool
 ```
 
 ![git clone http](<../../zh-cn/Quickstart/Quickstart-asserts/10.png>)
@@ -206,15 +206,15 @@ Taking v24.9.2 as an example, click ScepterGUITool_v24.9.2_ubuntu_install.run.
 
 Open the terminal and add the execution permission to xxx_install.run.
 
-```
-> sudo chmod +x ScepterGUITool_vXX.XX.XX_ubuntu_install.run
-```
+   ```shell
+   > sudo chmod +x ScepterGUITool_vXX.XX.XX_ubuntu_install.run
+   ```
 
 ![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3-1.png>)
 
-```
-> ./ScepterGUITool_vXX.XX.XX_ubuntu_install.run
-```
+   ```shell
+   > ./ScepterGUITool_vXX.XX.XX_ubuntu_install.run
+   ```
 
 ![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3-2.png>)
 
@@ -302,8 +302,8 @@ Method 2: Download the compressed package locally.
 
 ① Open the download link, click Code, and copy the link;
 
-```
-git clone https://github.com/ScepterSW/ScepterSDK
+```shell
+> git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
 ![git clone SDK http](<../../zh-cn/Quickstart/Quickstart-asserts/22.png>)
@@ -328,9 +328,9 @@ ScepterSDK includes a series of friendly APIs, application sample programs and r
 
 Enter the AArch64/PrecompiledSamples folder and use the terminal to open the precompiled program for the corresponding camera:
 
-```consle
-cd PrecompiledSamples
-./XXXX_OpenCVSample
+```shell
+> cd PrecompiledSamples
+> ./XXXX_OpenCVSample
 ```
 
 ![ARMLinuxConnect](../../zh-cn/Quickstart/Quickstart-asserts/26.png)

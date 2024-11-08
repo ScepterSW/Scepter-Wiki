@@ -26,8 +26,8 @@ ScepterSDK 下载链接：
 
 ① 打开下载链接，点击 Code，复制链接；
 
-```
-git clone https://github.com/ScepterSW/ScepterSDK
+```shell
+> git clone https://github.com/ScepterSW/ScepterSDK
 ```
 
 ![git clone SDK http](<Overview-asserts/02.png>)

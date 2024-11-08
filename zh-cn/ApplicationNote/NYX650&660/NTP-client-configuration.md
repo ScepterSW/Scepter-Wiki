@@ -52,7 +52,7 @@ win+r打开运行窗口，输入regedit，点击确定。
 
 **w32tm /stripchart /computer:127.0.0.1**： 验证是否成功
 
-```
+```shell
 > net stop w32time
 Windows Time 服务正在停止.
 Windows Time 服务已成功停止。
@@ -126,18 +126,18 @@ NTP Server设置完成后，可以用在同一局域网中的另一台PC作为cl
 安装ntpdate工具
 
 ```shell
-sudo apt install ntpdate
+> sudo apt install ntpdate
 ```
 
 为了让客户端系统通过主机名解析NTP服务器，您需要在/etc/hosts中添加NTP服务器的IP地址和主机名文件。
 
-```
-sudo vim /etc/hosts
+```shell
+> sudo vim /etc/hosts
 ```
 
 在hosts文件中增加如下内容：
 
-```
+```shell
 192.168.1.122   ntp-test-server #linux NTP 服务器
 192.168.1.106   ntp-test-win10 # windows NTP 服务器
 ```
@@ -148,7 +148,7 @@ ntp-test-server：服务器别名
 
 检查客户端系统是否与 NTP 服务器时间同步，请运行以下命令。
 
-```
+```shell
 > sudo ntpdate ntp-test-server
 2 Jul 15:13:38 ntpdate[2603]: adjust time server 192.168.1.122 offset -0.051502 sec
 > sudo ntpdate ntp-test-win10

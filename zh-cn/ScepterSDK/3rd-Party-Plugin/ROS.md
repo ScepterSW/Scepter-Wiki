@@ -251,8 +251,8 @@
 **2. 启动相机节点**
 
 ```shell
-cd src/ScepterROS_MultiCameras/launch
-roslaunch ScepterROS_MultiCameras scepter_camera.launch
+> cd src/ScepterROS_MultiCameras/launch
+> roslaunch ScepterROS_MultiCameras scepter_camera.launch
 ```
 
 <div class="center">

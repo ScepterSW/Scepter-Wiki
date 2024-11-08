@@ -313,7 +313,7 @@ Confidence Filter：置信度滤波，消除信号质量较差点。默认开启
 | :-----------------------------------------------------------------: | :-----------------------------------------------------------------: |
 |                      Confidence Filter 值为 15                      |                      Confidence Filter 值为 50                      |
 
-#### 3.4.3.3. HDR
+#### 3.4.3.4. HDR
 
 | ![Exposure58](FunctionIntroduction-asserts/76.png) |   ![Exposure1000](FunctionIntroduction-asserts/77.png) |   ![HDR](FunctionIntroduction-asserts/78.png) |
 | :-------------------------------: | :-------------------------------------: | :-------------------: |

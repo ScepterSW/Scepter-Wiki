@@ -188,7 +188,7 @@ The project configuration in samples can be referenced.
 
 Developing new projects with ScepterSDK need configure the Include and Lib path in the CMakeList.txt.
 
-```consle
+```shell
 include_directories("../../../Include")
 ```
 
@@ -196,7 +196,7 @@ include_directories("../../../Include")
 
 Add Lib directory to link search path and link that libScepter_api.so.
 
-```consle
+```shell
 LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 ```
 
@@ -212,7 +212,7 @@ For details, please refer the CMake example in samples.
 
 Developing new projects with ScepterSDK need configure the Include and Lib path in the CMakeList.txt.
 
-```consle
+```shell
 include_directories("../../../Include")
 ```
 
@@ -220,7 +220,7 @@ include_directories("../../../Include")
 
 Add Lib directory to link search path and link that libScepter_api.so.
 
-```consle
+```shell
 LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/../../../Lib/")
 ```
 

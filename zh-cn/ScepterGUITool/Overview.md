@@ -38,8 +38,8 @@ ScepterGUITool 下载链接：
 
 ① 打开下载链接，点击 Code，复制链接；
 
-```
-git clone https://github.com/ScepterSW/ScepterGUITool
+```shell
+> git clone https://github.com/ScepterSW/ScepterGUITool
 ```
 
 ![git clone http](<../../zh-cn/Quickstart/Quickstart-asserts/10.png>)
@@ -136,13 +136,13 @@ git clone https://github.com/ScepterSW/ScepterGUITool
 
 打开终端，进入下载目录，给run文件增加执行权限
 
-```
+```shell
 > sudo chmod +x ScepterGUITool_vXX.XX.XX_ubuntu_install.run
 ```
 
 ![GitHubGUITool](<../../zh-cn/Quickstart/Quickstart-asserts/12-3-1.png>)
 
-```
+```shell
 > ./ScepterGUITool_vXX.XX.XX_ubuntu_install.run
 ```
 
