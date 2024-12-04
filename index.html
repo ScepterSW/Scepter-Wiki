@@ -67,7 +67,7 @@
             tabHeadings: true       // default
          },
          //plugin7: google analytics ID
-         ga: 'G-Z5NH19FJMG',
+         
       };
    </script>
    <!-- Docsify v4 :default config 核心代码-->
@@ -89,7 +89,13 @@
    <!-- plugin6: 用于折叠左侧标题栏的层叠标题-->
    <script src="plugins/js/docsify-sidebar-collapse.min.js"></script>
    <!-- plugin7: 用于google analytics访问量统计-->
-   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5NH19FJMG"></script>
+   <script> 
+      window.dataLayer = window.dataLayer || []; 
+      function gtag(){dataLayer.push(arguments);} 
+      gtag('js', new Date()); 
+      gtag('config', 'G-Z5NH19FJMG'); 
+   </script>
 </body>
 
 </html>
