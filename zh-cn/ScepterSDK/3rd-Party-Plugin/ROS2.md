@@ -237,6 +237,8 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定
 - /Scepter/depth/image_raw
 - /Scepter/depth/points
 - /Scepter/depth/points/camera_info
+- /Scepter/depth2color/points
+- /Scepter/depth2color/points/camera_info
 - /Scepter/ir/camera_info
 - /Scepter/ir/image_raw
 - /Scepter/transformedColor/camera_info
@@ -254,6 +256,8 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定
 - /**nodename**/depth/image_raw
 - /**nodename**/depth/points
 - /**nodename**/depth/points/camera_info
+- /**nodename**/depth2color/points
+- /**nodename**/depth2color/points/camera_info
 - /**nodename**/ir/camera_info
 - /**nodename**/ir/image_raw
 - /**nodename**/transformedColor/camera_info
@@ -268,6 +272,18 @@ Scepter_manager 发布由 [sensor_msgs](http://wiki.ros2.org/sensor_msgs) 包定
 </div>
 
 <!-- tabs:end -->
+
+> **说明:**
+>
+> 1. depth2color/points 和 depth2color/points/camera_info 默认不使能，可通过如下命令打开
+> ```shell
+> > ros2 param set /<nodename> Depth2ColorCloudPointFlag  true
+> ```
+> 2. depth/points 和 depth/points/camera_info 默认使能，可通过如下命令关闭
+> ```shell
+> >  ros2 param set /<nodename> DepthCloudPointFlag false
+> ```
+> 
 
 ## 4.2.5. 编程指南
 

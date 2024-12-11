@@ -922,7 +922,7 @@ def scGetFrame(self,  frametype = ScFrameType.SC_DEPTH_FRAME):
 def scGetDepthRangeValue(self):
     minValue = c_int16(0)
     maxValue = c_int16(0)
-    return self.sc_cam_lib.scGetDepthRangeValue(self.device_handle, byref(minValue), byref(maxValue)), minValue, maxValue
+    return self.sc_cam_lib.scGetDepthRangeValue(self.device_handle, byref(minValue), byref(maxValue)), minValue.value, maxValue.value
  
 ```
 
@@ -1348,7 +1348,7 @@ param：图像帧数
 ```python
 def scGetSoftwareTriggerParameter(self):
     param = c_uint8(0)
-    return self.sc_cam_lib.scGetSoftwareTriggerParameter(self.device_handle, byref(param)), param
+    return self.sc_cam_lib.scGetSoftwareTriggerParameter(self.device_handle, byref(param)), param.value
 ```
 
 **函数功能：**
@@ -1691,8 +1691,8 @@ def scSetExposureControlMode(self, sensorType = ScSensorType.SC_TOF_SENSOR, mode
 
 ```python
 def scGetExposureControlMode(self, sensorType = ScSensorType.SC_TOF_SENSOR):
-    mode = ScCameraExposureControlMode(1)
-    return self.sc_cam_lib.scGetExposureControlMode(self.device_handle, sensorType.value, byref(mode)), mode
+    mode = c_uint8(1)
+    return self.sc_cam_lib.scGetExposureControlMode(self.device_handle, sensorType.value, byref(mode)), mode.value
 ```
 
 **函数功能：**
@@ -1743,7 +1743,7 @@ params：要设置的曝光时间参数
 ```python
 def scGetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR):
     params = c_int32(0)
-    return self.sc_cam_lib.scGetExposureTime(self.device_handle, sensorType.value, byref(params)), params
+    return self.sc_cam_lib.scGetExposureTime(self.device_handle, sensorType.value, byref(params)), params.value
 ```
 
 **函数功能：**
@@ -1788,7 +1788,7 @@ params：曝光时间参数
 ```python
 def scGetColorAECMaxExposureTime(self):
    params = c_int32(0)
-   return self.sc_cam_lib.scGetColorAECMaxExposureTime(self.device_handle, byref(params)), params
+   return self.sc_cam_lib.scGetColorAECMaxExposureTime(self.device_handle, byref(params)), params.value
 ```
 
 **函数功能：**
@@ -1812,7 +1812,7 @@ params：返回获取的曝光时间参数
 ```python
 def scGetMaxExposureTime(self, sensorType = ScSensorType.SC_COLOR_SENSOR):
     tmp = c_int32(1000)
-    return self.sc_cam_lib.scGetMaxExposureTime(self.device_handle, sensorType.value, byref(tmp)), tmp
+    return self.sc_cam_lib.scGetMaxExposureTime(self.device_handle, sensorType.value, byref(tmp)), tmp.value
 ```
 
 **函数功能：**
@@ -2362,7 +2362,7 @@ enabled：true 打开对齐，false 关闭对齐
 ```python
 def scGetTransformColorImgToDepthSensorEnabled(self):
     enabled = c_bool(True)
-    return self.sc_cam_lib.scGetTransformColorImgToDepthSensorEnabled(self.device_handle,  byref(enabled)),enabled
+    return self.sc_cam_lib.scGetTransformColorImgToDepthSensorEnabled(self.device_handle,  byref(enabled)),enabled.value
 ```
 
 **函数功能：**
@@ -2407,7 +2407,7 @@ enabled：true 打开对齐，false 关闭对齐
 ```python
 def scGetTransformDepthImgToColorSensorEnabled(self):
     enabled = c_bool(True)
-    return self.sc_cam_lib.scGetTransformDepthImgToColorSensorEnabled(self.device_handle,  byref(enabled)),enabled
+    return self.sc_cam_lib.scGetTransformDepthImgToColorSensorEnabled(self.device_handle,  byref(enabled)),enabled.value
 ```
 
 **函数功能：**

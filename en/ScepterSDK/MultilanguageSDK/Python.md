@@ -963,7 +963,7 @@ Gets image data of the specified image type scGetFrameReady must be called befor
 def scGetDepthRangeValue(self):
     minValue = c_int16(0)
     maxValue = c_int16(0)
-    return self.sc_cam_lib.scGetDepthRangeValue(self.device_handle, byref(minValue), byref(maxValue)), minValue, maxValue
+    return self.sc_cam_lib.scGetDepthRangeValue(self.device_handle, byref(minValue), byref(maxValue)), minValue.value, maxValue.value
  
 ```
 
@@ -1385,7 +1385,7 @@ param：The count of frame, in range [1,10].
 ```python
 def scGetSoftwareTriggerParameter(self):
     param = c_uint8(0)
-    return self.sc_cam_lib.scGetSoftwareTriggerParameter(self.device_handle, byref(param)), param
+    return self.sc_cam_lib.scGetSoftwareTriggerParameter(self.device_handle, byref(param)), param.value
 ```
 
 **Description：**
@@ -1729,8 +1729,8 @@ Set the exposure mode of sensor.
 
 ```python
 def scGetExposureControlMode(self, sensorType = ScSensorType.SC_TOF_SENSOR):
-    mode = ScCameraExposureControlMode(1)
-    return self.sc_cam_lib.scGetExposureControlMode(self.device_handle, sensorType.value, byref(mode)), mode
+    mode = c_uint8(1)
+    return self.sc_cam_lib.scGetExposureControlMode(self.device_handle, sensorType.value, byref(mode)), mode.value
 ```
 
 **Description：**
@@ -1779,7 +1779,7 @@ params：The exposure time. The value must be within the maximum exposure time o
 ```python
 def scGetExposureTime(self, sensorType = ScSensorType.SC_TOF_SENSOR):
     params = c_int32(0)
-    return self.sc_cam_lib.scGetExposureTime(self.device_handle, sensorType.value, byref(params)), params
+    return self.sc_cam_lib.scGetExposureTime(self.device_handle, sensorType.value, byref(params)), params.value
 ```
 
 **Description：**
@@ -1824,7 +1824,7 @@ params：The exposure time. The value must be within the maximum exposure time o
 ```python
 def scGetColorAECMaxExposureTime(self):
    params = c_int32(0)
-   return self.sc_cam_lib.scGetColorAECMaxExposureTime(self.device_handle, byref(params)), params
+   return self.sc_cam_lib.scGetColorAECMaxExposureTime(self.device_handle, byref(params)), params.value
 ```
 
 **Description：**
@@ -1848,7 +1848,7 @@ params：Returns the exposure time.
 ```python
 def scGetMaxExposureTime(self, sensorType = ScSensorType.SC_COLOR_SENSOR):
     tmp = c_int32(1000)
-    return self.sc_cam_lib.scGetMaxExposureTime(self.device_handle, sensorType.value, byref(tmp)), tmp
+    return self.sc_cam_lib.scGetMaxExposureTime(self.device_handle, sensorType.value, byref(tmp)), tmp.value
 ```
 
 **Description：**
@@ -2398,7 +2398,7 @@ enabled：Set to true to enable the feature or false to disable the feature.
 ```python
 def scGetTransformColorImgToDepthSensorEnabled(self):
     enabled = c_bool(True)
-    return self.sc_cam_lib.scGetTransformColorImgToDepthSensorEnabled(self.device_handle,  byref(enabled)),enabled
+    return self.sc_cam_lib.scGetTransformColorImgToDepthSensorEnabled(self.device_handle,  byref(enabled)),enabled.value
 ```
 
 **Description：**
@@ -2446,7 +2446,7 @@ enabled：Set to true to enable the feature or false to disable the feature.
 ```python
 def scGetTransformDepthImgToColorSensorEnabled(self):
     enabled = c_bool(True)
-    return self.sc_cam_lib.scGetTransformDepthImgToColorSensorEnabled(self.device_handle,  byref(enabled)),enabled
+    return self.sc_cam_lib.scGetTransformDepthImgToColorSensorEnabled(self.device_handle,  byref(enabled)),enabled.value
 ```
 
 **Description：**

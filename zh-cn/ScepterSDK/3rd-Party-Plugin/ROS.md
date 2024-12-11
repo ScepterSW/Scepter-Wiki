@@ -186,8 +186,10 @@
 >
 > - 修改 FrameRate 将影响 ToFExposureTime 和 ColorExposureTime 的最大值
 > - 当 ToFExposureTime 或 ColorExposureTime 设置高于最大值时，该值无效
-> - HDRMode 仅在 ToFManual 为 True 时生效
+> - XDRMode NormalMode(0: HDR和WDR均为关闭状态), HDRMode(1：仅使能HDR), WDRMode(2: 仅使能WDR)
 > - ToFManual 设置为 false 时，HDRMode 为 True 时无效
+> - DepthCloudPoint 勾选后，发送Depth转点云的数据
+> - Depth2ColorCloudPoint勾选后，发送Color空间的Depth转点云的数据
 
 **4. 显示点云**
 
@@ -303,8 +305,10 @@ Rviz 可以显示多个话题的界面
 >
 > - 修改 FrameRate 将影响 ToFExposureTime 和 ColorExposureTime 的最大值
 > - 当 ToFExposureTime 或 ColorExposureTime 设置高于最大值时，该值无效
-> - HDRMode 仅在 ToFManual 为 True 时生效
+> - XDRMode NormalMode(0: HDR和WDR均为关闭状态), HDRMode(1：仅使能HDR), WDRMode(2: 仅使能WDR)
 > - ToFManual 设置为 false 时，HDRMode 为 True 时无效
+> - DepthCloudPoint 勾选后，发送Depth转点云的数据
+> - Depth2ColorCloudPoint勾选后，发送Color空间的Depth转点云的数据
 
 **5. 显示点云**
 
@@ -365,23 +369,39 @@ Rviz 只能显示一个话题
 
 Scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定义的以下话题
 
+- /Scepter/color/camera_info
+- /Scepter/color/image_raw 
 - /Scepter/depth/camera_info
-- /Scepter/color/image_raw
-- /Scepter/depth/image_raw
-- /Scepter/ir/image_raw
-- /Scepter/transformedColor/image_raw
-- /Scepter/transformedDepth/image_raw
+- /Scepter/depth/image_raw 
+- /Scepter/ir/camera_info
+- /Scepter/ir/image_raw 
+- /Scepter/transformedColor/camera_info
+- /Scepter/transformedColor/image_raw 
+- /Scepter/transformedDepth/camera_info
+- /Scepter/transformedDepth/image_raw 
+- /Scepter/depth2colorCloudPoint/camera_info
+- /Scepter/depth2colorCloudPoint/cloud_points
+- /Scepter/depthCloudPoint/camera_info
+- /Scepter/depthCloudPoint/cloud_points
 
 #### **ROS_MultiCameras**
 
 Scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定义的以下话题
 
+- /**nodename**/color/camera_info
+- /**nodename**/color/image_raw 
 - /**nodename**/depth/camera_info
-- /**nodename**/color/image_raw
-- /**nodename**/depth/image_raw
-- /**nodename**/ir/image_raw
-- /**nodename**/transformedDepth/image_raw
-- /**nodename**/transformedColor/image_raw
+- /**nodename**/depth/image_raw 
+- /**nodename**/ir/camera_info
+- /**nodename**/ir/image_raw 
+- /**nodename**/transformedColor/camera_info
+- /**nodename**/transformedColor/image_raw 
+- /**nodename**/transformedDepth/camera_info
+- /**nodename**/transformedDepth/image_raw 
+- /**nodename**/depth2colorCloudPoint/camera_info
+- /**nodename**/depth2colorCloudPoint/cloud_points
+- /**nodename**/depthCloudPoint/camera_info
+- /**nodename**/depthCloudPoint/cloud_points
 
 ![toROS-asserts](ROS-asserts/28.png)
 

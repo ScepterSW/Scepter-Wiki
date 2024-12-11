@@ -241,6 +241,8 @@ The scepter_manager publishes messages defined by the [sensor_msgs](http://wiki.
 - /Scepter/depth/image_raw
 - /Scepter/depth/points
 - /Scepter/depth/points/camera_info
+- /Scepter/depth2color/points
+- /Scepter/depth2color/points/camera_info
 - /Scepter/ir/camera_info
 - /Scepter/ir/image_raw
 - /Scepter/transformedColor/camera_info
@@ -258,6 +260,8 @@ The scepter_manager publishes messages defined by the [sensor_msgs](http://wiki.
 - /**nodename**/depth/image_raw
 - /**nodename**/depth/points
 - /**nodename**/depth/points/camera_info
+- /**nodename**/depth2color/points
+- /**nodename**/depth2color/points/camera_info
 - /**nodename**/ir/camera_info
 - /**nodename**/ir/image_raw
 - /**nodename**/transformedColor/camera_info
@@ -272,6 +276,18 @@ The scepter_manager publishes messages defined by the [sensor_msgs](http://wiki.
 </div>
 
 <!-- tabs:end -->
+
+> **Instructions:**
+>
+> 1. depth2color/points and depth2color/points/camera_info is disenabled by default, to set enable as follow: 
+> ```shell
+> > ros2 param set /<nodename> Depth2ColorCloudPointFlag  true
+> ```
+> 2. depth/points and depth/points/camera_info is enabled by default, to set disenable as follow: 
+> ```shell
+> >  ros2 param set /<nodename> DepthCloudPointFlag false
+> ```
+>  
 
 ## 4.2.5. Programming guide
 
