@@ -54,20 +54,6 @@ ScepterSDK
 
 Application Note
 
-- [1. NYX650/660](javascript:;)
+- [NYX650/660](en/ApplicationNote/NYX650&660/NYX650-application-note.md)
 
-  - [1.1. Depth Quality Test](en/ApplicationNote/NYX650&660/Depth-Quality-Test.md)
-
-  * [1.2. AGV scene Testing Data](en/ApplicationNote/NYX650&660/AGV-scene-Testing-Data.md)
-
-  - [1.3. Multi-Cameras Coexist](en/ApplicationNote/NYX650&660/Multi-Cameras-Coexist.md)
-
-* [2. DS86/87](javascript:;)
-
-  - [2.1. Depth Quality Test](en/ApplicationNote/DS86&87/Depth-Quality-Test.md)
-
-  * [2.2. AGV scene Testing Data](en/ApplicationNote/DS86&87/AGV-scene-Testing-Data.md)
-
-  - [2.3. HDR Mode](en/ApplicationNote/DS86&87/HDR-Mode.md)
-
-  * [2.4. Multi-Cameras Coexist](en/ApplicationNote/DS86&87/Multi-Cameras-Coexist.md)
+* [DS86/87](en/ApplicationNote/DS86&87/DS86-application-note.md)

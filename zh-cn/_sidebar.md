@@ -54,34 +54,6 @@ Scepter 软件开发包介绍
 
 应用笔记
 
-- [NYX650/660](javascript:;)
+- [NYX650/660](zh-cn/ApplicationNote/NYX650&660/NYX650-application-note.md)
 
-  * [NTP设置使用方法](zh-cn/ApplicationNote/NYX650&660/NTP-client-configuration.md)
-
-  - [PTP设置使用方法](zh-cn/ApplicationNote/NYX650&660/PTP-client-configuration.md)
-
-  * [相机默认参数配置方法](zh-cn/ApplicationNote/NYX650&660/Device-initialization-parameter-method.md)
-
-  - [图像延时产生原理与测试方法](zh-cn/ApplicationNote/NYX650&660/Frame-dalay-test-method.md)
-  
-  * [HDR & WDR](zh-cn/ApplicationNote/NYX650&660/HDR-WDR-method.md)
-
-  - [Docker中使用ScepterSDK](zh-cn/ApplicationNote/NYX650&660/Use-SDK-in-docker-method.md)
-
-  * [Depth与Color图像对齐原理与使用方法](zh-cn/ApplicationNote/NYX650&660/Depth-Color-map-method.md)
-
-* [DS86/87](javascript:;)
-
-  - [深度质量测试](zh-cn/ApplicationNote/DS86&87/Depth-Quality-Test.md)
-
-  * [AGV 场景测试数据](zh-cn/ApplicationNote/DS86&87/AGV-scene-Testing-Data.md)
-
-  - [HDR 模式](zh-cn/ApplicationNote/DS86&87/HDR-Mode.md)
-
-  * [多机共存](zh-cn/ApplicationNote/DS86&87/Multi-Cameras-Coexist.md)
-
-  - [相机默认参数配置方法](zh-cn/ApplicationNote/NYX650&660/Device-initialization-parameter-method.md)
-
-  * [图像延时产生原理与测试方法](zh-cn/ApplicationNote/NYX650&660/Frame-dalay-test-method.md)
-
-  - [Depth与Color图像对齐原理与使用方法](zh-cn/ApplicationNote/NYX650&660/Depth-Color-map-method.md)
+* [DS86/87](zh-cn/ApplicationNote/DS86&87/DS86-application-note.md)

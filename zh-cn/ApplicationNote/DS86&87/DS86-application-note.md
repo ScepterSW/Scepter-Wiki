@@ -1,20 +1,17 @@
 
 
-# NYX650/660 应用笔记:
+# DS86/87 应用笔记:
 
-### **系列笔记： **
+### 系列笔记：
 
-|    No.     | Name                                         | Link                                                         |
-| :--------: | -------------------------------------------- | ------------------------------------------------------------ |
-| 应用笔记08 | Vzense  NYX系列ToF相机如何实现多机共存       | [Details](https://gongye.goermicro.com/blog/application-notes/an08-how-to-avoid-multiple-vzense-tof-camera-interference-with-each-other.html) |
-| 应用笔记14 | NYX系列ToF相机深度质量测试                   | [Details](https://gongye.goermicro.com/blog/application-notes/an14-nyx-series-of-tof-camera-depth-quality-testing-data.html) |
-| 应用笔记15 | NYX系列ToF相机托盘识别场景测试               | [Details](https://gongye.goermicro.com/blog/application-notes/an15-nyx-series-of-tof-camera-pallet-identification-testing.html) |
-| 应用笔记22 | Vzense  NXY系列ToF相机拍摄运动场景的效果展示 | [Details](https://gongye.goermicro.com/blog/application-notes/an22-vzense-tof-cameras-performance-demonstration-in-moving-scenarios.html) |
-| 应用笔记23 | Vzense  NYX系列ToF相机拍摄黑色物体的效果展示 | [Details](https://gongye.goermicro.com/blog/application-notes/an23-vzense-nyx-series-tof-cameras-performance-demonstration-when-capturing-black-objects.html) |
+|    No.     | Name                                      | Link                                                         |
+| :--------: | ----------------------------------------- | ------------------------------------------------------------ |
+| 应用笔记11 | Vzense  DS系列ToF相机HDR功能测试          | [Details](https://gongye.goermicro.com/blog/application-notes/an11-learn-more-about-hdr-fuction-of-vzense-tof-camera.html) |
+| 应用笔记16 | Intel  Realsense D435 vs. Vzense DS86评测 | [Details](https://gongye.goermicro.com/blog/application-notes/an16-intel-realsense-d435-vs-vzense-ds86-comparison-test.html) |
 
 
 
-### **通用笔记：**
+### 通用笔记：
 
 |    No.     | Name                                                         | Link                                                         |
 | :--------: | ------------------------------------------------------------ | ------------------------------------------------------------ |

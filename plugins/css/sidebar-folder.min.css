@@ -15,16 +15,12 @@
 .sidebar-nav li.file > a[title="4. ToF 相机的实现原理"],
 .sidebar-nav li.file > a[title="4. Direct ToF vs Indirect ToF"],
 .sidebar-nav li.file > a[title="2. BaseSDK (C/C++)"],
-.sidebar-nav li.file > a[title="NYX650/660"],
-.sidebar-nav li.file > a[title="DS86/87"],
 .sidebar-nav li.folder a[title="3. MultilanguageSDK"],
 .sidebar-nav li.folder a[title="4. 3rd-Party Plugin"],
 .sidebar-nav li.folder a[title="3.1. Python"],
 .sidebar-nav li.folder a[title="3.2. CSharp"],
 .sidebar-nav li.folder a[title="4.1. ROS"],
-.sidebar-nav li.folder a[title="4.2. ROS2"],
-.sidebar-nav li.folder a[title="NYX650/660"],
-.sidebar-nav li.folder a[title="DS86/87"] {
+.sidebar-nav li.folder a[title="4.2. ROS2"] {
   background: left center no-repeat url(./pics/collapse.png);
   background-size: 10px 10px;
 }
