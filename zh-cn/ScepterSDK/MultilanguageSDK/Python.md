@@ -14,7 +14,9 @@ Python SDK 目录结构如下：
 
 ## 3.1.2. 项目配置
 
-在运行 ScepterSDK 之前，请确保您的 Python 版本为 3.7.x 或更高版本，并已安装 ctypes、numpy 模块。在大多数 Python 发行版中，ctypes 都是作为内置模块存在的，因此我们无需额外安装。
+在运行 ScepterSDK 之前，请确保您的 Python 版本为 3.8 或更高版本，并已安装 ctypes、numpy 模块。在大多数 Python 发行版中，ctypes 都是作为内置模块存在的，因此我们无需额外安装。
+
+> Python已验证版本：3.8/3.9/3.10/3.11/3.12
 
 ```shell
 > pip install numpy

@@ -54,23 +54,23 @@ ScepterSDK 提供的多平台和开发语言的开发包，包含如下内容：
 
 **3rd-PartyPlugin：**
 
-- ROS：目录包含 ROS 软件包。
+- ROS：目录包含 ROS 软件包，支持版本：Kinetic(16.04), Melodic(18.04), Noetic(20.04)
 
-- ROS2：目录包含 ROS2 软件包。
+- ROS2：目录包含 ROS2 软件包，支持版本：Foxy(20.04), Humble(22.04), Jazzy(24.04)
 
 **BaseSDK：**
 
 - Windows：目录包含个人计算机平台(x86_64) Windows PC 开发包, 使用标准编译器 VS2017。
 
-- Ubuntu16.04：目录包含个人计算机平台(x86_64) Ubuntu16.04 开发包, 使用标准编译器 x86_64-linux-gnu(v5.4.0)。
+- Ubuntu16.04：目录包含个人计算机平台(x86_64) Ubuntu16.04 LTS 开发包, 使用标准编译器 x86_64-linux-gnu(v5.4.0)。
 
-- Ubuntu18.04：目录包含个人计算机平台(x86_64) Ubuntu18.04 开发包, 使用标准编译器 x86_64-linux-gnu(v7.5.0)。Ubuntu18.04 SDK 包与 Ubuntu20.04、Ubuntu22.04 兼容。
+- Ubuntu：目录包含个人计算机平台(x86_64) Ubuntu18.04/20.04/22.04/24.04 LTS 开发包, 使用标准编译器 x86_64-linux-gnu(v7.5.0)。
 
 - AArch64：目录包含 64 位 Arm-Linux 开发包，使用标准编译器 aarch64-linux-gnu(v7.5.0)。
 
 **MultilanguageSDK：**
 
-- Python：目录包含 Python 开发包。
+- Python：目录包含 Python 开发包，支持版本：3.8/3.9/3.10/3.11/3.12
 
 - CSharp：目录包含 C#语言开发包。
 

@@ -74,9 +74,9 @@ The ScepterSDK provides a development kit for multiple platforms and development
 
 **3rd-PartyPlugin：**
 
-- ROS：The directory contains ROS packages.
+- ROS：The directory contains ROS packages, supported version: Kinetic(16.04), Melodic(18.04), Noetic(20.04)
 
-- ROS2：The directory contains the ROS2 package.
+- ROS2：The directory contains the ROS2 package, supported version: Foxy(20.04), Humble(22.04), Jazzy(24.04)
 
 **BaseSDK：**
 
@@ -90,15 +90,15 @@ The ScepterSDK provides a development kit for multiple platforms and development
 
 - Windows: Directory contains the personal computer platform (x86_64) Windows PC development kit, using the standard compiler VS2017.
 
-- Ubuntu 16.04: Directory contains the personal computer platform(x86_64)Ubuntu 16.04 development package, using the standard compiler x86_64-linux-gnu(v5.4.0).
+- Ubuntu 16.04: Directory contains the personal computer platform(x86_64)Ubuntu 16.04 LTS development package, using the standard compiler x86_64-linux-gnu(v5.4.0).
 
-- Ubuntu 18.04: The directory contains the Personal Computer Platform(x86_64)Ubuntu 18.04 development package, using the standard compiler x86_64-linux-gnu(v7.5.0). Ubuntu 18.04 SDK package is compatible with Ubuntu 20.04, Ubuntu 22.04.
+- Ubuntu: The directory contains the Personal Computer Platform(x86_64)Ubuntu 18.04/20.04/22.04/24.04 LTS development package, using the standard compiler x86_64-linux-gnu(v7.5.0). 
 
 - AArch64: Directory contains the 64-bit Arm-Linux development package, using the standard compiler aarch64-linux-gnu(v7.5.0).
 
 **MultilanguageSDK：**
 
-- Python: The directory contains the Python development package.
+- Python: The directory contains the Python development package,  supported version: 3.8/3.9/3.10/3.11/3.12
 
 - CSharp：The directory contains the C # language development kit.
 
