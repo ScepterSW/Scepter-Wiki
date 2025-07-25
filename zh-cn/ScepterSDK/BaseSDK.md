@@ -277,43 +277,31 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
 
 #### **Windows**
 
-1. 到 OpenCV 官网，下载并安装 [OpenCV 3.0.0](https://sourceforge.net/projects/opencvlibrary/files/opencv-win/3.0.0-rc1/opencv-3.0.0-rc1.exe/download)。
+1. 为方便您直接使用，Samples/OpenCV/Thirdparty 目录下已经包含预编译好的 OpenCV 3.4.16 版本，无需您额外下载和编译。
 
-   选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.0.0 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。
+   ![UbuntuOpenCV](BaseSDK-asserts/25.png)
 
-   ![DownloadOpenCV](BaseSDK-asserts/20.png)
+   选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.4.16 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。
 
-   选择指定的位置开始解压。
-
-   ![Extract](BaseSDK-asserts/21.png)
-
-2. 设置环境变量 OPENCV_DIR。
-
-   设置此环境变量的原因是在 ScepterSDK 中，OpenCVSample 采用了 OPENCV_DIR 这一环境变量。
-
-   其值为安装的 OpenCV 的 build 目录的绝对路径，例如 D:\Programs\OpenCV300\opencv\build。
-
-   ![SetEnvironment](BaseSDK-asserts/22.png)
-
-3. 根据实际产品选择对应的 sample。
+2. 根据实际产品选择对应的 sample。
 
    下面以 NYX650 为例，使用 Visual Studio 2017 打开 ScepterSDK\Windows\Samples\OpenCV\NYX650 目录下的 FrameViewer.vcxproj，直接编译。
 
    ![FrameViewer Project](<BaseSDK-asserts/23.png>)
 
-4. 编译生成的可执行文件 FrameViewer.exe 在 ScepterSDK\Windows\Bin\x86\或 ScepterSDK\Windows\Bin\x64\目录下。
+3. 编译生成的可执行文件 FrameViewer.exe 在 ScepterSDK\Windows\Bin\x86\或 ScepterSDK\Windows\Bin\x64\目录下。
 
-5. 运行 FrameViewer.exe，执行效果如下图。
+4. 运行 FrameViewer.exe，执行效果如下图。
 
    ![Execution Successful](<BaseSDK-asserts/24.png>)
 
 #### **Ubuntu**
 
-1. 为方便您直接使用，Samples/OpenCV/Thirdparty 目录下已经包含预编译好的 OpenCV 3.4.1 版本，无需您额外下载和编译。
+1. 为方便您直接使用，Samples/OpenCV/Thirdparty 目录下已经包含预编译好的 OpenCV 3.4.16 版本，无需您额外下载和编译。
 
    ![UbuntuOpenCV](BaseSDK-asserts/25.png)
 
-   选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.4.1 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。
+   选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.4.16 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。
 
 2. 根据实际产品选择对应的 sample，以 NYX650 为例编译 OpenCV 显示例程
 
@@ -338,11 +326,11 @@ OpenCV 例程用于展示如何搭配第三方库使用 ScepterSDK。例程使�
 
 #### **AArch64**
 
-1. 为方便您直接使用，Samples/OpenCV/Thirdparty 目录下已经包含预编译好的 OpenCV 3.4.1 版本，无需您额外下载和编译。
+1. 为方便您直接使用，Samples/OpenCV/Thirdparty 目录下已经包含预编译好的 OpenCV 3.4.16 版本，无需您额外下载和编译。
 
-   ![AArch64OpenCV](BaseSDK-asserts/28.png)
+   ![AArch64OpenCV](BaseSDK-asserts/25.png)
 
-   选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.4.1 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。
+   选用此版本的原因是在 ScepterSDK 中，OpenCVSample 采用了 OpenCV 3.4.16 版本进行开发。您可以根据实际的编程需求，选择使用不同版本的 OpenCV。
 
    > AArch64 端常用 headless 模式，该模式下运行 OpenCV 会出错。OpenCV 在 headless 模式下运行可能遇到的问题包括：依赖的图形库不可用、图形环境配置错误、或者 OpenCV 的某些功能依赖于图形处理能力。
 
