@@ -4,9 +4,9 @@
 
 ## 4.2.1. 环境要求
 
-**1. 为您的操作系统安装推荐的 ROS2 发行版(<http://wiki.ros.org/Distributions>)**
+**1. 为您的操作系统安装推荐的 ROS2 发行版(<https://ros.org/reps/rep-2000.html>)**
 
-- ROS2 安装页面：<http://docs.ros.org/en/rolling/Installation.html>
+- ROS2 安装页面：<https://docs.ros.org/>
 
 - 您可以使用第三方插件 FishROS，实现快速安装 ROS：<https://github.com/fishros/install>
 
@@ -73,15 +73,15 @@
 
 通过执行命令"**python3 scepter_sdk_install.py**"，可以将Scepter ROS2 Wrapper所需的依赖项拷贝到**dependencies**文件夹中；
 
-以**Ubuntu20.04**系统为例：
+以**x86_64-Ubuntu20.04**为例：
 
 ```shell
 > python3 scepter_sdk_install.py
 ```
 
 ```shell
-Dependencies of package <scepter_manager> have installed successfully on Platform Ubuntu20.04
-Dependencies of package <sc_enumerate_devices> have installed successfully on Platform Ubuntu20.04
+Dependencies of package <scepter_manager> has installed successfully on Platform x86_64-Ubuntu20.04
+Dependencies of package <sc_enumerate_devices> has installed successfully on Platform x86_64-Ubuntu20.04
 ```
 
 **3.  构建ScepterROS2包**
@@ -89,17 +89,20 @@ Dependencies of package <sc_enumerate_devices> have installed successfully on Pl
 ```shell
 > cd SDK/3rd-PartyPlugin/ROS2
 ```
- 
-- 构建sc_enumerate_devices
+
+- 构建sc_enumerate_devices和scepter_manager 
 
 ```shell
-> colcon build --packages-select sc_enumerate_devices
+> colcon build --packages-select sc_enumerate_devices scepter_manager
 ```
 
 ```shell
 Starting >>> sc_enumerate_devices
+Starting >>> scepter_manager
 Finished <<< sc_enumerate_devices [3.47s]
-Summary: 1 packages finished [3.5s]
+Finished <<< scepter_manager [13.8s]
+
+Summary: 2 packages finished [14.0s]
 ```
 
 ```shell
@@ -122,39 +125,7 @@ Summary: 1 packages finished [3.5s]
 
 </div>
 
-更新seriesnumber到/SDK/3rd-PartyPlugin/ROS2/src/scepter_manager/param/default.param.yaml
-
-以**GN6501PBCA7100393**为例，
-
-```yaml
-/**:
-  ros__parameters:
-    camera_name: "tof_camera" # camera name, node name would be set as vzense_{camear_name}.
-    camera_sn: "GN6501PBCA7100393" # camera series number.
-    framerate: 15 # camera frame rate.
-    work_mode: 0 # camera work mode. 0: Active Mode 1: HardwareTrigger Mode 2: SoftwareTigger Mode.
-    color_resolution: 0 # camera color resolution. 0: 1600*1200 1: 800*600 2: 640*480.
-    xdr_mode: 0 # camera hdr&wdr mode. 0: hdr disable wdr disable 1: hdr enable wdr diable 2: hdr disable wdr enable.
-    depth_publish: true # whether publish depth image.
-    ir_publish: true # whether publish ir image.
-    color_publish: true # whether publish color image.
-    transformed_color: false # whether enable color to depth transformation and publish it.
-    transformed_depth: false # whether enable depth to color transformation and publish it.
-    depth_cloud_point: false # whether publish depth cloud point.
-    depth2color_cloud_point: false # whether publish depth2color cloud point, must works with the transformed_depth enabled.
-```
-
-- 构建scepter_manager
- 
-```shell
-> colcon build --packages-select scepter_manager
-``` 
- 
-```shell
-Starting >>> scepter_manager
-Finished <<< scepter_manager [13.6s]                       
-Summary: 1 package finished [13.7s]
-``` 
+编译产物
 
 <div class="center">
 
@@ -162,9 +133,6 @@ Summary: 1 package finished [13.7s]
 
 </div>
 
-```shell
-> source install/setup.bash
-```
 ## 4.2.3. 使用方式
 <!-- tabs:start -->
 
@@ -172,8 +140,10 @@ Summary: 1 package finished [13.7s]
 
 **1. 启动相机节点**
 
+在命令行参数输入相机SN
+
 ```shell
-> ros2 launch scepter_manager node_execute.launch.py
+> ros2 launch scepter_manager node_execute.launch.py camera_sn:="GN6501PBCA7100393"
 ```
 
 <div class="center">
@@ -182,44 +152,54 @@ Summary: 1 package finished [13.7s]
 
 </div>
 
->设置帧率20，Color分辨率640*480，其余参数仍是yaml文件的配置
+node_execute.launch.py会加载位于./install/scepter_manager/share/scepter_manager/param/下的default.param.yaml作为相机节点的启动参数；
+
+>如需修改相机节点启动参数，有以下两种方式：
+>
+>方式1：修改yaml文件
+>
+>在节点启动前按需修改default.param.yaml；
+>
+>方式2：设置命令行参数
+>
+>设置帧率20，Color分辨率640*480，其余参数仍是default.param.yaml文件的配置
 >
 >```shell
-> >ros2 launch scepter_manager node_execute.launch.py framerate:=20 color_resolution:=2
+>> ros2 launch scepter_manager node_execute.launch.py framerate:=20 color_resolution:=2
 >```
 
 **2. 相机动态参数设置**
 
-查看参数列表；
+查看参数列表
 
 ```Shell
 > ros2 param list /vzense_tof_camera
 ```
 
-```Shell
-  camera_name // 不可动态修改
-  camera_sn   // 不可动态修改
-  color_publish
-  color_resolution
-  depth2color_cloud_point
-  depth_cloud_point
-  depth_publish
-  framerate
-  ir_publish
-  software_trigger
-  transformed_color
-  transformed_depth
-  use_sim_time
-  work_mode
-  xdr_mode
-```
+| 参数名称                | 参数含义                        | 参数类型 | 参数取值                                                     | 是否支持动态修改 |
+| ----------------------- | :------------------------------ | -------- | ------------------------------------------------------------ | ---------------- |
+| camera_name             | 节点名称                        | string   | 任意字母和数字的组合                                         | 否               |
+| camera_sn               | 相机Series Number               | string   | 相机Series Number                                            | 否               |
+| framerate               | 帧率                            | int      | [1-30]                                                       | 是               |
+| work_mode               | 相机工作模式                    | int      | [0-2] <br />0: Active Mode <br />1: Hardwaretrigger Mode <br />2: Softwaretrigger Mode | 是               |
+| color_resolution        | 相机RGB分辨率                   | int      | [0-2] <br />0: 1600×1200 <br />1: 800×600 <br />2: 640×480   | 是               |
+| xdr_mode                | 相机HDR与WDR模式设置            | int      | [0-2] <br />0: hdr off&wdr off <br />1: hdr on&wdr off <br />2: hdr off&wdr on | 是               |
+| depth_publish           | Depth图像Topic发布控制          | bool     | [true,false]<br />true:发布<br />false 不发布                | 是               |
+| ir_publish              | IR图像Topic发布控制             | bool     | [true,false]<br />true:发布<br />false 不发布                | 是               |
+| color_publish           | RGB图像Topic发布控制            | bool     | [true,false]<br />true:发布<br />false 不发布                | 是               |
+| transformed_color       | Color-to-Depth图像Topic发布控制 | bool     | [true,false]<br />true:发布<br />false 不发布                | 是               |
+| transformed_depth       | Depth-to-Color图像Topic发布控制 | bool     | [true,false]<br />true:发布<br />false 不发布                | 是               |
+| depth_cloud_point       | Depth点云发布控制               | bool     | [true,false]<br />true:发布<br />false 不发布                | 是               |
+| depth2color_cloud_point | Depth-to-Color点云Topic发布控制 | bool     | [true,false]<br />true:发布<br />false 不发布                | 是               |
+| software_trigger        | 软触发开关                      | bool     | [true,false]<br />true:触发一次<br />false:触发一次          | 是               |
 
 <!-- tabs:start -->
+
 ### **方式1**
 
 ```shell
 > ros2 param set /vzense_tof_camera depth_cloud_point true
-``` 
+```
 
 ### **方式2**
 
@@ -237,25 +217,25 @@ Summary: 1 package finished [13.7s]
 
 **3. Topic列表**
 
-scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定义的以下话题 
+scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定义的以下话题：
 
-```shell
-/tf_static -- Static TF info
-/vzense_tof_camera/<sn>/color/camera_info -- Color sensor camera info
-/vzense_tof_camera/<sn>/color/image_raw -- Color image
-/vzense_tof_camera/<sn>/depth/camera_info -- Depth sensor camera info
-/vzense_tof_camera/<sn>/depth/image_raw -- Depth image
-/vzense_tof_camera/<sn>/depth/points -- Depth cloud point
-/vzense_tof_camera/<sn>/depth/points/camera_info -- Depth sensor camera info with depth cloud point frame id
-/vzense_tof_camera/<sn>/depth2color/points -- Depth-to-color cloud point
-/vzense_tof_camera/<sn>/depth2color/points/camera_info -- Color sensor camera info with depth-to-color cloud point frame id
-/vzense_tof_camera/<sn>/ir/camera_info -- Depth sensor camera info with IR frame id
-/vzense_tof_camera/<sn>/ir/image_raw -- IR image
-/vzense_tof_camera/<sn>/transformedColor/camera_info -- Depth sensor camera info with color-to-depth frame id
-/vzense_tof_camera/<sn>/transformedColor/image_raw -- Color-to-depth aligned image
-/vzense_tof_camera/<sn>/transformedDepth/camera_info -- Color sensor camera info with depth-to-color frame id
-/vzense_tof_camera/<sn>/transformedDepth/image_raw -- Depth-to-color aligned image
-```
+| Topic 名称                                             | Topic 类型                  | Topic 信息                                             |
+| ------------------------------------------------------ | --------------------------- | ------------------------------------------------------ |
+| /tf_static                                             | tf2_msgs/msg/TFMessage      | 静态TF信息                                             |
+| /vzense_tof_camera/<sn>/color/camera_info              | sensor_msgs/msg/CameraInfo  | Color sensor相机信息                                   |
+| /vzense_tof_camera/<sn>/color/image_raw                | sensor_msgs/msg/Image       | Color图像                                              |
+| /vzense_tof_camera/<sn>/depth/camera_info              | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息                                   |
+| /vzense_tof_camera/<sn>/depth/image_raw                | sensor_msgs/msg/Image       | Depth图像                                              |
+| /vzense_tof_camera/<sn>/depth/points                   | sensor_msgs/msg/PointCloud2 | Depth点云                                              |
+| /vzense_tof_camera/<sn>/depth/points/camera_info       | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息（携带depth点云frameId）           |
+| /vzense_tof_camera/<sn>/depth2color/points             | sensor_msgs/msg/PointCloud2 | Depth-to-color点云                                     |
+| /vzense_tof_camera/<sn>/depth2color/points/camera_info | sensor_msgs/msg/CameraInfo  | Color sensor相机信息（携带depth-to-color点云frameId）  |
+| /vzense_tof_camera/<sn>/ir/camera_info                 | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息（携带IR图像frameId）              |
+| /vzense_tof_camera/<sn>/ir/image_raw                   | sensor_msgs/msg/Image       | IR图像                                                 |
+| /vzense_tof_camera/<sn>/transformedColor/camera_info   | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息（携带color-to-deptht图像frameId） |
+| /vzense_tof_camera/<sn>/transformedColor/image_raw     | sensor_msgs/msg/Image       | Color-to-depth对齐图像                                 |
+| /vzense_tof_camera/<sn>/transformedDepth/camera_info   | sensor_msgs/msg/CameraInfo  | Color sensor相机信息（携带depth-to-color点云frameId）  |
+| /vzense_tof_camera/<sn>/transformedDepth/image_raw     | sensor_msgs/msg/Image       | Depth-to-color对齐图像                                 |
 
 >部分Topic默认不发布，需动态调整参数后使能
 
@@ -308,7 +288,7 @@ Depth点云Topic名称为：/depth/points
 **5. Intra Process Communication 支持**
 
 ```Shell
-> ros2 launch scepter_manager node_container.launch.py
+> ros2 launch scepter_manager node_container.launch.py camera_sn:="GN6501PBCA7100393"
 ```
 
 <div class="center">
@@ -321,18 +301,12 @@ Depth点云Topic名称为：/depth/points
 
 **1. 启动多个相机节点**
 
-以启动两个相机为例；
-
-设置camera1的帧率为25，且发布Depth点云；
-
-设置camera2的帧率为14，分辨率为648 * 480；
-
-其余参数使用/param/default.param.yaml内的默认值；
+以启动两个相机为例，在命令行参数内分别输入两个相机的SN
 
 命令如下：
 
-```shell
-> ros2 launch scepter_manager node_execute_multi.launch.py camera_sn1:="GN6501PBCA7100393" camera_sn2:="GN650SCBCA3310124" framerate1:=25 framerate2:=14  depth_cloud_point1:=true color_resolution2:=2
+```
+> ros2 launch scepter_manager node_execute_multi.launch.py camera_sn1:="GN6501PBCA7100393" camera_sn2:="GN650SCBCA3310124"
 ```
 
 <div class="center">
@@ -341,11 +315,25 @@ Depth点云Topic名称为：/depth/points
 
 </div>
 
+node_execute_multi.launch.py会加载位于./install/scepter_manager/share/scepter_manager/param/下的camera1.yaml与camera2.yaml分别作为camera1与camera2的启动参数；
+
+>如需修改相机启动参数，有以下两种方式：
 >
-> - 多设备当前仅支持如上方式启动，暂不支持多个yaml文件。
-> - 仅可以设置/param/default.param.yaml内的参数，输入参数命名格式**paramname\<ID\>**, 以camera_sn为例，amera_sn1:="GN6501PBCA7100393" camera_sn2:="GN650SCBCA3310124"
-> - 未设置的参数，使用/param/default.param.yaml内的默认值。
+>方式1：修改对应相机的yaml文件
 >
+>即camera1修改camera1.yaml，camera2修改camera2.yaml
+>
+>方式2：设置对应相机的命令行参数
+>
+>仅可以设置camera\<ID\>.yaml内的参数，输入参数命名格式**paramname\<ID\>**, 以framerate为例，framerate1:=25 framerate2:=14
+>
+>未设置的参数，使用camera\<ID\>.yaml内的默认值;
+>
+>设置camera1帧率25，camera1发布Depth点云，camera2帧率14，camera2的Color分辨率640*480，其余参数仍是camera\<ID\>.yaml文件的配置
+>
+>```
+>> ros2 launch scepter_manager node_execute_multi.launch.py camera_sn1:="GN6501PBCA7100393" camera_sn2:="GN650SCBCA3310124" framerate1:=25 framerate2:=14  depth_cloud_point1:=true color_resolution2:=2
+>```
 
 **2. 相机动态参数设置**
 
@@ -353,39 +341,40 @@ Depth点云Topic名称为：/depth/points
 
 **3. 多相机Topic列表**
 
-scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定义的以下话题 ：
+scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定义的以下话题：
 
-```shell
-/tf_static
-/vzense_tof_camera1/<sn1>/color/camera_info
-/vzense_tof_camera1/<sn1>/color/image_raw
-/vzense_tof_camera1/<sn1>/depth/camera_info
-/vzense_tof_camera1/<sn1>/depth/image_raw
-/vzense_tof_camera1/<sn1>/depth/points
-/vzense_tof_camera1/<sn1>/depth/points/camera_info
-/vzense_tof_camera1/<sn1>/depth2color/points
-/vzense_tof_camera1/<sn1>/depth2color/points/camera_info
-/vzense_tof_camera1/<sn1>/ir/camera_info
-/vzense_tof_camera1/<sn1>/ir/image_raw
-/vzense_tof_camera1/<sn1>/transformedColor/camera_info
-/vzense_tof_camera1/<sn1>/transformedColor/image_raw
-/vzense_tof_camera1/<sn1>/transformedDepth/camera_info
-/vzense_tof_camera1/<sn1>/transformedDepth/image_raw
-/vzense_tof_camera2/<sn2>/color/camera_info
-/vzense_tof_camera2/<sn2>/color/image_raw
-/vzense_tof_camera2/<sn2>/depth/camera_info
-/vzense_tof_camera2/<sn2>/depth/image_raw
-/vzense_tof_camera2/<sn2>/depth/points
-/vzense_tof_camera2/<sn2>/depth/points/camera_info
-/vzense_tof_camera2/<sn2>/depth2color/points
-/vzense_tof_camera2/<sn2>/depth2color/points/camera_info
-/vzense_tof_camera2/<sn2>/ir/camera_info
-/vzense_tof_camera2/<sn2>/ir/image_raw
-/vzense_tof_camera2/<sn2>/transformedColor/camera_info
-/vzense_tof_camera2/<sn2>/transformedColor/image_raw
-/vzense_tof_camera2/<sn2>/transformedDepth/camera_info
-/vzense_tof_camera2/<sn2>/transformedDepth/image_raw
-```
+| Topic 名称                                               | Topic 类型                  | Topic 信息                                                   |
+| -------------------------------------------------------- | --------------------------- | ------------------------------------------------------------ |
+| /tf_static                                               | tf2_msgs/msg/TFMessage      | 静态TF信息                                                   |
+| /vzense_tof_camera1/<sn1>/color/camera_info              | sensor_msgs/msg/CameraInfo  | camera1 Color sensor相机信息                                 |
+| /vzense_tof_camera1/<sn1>/color/image_raw                | sensor_msgs/msg/Image       | camera1 Color图像                                            |
+| /vzense_tof_camera1/<sn1>/depth/camera_info              | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息                                 |
+| /vzense_tof_camera1/<sn1>/depth/image_raw                | sensor_msgs/msg/Image       | camera1 Depth图像                                            |
+| /vzense_tof_camera1/<sn1>/depth/points                   | sensor_msgs/msg/PointCloud2 | camera1 Depth点云                                            |
+| /vzense_tof_camera1/<sn1>/depth/points/camera_info       | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息（携带depth点云frameId）         |
+| /vzense_tof_camera1/<sn1>/depth2color/points             | sensor_msgs/msg/PointCloud2 | camera1 Depth-to-color点云                                   |
+| /vzense_tof_camera1/<sn1>/depth2color/points/camera_info | sensor_msgs/msg/CameraInfo  | camera1 Color sensor相机信息（携带depth-to-color点云frameId） |
+| /vzense_tof_camera1/<sn1>/ir/camera_info                 | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息（携带IR图像frameId）            |
+| /vzense_tof_camera1/<sn1>/ir/image_raw                   | sensor_msgs/msg/Image       | camera1 IR图像                                               |
+| /vzense_tof_camera1/<sn1>/transformedColor/camera_info   | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息（携带color-to-deptht图像frameId） |
+| /vzense_tof_camera1/<sn1>/transformedColor/image_raw     | sensor_msgs/msg/Image       | camera1 Color-to-depth对齐图像                               |
+| /vzense_tof_camera1/<sn1>/transformedDepth/camera_info   | sensor_msgs/msg/CameraInfo  | camera1 Color sensor相机信息（携带depth-to-color点云frameId） |
+| /vzense_tof_camera1/<sn1>/transformedDepth/image_raw     | sensor_msgs/msg/Image       | camera1 Depth-to-color对齐图像                               |
+| /vzense_tof_camera2/<sn2>/color/camera_info              | sensor_msgs/msg/CameraInfo  | camera2 Color sensor相机信息                                 |
+| /vzense_tof_camera2/<sn2>/color/image_raw                | sensor_msgs/msg/Image       | camera2 Color图像                                            |
+| /vzense_tof_camera2/<sn2>/depth/camera_info              | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息                                 |
+| /vzense_tof_camera2/<sn2>/depth/image_raw                | sensor_msgs/msg/Image       | camera2 Depth图像                                            |
+| /vzense_tof_camera2/<sn2>/depth/points                   | sensor_msgs/msg/PointCloud2 | camera2 Depth点云                                            |
+| /vzense_tof_camera2/<sn2>/depth/points/camera_info       | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息（携带depth点云frameId）         |
+| /vzense_tof_camera2/<sn2>/depth2color/points             | sensor_msgs/msg/PointCloud2 | camera2 Depth-to-color点云                                   |
+| /vzense_tof_camera2/<sn2>/depth2color/points/camera_info | sensor_msgs/msg/CameraInfo  | camera2 Color sensor相机信息（携带depth-to-color点云frameId） |
+| /vzense_tof_camera2/<sn2>/ir/camera_info                 | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息（携带IR图像frameId）            |
+| /vzense_tof_camera2/<sn2>/ir/image_raw                   | sensor_msgs/msg/Image       | camera2 IR图像                                               |
+| /vzense_tof_camera2/<sn2>/transformedColor/camera_info   | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息（携带color-to-deptht图像frameId） |
+| /vzense_tof_camera2/<sn2>/transformedColor/image_raw     | sensor_msgs/msg/Image       | camera2 Color-to-depth对齐图像                               |
+| /vzense_tof_camera2/<sn2>/transformedDepth/camera_info   | sensor_msgs/msg/CameraInfo  | camera2 Color sensor相机信息（携带depth-to-color点云frameId） |
+| /vzense_tof_camera2/<sn2>/transformedDepth/image_raw     | sensor_msgs/msg/Image       | camera2 Depth-to-color对齐图像                               |
+>部分Topic默认不发布，需动态调整参数后使能
 
 **4. Rviz2订阅**
 
@@ -400,7 +389,7 @@ scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 **5. Intra Process Communication 支持**
 
 ```shell
-> ros2 launch scepter_manager node_container_multi.launch.py camera_sn1:="GN6501PBCA7100393" camera_sn2:="GN650SCBCA3310124" framerate1:=25 framerate2:=14  depth_cloud_point1:=true color_resolution2:=2
+> ros2 launch scepter_manager node_container_multi.launch.py camera_sn1:="GN6501PBCA7100393" camera_sn2:="GN650SCBCA3310124"
 ```
 
 <div class="center">
@@ -408,7 +397,7 @@ scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 ![](.\ROS2-asserts\15.png)
 
 </div>
- 
+
 <!-- tabs:end -->
 ## 4.2.4. 编程指南
 
@@ -437,7 +426,7 @@ scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 
 ROS2_Samples/src目录下，提供6个package，演示订阅图像和点云：
 
-```Shell
+```shell
 ├── device_sw_trigger_mode -- 订阅SoftwareTigger模式下相机节点的Depth/Ir/Color图像
 ├── frame_capture_and_save -- 订阅Active模式下相机节点的Depth/Ir/Color图像
 ├── point_cloud_capture_and_save -- 订阅Active模式下相机节点的Depth点云
