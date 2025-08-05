@@ -109,7 +109,8 @@ Summary: 2 packages finished [14.0s]
 > source install/setup.bash
 ```
 
-获取设备信息和状态
+- 获取设备信息和状态
+
 
 ```shell
 > ros2 run sc_enumerate_devices sc_enumerate_devices 
@@ -125,7 +126,8 @@ Summary: 2 packages finished [14.0s]
 
 </div>
 
-编译产物
+- 编译产物
+
 
 <div class="center">
 
@@ -140,7 +142,7 @@ Summary: 2 packages finished [14.0s]
 
 **1. 启动相机节点**
 
-在命令行参数输入相机SN
+在命令行参数中输入由sc_enumerate_devices获取的相机SN
 
 ```shell
 > ros2 launch scepter_manager node_execute.launch.py camera_sn:="GN6501PBCA7100393"
@@ -152,7 +154,7 @@ Summary: 2 packages finished [14.0s]
 
 </div>
 
-node_execute.launch.py会加载位于./install/scepter_manager/share/scepter_manager/param/下的default.param.yaml作为相机节点的启动参数；
+在启动相机节点时，node_execute.launch.py会加载位于./install/scepter_manager/share/scepter_manager/param/下的default.param.yaml作为相机节点的启动参数；
 
 >如需修改相机节点启动参数，有以下两种方式：
 >
@@ -162,7 +164,7 @@ node_execute.launch.py会加载位于./install/scepter_manager/share/scepter_man
 >
 >方式2：设置命令行参数
 >
->设置帧率20，Color分辨率640*480，其余参数仍是default.param.yaml文件的配置
+>设置帧率20，Color分辨率640×480，其余参数仍是default.param.yaml文件的配置
 >
 >```shell
 >> ros2 launch scepter_manager node_execute.launch.py framerate:=20 color_resolution:=2
@@ -222,20 +224,20 @@ scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 | Topic 名称                                             | Topic 类型                  | Topic 信息                                             |
 | ------------------------------------------------------ | --------------------------- | ------------------------------------------------------ |
 | /tf_static                                             | tf2_msgs/msg/TFMessage      | 静态TF信息                                             |
-| /vzense_tof_camera/<sn>/color/camera_info              | sensor_msgs/msg/CameraInfo  | Color sensor相机信息                                   |
-| /vzense_tof_camera/<sn>/color/image_raw                | sensor_msgs/msg/Image       | Color图像                                              |
-| /vzense_tof_camera/<sn>/depth/camera_info              | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息                                   |
-| /vzense_tof_camera/<sn>/depth/image_raw                | sensor_msgs/msg/Image       | Depth图像                                              |
-| /vzense_tof_camera/<sn>/depth/points                   | sensor_msgs/msg/PointCloud2 | Depth点云                                              |
-| /vzense_tof_camera/<sn>/depth/points/camera_info       | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息（携带depth点云frameId）           |
-| /vzense_tof_camera/<sn>/depth2color/points             | sensor_msgs/msg/PointCloud2 | Depth-to-color点云                                     |
-| /vzense_tof_camera/<sn>/depth2color/points/camera_info | sensor_msgs/msg/CameraInfo  | Color sensor相机信息（携带depth-to-color点云frameId）  |
-| /vzense_tof_camera/<sn>/ir/camera_info                 | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息（携带IR图像frameId）              |
-| /vzense_tof_camera/<sn>/ir/image_raw                   | sensor_msgs/msg/Image       | IR图像                                                 |
-| /vzense_tof_camera/<sn>/transformedColor/camera_info   | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息（携带color-to-deptht图像frameId） |
-| /vzense_tof_camera/<sn>/transformedColor/image_raw     | sensor_msgs/msg/Image       | Color-to-depth对齐图像                                 |
-| /vzense_tof_camera/<sn>/transformedDepth/camera_info   | sensor_msgs/msg/CameraInfo  | Color sensor相机信息（携带depth-to-color点云frameId）  |
-| /vzense_tof_camera/<sn>/transformedDepth/image_raw     | sensor_msgs/msg/Image       | Depth-to-color对齐图像                                 |
+| /vzense_tof_camera/\<sn\>/color/camera_info              | sensor_msgs/msg/CameraInfo  | Color sensor相机信息                                   |
+| /vzense_tof_camera/\<sn\>/color/image_raw                | sensor_msgs/msg/Image       | Color图像                                              |
+| /vzense_tof_camera/\<sn\>/depth/camera_info              | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息                                   |
+| /vzense_tof_camera/\<sn\>/depth/image_raw                | sensor_msgs/msg/Image       | Depth图像                                              |
+| /vzense_tof_camera/\<sn\>/depth/points                   | sensor_msgs/msg/PointCloud2 | Depth点云                                              |
+| /vzense_tof_camera/\<sn\>/depth/points/camera_info       | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息（携带depth点云frameId）           |
+| /vzense_tof_camera/\<sn\>/depth2color/points             | sensor_msgs/msg/PointCloud2 | Depth-to-color点云                                     |
+| /vzense_tof_camera/\<sn\>/depth2color/points/camera_info | sensor_msgs/msg/CameraInfo  | Color sensor相机信息（携带depth-to-color点云frameId）  |
+| /vzense_tof_camera/\<sn\>/ir/camera_info                 | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息（携带IR图像frameId）              |
+| /vzense_tof_camera/\<sn\>/ir/image_raw                   | sensor_msgs/msg/Image       | IR图像                                                 |
+| /vzense_tof_camera/\<sn\>/transformedColor/camera_info   | sensor_msgs/msg/CameraInfo  | Depth sensor相机信息（携带color-to-deptht图像frameId） |
+| /vzense_tof_camera/\<sn\>/transformedColor/image_raw     | sensor_msgs/msg/Image       | Color-to-depth对齐图像                                 |
+| /vzense_tof_camera/\<sn\>/transformedDepth/camera_info   | sensor_msgs/msg/CameraInfo  | Color sensor相机信息（携带depth-to-color点云frameId）  |
+| /vzense_tof_camera/\<sn\>/transformedDepth/image_raw     | sensor_msgs/msg/Image       | Depth-to-color对齐图像                                 |
 
 >部分Topic默认不发布，需动态调整参数后使能
 
@@ -301,7 +303,7 @@ Depth点云Topic名称为：/depth/points
 
 **1. 启动多个相机节点**
 
-以启动两个相机为例，在命令行参数内分别输入两个相机的SN
+以启动两个相机节点为例，在命令行参数中输入由sc_enumerate_devices获取的相机SN
 
 命令如下：
 
@@ -315,7 +317,7 @@ Depth点云Topic名称为：/depth/points
 
 </div>
 
-node_execute_multi.launch.py会加载位于./install/scepter_manager/share/scepter_manager/param/下的camera1.yaml与camera2.yaml分别作为camera1与camera2的启动参数；
+在启动相机节点时，node_execute_multi.launch.py会加载位于./install/scepter_manager/share/scepter_manager/param/下的camera1.yaml与camera2.yaml分别作为camera1与camera2的启动参数；
 
 >如需修改相机启动参数，有以下两种方式：
 >
@@ -329,7 +331,7 @@ node_execute_multi.launch.py会加载位于./install/scepter_manager/share/scept
 >
 >未设置的参数，使用camera\<ID\>.yaml内的默认值;
 >
->设置camera1帧率25，camera1发布Depth点云，camera2帧率14，camera2的Color分辨率640*480，其余参数仍是camera\<ID\>.yaml文件的配置
+>设置camera1帧率25，camera1发布Depth点云，camera2帧率14，camera2的Color分辨率640*480，其余参数仍是camera\<ID\>.yaml文件的配置;
 >
 >```
 >> ros2 launch scepter_manager node_execute_multi.launch.py camera_sn1:="GN6501PBCA7100393" camera_sn2:="GN650SCBCA3310124" framerate1:=25 framerate2:=14  depth_cloud_point1:=true color_resolution2:=2
@@ -346,34 +348,34 @@ scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 | Topic 名称                                               | Topic 类型                  | Topic 信息                                                   |
 | -------------------------------------------------------- | --------------------------- | ------------------------------------------------------------ |
 | /tf_static                                               | tf2_msgs/msg/TFMessage      | 静态TF信息                                                   |
-| /vzense_tof_camera1/<sn1>/color/camera_info              | sensor_msgs/msg/CameraInfo  | camera1 Color sensor相机信息                                 |
-| /vzense_tof_camera1/<sn1>/color/image_raw                | sensor_msgs/msg/Image       | camera1 Color图像                                            |
-| /vzense_tof_camera1/<sn1>/depth/camera_info              | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息                                 |
-| /vzense_tof_camera1/<sn1>/depth/image_raw                | sensor_msgs/msg/Image       | camera1 Depth图像                                            |
-| /vzense_tof_camera1/<sn1>/depth/points                   | sensor_msgs/msg/PointCloud2 | camera1 Depth点云                                            |
-| /vzense_tof_camera1/<sn1>/depth/points/camera_info       | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息（携带depth点云frameId）         |
-| /vzense_tof_camera1/<sn1>/depth2color/points             | sensor_msgs/msg/PointCloud2 | camera1 Depth-to-color点云                                   |
-| /vzense_tof_camera1/<sn1>/depth2color/points/camera_info | sensor_msgs/msg/CameraInfo  | camera1 Color sensor相机信息（携带depth-to-color点云frameId） |
-| /vzense_tof_camera1/<sn1>/ir/camera_info                 | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息（携带IR图像frameId）            |
-| /vzense_tof_camera1/<sn1>/ir/image_raw                   | sensor_msgs/msg/Image       | camera1 IR图像                                               |
-| /vzense_tof_camera1/<sn1>/transformedColor/camera_info   | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息（携带color-to-deptht图像frameId） |
-| /vzense_tof_camera1/<sn1>/transformedColor/image_raw     | sensor_msgs/msg/Image       | camera1 Color-to-depth对齐图像                               |
-| /vzense_tof_camera1/<sn1>/transformedDepth/camera_info   | sensor_msgs/msg/CameraInfo  | camera1 Color sensor相机信息（携带depth-to-color点云frameId） |
-| /vzense_tof_camera1/<sn1>/transformedDepth/image_raw     | sensor_msgs/msg/Image       | camera1 Depth-to-color对齐图像                               |
-| /vzense_tof_camera2/<sn2>/color/camera_info              | sensor_msgs/msg/CameraInfo  | camera2 Color sensor相机信息                                 |
-| /vzense_tof_camera2/<sn2>/color/image_raw                | sensor_msgs/msg/Image       | camera2 Color图像                                            |
-| /vzense_tof_camera2/<sn2>/depth/camera_info              | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息                                 |
-| /vzense_tof_camera2/<sn2>/depth/image_raw                | sensor_msgs/msg/Image       | camera2 Depth图像                                            |
-| /vzense_tof_camera2/<sn2>/depth/points                   | sensor_msgs/msg/PointCloud2 | camera2 Depth点云                                            |
-| /vzense_tof_camera2/<sn2>/depth/points/camera_info       | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息（携带depth点云frameId）         |
-| /vzense_tof_camera2/<sn2>/depth2color/points             | sensor_msgs/msg/PointCloud2 | camera2 Depth-to-color点云                                   |
-| /vzense_tof_camera2/<sn2>/depth2color/points/camera_info | sensor_msgs/msg/CameraInfo  | camera2 Color sensor相机信息（携带depth-to-color点云frameId） |
-| /vzense_tof_camera2/<sn2>/ir/camera_info                 | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息（携带IR图像frameId）            |
-| /vzense_tof_camera2/<sn2>/ir/image_raw                   | sensor_msgs/msg/Image       | camera2 IR图像                                               |
-| /vzense_tof_camera2/<sn2>/transformedColor/camera_info   | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息（携带color-to-deptht图像frameId） |
-| /vzense_tof_camera2/<sn2>/transformedColor/image_raw     | sensor_msgs/msg/Image       | camera2 Color-to-depth对齐图像                               |
-| /vzense_tof_camera2/<sn2>/transformedDepth/camera_info   | sensor_msgs/msg/CameraInfo  | camera2 Color sensor相机信息（携带depth-to-color点云frameId） |
-| /vzense_tof_camera2/<sn2>/transformedDepth/image_raw     | sensor_msgs/msg/Image       | camera2 Depth-to-color对齐图像                               |
+| /vzense_tof_camera1/\<sn1\>/color/camera_info              | sensor_msgs/msg/CameraInfo  | camera1 Color sensor相机信息                                 |
+| /vzense_tof_camera1/\<sn1\>/color/image_raw                | sensor_msgs/msg/Image       | camera1 Color图像                                            |
+| /vzense_tof_camera1/\<sn1\>/depth/camera_info              | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息                                 |
+| /vzense_tof_camera1/\<sn1\>/depth/image_raw                | sensor_msgs/msg/Image       | camera1 Depth图像                                            |
+| /vzense_tof_camera1/\<sn1\>/depth/points                   | sensor_msgs/msg/PointCloud2 | camera1 Depth点云                                            |
+| /vzense_tof_camera1/\<sn1\>/depth/points/camera_info       | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息（携带depth点云frameId）         |
+| /vzense_tof_camera1/\<sn1\>/depth2color/points             | sensor_msgs/msg/PointCloud2 | camera1 Depth-to-color点云                                   |
+| /vzense_tof_camera1/\<sn1\>/depth2color/points/camera_info | sensor_msgs/msg/CameraInfo  | camera1 Color sensor相机信息（携带depth-to-color点云frameId） |
+| /vzense_tof_camera1/\<sn1\>/ir/camera_info                 | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息（携带IR图像frameId）            |
+| /vzense_tof_camera1/\<sn1\>/ir/image_raw                   | sensor_msgs/msg/Image       | camera1 IR图像                                               |
+| /vzense_tof_camera1/\<sn1\>/transformedColor/camera_info   | sensor_msgs/msg/CameraInfo  | camera1 Depth sensor相机信息（携带color-to-deptht图像frameId） |
+| /vzense_tof_camera1/\<sn1\>/transformedColor/image_raw     | sensor_msgs/msg/Image       | camera1 Color-to-depth对齐图像                               |
+| /vzense_tof_camera1/\<sn1\>/transformedDepth/camera_info   | sensor_msgs/msg/CameraInfo  | camera1 Color sensor相机信息（携带depth-to-color点云frameId） |
+| /vzense_tof_camera1/\<sn1\>/transformedDepth/image_raw     | sensor_msgs/msg/Image       | camera1 Depth-to-color对齐图像                               |
+| /vzense_tof_camera2/\<sn2\>/color/camera_info              | sensor_msgs/msg/CameraInfo  | camera2 Color sensor相机信息                                 |
+| /vzense_tof_camera2/\<sn2\>/color/image_raw                | sensor_msgs/msg/Image       | camera2 Color图像                                            |
+| /vzense_tof_camera2/\<sn2\>/depth/camera_info              | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息                                 |
+| /vzense_tof_camera2/\<sn2\>/depth/image_raw                | sensor_msgs/msg/Image       | camera2 Depth图像                                            |
+| /vzense_tof_camera2/\<sn2\>/depth/points                   | sensor_msgs/msg/PointCloud2 | camera2 Depth点云                                            |
+| /vzense_tof_camera2/\<sn2\>/depth/points/camera_info       | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息（携带depth点云frameId）         |
+| /vzense_tof_camera2/\<sn2\>/depth2color/points             | sensor_msgs/msg/PointCloud2 | camera2 Depth-to-color点云                                   |
+| /vzense_tof_camera2/\<sn2\>/depth2color/points/camera_info | sensor_msgs/msg/CameraInfo  | camera2 Color sensor相机信息（携带depth-to-color点云frameId） |
+| /vzense_tof_camera2/\<sn2\>/ir/camera_info                 | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息（携带IR图像frameId）            |
+| /vzense_tof_camera2/\<sn2\>/ir/image_raw                   | sensor_msgs/msg/Image       | camera2 IR图像                                               |
+| /vzense_tof_camera2/\<sn2\>/transformedColor/camera_info   | sensor_msgs/msg/CameraInfo  | camera2 Depth sensor相机信息（携带color-to-deptht图像frameId） |
+| /vzense_tof_camera2/\<sn2\>/transformedColor/image_raw     | sensor_msgs/msg/Image       | camera2 Color-to-depth对齐图像                               |
+| /vzense_tof_camera2/\<sn2\>/transformedDepth/camera_info   | sensor_msgs/msg/CameraInfo  | camera2 Color sensor相机信息（携带depth-to-color点云frameId） |
+| /vzense_tof_camera2/\<sn2\>/transformedDepth/image_raw     | sensor_msgs/msg/Image       | camera2 Depth-to-color对齐图像                               |
 >部分Topic默认不发布，需动态调整参数后使能
 
 **4. Rviz2订阅**
@@ -404,7 +406,7 @@ scepter_manager 发布由 [sensor_msgs](http://wiki.ros.org/sensor_msgs) 包定�
 如果开发者需要设置其余相机参数或算法开关，请参考以下流程。
 以调用**scSetSpatialFilterEnabled**为例：
 
-- 从 **/src/scepter_manger/dependencies/include/Scepter_api.h** 查找 api
+- 从 **/src/scepter_manger/dependencies/Include/Scepter_api.h** 查找 api
 
 <div class="center">
 
