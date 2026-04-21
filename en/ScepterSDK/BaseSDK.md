@@ -1944,15 +1944,15 @@ ScStatus scGetColorResolution(ScDeviceHandle device, int32_t* pW, int32_t* pH)
 
 **Description:**
 
-Obtaines the the color frame Resolution.
+Obtaines the color frame Resolution.
 
 **Parameters:**
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pW: Ruturns the width of color image.
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pW: Returns the width of color image.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pH: Ruturns the height of color image.
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pH: Returns the height of color image.
 
 **Returns:**
 
@@ -2963,4 +2963,109 @@ Get firmware upgrade status and progress.
 
 [**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
+### 2.5.3.89. scSetToFResolution
+
+**Prototype:**
+
+```cpp
+ScStatus scSetToFResolution(ScDeviceHandle device, int32_t w, int32_t h)
+```
+
+**Description:**
+
+Set the ToF frame Resolution.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> w: The width of ToF image.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> h: The height of ToF image.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 2.5.3.90. scGetToFResolution
+
+**Prototype:**
+
+```cpp
+ScStatus scGetToFResolution(ScDeviceHandle device, int32_t* pW, int32_t* pH)
+```
+
+**Description:**
+
+Obtaines the ToF frame Resolution.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pW: Returns the width of ToF image.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pH: Returns the height of ToF image.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 2.5.3.91. scSetColorAECROI
+
+**Prototype:**
+
+```cpp
+ScStatus scSetColorAECROI(ScDeviceHandle device, uint16_t x, uint16_t y, uint16_t width, uint16_t height)
+```
+
+**Description:**
+
+Set the ROI of color sensor in automatic mode. The interface is used in automatic mode.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> x: The x-coordinate value of the top left corner point of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> y: The y-coordinate value of the top left corner point of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> width: The width of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> height: The height of the ROI region.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 2.5.3.92. scGetColorAECROI
+
+**Prototype:**
+
+```cpp
+ScStatus scGetColorAECROI(ScDeviceHandle device, uint16_t* x, uint16_t* y, uint16_t* width, uint16_t* height)
+```
+
+**Description:**
+
+Get the ROI of color sensor in automatic mode. The interface is used in automatic mode.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* x: The x-coordinate value of the top left corner point of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* y: The y-coordinate value of the top left corner point of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* width: The width of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* height: The height of the ROI region.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
 <!-- tabs:end -->
+

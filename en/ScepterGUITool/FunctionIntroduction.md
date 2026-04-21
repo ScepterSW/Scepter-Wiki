@@ -354,6 +354,14 @@ Click the Settings button, show the WDRConfig UI
 
 > HDR and WDR only support a single function and cannot work simultaneously.
 
+#### 3.4.3.6. ToF Image Resolution
+
+![ToF Resloution](E:/tmp/gitblit/docs/Doc_wiki/zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-3-6-01.png)
+
+The ToF image resolution can be switched according to the actual list display. As shown in the figure above, there are three resolutions: 640 \* 480,  320 \* 240.
+
+Different devices may have different color image resolution lists. Please refer to the product specifications of the corresponding devices.
+
 ### 3.4.4 IR Image Configuration
 
 ![IRGmmGain](../../zh-cn/ScepterGUITool/FunctionIntroduction-asserts/79.png)
@@ -411,6 +419,14 @@ When the camera is working, you need to manually adjust the camera exposure time
 ExposureTime (us): Set the exposure time of the Color camera. Manually adjust the exposure time with the slider.
 
 Gain (dB): Set the brightness of the Color image, and adjust the Gain value manually through the slider.
+
+#### 3.4.5.3. Color AEC ROI
+
+![ROI SET](E:/tmp/gitblit/docs/Doc_wiki/zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-5-2-01.png)
+
+![ROI SHOW](E:/tmp/gitblit/docs/Doc_wiki/zh-cn/ScepterGUITool/FunctionIntroduction-asserts/3-4-5-2-02.png)
+
+Set the ROI of color sensor in automatic mode. The interface is used in automatic mode. Select **show**, show the ROI.
 
 ### 3.4.6. Save Image
 

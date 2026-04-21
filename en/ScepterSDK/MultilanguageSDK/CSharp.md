@@ -1584,15 +1584,15 @@ ScStatus VN_GetColorResolution(ScDeviceHandle device, int32_t* pW, int32_t* pH)
 
 **Description:**
 
-Obtaines the the color frame Resolution.
+Obtaines the color frame Resolution.
 
 **Parameters:**
 
 <span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pW: Ruturns the width of color image.
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pW: Returns the width of color image.
 
-<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pH: Ruturns the height of color image.
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pH: Returns the height of color image.
 
 **Returns:**
 
@@ -2598,6 +2598,110 @@ Get firmware upgrade status and progress.
 <span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pStatus:  Pointer to the status of firmware upgrade. 0 indicates normal, other values indicate anomalies.
 
 <span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pProcess: Pointer to the process of firmware upgrade, in range [0, 100]. Under normal circumstances, 100 indicates a successful upgrade.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.89. VN_SetToFResolution
+
+**Prototype:**
+
+```cpp
+ScStatus VN_SetToFResolution(ScDeviceHandle device, int32_t w, int32_t h)
+```
+
+**Description:**
+
+Set the ToF frame Resolution.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> w: The width of ToF image.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> h: The height of ToF image.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.90. VN_GetToFResolution
+
+**Prototype:**
+
+```cpp
+ScStatus VN_GetToFResolution(ScDeviceHandle device, int32_t* pW, int32_t* pH)
+```
+
+**Description:**
+
+Obtaines the ToF frame Resolution.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pW: Returns the width of ToF image.
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pH: Returns the height of ToF image.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.91. VN_SetColorAECROI
+
+**Prototype:**
+
+```cpp
+ScStatus VN_SetColorAECROI(ScDeviceHandle device, uint16_t x, uint16_t y, uint16_t width, uint16_t height)
+```
+
+**Description:**
+
+Set the ROI of color sensor in automatic mode. The interface is used in automatic mode.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> x: The x-coordinate value of the top left corner point of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> y: The y-coordinate value of the top left corner point of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> width: The width of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> height: The height of the ROI region.
+
+**Returns:**
+
+[**ScStatus**](#_2514-scstatus): SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.2.4.3.92. VN_GetColorAECROI
+
+**Prototype:**
+
+```cpp
+ScStatus VN_GetColorAECROI(ScDeviceHandle device, uint16_t* x, uint16_t* y, uint16_t* width, uint16_t* height)
+```
+
+**Description:**
+
+Get the ROI of color sensor in automatic mode. The interface is used in automatic mode.
+
+**Parameters:**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device: The handle of the device.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* x: The x-coordinate value of the top left corner point of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* y: The y-coordinate value of the top left corner point of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* width: The width of the ROI region.
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* height: The height of the ROI region.
 
 **Returns:**
 

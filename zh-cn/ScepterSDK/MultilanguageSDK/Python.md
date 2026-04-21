@@ -2687,4 +2687,108 @@ pStatus.value：升级状态，1正常，0异常
 
 pUpgradeStatus.value：升级进度，[1-100]
 
+### 3.1.5.3.89. scSetToFResolution
+
+**函数原型：**
+
+```python
+def scSetToFResolution(self, w = c_int32(1600), h = c_int32(1200)):
+    return self.sc_cam_lib.scSetColorResolution(self.device_handle, w, h)
+```
+
+**函数功能：**
+
+设置ToF图像的分辨率
+
+**函数参数：**
+
+w：图像的宽
+
+h：图像的高
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.90. scGetToFResolution
+
+**函数原型：**
+
+```python
+def scGetToFResolution(self):
+    w = c_int32(1600)
+    h = c_int32(1200)
+    return self.sc_cam_lib.scGetColorResolution(self.device_handle, byref(w), byref(h)), w, h
+```
+
+**函数功能：**
+
+获取ToF图像的分辨率
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+w：返回ToF图像的宽
+
+h：返回ToF图像的高
+
+### 3.1.5.3.91. scSetColorAECROI
+
+**函数原型：**
+
+```python
+def scSetColorAECROI(self,  x = c_uint16(0), y = c_uint16(0), width = c_uint16(640), height =c_uint16(480)):
+        return sc_cam_lib.scSetColorAECROI(self.device_handle, x, y, width, height)
+```
+
+**函数功能：**
+
+设置彩色图像自动曝光模式下的感兴趣区域
+
+**函数参数：**
+
+x：区域左上角的x坐标
+y：区域左上角的y坐标
+width：区域的宽
+height：区域的高
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.1.5.3.92. scGetColorAECROI
+
+**函数原型：**
+
+```python
+def scGetColorAECROI(self):
+        x = c_uint16(0)
+        y = c_uint16(0)
+        width =c_uint16(0)        
+        height =c_uint16(0)
+        return sc_cam_lib.scGetColorAECROI(self.device_handle, byref(x), byref(y), byref(width), byref(height)), x.value, y.value, width.value, height.value
+```
+
+**函数功能：**
+
+获取彩色图像自动曝光模式下的感兴趣区域
+
+**函数参数：**
+
+无
+
+**返回值：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK 调用成功，其他值调用失败
+
+x：区域左上角的x坐标
+y：区域左上角的y坐标
+width：区域的宽
+height：区域的高
+
 <!-- tabs:end -->

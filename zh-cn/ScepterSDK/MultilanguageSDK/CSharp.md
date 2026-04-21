@@ -2555,4 +2555,108 @@ ScStatus VN_GetUpgradeStatus(ScDeviceHandle device, int32_t* pStatus, int32_t* p
 
 [**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
 
+### 3.2.4.3.89. VN_SetToFResolution
+
+**函数原型：**
+
+```cpp
+ScStatus VN_SetToFResolution(ScDeviceHandle device, int32_t w, int32_t h)
+```
+
+**函数功能：**
+
+设置ToF图像的分辨率
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> w：图像的宽
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span> h：图像的高
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.90. VN_GetToFResolution
+
+**函数原型：**
+
+```cpp
+ScStatus VN_GetToFResolution(ScDeviceHandle device, int32_t* pW, int32_t* pH)
+```
+
+**函数功能：**
+
+获取ToF图像的分辨率
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pW：返回图像的宽
+
+<span style="color: #4ec9b0; font-weight: bold">int32_t</span>\* pH：返回图像的高
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.91. VN_SetColorAECROI
+
+**函数原型：**
+
+```cpp
+ScStatus VN_SetColorAECROI(ScDeviceHandle device, uint16_t x, uint16_t y, uint16_t width, uint16_t height)
+```
+
+**函数功能：**
+
+设置彩色图像自动曝光模式下的感兴趣区域
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> x：区域左上角的x坐标
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> y：区域左上角的y坐标
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> width：区域的宽
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span> height：区域的高
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
+### 3.2.4.3.92. VN_GetColorAECROI
+
+**函数原型：**
+
+```cpp
+ScStatus VN_GetColorAECROI(ScDeviceHandle device, uint16_t* x, uint16_t* y, uint16_t* width, uint16_t* height)
+```
+
+**函数功能：**
+
+获取彩色图像自动曝光模式下的感兴趣区域
+
+**函数参数：**
+
+<span style="color: #4ec9b0; font-weight: bold">ScDeviceHandle</span> device： 设备句柄
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* x：区域左上角的x坐标
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* y：区域左上角的y坐标
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* width：区域的宽
+
+<span style="color: #4ec9b0; font-weight: bold">uint16_t</span>* height：区域的高
+
+**返回值：**
+
+[**ScStatus**](#_2514-scstatus)：SC_OK 调用成功，其他值调用失败
+
 <!-- tabs:end -->

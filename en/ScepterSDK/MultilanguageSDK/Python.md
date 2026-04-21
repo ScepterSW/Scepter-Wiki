@@ -1688,7 +1688,7 @@ def scGetColorResolution(self):
 
 **Description：**
 
-Obtaines the the color frame Resolution.
+Obtaines the color frame Resolution.
 
 **Parameters：**
 
@@ -1698,9 +1698,9 @@ There is no.
 
 [**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
 
-w：Ruturns the width of color image.
+w：Returns the width of color image.
 
-h：Ruturns the height of color image.
+h：Returns the height of color image.
 
 ### 3.1.5.3.45. scSetExposureControlMode
 
@@ -2725,5 +2725,109 @@ There is no.
 pStatus.value： Pointer to the status of firmware upgrade. 0 indicates normal, other values indicate anomalies.
 
 pUpgradeStatus.value：Pointer to the process of firmware upgrade, in range [0, 100]. Under normal circumstances, 100 indicates a successful upgrade.
+
+### 3.1.5.3.89. scSetToFResolution
+
+**Prototype：**
+
+```python
+def scSetToFResolution(self, w = c_int32(1600), h = c_int32(1200)):
+    return self.sc_cam_lib.scSetColorResolution(self.device_handle, w, h)
+```
+
+**Description：**
+
+Set the ToF frame Resolution.
+
+**Parameters：**
+
+w：The width of ToF image.
+
+h：The height of ToF image.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.90. scGetToFResolution
+
+**Prototype：**
+
+```python
+def scGetToFResolution(self):
+    w = c_int32(1600)
+    h = c_int32(1200)
+    return self.sc_cam_lib.scGetColorResolution(self.device_handle, byref(w), byref(h)), w, h
+```
+
+**Description：**
+
+Obtaines the ToF frame Resolution.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+w：Returns the width of ToF image.
+
+h：Returns the height of ToF image.
+
+### 3.1.5.3.91. scSetColorAECROI
+
+**Prototype：**
+
+```python
+def scSetColorAECROI(self,  x = c_uint16(0), y = c_uint16(0), width = c_uint16(640), height =c_uint16(480)):
+        return sc_cam_lib.scSetColorAECROI(self.device_handle, x, y, width, height)
+```
+
+**Description：**
+
+Set the ROI of color sensor in automatic mode. The interface is used in automatic mode.
+
+**Parameters：**
+
+x: The x-coordinate value of the top left corner point of the ROI region.
+y: The y-coordinate value of the top left corner point of the ROI region.
+width: The width of the ROI region.
+height: The height of the ROI region.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+### 3.1.5.3.92. scGetColorAECROI
+
+**Prototype：**
+
+```python
+def scGetColorAECROI(self):
+        x = c_uint16(0)
+        y = c_uint16(0)
+        width =c_uint16(0)        
+        height =c_uint16(0)
+        return sc_cam_lib.scGetColorAECROI(self.device_handle, byref(x), byref(y), byref(width), byref(height)), x.value, y.value, width.value, height.value
+```
+
+**Description：**
+
+Get the ROI of color sensor in automatic mode. The interface is used in automatic mode.
+
+**Parameters：**
+
+There is no.
+
+**Returns：**
+
+[**ScReturnStatus**](#_31514-screturnstatus)：SC_OK If the function succeeded, or one of the error values defined by ::ScStatus.
+
+* x: The x-coordinate value of the top left corner point of the ROI region.
+* y: The y-coordinate value of the top left corner point of the ROI region.
+* width: The width of the ROI region.
+* height: The height of the ROI region.
 
 <!-- tabs:end -->

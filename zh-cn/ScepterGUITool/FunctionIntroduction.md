@@ -353,6 +353,13 @@ WDR(Wide Dynamic Range)即宽动态范围功能通过对远近检测范围的处
 
 > HDR和WDR仅支持单一功能起效，不可同时起效。
 
+#### 3.4.3.6. ToF图像分辨率
+
+![ToF Resloution](FunctionIntroduction-asserts/3-4-3-6-01.png)
+
+ToF分辨率可根据实际列表显示进行切换，如上图示例的分辨率有三种：640\*480，320\*240。
+
+是否支持ToF分辨率切换功能，请参考对应设备的产品规格书。
 
 ### 3.4.4 IR 图像参数配置
 
@@ -411,6 +418,14 @@ Color 传感器设置为手动曝光，下面会显示 ExposureTime(us)和 Gain(
 ExposureTime(us)：设置 Color 相机的曝光时间，通过滑条对曝光时间进行手动调节。
 
 Gain(dB): 设置 Color 图像的亮度，通过滑条对 Gain 值进行手动调节。
+
+#### 3.4.5.3. 彩色图像ROI
+
+![ROI设置](FunctionIntroduction-asserts/3-4-5-2-01.png)
+
+![ROI效果](FunctionIntroduction-asserts/3-4-5-2-02.png)
+
+设置彩色图像自动曝光模式下的感兴趣区域，勾选show显示区域，勾掉不显示。
 
 ### 3.4.6. 保存图像
 
