@@ -4,7 +4,7 @@
 
 ScepterGUITool 是基于 ScepterSDK 开发的图形界面工具，提供 Depth 图像彩色映射显示、3D 点云显示、滤波参数调节、设备参数设置以及 RGB & Depth 对齐等功能，并且可以通过设置页面对设备进行 IP 地址设置与固件升级操作。
 
-文中所述ScepterGUITool版本是**v25.07.5**
+文中所述ScepterGUITool版本是**v26.04.1**
 
 ![ScepterGUITool](../../zh-cn/ScepterGUITool/Overview-asserts/01-1.png)
 
